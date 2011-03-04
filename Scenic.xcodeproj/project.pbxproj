@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5D017A941321827A00B8EA6A /* GMapsPolyline.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D017A931321827A00B8EA6A /* GMapsPolyline.m */; };
+		5D017A98132182A300B8EA6A /* GMapsBounds.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D017A97132182A300B8EA6A /* GMapsBounds.m */; };
+		5D017A9E13218A3300B8EA6A /* GMapsStep.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D017A9D13218A3100B8EA6A /* GMapsStep.m */; };
+		5D017AA11321965A00B8EA6A /* GMapsCoordinate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D017AA01321965500B8EA6A /* GMapsCoordinate.m */; };
 		5D0587ED132098C500D42F0A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D0587EC132098C500D42F0A /* UIKit.framework */; };
 		5D0587EF132098C500D42F0A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D0587EE132098C500D42F0A /* Foundation.framework */; };
 		5D0587F1132098C500D42F0A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D0587F0132098C500D42F0A /* CoreGraphics.framework */; };
@@ -70,6 +74,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5D017A921321827900B8EA6A /* GMapsPolyline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMapsPolyline.h; sourceTree = "<group>"; };
+		5D017A931321827A00B8EA6A /* GMapsPolyline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMapsPolyline.m; sourceTree = "<group>"; };
+		5D017A96132182A200B8EA6A /* GMapsBounds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMapsBounds.h; sourceTree = "<group>"; };
+		5D017A97132182A300B8EA6A /* GMapsBounds.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMapsBounds.m; sourceTree = "<group>"; };
+		5D017A9C13218A3000B8EA6A /* GMapsStep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMapsStep.h; sourceTree = "<group>"; };
+		5D017A9D13218A3100B8EA6A /* GMapsStep.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMapsStep.m; sourceTree = "<group>"; };
+		5D017A9F1321965200B8EA6A /* GMapsCoordinate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMapsCoordinate.h; sourceTree = "<group>"; };
+		5D017AA01321965500B8EA6A /* GMapsCoordinate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMapsCoordinate.m; sourceTree = "<group>"; };
 		5D0587E8132098C500D42F0A /* Scenic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scenic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D0587EC132098C500D42F0A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5D0587EE132098C500D42F0A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -186,50 +198,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5D0587DD132098C400D42F0A = {
+		5D017AA213219D8300B8EA6A /* Routing And Map Objects */ = {
 			isa = PBXGroup;
 			children = (
-				5D0587F2132098C500D42F0A /* Scenic */,
-				5D058818132098C500D42F0A /* ScenicTests */,
-				5D0587EB132098C500D42F0A /* Frameworks */,
-				5D0587E9132098C500D42F0A /* Products */,
+				5D05883B13209A3B00D42F0A /* GMapsGeolocation.h */,
+				5D05883C13209A3B00D42F0A /* GMapsGeolocation.m */,
+				5DCF17D11320A33100D19D04 /* GMapsRoute.h */,
+				5DCF17D21320A33100D19D04 /* GMapsRoute.m */,
+				5DCF17D51320A47400D19D04 /* GMapsLeg.h */,
+				5DCF17D61320A47400D19D04 /* GMapsLeg.m */,
+				5D017A921321827900B8EA6A /* GMapsPolyline.h */,
+				5D017A931321827A00B8EA6A /* GMapsPolyline.m */,
+				5D017A96132182A200B8EA6A /* GMapsBounds.h */,
+				5D017A97132182A300B8EA6A /* GMapsBounds.m */,
+				5D017A9C13218A3000B8EA6A /* GMapsStep.h */,
+				5D017A9D13218A3100B8EA6A /* GMapsStep.m */,
+				5D017A9F1321965200B8EA6A /* GMapsCoordinate.h */,
+				5D017AA01321965500B8EA6A /* GMapsCoordinate.m */,
 			);
+			name = "Routing And Map Objects";
 			sourceTree = "<group>";
 		};
-		5D0587E9132098C500D42F0A /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				5D0587E8132098C500D42F0A /* Scenic.app */,
-				5D058812132098C500D42F0A /* ScenicTests.octest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		5D0587EB132098C500D42F0A /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				5D05889C13209B8700D42F0A /* CFNetwork.framework */,
-				5D05889D13209B8800D42F0A /* libz.1.2.3.dylib */,
-				5D05889E13209B8800D42F0A /* MobileCoreServices.framework */,
-				5D05889F13209B8800D42F0A /* SystemConfiguration.framework */,
-				5D0587EC132098C500D42F0A /* UIKit.framework */,
-				5D0587EE132098C500D42F0A /* Foundation.framework */,
-				5D0587F0132098C500D42F0A /* CoreGraphics.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		5D0587F2132098C500D42F0A /* Scenic */ = {
+		5D017AA313219E3500B8EA6A /* Networking */ = {
 			isa = PBXGroup;
 			children = (
 				5D05883513209A3B00D42F0A /* JSONFetcher.h */,
 				5D05883613209A3B00D42F0A /* JSONFetcher.m */,
-				5D05883713209A3B00D42F0A /* GMapsRouter.h */,
-				5D05883813209A3B00D42F0A /* GMapsRouter.m */,
-				5D05883913209A3B00D42F0A /* DataFetcher.h */,
-				5D05883A13209A3B00D42F0A /* DataFetcher.m */,
-				5D05883B13209A3B00D42F0A /* GMapsGeolocation.h */,
-				5D05883C13209A3B00D42F0A /* GMapsGeolocation.m */,
 				5D05883D13209A3B00D42F0A /* ASIAuthenticationDialog.h */,
 				5D05883E13209A3B00D42F0A /* ASIAuthenticationDialog.m */,
 				5D05883F13209A3B00D42F0A /* ASICacheDelegate.h */,
@@ -272,28 +266,102 @@
 				5D05886413209A3B00D42F0A /* CJSONSerializer.h */,
 				5D05886513209A3B00D42F0A /* CJSONSerializer.m */,
 				5D05886613209A3B00D42F0A /* JSONRepresentation.h */,
+			);
+			name = Networking;
+			sourceTree = "<group>";
+		};
+		5D017AA41321A02C00B8EA6A /* Fetchers */ = {
+			isa = PBXGroup;
+			children = (
+				5D05883713209A3B00D42F0A /* GMapsRouter.h */,
+				5D05889913209A8100D42F0A /* GMapsGeolocator.h */,
+				5D05889A13209A8100D42F0A /* GMapsGeolocator.m */,
+				5D05883813209A3B00D42F0A /* GMapsRouter.m */,
+				5D05883913209A3B00D42F0A /* DataFetcher.h */,
+				5D05883A13209A3B00D42F0A /* DataFetcher.m */,
+			);
+			name = Fetchers;
+			sourceTree = "<group>";
+		};
+		5D017AA51321A04E00B8EA6A /* Xibs */ = {
+			isa = PBXGroup;
+			children = (
+				5D05886C13209A3B00D42F0A /* RouteRootViewController.xib */,
+				5D05887013209A3B00D42F0A /* MainWindow.xib */,
+				5D05887313209A3B00D42F0A /* HistoricalRouteViewController.xib */,
+				5D05887613209A3B00D42F0A /* RouteViewController.xib */,
+			);
+			name = Xibs;
+			sourceTree = "<group>";
+		};
+		5D017AA61321A05700B8EA6A /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				5D05886B13209A3B00D42F0A /* RouteRootViewController.h */,
+				5D05886D13209A3B00D42F0A /* RouteRootViewController.m */,
+				5D05886E13209A3B00D42F0A /* ScenicAppDelegate.h */,
+				5D05886F13209A3B00D42F0A /* ScenicAppDelegate.m */,
+				5D05887113209A3B00D42F0A /* HistoricalRouteViewController.h */,
+				5D05887213209A3B00D42F0A /* HistoricalRouteViewController.m */,
+				5D05887413209A3B00D42F0A /* RouteViewController.h */,
+				5D05887513209A3B00D42F0A /* RouteViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		5D017AA71321A05F00B8EA6A /* Additional */ = {
+			isa = PBXGroup;
+			children = (
 				5D05886713209A3B00D42F0A /* Scenic-Info.plist */,
 				5D05886813209A3B00D42F0A /* InfoPlist.strings */,
 				5D05886913209A3B00D42F0A /* Scenic-Prefix.pch */,
 				5D05886A13209A3B00D42F0A /* main.m */,
-				5D05886B13209A3B00D42F0A /* RouteRootViewController.h */,
-				5D05886C13209A3B00D42F0A /* RouteRootViewController.xib */,
-				5D05886D13209A3B00D42F0A /* RouteRootViewController.m */,
-				5D05886E13209A3B00D42F0A /* ScenicAppDelegate.h */,
-				5D05886F13209A3B00D42F0A /* ScenicAppDelegate.m */,
-				5D05887013209A3B00D42F0A /* MainWindow.xib */,
-				5D05887113209A3B00D42F0A /* HistoricalRouteViewController.h */,
-				5D05887213209A3B00D42F0A /* HistoricalRouteViewController.m */,
-				5D05887313209A3B00D42F0A /* HistoricalRouteViewController.xib */,
-				5D05887413209A3B00D42F0A /* RouteViewController.h */,
-				5D05887513209A3B00D42F0A /* RouteViewController.m */,
-				5D05887613209A3B00D42F0A /* RouteViewController.xib */,
-				5D05889913209A8100D42F0A /* GMapsGeolocator.h */,
-				5D05889A13209A8100D42F0A /* GMapsGeolocator.m */,
-				5DCF17D11320A33100D19D04 /* GMapsRoute.h */,
-				5DCF17D21320A33100D19D04 /* GMapsRoute.m */,
-				5DCF17D51320A47400D19D04 /* GMapsLeg.h */,
-				5DCF17D61320A47400D19D04 /* GMapsLeg.m */,
+			);
+			name = Additional;
+			sourceTree = "<group>";
+		};
+		5D0587DD132098C400D42F0A = {
+			isa = PBXGroup;
+			children = (
+				5D0587F2132098C500D42F0A /* Scenic */,
+				5D058818132098C500D42F0A /* ScenicTests */,
+				5D0587EB132098C500D42F0A /* Frameworks */,
+				5D0587E9132098C500D42F0A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5D0587E9132098C500D42F0A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5D0587E8132098C500D42F0A /* Scenic.app */,
+				5D058812132098C500D42F0A /* ScenicTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5D0587EB132098C500D42F0A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5D05889C13209B8700D42F0A /* CFNetwork.framework */,
+				5D05889D13209B8800D42F0A /* libz.1.2.3.dylib */,
+				5D05889E13209B8800D42F0A /* MobileCoreServices.framework */,
+				5D05889F13209B8800D42F0A /* SystemConfiguration.framework */,
+				5D0587EC132098C500D42F0A /* UIKit.framework */,
+				5D0587EE132098C500D42F0A /* Foundation.framework */,
+				5D0587F0132098C500D42F0A /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5D0587F2132098C500D42F0A /* Scenic */ = {
+			isa = PBXGroup;
+			children = (
+				5D017AA71321A05F00B8EA6A /* Additional */,
+				5D017AA61321A05700B8EA6A /* Controllers */,
+				5D017AA51321A04E00B8EA6A /* Xibs */,
+				5D017AA41321A02C00B8EA6A /* Fetchers */,
+				5D017AA313219E3500B8EA6A /* Networking */,
+				5D017AA213219D8300B8EA6A /* Routing And Map Objects */,
 			);
 			path = Scenic;
 			sourceTree = "<group>";
@@ -460,6 +528,10 @@
 				5D05889B13209A8100D42F0A /* GMapsGeolocator.m in Sources */,
 				5DCF17D31320A33100D19D04 /* GMapsRoute.m in Sources */,
 				5DCF17D71320A47400D19D04 /* GMapsLeg.m in Sources */,
+				5D017A941321827A00B8EA6A /* GMapsPolyline.m in Sources */,
+				5D017A98132182A300B8EA6A /* GMapsBounds.m in Sources */,
+				5D017A9E13218A3300B8EA6A /* GMapsStep.m in Sources */,
+				5D017AA11321965A00B8EA6A /* GMapsCoordinate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

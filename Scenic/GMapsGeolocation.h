@@ -8,18 +8,18 @@
 
 #import <Foundation/Foundation.h>
 
-
+@class GMapsCoordinate;
 @interface GMapsGeolocation : NSObject {
-    NSNumber* lat;
-    NSNumber* lng;
     NSString* title;
+    GMapsCoordinate* coord;
 }
 
-@property (nonatomic, retain) NSNumber* lat;
-@property (nonatomic, retain) NSNumber* lng;
 @property (nonatomic, retain) NSString* title;
+@property(nonatomic, retain) GMapsCoordinate* coord;
 
 
 -(id) initWithLat: (NSNumber*) _lat andLng: (NSNumber*) _lng andTitle: (NSString*) _title;
+
++(id) locationWithCoord: (GMapsCoordinate*) _coord andTitle: (NSString*) _title;
 
 @end

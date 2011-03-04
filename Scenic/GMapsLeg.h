@@ -8,9 +8,24 @@
 
 #import <Foundation/Foundation.h>
 
-
+@class GMapsPoint, GMapsGeolocation;
 @interface GMapsLeg : NSObject {
-    
+    NSArray* steps;
+    NSNumber* seconds;
+    NSNumber* meters;
+    GMapsGeolocation* start;
+    GMapsGeolocation* end;
+    NSArray* viaWaypoint;
 }
+
+@property (nonatomic, retain) NSArray* steps;
+@property (nonatomic, retain) NSNumber* seconds;
+@property (nonatomic, retain) NSNumber* meters;
+@property (nonatomic, retain) GMapsGeolocation* start;
+@property (nonatomic, retain) GMapsGeolocation* end;
+@property (nonatomic, retain) NSArray* viaWaypoint;
+
++(id) legFromJSONDic: (NSDictionary*) dic;
+
 
 @end
