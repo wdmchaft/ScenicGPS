@@ -40,7 +40,8 @@
 - (void)requestFinished:(ASIHTTPRequest *)request {
     NSData* data = [request responseData];
     CJSONDeserializer* deserializer = [CJSONDeserializer deserializer];
-    [_delegate fetcherFinished:self withResult:[deserializer deserializeAsDictionary:data error:nil]];
+    NSDictionary* dic = [deserializer deserializeAsDictionary:data error:nil];
+    [_delegate fetcherFinished:self withResult:dic];
 }
 
 - (void)requestFailed:(ASIHTTPRequest *)request {

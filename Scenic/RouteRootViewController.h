@@ -7,21 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "GMapsGeolocator.h"
-
+#import "DataFetcher.h"
 
 @interface RouteRootViewController : UIViewController <UITextFieldDelegate, DataFetcherDelegate> {
-    UITextField* descriptionTF;
-    UILabel* latLabel;
-    UILabel* lngLabel;
-    UILabel* titleLabel;
+    UITextField* startTF;
+    UITextField* endTF;
+    UILabel* routeLabel;
 }
 
-@property (nonatomic, retain)   IBOutlet UITextField* descriptionTF;
-@property (nonatomic, retain) IBOutlet UILabel* latLabel;
-@property (nonatomic, retain) IBOutlet UILabel* lngLabel;
-@property (nonatomic, retain) IBOutlet UILabel* titleLabel;
+@property (nonatomic, retain)   IBOutlet UITextField* startTF;
+@property (nonatomic, retain)   IBOutlet UITextField* endTF;
+
+@property (nonatomic, retain) IBOutlet UILabel* routeLabel;
 
 -(void) dataFetcher: (DataFetcher*) fetcher hasResponse: (id) response;
+
+-(IBAction) getRoutes: (id) sender;
 
 @end

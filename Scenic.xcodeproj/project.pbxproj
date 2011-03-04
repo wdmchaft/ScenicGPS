@@ -55,6 +55,8 @@
 		5D0588A113209B8800D42F0A /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D05889D13209B8800D42F0A /* libz.1.2.3.dylib */; };
 		5D0588A213209B8800D42F0A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D05889E13209B8800D42F0A /* MobileCoreServices.framework */; };
 		5D0588A313209B8800D42F0A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D05889F13209B8800D42F0A /* SystemConfiguration.framework */; };
+		5DCF17D31320A33100D19D04 /* GMapsRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DCF17D21320A33100D19D04 /* GMapsRoute.m */; };
+		5DCF17D71320A47400D19D04 /* GMapsLeg.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DCF17D61320A47400D19D04 /* GMapsLeg.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -150,6 +152,10 @@
 		5D05889D13209B8800D42F0A /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = usr/lib/libz.1.2.3.dylib; sourceTree = SDKROOT; };
 		5D05889E13209B8800D42F0A /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		5D05889F13209B8800D42F0A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		5DCF17D11320A33100D19D04 /* GMapsRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMapsRoute.h; sourceTree = "<group>"; };
+		5DCF17D21320A33100D19D04 /* GMapsRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMapsRoute.m; sourceTree = "<group>"; };
+		5DCF17D51320A47400D19D04 /* GMapsLeg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMapsLeg.h; sourceTree = "<group>"; };
+		5DCF17D61320A47400D19D04 /* GMapsLeg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMapsLeg.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -284,6 +290,10 @@
 				5D05887613209A3B00D42F0A /* RouteViewController.xib */,
 				5D05889913209A8100D42F0A /* GMapsGeolocator.h */,
 				5D05889A13209A8100D42F0A /* GMapsGeolocator.m */,
+				5DCF17D11320A33100D19D04 /* GMapsRoute.h */,
+				5DCF17D21320A33100D19D04 /* GMapsRoute.m */,
+				5DCF17D51320A47400D19D04 /* GMapsLeg.h */,
+				5DCF17D61320A47400D19D04 /* GMapsLeg.m */,
 			);
 			path = Scenic;
 			sourceTree = "<group>";
@@ -448,6 +458,8 @@
 				5D05889513209A3B00D42F0A /* HistoricalRouteViewController.m in Sources */,
 				5D05889713209A3B00D42F0A /* RouteViewController.m in Sources */,
 				5D05889B13209A8100D42F0A /* GMapsGeolocator.m in Sources */,
+				5DCF17D31320A33100D19D04 /* GMapsRoute.m in Sources */,
+				5DCF17D71320A47400D19D04 /* GMapsLeg.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -605,6 +617,7 @@
 				5D058827132098C500D42F0A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5D058828132098C500D42F0A /* Build configuration list for PBXNativeTarget "ScenicTests" */ = {
 			isa = XCConfigurationList;
@@ -613,6 +626,7 @@
 				5D05882A132098C500D42F0A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

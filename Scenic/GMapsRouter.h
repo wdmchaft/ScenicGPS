@@ -7,10 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "GMapsGeolocator.h"
 
-@interface GMapsRouter : NSObject {
-    
+@interface GMapsRouter : DataFetcher {
+
 }
+
++(id) routeWithStart: (NSString*) start andEnd: (NSString*) end withDelegate: (id<DataFetcherDelegate>) _delegate;
 
 
 @end
