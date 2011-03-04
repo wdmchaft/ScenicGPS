@@ -1,0 +1,480 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5D0587ED132098C500D42F0A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D0587EC132098C500D42F0A /* UIKit.framework */; };
+		5D0587EF132098C500D42F0A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D0587EE132098C500D42F0A /* Foundation.framework */; };
+		5D0587F1132098C500D42F0A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D0587F0132098C500D42F0A /* CoreGraphics.framework */; };
+		5D0587F7132098C500D42F0A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5D0587F5132098C500D42F0A /* InfoPlist.strings */; };
+		5D0587FA132098C500D42F0A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D0587F9132098C500D42F0A /* main.m */; };
+		5D0587FD132098C500D42F0A /* ScenicAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D0587FC132098C500D42F0A /* ScenicAppDelegate.m */; };
+		5D058800132098C500D42F0A /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D0587FE132098C500D42F0A /* MainWindow.xib */; };
+		5D058803132098C500D42F0A /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D058802132098C500D42F0A /* FirstViewController.m */; };
+		5D058806132098C500D42F0A /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D058805132098C500D42F0A /* SecondViewController.m */; };
+		5D058809132098C500D42F0A /* FirstView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D058807132098C500D42F0A /* FirstView.xib */; };
+		5D05880C132098C500D42F0A /* SecondView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D05880A132098C500D42F0A /* SecondView.xib */; };
+		5D058813132098C500D42F0A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D0587EC132098C500D42F0A /* UIKit.framework */; };
+		5D058814132098C500D42F0A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D0587EE132098C500D42F0A /* Foundation.framework */; };
+		5D058815132098C500D42F0A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D0587F0132098C500D42F0A /* CoreGraphics.framework */; };
+		5D05881D132098C500D42F0A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5D05881B132098C500D42F0A /* InfoPlist.strings */; };
+		5D058820132098C500D42F0A /* ScenicTests.h in Resources */ = {isa = PBXBuildFile; fileRef = 5D05881F132098C500D42F0A /* ScenicTests.h */; };
+		5D058822132098C500D42F0A /* ScenicTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D058821132098C500D42F0A /* ScenicTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5D058816132098C500D42F0A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5D0587DF132098C400D42F0A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5D0587E7132098C500D42F0A;
+			remoteInfo = Scenic;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		5D0587E8132098C500D42F0A /* Scenic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scenic.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D0587EC132098C500D42F0A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		5D0587EE132098C500D42F0A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		5D0587F0132098C500D42F0A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		5D0587F4132098C500D42F0A /* Scenic-Info.plist */ = {isa = PBXFileReference; path = "Scenic-Info.plist"; sourceTree = "<group>"; };
+		5D0587F6132098C500D42F0A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		5D0587F8132098C500D42F0A /* Scenic-Prefix.pch */ = {isa = PBXFileReference; path = "Scenic-Prefix.pch"; sourceTree = "<group>"; };
+		5D0587F9132098C500D42F0A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		5D0587FB132098C500D42F0A /* ScenicAppDelegate.h */ = {isa = PBXFileReference; path = ScenicAppDelegate.h; sourceTree = "<group>"; };
+		5D0587FC132098C500D42F0A /* ScenicAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScenicAppDelegate.m; sourceTree = "<group>"; };
+		5D0587FF132098C500D42F0A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		5D058801132098C500D42F0A /* FirstViewController.h */ = {isa = PBXFileReference; path = FirstViewController.h; sourceTree = "<group>"; };
+		5D058802132098C500D42F0A /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
+		5D058804132098C500D42F0A /* SecondViewController.h */ = {isa = PBXFileReference; path = SecondViewController.h; sourceTree = "<group>"; };
+		5D058805132098C500D42F0A /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		5D058808132098C500D42F0A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/FirstView.xib; sourceTree = "<group>"; };
+		5D05880B132098C500D42F0A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SecondView.xib; sourceTree = "<group>"; };
+		5D058812132098C500D42F0A /* ScenicTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScenicTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D05881A132098C500D42F0A /* ScenicTests-Info.plist */ = {isa = PBXFileReference; path = "ScenicTests-Info.plist"; sourceTree = "<group>"; };
+		5D05881C132098C500D42F0A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		5D05881E132098C500D42F0A /* ScenicTests-Prefix.pch */ = {isa = PBXFileReference; path = "ScenicTests-Prefix.pch"; sourceTree = "<group>"; };
+		5D05881F132098C500D42F0A /* ScenicTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScenicTests.h; sourceTree = "<group>"; };
+		5D058821132098C500D42F0A /* ScenicTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScenicTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5D0587E5132098C500D42F0A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5D0587ED132098C500D42F0A /* UIKit.framework in Frameworks */,
+				5D0587EF132098C500D42F0A /* Foundation.framework in Frameworks */,
+				5D0587F1132098C500D42F0A /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5D05880E132098C500D42F0A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5D058813132098C500D42F0A /* UIKit.framework in Frameworks */,
+				5D058814132098C500D42F0A /* Foundation.framework in Frameworks */,
+				5D058815132098C500D42F0A /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5D0587DD132098C400D42F0A = {
+			isa = PBXGroup;
+			children = (
+				5D0587F2132098C500D42F0A /* Scenic */,
+				5D058818132098C500D42F0A /* ScenicTests */,
+				5D0587EB132098C500D42F0A /* Frameworks */,
+				5D0587E9132098C500D42F0A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5D0587E9132098C500D42F0A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5D0587E8132098C500D42F0A /* Scenic.app */,
+				5D058812132098C500D42F0A /* ScenicTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5D0587EB132098C500D42F0A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5D0587EC132098C500D42F0A /* UIKit.framework */,
+				5D0587EE132098C500D42F0A /* Foundation.framework */,
+				5D0587F0132098C500D42F0A /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5D0587F2132098C500D42F0A /* Scenic */ = {
+			isa = PBXGroup;
+			children = (
+				5D0587FB132098C500D42F0A /* ScenicAppDelegate.h */,
+				5D0587FC132098C500D42F0A /* ScenicAppDelegate.m */,
+				5D0587FE132098C500D42F0A /* MainWindow.xib */,
+				5D058801132098C500D42F0A /* FirstViewController.h */,
+				5D058802132098C500D42F0A /* FirstViewController.m */,
+				5D058804132098C500D42F0A /* SecondViewController.h */,
+				5D058805132098C500D42F0A /* SecondViewController.m */,
+				5D058807132098C500D42F0A /* FirstView.xib */,
+				5D05880A132098C500D42F0A /* SecondView.xib */,
+				5D0587F3132098C500D42F0A /* Supporting Files */,
+			);
+			path = Scenic;
+			sourceTree = "<group>";
+		};
+		5D0587F3132098C500D42F0A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5D0587F4132098C500D42F0A /* Scenic-Info.plist */,
+				5D0587F5132098C500D42F0A /* InfoPlist.strings */,
+				5D0587F8132098C500D42F0A /* Scenic-Prefix.pch */,
+				5D0587F9132098C500D42F0A /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5D058818132098C500D42F0A /* ScenicTests */ = {
+			isa = PBXGroup;
+			children = (
+				5D05881F132098C500D42F0A /* ScenicTests.h */,
+				5D058821132098C500D42F0A /* ScenicTests.m */,
+				5D058819132098C500D42F0A /* Supporting Files */,
+			);
+			path = ScenicTests;
+			sourceTree = "<group>";
+		};
+		5D058819132098C500D42F0A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				5D05881A132098C500D42F0A /* ScenicTests-Info.plist */,
+				5D05881B132098C500D42F0A /* InfoPlist.strings */,
+				5D05881E132098C500D42F0A /* ScenicTests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5D0587E7132098C500D42F0A /* Scenic */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5D058825132098C500D42F0A /* Build configuration list for PBXNativeTarget "Scenic" */;
+			buildPhases = (
+				5D0587E4132098C500D42F0A /* Sources */,
+				5D0587E5132098C500D42F0A /* Frameworks */,
+				5D0587E6132098C500D42F0A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Scenic;
+			productName = Scenic;
+			productReference = 5D0587E8132098C500D42F0A /* Scenic.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5D058811132098C500D42F0A /* ScenicTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5D058828132098C500D42F0A /* Build configuration list for PBXNativeTarget "ScenicTests" */;
+			buildPhases = (
+				5D05880D132098C500D42F0A /* Sources */,
+				5D05880E132098C500D42F0A /* Frameworks */,
+				5D05880F132098C500D42F0A /* Resources */,
+				5D058810132098C500D42F0A /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5D058817132098C500D42F0A /* PBXTargetDependency */,
+			);
+			name = ScenicTests;
+			productName = ScenicTests;
+			productReference = 5D058812132098C500D42F0A /* ScenicTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5D0587DF132098C400D42F0A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				ORGANIZATIONNAME = "UC Berkeley";
+			};
+			buildConfigurationList = 5D0587E2132098C400D42F0A /* Build configuration list for PBXProject "Scenic" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 5D0587DD132098C400D42F0A;
+			productRefGroup = 5D0587E9132098C500D42F0A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5D0587E7132098C500D42F0A /* Scenic */,
+				5D058811132098C500D42F0A /* ScenicTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5D0587E6132098C500D42F0A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5D0587F7132098C500D42F0A /* InfoPlist.strings in Resources */,
+				5D058800132098C500D42F0A /* MainWindow.xib in Resources */,
+				5D058809132098C500D42F0A /* FirstView.xib in Resources */,
+				5D05880C132098C500D42F0A /* SecondView.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5D05880F132098C500D42F0A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5D05881D132098C500D42F0A /* InfoPlist.strings in Resources */,
+				5D058820132098C500D42F0A /* ScenicTests.h in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5D058810132098C500D42F0A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5D0587E4132098C500D42F0A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5D0587FA132098C500D42F0A /* main.m in Sources */,
+				5D0587FD132098C500D42F0A /* ScenicAppDelegate.m in Sources */,
+				5D058803132098C500D42F0A /* FirstViewController.m in Sources */,
+				5D058806132098C500D42F0A /* SecondViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5D05880D132098C500D42F0A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5D058822132098C500D42F0A /* ScenicTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5D058817132098C500D42F0A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5D0587E7132098C500D42F0A /* Scenic */;
+			targetProxy = 5D058816132098C500D42F0A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		5D0587F5132098C500D42F0A /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5D0587F6132098C500D42F0A /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		5D0587FE132098C500D42F0A /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5D0587FF132098C500D42F0A /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+		5D058807132098C500D42F0A /* FirstView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5D058808132098C500D42F0A /* en */,
+			);
+			name = FirstView.xib;
+			sourceTree = "<group>";
+		};
+		5D05880A132098C500D42F0A /* SecondView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5D05880B132098C500D42F0A /* en */,
+			);
+			name = SecondView.xib;
+			sourceTree = "<group>";
+		};
+		5D05881B132098C500D42F0A /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5D05881C132098C500D42F0A /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5D058823132098C500D42F0A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		5D058824132098C500D42F0A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		5D058826132098C500D42F0A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Scenic/Scenic-Prefix.pch";
+				INFOPLIST_FILE = "Scenic/Scenic-Info.plist";
+				INSTALL_PATH = "$(LOCAL_APPS_DIR)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		5D058827132098C500D42F0A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Scenic/Scenic-Prefix.pch";
+				INFOPLIST_FILE = "Scenic/Scenic-Info.plist";
+				INSTALL_PATH = "$(LOCAL_APPS_DIR)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		5D058829132098C500D42F0A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Scenic.app/Scenic";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ScenicTests/ScenicTests-Prefix.pch";
+				INFOPLIST_FILE = "ScenicTests/ScenicTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		5D05882A132098C500D42F0A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Scenic.app/Scenic";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "ScenicTests/ScenicTests-Prefix.pch";
+				INFOPLIST_FILE = "ScenicTests/ScenicTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5D0587E2132098C400D42F0A /* Build configuration list for PBXProject "Scenic" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5D058823132098C500D42F0A /* Debug */,
+				5D058824132098C500D42F0A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5D058825132098C500D42F0A /* Build configuration list for PBXNativeTarget "Scenic" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5D058826132098C500D42F0A /* Debug */,
+				5D058827132098C500D42F0A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		5D058828132098C500D42F0A /* Build configuration list for PBXNativeTarget "ScenicTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5D058829132098C500D42F0A /* Debug */,
+				5D05882A132098C500D42F0A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5D0587DF132098C400D42F0A /* Project object */;
+}

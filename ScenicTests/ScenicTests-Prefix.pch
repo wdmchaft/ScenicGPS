@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'ScenicTests' target in the 'ScenicTests' project
+//
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+#endif
