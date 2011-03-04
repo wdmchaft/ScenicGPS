@@ -2,24 +2,21 @@
 //  ScenicAppDelegate.m
 //  Scenic
 //
-//  Created by Jack Reilly on 3/3/11.
+//  Created by Jack Reilly on 3/2/11.
 //  Copyright 2011 UC Berkeley. All rights reserved.
 //
 
 #import "ScenicAppDelegate.h"
 
 @implementation ScenicAppDelegate
-
+@synthesize tabVC;
 
 @synthesize window=_window;
-
-@synthesize tabBarController=_tabBarController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    // Add the tab bar controller's current view as a subview of the window
-    self.window.rootViewController = self.tabBarController;
+    self.window.rootViewController = tabVC;
     [self.window makeKeyAndVisible];
     return YES;
 }
@@ -66,22 +63,8 @@
 - (void)dealloc
 {
     [_window release];
-    [_tabBarController release];
+    [tabVC release];
     [super dealloc];
 }
-
-/*
-// Optional UITabBarControllerDelegate method.
-- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
-{
-}
-*/
-
-/*
-// Optional UITabBarControllerDelegate method.
-- (void)tabBarController:(UITabBarController *)tabBarController didEndCustomizingViewControllers:(NSArray *)viewControllers changed:(BOOL)changed
-{
-}
-*/
 
 @end

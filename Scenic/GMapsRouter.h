@@ -1,16 +1,16 @@
 //
-//  FirstViewController.h
+//  GMapsRouter.h
 //  Scenic
 //
 //  Created by Jack Reilly on 3/3/11.
 //  Copyright 2011 UC Berkeley. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
-
-@interface FirstViewController : UIViewController {
-
+@interface GMapsRouter : NSObject {
+    
 }
+
 
 @end
