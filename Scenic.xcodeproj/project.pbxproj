@@ -17,6 +17,8 @@
 		5D017ABC132564C000B8EA6A /* PanoramioContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D017ABB132564BA00B8EA6A /* PanoramioContent.m */; };
 		5D017AC013257C9B00B8EA6A /* ScenicContentDisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D017ABE13257C8F00B8EA6A /* ScenicContentDisplayViewController.m */; };
 		5D017AC113257C9B00B8EA6A /* ScenicContentDisplayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D017ABF13257C9400B8EA6A /* ScenicContentDisplayViewController.xib */; };
+		5D017ACA1325A4F200B8EA6A /* ScenicMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D017AC81325A4EC00B8EA6A /* ScenicMapViewController.m */; };
+		5D017ACB1325A4F200B8EA6A /* ScenicMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D017AC91325A4EE00B8EA6A /* ScenicMapViewController.xib */; };
 		5D0587ED132098C500D42F0A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D0587EC132098C500D42F0A /* UIKit.framework */; };
 		5D0587EF132098C500D42F0A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D0587EE132098C500D42F0A /* Foundation.framework */; };
 		5D0587F1132098C500D42F0A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D0587F0132098C500D42F0A /* CoreGraphics.framework */; };
@@ -99,6 +101,9 @@
 		5D017ABD13257C8D00B8EA6A /* ScenicContentDisplayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScenicContentDisplayViewController.h; sourceTree = "<group>"; };
 		5D017ABE13257C8F00B8EA6A /* ScenicContentDisplayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScenicContentDisplayViewController.m; sourceTree = "<group>"; };
 		5D017ABF13257C9400B8EA6A /* ScenicContentDisplayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScenicContentDisplayViewController.xib; sourceTree = "<group>"; };
+		5D017AC71325A4EB00B8EA6A /* ScenicMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScenicMapViewController.h; sourceTree = "<group>"; };
+		5D017AC81325A4EC00B8EA6A /* ScenicMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScenicMapViewController.m; sourceTree = "<group>"; };
+		5D017AC91325A4EE00B8EA6A /* ScenicMapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScenicMapViewController.xib; sourceTree = "<group>"; };
 		5D0587E8132098C500D42F0A /* Scenic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scenic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D0587EC132098C500D42F0A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5D0587EE132098C500D42F0A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -309,6 +314,7 @@
 				5D05887013209A3B00D42F0A /* MainWindow.xib */,
 				5D05887313209A3B00D42F0A /* HistoricalRouteViewController.xib */,
 				5D05887613209A3B00D42F0A /* RouteViewController.xib */,
+				5D017AC91325A4EE00B8EA6A /* ScenicMapViewController.xib */,
 			);
 			name = Xibs;
 			sourceTree = "<group>";
@@ -319,6 +325,8 @@
 				5D05886B13209A3B00D42F0A /* RouteRootViewController.h */,
 				5D05886D13209A3B00D42F0A /* RouteRootViewController.m */,
 				5D05886E13209A3B00D42F0A /* ScenicAppDelegate.h */,
+				5D017AC71325A4EB00B8EA6A /* ScenicMapViewController.h */,
+				5D017AC81325A4EC00B8EA6A /* ScenicMapViewController.m */,
 				5D05886F13209A3B00D42F0A /* ScenicAppDelegate.m */,
 				5D05887113209A3B00D42F0A /* HistoricalRouteViewController.h */,
 				5D05887213209A3B00D42F0A /* HistoricalRouteViewController.m */,
@@ -501,6 +509,7 @@
 				5D05889813209A3B00D42F0A /* RouteViewController.xib in Resources */,
 				5D017AB213255D3700B8EA6A /* ScenicContentViewController.xib in Resources */,
 				5D017AC113257C9B00B8EA6A /* ScenicContentDisplayViewController.xib in Resources */,
+				5D017ACB1325A4F200B8EA6A /* ScenicMapViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -574,6 +583,7 @@
 				5D017AB113255D3700B8EA6A /* ScenicContentViewController.m in Sources */,
 				5D017ABC132564C000B8EA6A /* PanoramioContent.m in Sources */,
 				5D017AC013257C9B00B8EA6A /* ScenicContentDisplayViewController.m in Sources */,
+				5D017ACA1325A4F200B8EA6A /* ScenicMapViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

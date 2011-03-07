@@ -20,7 +20,7 @@ static NSString* POINTS_KEY = @"points";
 +(id) polylineFromJSONDic: (NSDictionary*) dic {
     GMapsPolyline* pl =  [[[GMapsPolyline alloc] init] autorelease];
     pl.levels = (NSString*) [dic objectForKey:LEVELS_KEY];
-    pl.points = [GMapsPolyline decodePolyLine: (NSMutableString*) [dic objectForKey:POINTS_KEY]];
+    pl.points = [GMapsPolyline decodePolyLine: [NSMutableString stringWithString: (NSString*) [dic objectForKey:POINTS_KEY]]];
     return pl;
     
 }

@@ -15,9 +15,6 @@
     NSString* copyrights;
     GMapsPolyline* polyline;
     GMapsBounds* bounds;
-    
-    
-    
 }
 
 

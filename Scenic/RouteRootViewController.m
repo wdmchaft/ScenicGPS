@@ -27,10 +27,12 @@
     [fetcher release];
     NSArray* routes = (NSArray*) response;
     NSString* routesString = @"";
-    for (GMapsRoute* route in routes) {
+/*    for (GMapsRoute* route in routes) {
         routesString = [routesString stringByAppendingFormat:@"%@,",route.summary];
-    }
-    routeLabel.text = routesString;
+    } */
+//    routeLabel.text = routesString;
+    // CREATE MAPVIEWCONTROLLER, THEN PUSH
+//    [self.navigationController pushViewController:MV animated:YES];
     
 }
 
