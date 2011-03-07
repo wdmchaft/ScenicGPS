@@ -23,5 +23,5 @@
 -(void) dataFetcher: (DataFetcher*) fetcher hasResponse: (id) response;
 
 -(IBAction) getRoutes: (id) sender;
-
+-(IBAction) addTwitPic: (id) sender;
 @end

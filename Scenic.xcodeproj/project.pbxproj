@@ -11,6 +11,12 @@
 		5D017A98132182A300B8EA6A /* GMapsBounds.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D017A97132182A300B8EA6A /* GMapsBounds.m */; };
 		5D017A9E13218A3300B8EA6A /* GMapsStep.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D017A9D13218A3100B8EA6A /* GMapsStep.m */; };
 		5D017AA11321965A00B8EA6A /* GMapsCoordinate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D017AA01321965500B8EA6A /* GMapsCoordinate.m */; };
+		5D017AAA13255B5E00B8EA6A /* ScenicContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D017AA913255B5E00B8EA6A /* ScenicContent.m */; };
+		5D017AB113255D3700B8EA6A /* ScenicContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D017AAF13255D3600B8EA6A /* ScenicContentViewController.m */; };
+		5D017AB213255D3700B8EA6A /* ScenicContentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D017AB013255D3600B8EA6A /* ScenicContentViewController.xib */; };
+		5D017ABC132564C000B8EA6A /* PanoramioContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D017ABB132564BA00B8EA6A /* PanoramioContent.m */; };
+		5D017AC013257C9B00B8EA6A /* ScenicContentDisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D017ABE13257C8F00B8EA6A /* ScenicContentDisplayViewController.m */; };
+		5D017AC113257C9B00B8EA6A /* ScenicContentDisplayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D017ABF13257C9400B8EA6A /* ScenicContentDisplayViewController.xib */; };
 		5D0587ED132098C500D42F0A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D0587EC132098C500D42F0A /* UIKit.framework */; };
 		5D0587EF132098C500D42F0A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D0587EE132098C500D42F0A /* Foundation.framework */; };
 		5D0587F1132098C500D42F0A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D0587F0132098C500D42F0A /* CoreGraphics.framework */; };
@@ -82,6 +88,17 @@
 		5D017A9D13218A3100B8EA6A /* GMapsStep.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMapsStep.m; sourceTree = "<group>"; };
 		5D017A9F1321965200B8EA6A /* GMapsCoordinate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMapsCoordinate.h; sourceTree = "<group>"; };
 		5D017AA01321965500B8EA6A /* GMapsCoordinate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMapsCoordinate.m; sourceTree = "<group>"; };
+		5D017AA813255B5D00B8EA6A /* ScenicContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScenicContent.h; sourceTree = "<group>"; };
+		5D017AA913255B5E00B8EA6A /* ScenicContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScenicContent.m; sourceTree = "<group>"; };
+		5D017AAE13255D3600B8EA6A /* ScenicContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScenicContentViewController.h; sourceTree = "<group>"; };
+		5D017AAF13255D3600B8EA6A /* ScenicContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScenicContentViewController.m; sourceTree = "<group>"; };
+		5D017AB013255D3600B8EA6A /* ScenicContentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScenicContentViewController.xib; sourceTree = "<group>"; };
+		5D017AB91325635300B8EA6A /* ScenicContentProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScenicContentProvider.h; sourceTree = "<group>"; };
+		5D017ABA132564B700B8EA6A /* PanoramioContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanoramioContent.h; sourceTree = "<group>"; };
+		5D017ABB132564BA00B8EA6A /* PanoramioContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PanoramioContent.m; sourceTree = "<group>"; };
+		5D017ABD13257C8D00B8EA6A /* ScenicContentDisplayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScenicContentDisplayViewController.h; sourceTree = "<group>"; };
+		5D017ABE13257C8F00B8EA6A /* ScenicContentDisplayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScenicContentDisplayViewController.m; sourceTree = "<group>"; };
+		5D017ABF13257C9400B8EA6A /* ScenicContentDisplayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScenicContentDisplayViewController.xib; sourceTree = "<group>"; };
 		5D0587E8132098C500D42F0A /* Scenic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scenic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D0587EC132098C500D42F0A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5D0587EE132098C500D42F0A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -286,6 +303,8 @@
 		5D017AA51321A04E00B8EA6A /* Xibs */ = {
 			isa = PBXGroup;
 			children = (
+				5D017ABF13257C9400B8EA6A /* ScenicContentDisplayViewController.xib */,
+				5D017AB013255D3600B8EA6A /* ScenicContentViewController.xib */,
 				5D05886C13209A3B00D42F0A /* RouteRootViewController.xib */,
 				5D05887013209A3B00D42F0A /* MainWindow.xib */,
 				5D05887313209A3B00D42F0A /* HistoricalRouteViewController.xib */,
@@ -318,6 +337,22 @@
 				5D05886A13209A3B00D42F0A /* main.m */,
 			);
 			name = Additional;
+			sourceTree = "<group>";
+		};
+		5D017AAB13255C1B00B8EA6A /* Scenic Content */ = {
+			isa = PBXGroup;
+			children = (
+				5D017AA813255B5D00B8EA6A /* ScenicContent.h */,
+				5D017AA913255B5E00B8EA6A /* ScenicContent.m */,
+				5D017AAE13255D3600B8EA6A /* ScenicContentViewController.h */,
+				5D017AAF13255D3600B8EA6A /* ScenicContentViewController.m */,
+				5D017AB91325635300B8EA6A /* ScenicContentProvider.h */,
+				5D017ABA132564B700B8EA6A /* PanoramioContent.h */,
+				5D017ABB132564BA00B8EA6A /* PanoramioContent.m */,
+				5D017ABD13257C8D00B8EA6A /* ScenicContentDisplayViewController.h */,
+				5D017ABE13257C8F00B8EA6A /* ScenicContentDisplayViewController.m */,
+			);
+			name = "Scenic Content";
 			sourceTree = "<group>";
 		};
 		5D0587DD132098C400D42F0A = {
@@ -356,6 +391,7 @@
 		5D0587F2132098C500D42F0A /* Scenic */ = {
 			isa = PBXGroup;
 			children = (
+				5D017AAB13255C1B00B8EA6A /* Scenic Content */,
 				5D017AA71321A05F00B8EA6A /* Additional */,
 				5D017AA61321A05700B8EA6A /* Controllers */,
 				5D017AA51321A04E00B8EA6A /* Xibs */,
@@ -463,6 +499,8 @@
 				5D05889413209A3B00D42F0A /* MainWindow.xib in Resources */,
 				5D05889613209A3B00D42F0A /* HistoricalRouteViewController.xib in Resources */,
 				5D05889813209A3B00D42F0A /* RouteViewController.xib in Resources */,
+				5D017AB213255D3700B8EA6A /* ScenicContentViewController.xib in Resources */,
+				5D017AC113257C9B00B8EA6A /* ScenicContentDisplayViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -532,6 +570,10 @@
 				5D017A98132182A300B8EA6A /* GMapsBounds.m in Sources */,
 				5D017A9E13218A3300B8EA6A /* GMapsStep.m in Sources */,
 				5D017AA11321965A00B8EA6A /* GMapsCoordinate.m in Sources */,
+				5D017AAA13255B5E00B8EA6A /* ScenicContent.m in Sources */,
+				5D017AB113255D3700B8EA6A /* ScenicContentViewController.m in Sources */,
+				5D017ABC132564C000B8EA6A /* PanoramioContent.m in Sources */,
+				5D017AC013257C9B00B8EA6A /* ScenicContentDisplayViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
