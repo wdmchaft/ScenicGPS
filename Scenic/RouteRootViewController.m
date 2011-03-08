@@ -31,6 +31,8 @@
 
 -(void) dataFetcher: (DataFetcher*) fetcher hasResponse: (id) response {
     [fetcher release];
+
+    /*
     NSArray* routes = (NSArray*) response;
     GMapsCoordinate* startCoord = ((GMapsLeg*)[((GMapsRoute*) [routes objectAtIndex:0]).legs objectAtIndex:0]).start.coord;
     CLLocationCoordinate2D start = CLLocationCoordinate2DMake([startCoord.lat doubleValue], [startCoord.lng doubleValue]);
