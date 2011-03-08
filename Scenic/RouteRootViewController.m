@@ -12,7 +12,7 @@
 #import "PanoramioContent.h"
 #import "ScenicContent.h"
 #import "ScenicContentViewController.h"
-
+#import "ScenicMapViewController.h"
 
 @implementation RouteRootViewController
 @synthesize startTF, endTF, routeLabel;
@@ -25,14 +25,18 @@
 
 -(void) dataFetcher: (DataFetcher*) fetcher hasResponse: (id) response {
     [fetcher release];
+
+    /*
     NSArray* routes = (NSArray*) response;
     NSString* routesString = @"";
-/*    for (GMapsRoute* route in routes) {
+    for (GMapsRoute* route in routes) {
         routesString = [routesString stringByAppendingFormat:@"%@,",route.summary];
-    } */
-//    routeLabel.text = routesString;
-    // CREATE MAPVIEWCONTROLLER, THEN PUSH
-//    [self.navigationController pushViewController:MV animated:YES];
+    } 
+    routeLabel.text = routesString;
+    */
+    ScenicMapViewController * MV = [[ScenicMapViewController alloc] initWithNibName:@"ScenicMapViewController" bundle:nil];
+    
+    [self.navigationController pushViewController:MV animated:YES];
     
 }
 
