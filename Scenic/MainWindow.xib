@@ -50,7 +50,6 @@
 				<object class="NSPSMatrix" key="NSFrameMatrix"/>
 				<string key="NSFrameSize">{320, 480}</string>
 				<reference key="NSSuperview"/>
-				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">1</int>
@@ -76,7 +75,6 @@
 					<object class="IBUITabBarItem" key="IBUITabBarItem" id="492806675">
 						<string key="IBUITitle">Item 1</string>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-						<reference key="IBUITabBar" ref="913640825"/>
 					</object>
 					<reference key="IBUIParentViewController" ref="690808076"/>
 					<string key="IBUINibName">RouteViewController</string>
@@ -95,7 +93,6 @@
 						<object class="IBUITabBarItem" key="IBUITabBarItem" id="577694729">
 							<string key="IBUITitle">Item 2</string>
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-							<reference key="IBUITabBar" ref="913640825"/>
 						</object>
 						<reference key="IBUIParentViewController" ref="690808076"/>
 						<string key="IBUINibName">HistoricalRouteViewController</string>
@@ -112,19 +109,12 @@
 					<int key="NSvFlags">266</int>
 					<string key="NSFrame">{{0, 431}, {320, 49}}</string>
 					<reference key="NSSuperview"/>
-					<reference key="NSWindow"/>
 					<reference key="NSNextKeyView"/>
 					<object class="NSColor" key="IBUIBackgroundColor">
 						<int key="NSColorSpace">3</int>
 						<bytes key="NSWhite">MCAwAA</bytes>
 					</object>
 					<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-					<object class="NSMutableArray" key="IBUIItems">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<reference ref="492806675"/>
-						<reference ref="577694729"/>
-					</object>
-					<reference key="IBUISelectedItem" ref="492806675"/>
 				</object>
 			</object>
 		</object>
