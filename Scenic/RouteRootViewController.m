@@ -12,6 +12,12 @@
 #import "PanoramioContent.h"
 #import "ScenicContent.h"
 #import "ScenicContentViewController.h"
+#import "ScenicMapViewController.h"
+#import <CoreLocation/CoreLocation.h>
+#import "GMapsGeolocation.h"
+#import "GMapsLeg.h"
+#import "GMapsCoordinate.h"
+#import <MapKit/MapKit.h>
 
 
 @implementation RouteRootViewController
@@ -26,14 +32,12 @@
 -(void) dataFetcher: (DataFetcher*) fetcher hasResponse: (id) response {
     [fetcher release];
     NSArray* routes = (NSArray*) response;
-    NSString* routesString = @"";
-/*    for (GMapsRoute* route in routes) {
-        routesString = [routesString stringByAppendingFormat:@"%@,",route.summary];
-    } */
-//    routeLabel.text = routesString;
-    // CREATE MAPVIEWCONTROLLER, THEN PUSH
-//    [self.navigationController pushViewController:MV animated:YES];
-    
+    GMapsCoordinate* startCoord = ((GMapsLeg*)[((GMapsRoute*) [routes objectAtIndex:0]).legs objectAtIndex:0]).start.coord;
+    CLLocationCoordinate2D start = CLLocationCoordinate2DMake([startCoord.lat doubleValue], [startCoord.lng doubleValue]);
+    ScenicMapViewController* smVC = [[ScenicMapViewController alloc] initWithNibName:@"ScenicMapViewController" bundle:nil];
+    [smVC.map setVisibleMapRect:MKMapRectMake(start.latitude, start.longitude, 1., 1.) animated:YES];
+    [self.navigationController pushViewController:smVC animated:YES];
+    [smVC release];
 }
 
 -(IBAction) getRoutes:(id)sender {

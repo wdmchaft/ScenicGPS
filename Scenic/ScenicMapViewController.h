@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-
+@class MKMapView;
 @interface ScenicMapViewController : UIViewController {
+    MKMapView* map;
     
 }
+
+@property (nonatomic, retain) MKMapView* map;
 
 @end

@@ -7,9 +7,11 @@
 //
 
 #import "ScenicMapViewController.h"
+#import <MapKit/MapKit.h>
 
 
 @implementation ScenicMapViewController
+@synthesize map;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -38,7 +40,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    MKMapView* mapView = [[MKMapView alloc] initWithFrame:self.view.bounds];
+    mapView.mapType = MKMapTypeHybrid;
+    
+    CLLocationCoordinate2D coord = {.latitude =  61.2180556, .longitude = -149.9002778};
+    MKCoordinateSpan span = {.latitudeDelta = 0.2, .longitudeDelta = 0.2};
+    MKCoordinateRegion region = {coord, span};
+    
+    [mapView setRegion:region];
+    self.map = mapView;
+    [self.view addSubview:map];
+    [mapView release];
+    
 }
 
 - (void)viewDidUnload
