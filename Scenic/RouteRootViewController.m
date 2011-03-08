@@ -34,7 +34,8 @@
     } 
     routeLabel.text = routesString;
     */
-    ScenicMapViewController * MV = [[ScenicMapViewController alloc] initWithNibName:@"ScenicMapViewController" bundle:nil];
+    
+    ScenicMapViewController * MV = [[ScenicMapViewController alloc] init];
     
     [self.navigationController pushViewController:MV animated:YES];
     

@@ -18,7 +18,6 @@
 		5D017AC013257C9B00B8EA6A /* ScenicContentDisplayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D017ABE13257C8F00B8EA6A /* ScenicContentDisplayViewController.m */; };
 		5D017AC113257C9B00B8EA6A /* ScenicContentDisplayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D017ABF13257C9400B8EA6A /* ScenicContentDisplayViewController.xib */; };
 		5D017ACA1325A4F200B8EA6A /* ScenicMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D017AC81325A4EC00B8EA6A /* ScenicMapViewController.m */; };
-		5D017ACB1325A4F200B8EA6A /* ScenicMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D017AC91325A4EE00B8EA6A /* ScenicMapViewController.xib */; };
 		5D0587ED132098C500D42F0A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D0587EC132098C500D42F0A /* UIKit.framework */; };
 		5D0587EF132098C500D42F0A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D0587EE132098C500D42F0A /* Foundation.framework */; };
 		5D0587F1132098C500D42F0A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D0587F0132098C500D42F0A /* CoreGraphics.framework */; };
@@ -69,6 +68,7 @@
 		5D0588A313209B8800D42F0A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D05889F13209B8800D42F0A /* SystemConfiguration.framework */; };
 		5DCF17D31320A33100D19D04 /* GMapsRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DCF17D21320A33100D19D04 /* GMapsRoute.m */; };
 		5DCF17D71320A47400D19D04 /* GMapsLeg.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DCF17D61320A47400D19D04 /* GMapsLeg.m */; };
+		AA1EA99E1326EB1700C4A544 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA1EA99D1326EB1700C4A544 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,7 +103,6 @@
 		5D017ABF13257C9400B8EA6A /* ScenicContentDisplayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScenicContentDisplayViewController.xib; sourceTree = "<group>"; };
 		5D017AC71325A4EB00B8EA6A /* ScenicMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScenicMapViewController.h; sourceTree = "<group>"; };
 		5D017AC81325A4EC00B8EA6A /* ScenicMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScenicMapViewController.m; sourceTree = "<group>"; };
-		5D017AC91325A4EE00B8EA6A /* ScenicMapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScenicMapViewController.xib; sourceTree = "<group>"; };
 		5D0587E8132098C500D42F0A /* Scenic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scenic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D0587EC132098C500D42F0A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5D0587EE132098C500D42F0A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -190,6 +189,7 @@
 		5DCF17D21320A33100D19D04 /* GMapsRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMapsRoute.m; sourceTree = "<group>"; };
 		5DCF17D51320A47400D19D04 /* GMapsLeg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMapsLeg.h; sourceTree = "<group>"; };
 		5DCF17D61320A47400D19D04 /* GMapsLeg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMapsLeg.m; sourceTree = "<group>"; };
+		AA1EA99D1326EB1700C4A544 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,6 +197,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA1EA99E1326EB1700C4A544 /* MapKit.framework in Frameworks */,
 				5D0588A013209B8800D42F0A /* CFNetwork.framework in Frameworks */,
 				5D0588A113209B8800D42F0A /* libz.1.2.3.dylib in Frameworks */,
 				5D0588A213209B8800D42F0A /* MobileCoreServices.framework in Frameworks */,
@@ -314,7 +315,6 @@
 				5D05887013209A3B00D42F0A /* MainWindow.xib */,
 				5D05887313209A3B00D42F0A /* HistoricalRouteViewController.xib */,
 				5D05887613209A3B00D42F0A /* RouteViewController.xib */,
-				5D017AC91325A4EE00B8EA6A /* ScenicMapViewController.xib */,
 			);
 			name = Xibs;
 			sourceTree = "<group>";
@@ -366,6 +366,7 @@
 		5D0587DD132098C400D42F0A = {
 			isa = PBXGroup;
 			children = (
+				AA1EA99D1326EB1700C4A544 /* MapKit.framework */,
 				5D0587F2132098C500D42F0A /* Scenic */,
 				5D058818132098C500D42F0A /* ScenicTests */,
 				5D0587EB132098C500D42F0A /* Frameworks */,
@@ -509,7 +510,6 @@
 				5D05889813209A3B00D42F0A /* RouteViewController.xib in Resources */,
 				5D017AB213255D3700B8EA6A /* ScenicContentViewController.xib in Resources */,
 				5D017AC113257C9B00B8EA6A /* ScenicContentDisplayViewController.xib in Resources */,
-				5D017ACB1325A4F200B8EA6A /* ScenicMapViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,10 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
 
 
-@interface ScenicMapViewController : UIViewController {
+
+@interface ScenicMapViewController : UIViewController <MKMapViewDelegate> {
+	MKMapView* _mapView;
     
 }
+
+@property (nonatomic, retain) MKMapView* mapView;
 
 @end
