@@ -8,12 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@class MKMapView;
+@class MKMapView, GMapsRoute;
 @interface ScenicMapViewController : UIViewController {
     MKMapView* map;
-    
 }
 
 @property (nonatomic, retain) MKMapView* map;
-
+-(void) setRoute: (GMapsRoute*) route;
 @end

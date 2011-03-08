@@ -13,12 +13,6 @@
 #import "ScenicContent.h"
 #import "ScenicContentViewController.h"
 #import "ScenicMapViewController.h"
-#import <CoreLocation/CoreLocation.h>
-#import "GMapsGeolocation.h"
-#import "GMapsLeg.h"
-#import "GMapsCoordinate.h"
-#import <MapKit/MapKit.h>
-
 
 @implementation RouteRootViewController
 @synthesize startTF, endTF, routeLabel;
@@ -31,14 +25,9 @@
 
 -(void) dataFetcher: (DataFetcher*) fetcher hasResponse: (id) response {
     [fetcher release];
-
-    /*
-    NSArray* routes = (NSArray*) response;
-    GMapsCoordinate* startCoord = ((GMapsLeg*)[((GMapsRoute*) [routes objectAtIndex:0]).legs objectAtIndex:0]).start.coord;
-    CLLocationCoordinate2D start = CLLocationCoordinate2DMake([startCoord.lat doubleValue], [startCoord.lng doubleValue]);
     ScenicMapViewController* smVC = [[ScenicMapViewController alloc] initWithNibName:@"ScenicMapViewController" bundle:nil];
-    [smVC.map setVisibleMapRect:MKMapRectMake(start.latitude, start.longitude, 1., 1.) animated:YES];
     [self.navigationController pushViewController:smVC animated:YES];
+    [smVC setRoute:[((NSArray*) response) objectAtIndex:0]];
     [smVC release];
 }
 

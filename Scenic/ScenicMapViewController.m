@@ -8,7 +8,7 @@
 
 #import "ScenicMapViewController.h"
 #import <MapKit/MapKit.h>
-
+#import "GMapsRoute.h"
 
 @implementation ScenicMapViewController
 @synthesize map;
@@ -42,16 +42,24 @@
     [super viewDidLoad];
     MKMapView* mapView = [[MKMapView alloc] initWithFrame:self.view.bounds];
     mapView.mapType = MKMapTypeHybrid;
-    
-    CLLocationCoordinate2D coord = {.latitude =  61.2180556, .longitude = -149.9002778};
-    MKCoordinateSpan span = {.latitudeDelta = 0.2, .longitudeDelta = 0.2};
-    MKCoordinateRegion region = {coord, span};
-    
-    [mapView setRegion:region];
     self.map = mapView;
     [self.view addSubview:map];
     [mapView release];
-    
+
+}
+
+-(void) setRoute: (GMapsRoute*) route {
+    GMapsCoordinate* sw = route.bounds.sw;
+    GMapsCoordinate* ne = route.bounds.ne;
+    double swlat = [sw.lat doubleValue];
+    double swlng = [sw.lng doubleValue];
+    double nelat = [ne.lat doubleValue];
+    double nelng = [ne.lng doubleValue];
+    CLLocationCoordinate2D center = {.latitude = (swlat + nelat)*.5,
+        .longitude = (swlng + nelng)*.5};
+    MKCoordinateSpan span =  MKCoordinateSpanMake(nelat - swlat, nelng - swlng);
+    MKCoordinateRegion region = {center, span};
+    [map setRegion:region animated:YES];
 }
 
 - (void)viewDidUnload

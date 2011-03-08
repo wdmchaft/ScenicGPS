@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "GMapsBounds.h"
 
-@class GMapsPolyline, GMapsBounds;
+@class GMapsPolyline, GMapsBounds, GMapsCoordinate;
 @interface GMapsRoute : NSObject {
     NSString* summary;
     NSArray* legs;
@@ -28,5 +29,6 @@
 
 
 +(id) routeFromJSONDictionary: (NSDictionary*) dic;
+
 
 @end
