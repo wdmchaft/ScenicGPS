@@ -11,15 +11,13 @@
 #import <MapKit/MapKit.h>
 
 @class GMapsPolyline, GMapsBounds, GMapsCoordinate;
-@interface GMapsRoute : NSObject <MKOverlay> {
+@interface GMapsRoute : NSObject {
     NSString* summary;
     NSArray* legs;
     NSString* copyrights;
     GMapsPolyline* polyline;
     GMapsBounds* bounds;
 }
-
-
 
 @property (nonatomic, retain) NSString* summary;
 @property (nonatomic, retain) NSArray* legs;

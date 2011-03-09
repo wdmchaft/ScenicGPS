@@ -11,8 +11,6 @@
 
 
 static NSString* base = @"http://localhost:8080/WebApplication1/ScenicServlet";
-static NSString* URL_KEY = @"url";
-static NSString* TITLE_KEY = @"title";
 static NSString* LAT_KEY = @"lat";
 static NSString* LNG_KEY = @"lng";
 
