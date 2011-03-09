@@ -1,11 +1,18 @@
-# xcode noise
-build/*
-*.pbxuser
-*.mode1v3
-
-# old skool
-.svn
-
-# osx noise
 .DS_Store
-profile
+*.swp
+*~.nib
+
+build/
+
+*.pbxuser
+*.perspective
+*.perspectivev3
+# I've also chosen to include:
+
+*.mode1v3
+*.mode2v3
+# which, according to this Apple mailing list post, are "user-specific project settings".
+
+# And for Xcode 4:
+
+xcuserdata
