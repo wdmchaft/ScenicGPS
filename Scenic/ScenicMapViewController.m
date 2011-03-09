@@ -49,6 +49,7 @@
 }
 
 -(void) setRoute: (GMapsRoute*) route {
+    self.title = route.summary;
     GMapsCoordinate* sw = route.bounds.sw;
     GMapsCoordinate* ne = route.bounds.ne;
     double swlat = [sw.lat doubleValue];

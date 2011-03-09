@@ -13,6 +13,8 @@
 #import "ScenicContent.h"
 #import "ScenicContentViewController.h"
 #import "ScenicMapViewController.h"
+#import "PanoramioFetcher.h"
+#import "GMapsGeolocation.h"
 
 @implementation RouteRootViewController
 @synthesize startTF, endTF, routeLabel;
@@ -24,11 +26,58 @@
 }
 
 -(void) dataFetcher: (DataFetcher*) fetcher hasResponse: (id) response {
+    if ([fetcher isKindOfClass:[GMapsGeolocator class]])
+    {
+        [self handleGeoTag: (GMapsGeolocation*) response];
+    }
+    else if ([fetcher isKindOfClass:[PanoramioFetcher class]]) {
+        [self handlePanoramio: (NSDictionary*) response];
+    }
+    else {
+        [self handleRoutes: (NSArray*) response];
+    }
     [fetcher release];
+
+}
+
+-(void) viewDidLoad {
+    [super viewDidLoad];
+    self.title = @"Choose Origin/Destination";
+}
+
+-(void) handlePanoramio: (NSDictionary*) dic {
+    NSURL* MyURL = [NSURL URLWithString:(NSString*) [dic objectForKey:@"url"]];
+    PanoramioContent* panCon = [[PanoramioContent alloc] init];
+    panCon.url = MyURL;
+    ScenicContent* scenic = [[ScenicContent alloc] init];
+    scenic.contentProvider = panCon;
+    scenic.title = (NSString*) [dic objectForKey:@"title"];
+    ScenicContentViewController* vc = [[ScenicContentViewController alloc] initWithNibName:@"ScenicContentViewController" bundle:nil andContent:scenic];
+    [self.navigationController pushViewController:vc animated:YES];
+    [vc release];
+    [panCon release];
+    [scenic release];
+}
+
+-(void) handleRoutes: (NSArray*) routes {
+    
     ScenicMapViewController* smVC = [[ScenicMapViewController alloc] initWithNibName:@"ScenicMapViewController" bundle:nil];
     [self.navigationController pushViewController:smVC animated:YES];
-    [smVC setRoute:[((NSArray*) response) objectAtIndex:0]];
+    [smVC setRoute:(GMapsRoute*) [routes objectAtIndex:0]];
     [smVC release];
+    
+}
+
+-(void) handleGeoTag: (GMapsGeolocation*) loc {
+    PanoramioFetcher* serverFetch = [[PanoramioFetcher panDicFromCoord:loc.coord withDelegate:self] retain];
+    [serverFetch fetch];
+    routeLabel.text = loc.title;
+    return;
+}
+
+-(IBAction) getGeoTag: (id) sender {
+    GMapsGeolocator* fetcher = [[GMapsGeolocator geolocatorWithAddress:startTF.text withDelegate:self] retain];
+    [fetcher fetch];
 }
 
 -(IBAction) getRoutes:(id)sender {
@@ -36,18 +85,13 @@
     [router fetch];
 }
 
--(IBAction) addTwitPic: (id) sender {
-    NSURL* MyURL = [NSURL URLWithString:@"http://3.bp.blogspot.com/-vzKYcr3ueLs/TXUPZbrO-HI/AAAAAAAAAPg/NBPOO2KR2hs/s400/mets2_clean.png"];
-    PanoramioContent* panCon = [[PanoramioContent alloc] init];
-    panCon.url = MyURL;
-    ScenicContent* scenic = [[ScenicContent alloc] init];
-    scenic.contentProvider = panCon;
-    scenic.title = @"this is the twitpic";
-    ScenicContentViewController* vc = [[ScenicContentViewController alloc] initWithNibName:@"ScenicContentViewController" bundle:nil andContent:scenic];
-    [self.navigationController pushViewController:vc animated:YES];
-    [vc release];
-    [panCon release];
-    [scenic release];
+-(IBAction) getServerResource: (id) sender {
+    GMapsCoordinate* coord = [[GMapsCoordinate alloc] init];
+    coord.lat = [NSNumber numberWithDouble:37.87];
+    coord.lng = [NSNumber numberWithDouble:-122.46];
+    
+    PanoramioFetcher* fetcher = [[PanoramioFetcher panDicFromCoord:coord withDelegate:self] retain];
+    [fetcher fetch];
 }
 
 @end

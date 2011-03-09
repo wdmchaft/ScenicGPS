@@ -61,7 +61,7 @@ static NSString* POINTS_KEY = @"points";
         coord.lat = latitude;
         coord.lng = longitude;
         [array addObject:coord];
-        NSLog(@"%f,%f",[latitude floatValue],[longitude floatValue]);
+        //NSLog(@"%f,%f",[latitude floatValue],[longitude floatValue]);
         [coord release];
         [latitude release];
         [longitude release];

@@ -42,6 +42,7 @@
     [super viewDidLoad];
     [self.displayVC addImage:[self.content.contentProvider provideImage]];
     self.titleLabel.text = self.content.title;
+    self.title = self.content.title;
 }
 
 - (void)viewDidUnload

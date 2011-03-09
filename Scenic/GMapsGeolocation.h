@@ -6,6 +6,11 @@
 //  Copyright 2011 UC Berkeley. All rights reserved.
 //
 
+/*
+ NEED TO FIX MEMORY PROBLEM IN DEALLOC
+ */
+
+
 #import <Foundation/Foundation.h>
 
 @class GMapsCoordinate;

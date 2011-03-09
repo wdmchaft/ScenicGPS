@@ -69,6 +69,9 @@
 		5D0588A313209B8800D42F0A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D05889F13209B8800D42F0A /* SystemConfiguration.framework */; };
 		5D1DCCCB1326A3630013BD05 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D1DCCCA1326A3630013BD05 /* MapKit.framework */; };
 		5D1DCCCE1326A6A80013BD05 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D1DCCCD1326A6A70013BD05 /* CoreLocation.framework */; };
+		5DCAC3ED1326F7E500A9D420 /* PanoramioFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DCAC3EC1326F7E500A9D420 /* PanoramioFetcher.m */; };
+		5DCAC3F113270A0D00A9D420 /* 29-heart.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DCAC3EF13270A0700A9D420 /* 29-heart.png */; };
+		5DCAC3F213270A0D00A9D420 /* 103-map.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DCAC3F013270A0800A9D420 /* 103-map.png */; };
 		5DCF17D31320A33100D19D04 /* GMapsRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DCF17D21320A33100D19D04 /* GMapsRoute.m */; };
 		5DCF17D71320A47400D19D04 /* GMapsLeg.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DCF17D61320A47400D19D04 /* GMapsLeg.m */; };
 /* End PBXBuildFile section */
@@ -190,6 +193,10 @@
 		5D05889F13209B8800D42F0A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		5D1DCCCA1326A3630013BD05 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		5D1DCCCD1326A6A70013BD05 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		5DCAC3EB1326F7E500A9D420 /* PanoramioFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanoramioFetcher.h; sourceTree = "<group>"; };
+		5DCAC3EC1326F7E500A9D420 /* PanoramioFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PanoramioFetcher.m; sourceTree = "<group>"; };
+		5DCAC3EF13270A0700A9D420 /* 29-heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "29-heart.png"; sourceTree = "<group>"; };
+		5DCAC3F013270A0800A9D420 /* 103-map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "103-map.png"; sourceTree = "<group>"; };
 		5DCF17D11320A33100D19D04 /* GMapsRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMapsRoute.h; sourceTree = "<group>"; };
 		5DCF17D21320A33100D19D04 /* GMapsRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMapsRoute.m; sourceTree = "<group>"; };
 		5DCF17D51320A47400D19D04 /* GMapsLeg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMapsLeg.h; sourceTree = "<group>"; };
@@ -307,6 +314,8 @@
 				5D05883813209A3B00D42F0A /* GMapsRouter.m */,
 				5D05883913209A3B00D42F0A /* DataFetcher.h */,
 				5D05883A13209A3B00D42F0A /* DataFetcher.m */,
+				5DCAC3EB1326F7E500A9D420 /* PanoramioFetcher.h */,
+				5DCAC3EC1326F7E500A9D420 /* PanoramioFetcher.m */,
 			);
 			name = Fetchers;
 			sourceTree = "<group>";
@@ -372,6 +381,8 @@
 		5D0587DD132098C400D42F0A = {
 			isa = PBXGroup;
 			children = (
+				5DCAC3EF13270A0700A9D420 /* 29-heart.png */,
+				5DCAC3F013270A0800A9D420 /* 103-map.png */,
 				5D0587F2132098C500D42F0A /* Scenic */,
 				5D058818132098C500D42F0A /* ScenicTests */,
 				5D0587EB132098C500D42F0A /* Frameworks */,
@@ -518,6 +529,8 @@
 				5D017AB213255D3700B8EA6A /* ScenicContentViewController.xib in Resources */,
 				5D017AC113257C9B00B8EA6A /* ScenicContentDisplayViewController.xib in Resources */,
 				5D017ACB1325A4F200B8EA6A /* ScenicMapViewController.xib in Resources */,
+				5DCAC3F113270A0D00A9D420 /* 29-heart.png in Resources */,
+				5DCAC3F213270A0D00A9D420 /* 103-map.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -592,6 +605,7 @@
 				5D017ABC132564C000B8EA6A /* PanoramioContent.m in Sources */,
 				5D017AC013257C9B00B8EA6A /* ScenicContentDisplayViewController.m in Sources */,
 				5D017ACA1325A4F200B8EA6A /* ScenicMapViewController.m in Sources */,
+				5DCAC3ED1326F7E500A9D420 /* PanoramioFetcher.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

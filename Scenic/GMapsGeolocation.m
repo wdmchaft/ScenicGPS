@@ -34,7 +34,7 @@
 -(void) dealloc {
     [super dealloc];
     [coord release];
-    [title release];
+    //[title release];
 }
 
 @end

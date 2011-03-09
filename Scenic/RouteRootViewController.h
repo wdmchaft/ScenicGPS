@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "DataFetcher.h"
 
+@class GMapsGeolocation;
 @interface RouteRootViewController : UIViewController <UITextFieldDelegate, DataFetcherDelegate> {
     UITextField* startTF;
     UITextField* endTF;
@@ -23,5 +24,10 @@
 -(void) dataFetcher: (DataFetcher*) fetcher hasResponse: (id) response;
 
 -(IBAction) getRoutes: (id) sender;
--(IBAction) addTwitPic: (id) sender;
+-(IBAction) getGeoTag: (id) sender;
+-(IBAction) getServerResource: (id) sender;
+-(void) handlePanoramio: (NSDictionary*) dic;
+-(void) handleRoutes: (NSArray*) routes;
+-(void) handleGeoTag: (GMapsGeolocation*) loc;
+
 @end
