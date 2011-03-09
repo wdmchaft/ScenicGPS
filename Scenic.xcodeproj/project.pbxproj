@@ -74,6 +74,7 @@
 		5DCAC3F213270A0D00A9D420 /* 103-map.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DCAC3F013270A0800A9D420 /* 103-map.png */; };
 		5DCF17D31320A33100D19D04 /* GMapsRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DCF17D21320A33100D19D04 /* GMapsRoute.m */; };
 		5DCF17D71320A47400D19D04 /* GMapsLeg.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DCF17D61320A47400D19D04 /* GMapsLeg.m */; };
+		AA07BD7313282D6500059D6C /* ScenicLocationCLController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA07BD7213282D6500059D6C /* ScenicLocationCLController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -201,6 +202,8 @@
 		5DCF17D21320A33100D19D04 /* GMapsRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMapsRoute.m; sourceTree = "<group>"; };
 		5DCF17D51320A47400D19D04 /* GMapsLeg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMapsLeg.h; sourceTree = "<group>"; };
 		5DCF17D61320A47400D19D04 /* GMapsLeg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMapsLeg.m; sourceTree = "<group>"; };
+		AA07BD7113282D6500059D6C /* ScenicLocationCLController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScenicLocationCLController.h; sourceTree = "<group>"; };
+		AA07BD7213282D6500059D6C /* ScenicLocationCLController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScenicLocationCLController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -236,6 +239,8 @@
 		5D017AA213219D8300B8EA6A /* Routing And Map Objects */ = {
 			isa = PBXGroup;
 			children = (
+				AA07BD7113282D6500059D6C /* ScenicLocationCLController.h */,
+				AA07BD7213282D6500059D6C /* ScenicLocationCLController.m */,
 				5D05883B13209A3B00D42F0A /* GMapsGeolocation.h */,
 				5D05883C13209A3B00D42F0A /* GMapsGeolocation.m */,
 				5DCF17D11320A33100D19D04 /* GMapsRoute.h */,
@@ -606,6 +611,7 @@
 				5D017AC013257C9B00B8EA6A /* ScenicContentDisplayViewController.m in Sources */,
 				5D017ACA1325A4F200B8EA6A /* ScenicMapViewController.m in Sources */,
 				5DCAC3ED1326F7E500A9D420 /* PanoramioFetcher.m in Sources */,
+				AA07BD7313282D6500059D6C /* ScenicLocationCLController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

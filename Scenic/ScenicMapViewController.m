@@ -10,8 +10,9 @@
 #import <MapKit/MapKit.h>
 #import "GMapsRoute.h"
 
+
 @implementation ScenicMapViewController
-@synthesize mapView, mPlacemark, mapType;
+@synthesize mapView, mPlacemark, mapType, locationController;
 
 - (void)dealloc
 {
@@ -29,6 +30,12 @@
 	
     mv.showsUserLocation=TRUE;
     mv.mapType=MKMapTypeStandard;
+    
+    /* get location of user */
+
+    locationController = [[ScenicLocationCLController alloc] init];
+	locationController.delegate = self;
+	[locationController.locationManager startUpdatingLocation];
     
     /*Region and Zoom*/
     CLLocationCoordinate2D location = CLLocationCoordinate2DMake(37.8716667, -122.2716667);
@@ -65,8 +72,6 @@
     MKReverseGeocoder * geoCoderEnd=[[MKReverseGeocoder alloc] initWithCoordinate:endPos];
     [geoCoderEnd setDelegate:self];
     [geoCoderEnd start];
-
-    
     
     GMapsCoordinate* sw = route.bounds.sw;
     GMapsCoordinate* ne = route.bounds.ne;
@@ -118,6 +123,15 @@
 	mPlacemark=placemark;
     self.title = [mPlacemark description];
 	[mapView addAnnotation:placemark];
+}
+
+- (void)locationUpdate:(CLLocation *)location {
+     NSLog( @"%@", [location description]);
+    
+}
+
+- (void)locationError:(NSError *)error {
+    NSLog( @"%@", [error description]);
 }
 
 @end
