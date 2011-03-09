@@ -31,5 +31,7 @@
 
 -(MKPolyline*) polylineOverlay;
 
+- (CLLocationCoordinate2D) startPos;
+- (CLLocationCoordinate2D) endPos;
 
 @end

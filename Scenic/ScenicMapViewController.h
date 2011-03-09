@@ -19,7 +19,6 @@
 @class GMapsRoute;
 @interface ScenicMapViewController : UIViewController <MKReverseGeocoderDelegate,MKMapViewDelegate> {
     MKMapView* mapView;
-    MKReverseGeocoder *geoCoder;
 	MKPlacemark *mPlacemark;
 	UISegmentedControl *mapType;
     
@@ -29,7 +28,6 @@
 - (void)changeType;
 
 @property (nonatomic, retain) MKMapView* mapView;
-@property (nonatomic, retain) MKReverseGeocoder* geoCoder;
 @property (nonatomic, retain) MKPlacemark* mPlacemark;
 @property (nonatomic, retain) UISegmentedControl* mapType;
 @end
