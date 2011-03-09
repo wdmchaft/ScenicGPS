@@ -59,6 +59,15 @@ static NSString* BOUNDS_KEY = @"bounds";
     }
     return [MKPolyline polylineWithCoordinates:clArray count:n];
 }
-                              
+          
+- (CLLocationCoordinate2D) startPos {
+    GMapsCoordinate * coord = [polyline.points objectAtIndex:0];
+    return CLLocationCoordinate2DMake([coord.lat doubleValue], [coord.lng doubleValue]);
+}
+
+- (CLLocationCoordinate2D) endPos {
+    GMapsCoordinate * coord = [polyline.points objectAtIndex:[polyline.points count]-1];
+    return CLLocationCoordinate2DMake([coord.lat doubleValue], [coord.lng doubleValue]);
+}
 
 @end

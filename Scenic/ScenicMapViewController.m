@@ -11,7 +11,7 @@
 #import "GMapsRoute.h"
 
 @implementation ScenicMapViewController
-@synthesize mapView, geoCoder, mPlacemark, mapType;
+@synthesize mapView, mPlacemark, mapType;
 
 - (void)dealloc
 {
@@ -35,23 +35,7 @@
     MKCoordinateSpan span = MKCoordinateSpanMake(.9, .9);
     MKCoordinateRegion region = MKCoordinateRegionMake(location, span);
 
-
-    MKReverseGeocoder* temp = [[MKReverseGeocoder alloc] initWithCoordinate:location];
-    temp.delegate = self;
-    self.geoCoder = temp;
-    [temp release];
-    [geoCoder start];
-    
-    CLLocationCoordinate2D location2 = CLLocationCoordinate2DMake(37.4241667, -122.165);
-    
-    
-    MKReverseGeocoder * geoCoder2=[[MKReverseGeocoder alloc] initWithCoordinate:location2];
-    [geoCoder2 setDelegate:self];
-    [geoCoder2 start];
-    
-    
-    [mv setRegion:region animated:TRUE];
-    
+    [mv setRegion:region animated:TRUE];    
 
     UISegmentedControl* tempSeg = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects: @"Map", @"Satelitte", @"Hybrid", nil]];
     [tempSeg addTarget:self action:@selector(changeType) forControlEvents:UIControlEventValueChanged];
@@ -70,6 +54,20 @@
 
 -(void) setRoute: (GMapsRoute*) route {
     self.title = route.summary;
+    
+    
+    CLLocationCoordinate2D startPos = [route startPos];
+    MKReverseGeocoder * geoCoderStart=[[MKReverseGeocoder alloc] initWithCoordinate:startPos];
+    [geoCoderStart setDelegate:self];
+    [geoCoderStart start];
+
+    CLLocationCoordinate2D endPos = [route endPos];
+    MKReverseGeocoder * geoCoderEnd=[[MKReverseGeocoder alloc] initWithCoordinate:endPos];
+    [geoCoderEnd setDelegate:self];
+    [geoCoderEnd start];
+
+    
+    
     GMapsCoordinate* sw = route.bounds.sw;
     GMapsCoordinate* ne = route.bounds.ne;
     double swlat = [sw.lat doubleValue];
