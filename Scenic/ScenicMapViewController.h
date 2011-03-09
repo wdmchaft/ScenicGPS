@@ -15,27 +15,21 @@
 #import <MapKit/MKAnnotation.h>
 #import <MapKit/MKReverseGeocoder.h>
 
-<<<<<<< HEAD
-@class MKMapView, GMapsRoute;
-@interface ScenicMapViewController : UIViewController {
-    MKMapView* map;
-}
 
-@property (nonatomic, retain) MKMapView* map;
--(void) setRoute: (GMapsRoute*) route;
-=======
-
+@class GMapsRoute;
 @interface ScenicMapViewController : UIViewController <MKReverseGeocoderDelegate,MKMapViewDelegate> {
-    MKMapView* _mapView;
+    MKMapView* mapView;
     MKReverseGeocoder *geoCoder;
 	MKPlacemark *mPlacemark;
 	UISegmentedControl *mapType;
     
 }
 
+-(void) setRoute: (GMapsRoute*) route;
 - (void)changeType;
 
 @property (nonatomic, retain) MKMapView* mapView;
-
->>>>>>> 76febd0910fc43c67359abce750daf4635f78323
+@property (nonatomic, retain) MKReverseGeocoder* geoCoder;
+@property (nonatomic, retain) MKPlacemark* mPlacemark;
+@property (nonatomic, retain) UISegmentedControl* mapType;
 @end

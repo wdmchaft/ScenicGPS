@@ -41,13 +41,23 @@ static NSString* BOUNDS_KEY = @"bounds";
     newRoute.polyline = [GMapsPolyline polylineFromJSONDic:(NSDictionary*) [dic objectForKey:PL_KEY ]];
     newRoute.copyrights = (NSString*) [dic objectForKey:CR_KEY];
     newRoute.bounds = [GMapsBounds boundsFromJSONDic:(NSDictionary*)  [dic objectForKey: BOUNDS_KEY]];
-    
     return newRoute;
 }
 
 -(void) dealloc {
     [super dealloc];
     [summary release];
+}
+
+-(MKPolyline*) polylineOverlay {
+    int n = [polyline.points count];
+    CLLocationCoordinate2D clArray[n];
+    int counter = 0;
+    for (GMapsCoordinate* coord in polyline.points) {
+        clArray[counter] = CLLocationCoordinate2DMake([coord.lat doubleValue], [coord.lng doubleValue]);
+        counter++;
+    }
+    return [MKPolyline polylineWithCoordinates:clArray count:n];
 }
                               
 

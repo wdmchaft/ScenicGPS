@@ -8,9 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import "GMapsBounds.h"
+#import <MapKit/MapKit.h>
 
 @class GMapsPolyline, GMapsBounds, GMapsCoordinate;
-@interface GMapsRoute : NSObject {
+@interface GMapsRoute : NSObject <MKOverlay> {
     NSString* summary;
     NSArray* legs;
     NSString* copyrights;
@@ -29,6 +30,8 @@
 
 
 +(id) routeFromJSONDictionary: (NSDictionary*) dic;
+
+-(MKPolyline*) polylineOverlay;
 
 
 @end

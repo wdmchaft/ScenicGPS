@@ -37,23 +37,6 @@
         [self handleRoutes: (NSArray*) response];
     }
     [fetcher release];
-
-<<<<<<< HEAD
-=======
-    /*
-    NSArray* routes = (NSArray*) response;
-    NSString* routesString = @"";
-    for (GMapsRoute* route in routes) {
-        routesString = [routesString stringByAppendingFormat:@"%@,",route.summary];
-    } 
-    routeLabel.text = routesString;
-    */
-    
-    ScenicMapViewController * MV = [[ScenicMapViewController alloc] init];
-    
-    [self.navigationController pushViewController:MV animated:YES];
-    
->>>>>>> 76febd0910fc43c67359abce750daf4635f78323
 }
 
 -(void) viewDidLoad {
@@ -105,7 +88,6 @@
     GMapsCoordinate* coord = [[GMapsCoordinate alloc] init];
     coord.lat = [NSNumber numberWithDouble:37.87];
     coord.lng = [NSNumber numberWithDouble:-122.46];
-    
     PanoramioFetcher* fetcher = [[PanoramioFetcher panDicFromCoord:coord withDelegate:self] retain];
     [fetcher fetch];
 }
