@@ -20,7 +20,7 @@ static NSString* BOUNDS_KEY = @"bounds";
 
 
 @implementation GMapsRoute
-@synthesize summary, copyrights, bounds, polyline, legs;
+@synthesize summary, copyrights, bounds, polyline, legs, boundingMapRect, coordinate;
 
 
 
