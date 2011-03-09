@@ -10,9 +10,6 @@
 // thanks for the tips on this site for using geo coder and MKMap
 // http://blog.objectgraph.com/index.php/2009/04/03/iphone-sdk-30-playing-with-map-kit-part-2/
 
-// thanks for the tips on this site for using CoreLocation
-// http://www.mobileorchard.com/hello-there-a-corelocation-tutorial/
-
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import <MapKit/MKAnnotation.h>
@@ -26,6 +23,7 @@
 	UISegmentedControl *mapType;
     
     ScenicLocationCLController * locationController;
+    CLLocation * currentLocation;
 }
 
 -(void) setRoute: (GMapsRoute*) route;
@@ -37,6 +35,7 @@
 @property (nonatomic, retain) MKMapView* mapView;
 @property (nonatomic, retain) MKPlacemark* mPlacemark;
 @property (nonatomic, retain) UISegmentedControl* mapType;
+@property (nonatomic, retain) CLLocation * currentLocation;
 @property (nonatomic, retain) ScenicLocationCLController * locationController;
 
 @end

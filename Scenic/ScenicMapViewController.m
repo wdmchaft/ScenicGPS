@@ -12,7 +12,7 @@
 
 
 @implementation ScenicMapViewController
-@synthesize mapView, mPlacemark, mapType, locationController;
+@synthesize mapView, mPlacemark, mapType, locationController, currentLocation;
 
 - (void)dealloc
 {
@@ -36,6 +36,8 @@
     locationController = [[ScenicLocationCLController alloc] init];
 	locationController.delegate = self;
 	[locationController.locationManager startUpdatingLocation];
+    
+    // now currentLocation.coordinate.latitude, currentLocation.coordinate.longitude are available
     
     /*Region and Zoom*/
     CLLocationCoordinate2D location = CLLocationCoordinate2DMake(37.8716667, -122.2716667);
@@ -127,6 +129,8 @@
 
 - (void)locationUpdate:(CLLocation *)location {
      NSLog( @"%@", [location description]);
+     NSLog(@"%f %f", location.coordinate.latitude, location.coordinate.longitude);
+     currentLocation = location;
     
 }
 

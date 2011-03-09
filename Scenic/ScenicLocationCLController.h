@@ -6,6 +6,10 @@
 //  Copyright 2011 UC Berkeley. All rights reserved.
 //
 
+// thanks for the tips on this site for using CoreLocation
+// http://www.mobileorchard.com/hello-there-a-corelocation-tutorial/
+
+
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
