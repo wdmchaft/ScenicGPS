@@ -32,10 +32,16 @@
     mv.mapType=MKMapTypeStandard;
     
     /* get location of user */
+    
+    /* modified below slightly to conform to the usual instance variable assignment convention using properties */
+    
+    
 
-    locationController = [[ScenicLocationCLController alloc] init];
-	locationController.delegate = self;
-	[locationController.locationManager startUpdatingLocation];
+    ScenicLocationCLController* tempCL = [[ScenicLocationCLController alloc] init];
+	tempCL.delegate = self;
+	[tempCL.locationManager startUpdatingLocation];
+    self.locationController = tempCL;
+    [tempCL release];
     
     // now currentLocation.coordinate.latitude, currentLocation.coordinate.longitude are available
     
