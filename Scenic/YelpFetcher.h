@@ -1,5 +1,5 @@
 //
-//  PanoramioPicFetcher.h
+//  YelpFetcher.h
 //  Scenic
 //
 //  Created by Jack Reilly on 3/10/11.
@@ -9,9 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "ScenicServerFetcher.h"
 
-
-@interface PanoramioPicFetcher : ScenicServerFetcher {
+@class GMapsCoordinate;
+@interface YelpFetcher : ScenicServerFetcher {
     
 }
+
++(id) fetcherForCoord: (GMapsCoordinate*) coord andDelegate: (id<DataFetcherDelegate>) _delegate;
 
 @end

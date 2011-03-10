@@ -10,12 +10,9 @@
 #import "GMapsCoordinate.h"
 
 
-static NSString* base = @"http://localhost:8080/WebApplication1/ScenicServlet";
-static NSString* LAT_KEY = @"lat";
-static NSString* LNG_KEY = @"lng";
-static NSString* DES_KEY = @"description";
-static NSString* RES_KEY = @"results";
 
+static NSString* RES_KEY = @"results";
+static NSString* TYPE = @"park";
 
 
 @implementation ScenicParkFetcher
@@ -37,7 +34,7 @@ static NSString* RES_KEY = @"results";
 
 +(id) parkFetcherWithDelegate: (id<DataFetcherDelegate>) _delegate {
     NSDictionary* queries = [NSDictionary dictionaryWithObjectsAndKeys:nil];
-    return [[[super alloc] initWithBase:base andQueries:queries andDelegate:_delegate] autorelease];
+    return [[[super alloc] initWithType:TYPE withQueries:queries andDelegate:_delegate] autorelease];
 }
 
 @end

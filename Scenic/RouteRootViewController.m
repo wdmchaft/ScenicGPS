@@ -16,6 +16,7 @@
 #import "ScenicParkFetcher.h"
 #import "GMapsGeolocation.h"
 #import "PanoramioPicFetcher.h"
+#import "YelpFetcher.h"
 
 @implementation RouteRootViewController
 @synthesize startTF, endTF, routeLabel;
@@ -37,8 +38,8 @@
     else if ([fetcher isKindOfClass:[PanoramioPicFetcher class]]) {
         [self handlePanoramio:(NSDictionary*) response];
     }
-    else {
-        [self handleRoutes: (NSArray*) response];
+    else if ([fetcher isKindOfClass:[YelpFetcher class]]){
+        [self handleYelp: response];
     }
     [fetcher release];
 }
@@ -80,8 +81,12 @@
     [scenic release];
 }
 
+-(void) handleYelp: (NSDictionary*) dic {
+    NSLog([dic description]);
+}
+
 -(void) handleGeoTag:(GMapsGeolocation *)loc {
-    PanoramioPicFetcher* fetcher = [[PanoramioPicFetcher panDicFromCoord:loc.coord withDelegate:self] retain];
+    YelpFetcher* fetcher = [[YelpFetcher fetcherForCoord:loc.coord andDelegate:self] retain];
     [fetcher fetch];
 }
 

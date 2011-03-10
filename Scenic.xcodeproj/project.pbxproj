@@ -69,8 +69,10 @@
 		5D0588A313209B8800D42F0A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D05889F13209B8800D42F0A /* SystemConfiguration.framework */; };
 		5D1DCCCB1326A3630013BD05 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D1DCCCA1326A3630013BD05 /* MapKit.framework */; };
 		5D1DCCCE1326A6A80013BD05 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D1DCCCD1326A6A70013BD05 /* CoreLocation.framework */; };
-		5D490DC813293D42006905A9 /* PanoramioPicFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D490DC713293D42006905A9 /* PanoramioPicFetcher.m */; };
-		5DCAC3ED1326F7E500A9D420 /* ScenicParkFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DCAC3EC1326F7E500A9D420 /* ScenicParkFetcher.m */; };
+		5D490DCB13297B43006905A9 /* ScenicServerFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D490DCA13297B41006905A9 /* ScenicServerFetcher.m */; };
+		5D490DCE1329834B006905A9 /* PanoramioPicFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D490DCD1329834A006905A9 /* PanoramioPicFetcher.m */; };
+		5D490DD1132985E0006905A9 /* ScenicParkFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D490DD0132985DE006905A9 /* ScenicParkFetcher.m */; };
+		5D490DD413298693006905A9 /* YelpFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D490DD313298691006905A9 /* YelpFetcher.m */; };
 		5DCAC3F113270A0D00A9D420 /* 29-heart.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DCAC3EF13270A0700A9D420 /* 29-heart.png */; };
 		5DCAC3F213270A0D00A9D420 /* 103-map.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DCAC3F013270A0800A9D420 /* 103-map.png */; };
 		5DCF17D31320A33100D19D04 /* GMapsRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DCF17D21320A33100D19D04 /* GMapsRoute.m */; };
@@ -195,10 +197,14 @@
 		5D05889F13209B8800D42F0A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		5D1DCCCA1326A3630013BD05 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		5D1DCCCD1326A6A70013BD05 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		5D490DC613293D41006905A9 /* PanoramioPicFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; path = PanoramioPicFetcher.h; sourceTree = "<group>"; };
-		5D490DC713293D42006905A9 /* PanoramioPicFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PanoramioPicFetcher.m; sourceTree = "<group>"; };
-		5DCAC3EB1326F7E500A9D420 /* ScenicParkFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; path = ScenicParkFetcher.h; sourceTree = "<group>"; };
-		5DCAC3EC1326F7E500A9D420 /* ScenicParkFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScenicParkFetcher.m; sourceTree = "<group>"; };
+		5D490DC913297B40006905A9 /* ScenicServerFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScenicServerFetcher.h; sourceTree = "<group>"; };
+		5D490DCA13297B41006905A9 /* ScenicServerFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScenicServerFetcher.m; sourceTree = "<group>"; };
+		5D490DCC13298349006905A9 /* PanoramioPicFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanoramioPicFetcher.h; sourceTree = "<group>"; };
+		5D490DCD1329834A006905A9 /* PanoramioPicFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PanoramioPicFetcher.m; sourceTree = "<group>"; };
+		5D490DCF132985DC006905A9 /* ScenicParkFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScenicParkFetcher.h; sourceTree = "<group>"; };
+		5D490DD0132985DE006905A9 /* ScenicParkFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScenicParkFetcher.m; sourceTree = "<group>"; };
+		5D490DD213298691006905A9 /* YelpFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YelpFetcher.h; sourceTree = "<group>"; };
+		5D490DD313298691006905A9 /* YelpFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YelpFetcher.m; sourceTree = "<group>"; };
 		5DCAC3EF13270A0700A9D420 /* 29-heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "29-heart.png"; sourceTree = "<group>"; };
 		5DCAC3F013270A0800A9D420 /* 103-map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "103-map.png"; sourceTree = "<group>"; };
 		5DCF17D11320A33100D19D04 /* GMapsRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMapsRoute.h; sourceTree = "<group>"; };
@@ -322,10 +328,14 @@
 				5D05883813209A3B00D42F0A /* GMapsRouter.m */,
 				5D05883913209A3B00D42F0A /* DataFetcher.h */,
 				5D05883A13209A3B00D42F0A /* DataFetcher.m */,
-				5DCAC3EB1326F7E500A9D420 /* ScenicParkFetcher.h */,
-				5DCAC3EC1326F7E500A9D420 /* ScenicParkFetcher.m */,
-				5D490DC613293D41006905A9 /* PanoramioPicFetcher.h */,
-				5D490DC713293D42006905A9 /* PanoramioPicFetcher.m */,
+				5D490DC913297B40006905A9 /* ScenicServerFetcher.h */,
+				5D490DCA13297B41006905A9 /* ScenicServerFetcher.m */,
+				5D490DCC13298349006905A9 /* PanoramioPicFetcher.h */,
+				5D490DCD1329834A006905A9 /* PanoramioPicFetcher.m */,
+				5D490DCF132985DC006905A9 /* ScenicParkFetcher.h */,
+				5D490DD0132985DE006905A9 /* ScenicParkFetcher.m */,
+				5D490DD213298691006905A9 /* YelpFetcher.h */,
+				5D490DD313298691006905A9 /* YelpFetcher.m */,
 			);
 			name = Fetchers;
 			sourceTree = "<group>";
@@ -615,9 +625,11 @@
 				5D017ABC132564C000B8EA6A /* PanoramioContent.m in Sources */,
 				5D017AC013257C9B00B8EA6A /* ScenicContentDisplayViewController.m in Sources */,
 				5D017ACA1325A4F200B8EA6A /* ScenicMapViewController.m in Sources */,
-				5DCAC3ED1326F7E500A9D420 /* ScenicParkFetcher.m in Sources */,
 				AA07BD7313282D6500059D6C /* ScenicLocationCLController.m in Sources */,
-				5D490DC813293D42006905A9 /* PanoramioPicFetcher.m in Sources */,
+				5D490DCB13297B43006905A9 /* ScenicServerFetcher.m in Sources */,
+				5D490DCE1329834B006905A9 /* PanoramioPicFetcher.m in Sources */,
+				5D490DD1132985E0006905A9 /* ScenicParkFetcher.m in Sources */,
+				5D490DD413298693006905A9 /* YelpFetcher.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

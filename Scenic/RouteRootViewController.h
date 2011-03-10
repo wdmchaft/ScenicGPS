@@ -30,5 +30,5 @@
 -(void) handlePanoramio: (NSDictionary*) dic;
 -(void) handleRoutes: (NSArray*) routes;
 -(void) handleGeoTag: (GMapsGeolocation*) loc;
-
+-(void) handleYelp: (NSDictionary*) dic;
 @end
