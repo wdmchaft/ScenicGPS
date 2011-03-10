@@ -31,7 +31,7 @@
         [self handleGeoTag: (GMapsGeolocation*) response];
     }
     else if ([fetcher isKindOfClass:[PanoramioFetcher class]]) {
-        [self handlePanoramio: (NSDictionary*) response];
+        [self handlePanoramio: (NSArray*) response];
     }
     else {
         [self handleRoutes: (NSArray*) response];
@@ -44,18 +44,13 @@
     self.title = @"Choose Origin/Destination";
 }
 
--(void) handlePanoramio: (NSDictionary*) dic {
-    NSURL* MyURL = [NSURL URLWithString:(NSString*) [dic objectForKey:@"url"]];
-    PanoramioContent* panCon = [[PanoramioContent alloc] init];
-    panCon.url = MyURL;
-    ScenicContent* scenic = [[ScenicContent alloc] init];
-    scenic.contentProvider = panCon;
-    scenic.title = (NSString*) [dic objectForKey:@"title"];
-    ScenicContentViewController* vc = [[ScenicContentViewController alloc] initWithNibName:@"ScenicContentViewController" bundle:nil andContent:scenic];
-    [self.navigationController pushViewController:vc animated:YES];
-    [vc release];
-    [panCon release];
-    [scenic release];
+-(void) handlePanoramio: (NSArray*) pts {
+    ScenicMapViewController* smVC = [[ScenicMapViewController alloc] initWithNibName:@"ScenicMapViewController" bundle:nil];
+    [self.navigationController pushViewController:smVC animated:YES];
+    for (GMapsCoordinate* coord in pts) {
+        [smVC.mapView addAnnotation:[[[MKPlacemark alloc] initWithCoordinate:CLLocationCoordinate2DMake([coord.lat doubleValue], [coord.lng doubleValue]) addressDictionary:nil] autorelease]];
+    }
+    [smVC release];
 }
 
 -(void) handleRoutes: (NSArray*) routes {
@@ -85,10 +80,7 @@
 }
 
 -(IBAction) getServerResource: (id) sender {
-    GMapsCoordinate* coord = [[GMapsCoordinate alloc] init];
-    coord.lat = [NSNumber numberWithDouble:37.87];
-    coord.lng = [NSNumber numberWithDouble:-122.46];
-    PanoramioFetcher* fetcher = [[PanoramioFetcher panDicFromCoord:coord withDelegate:self] retain];
+    PanoramioFetcher* fetcher = [[PanoramioFetcher panDicFromCoord:nil withDelegate:self] retain];
     [fetcher fetch];
 }
 

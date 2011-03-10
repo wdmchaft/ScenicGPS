@@ -13,16 +13,30 @@
 static NSString* base = @"http://localhost:8080/WebApplication1/ScenicServlet";
 static NSString* LAT_KEY = @"lat";
 static NSString* LNG_KEY = @"lng";
+static NSString* DES_KEY = @"description";
+static NSString* RES_KEY = @"results";
+
 
 
 @implementation PanoramioFetcher
+
+-(id) getResponseFromResult:(id)result {
+    NSDictionary* dic = (NSDictionary*) result;
+    NSArray* res = (NSArray*) [dic objectForKey:RES_KEY];
+    NSMutableArray* pts = [[NSMutableArray alloc] initWithCapacity:[res count]];
+    for (NSDictionary* pt in res) {
+        [pts addObject:[GMapsCoordinate coordFromJSONDic:pt]];
+    }
+    NSArray* ptArray = [NSArray arrayWithArray:pts];
+    [pts release];
+    return ptArray;
+}
 
 
 
 
 +(id) panDicFromCoord:(GMapsCoordinate*) coord withDelegate: (id<DataFetcherDelegate>) _delegate{
-    NSDictionary* queries = [NSDictionary dictionaryWithObjectsAndKeys:[coord.lat description], LAT_KEY,
-                             [coord.lng description], LNG_KEY,nil];
+    NSDictionary* queries = [NSDictionary dictionaryWithObjectsAndKeys:nil];
     return [[[super alloc] initWithBase:base andQueries:queries andDelegate:_delegate] autorelease];
 }
 
