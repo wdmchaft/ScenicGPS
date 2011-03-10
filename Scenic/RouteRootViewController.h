@@ -26,7 +26,8 @@
 -(IBAction) getRoutes: (id) sender;
 -(IBAction) getGeoTag: (id) sender;
 -(IBAction) getServerResource: (id) sender;
--(void) handlePanoramio: (NSArray*) dic;
+-(void) handleParks: (NSArray*) dic;
+-(void) handlePanoramio: (NSDictionary*) dic;
 -(void) handleRoutes: (NSArray*) routes;
 -(void) handleGeoTag: (GMapsGeolocation*) loc;
 

@@ -13,8 +13,9 @@
 #import "ScenicContent.h"
 #import "ScenicContentViewController.h"
 #import "ScenicMapViewController.h"
-#import "PanoramioFetcher.h"
+#import "ScenicParkFetcher.h"
 #import "GMapsGeolocation.h"
+#import "PanoramioPicFetcher.h"
 
 @implementation RouteRootViewController
 @synthesize startTF, endTF, routeLabel;
@@ -30,8 +31,11 @@
     {
         [self handleGeoTag: (GMapsGeolocation*) response];
     }
-    else if ([fetcher isKindOfClass:[PanoramioFetcher class]]) {
-        [self handlePanoramio: (NSArray*) response];
+    else if ([fetcher isKindOfClass:[ScenicParkFetcher class]]) {
+        [self handleParks: (NSArray*) response];
+    }
+    else if ([fetcher isKindOfClass:[PanoramioPicFetcher class]]) {
+        [self handlePanoramio:(NSDictionary*) response];
     }
     else {
         [self handleRoutes: (NSArray*) response];
@@ -44,7 +48,7 @@
     self.title = @"Choose Origin/Destination";
 }
 
--(void) handlePanoramio: (NSArray*) pts {
+-(void) handleParks: (NSArray*) pts {
     ScenicMapViewController* smVC = [[ScenicMapViewController alloc] initWithNibName:@"ScenicMapViewController" bundle:nil];
     [self.navigationController pushViewController:smVC animated:YES];
     for (GMapsCoordinate* coord in pts) {
@@ -62,11 +66,23 @@
     
 }
 
--(void) handleGeoTag: (GMapsGeolocation*) loc {
-    PanoramioFetcher* serverFetch = [[PanoramioFetcher panDicFromCoord:loc.coord withDelegate:self] retain];
-    [serverFetch fetch];
-    routeLabel.text = loc.title;
-    return;
+-(void) handlePanoramio:(NSDictionary*) dic {
+    NSURL* MyURL = [NSURL URLWithString:(NSString*) [dic objectForKey:@"url"]];
+    PanoramioContent* panCon = [[PanoramioContent alloc] init];
+    panCon.url = MyURL;
+    ScenicContent* scenic = [[ScenicContent alloc] init];
+    scenic.contentProvider = panCon;
+    scenic.title = (NSString*) [dic objectForKey:@"title"];
+    ScenicContentViewController* vc = [[ScenicContentViewController alloc] initWithNibName:@"ScenicContentViewController" bundle:nil andContent:scenic];
+    [self.navigationController pushViewController:vc animated:YES];
+    [vc release];
+    [panCon release];
+    [scenic release];
+}
+
+-(void) handleGeoTag:(GMapsGeolocation *)loc {
+    PanoramioPicFetcher* fetcher = [[PanoramioPicFetcher panDicFromCoord:loc.coord withDelegate:self] retain];
+    [fetcher fetch];
 }
 
 -(IBAction) getGeoTag: (id) sender {
@@ -80,7 +96,7 @@
 }
 
 -(IBAction) getServerResource: (id) sender {
-    PanoramioFetcher* fetcher = [[PanoramioFetcher panDicFromCoord:nil withDelegate:self] retain];
+    ScenicParkFetcher* fetcher = [[ScenicParkFetcher parkFetcherWithDelegate:self] retain];
     [fetcher fetch];
 }
 
