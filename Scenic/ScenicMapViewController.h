@@ -29,7 +29,6 @@
     //ScenicViewController *scenicViewController;
     NSMutableArray *mapAnnotations;
     
-    
 }
 
 + (CGFloat)annotationPadding;

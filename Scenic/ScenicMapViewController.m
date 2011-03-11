@@ -68,7 +68,6 @@
     
     
     
-    
     // add the map
 	[mv setDelegate:self];
     [self.view addSubview:mv];
