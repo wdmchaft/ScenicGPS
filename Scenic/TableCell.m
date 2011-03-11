@@ -11,8 +11,10 @@
 @implementation TableCell
 @synthesize primaryLabel,secondaryLabel,myImageView;
 
-- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier {
-    if (self = [super initWithFrame:frame reuseIdentifier:reuseIdentifier]) {
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+    
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if (self) {
         // Initialization code
 		primaryLabel = [[UILabel alloc]init];
 		primaryLabel.textAlignment = UITextAlignmentLeft;
