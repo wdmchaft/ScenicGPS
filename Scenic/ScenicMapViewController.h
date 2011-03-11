@@ -37,6 +37,8 @@
 - (void) setRoute: (GMapsRoute*) route;
 - (void)changeType;
 
+- (void)showDetails:(id)sender;
+
 - (void)locationUpdate:(CLLocation *)location; 
 - (void)locationError:(NSError *)error;
 

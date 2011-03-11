@@ -60,12 +60,13 @@
     [mv setRegion:region animated:TRUE];    
     
     UISegmentedControl* tempSeg = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects: @"Map", @"Satelitte", @"Hybrid", nil]];
+    tempSeg.frame = CGRectMake(33, 300, tempSeg.frame.size.width, tempSeg.frame.size.height);
     [tempSeg addTarget:self action:@selector(changeType) forControlEvents:UIControlEventValueChanged];
     [tempSeg setEnabled:YES forSegmentAtIndex:0];
+    tempSeg.selectedSegmentIndex = 0;
     self.mapType = tempSeg;
     [mv addSubview:mapType];
     [tempSeg release];
-    
     
     
     // add the map
@@ -148,9 +149,6 @@
 }
 
 - (MKAnnotationView *) mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>) annotation{
-	//MKPinAnnotationView *annView=[[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"currentloc"];
-	//annView.animatesDrop=TRUE;
-	//return annView; 
     
     // if it's the user location, just return nil.
     if ([annotation isKindOfClass:[MKUserLocation class]])
@@ -198,6 +196,13 @@
             annotationView.leftCalloutAccessoryView = sfIconView;
             [sfIconView release];
             
+            UIButton* rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+            [rightButton addTarget:self
+                            action:@selector(showDetails:)
+                  forControlEvents:UIControlEventTouchUpInside];
+            annotationView.rightCalloutAccessoryView = rightButton;
+
+            
             return annotationView;
         }
         else
@@ -205,14 +210,21 @@
             pinView.annotation = annotation;
         }
         return pinView;
-    } else { 
-        NSLog(@"not that kind of class!");
     }
     
     return nil;
-    
-    
-    
+}
+
+- (void)showDetails:(id)sender {
+    // the detail view does not want a toolbar so hide it
+  
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Still working on it;)" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];	
+    [alert release];	
+
+//  [self.navigationController setToolbarHidden:YES animated:NO];    
+//  [self.navigationController pushViewController:self.detailViewController animated:YES];
+
 }
 
 -(MKOverlayView*) mapView:(MKMapView *)mapView viewForOverlay:(id<MKOverlay>)overlay {
