@@ -24,18 +24,31 @@
     
     ScenicLocationCLController * locationController;
     CLLocation * currentLocation;
+    
+    // for anotations
+    //ScenicViewController *scenicViewController;
+    NSMutableArray *mapAnnotations;
+    
 }
 
--(void) setRoute: (GMapsRoute*) route;
++ (CGFloat)annotationPadding;
++ (CGFloat)calloutHeight;
+
+- (void) setRoute: (GMapsRoute*) route;
 - (void)changeType;
+
+- (void)showDetails:(id)sender;
 
 - (void)locationUpdate:(CLLocation *)location; 
 - (void)locationError:(NSError *)error;
+
+- (void)gotoLocation:(CLLocation *) location;
 
 @property (nonatomic, retain) MKMapView* mapView;
 @property (nonatomic, retain) MKPlacemark* mPlacemark;
 @property (nonatomic, retain) UISegmentedControl* mapType;
 @property (nonatomic, retain) CLLocation * currentLocation;
 @property (nonatomic, retain) ScenicLocationCLController * locationController;
+@property (nonatomic, retain) NSMutableArray *mapAnnotations;
 
 @end

@@ -28,6 +28,7 @@
 }
 
 -(void) dataFetcher: (DataFetcher*) fetcher hasResponse: (id) response {
+    
     if ([fetcher isKindOfClass:[GMapsGeolocator class]])
     {
         [self handleGeoTag: (GMapsGeolocation*) response];
@@ -40,6 +41,8 @@
     }
     else if ([fetcher isKindOfClass:[YelpFetcher class]]){
         [self handleYelp: response];
+    } else {        
+        [self handleRoutes: (NSArray*) response];    
     }
     else if ([fetcher isKindOfClass:[GMapsRouter class]]) {
         [self handleRoutes: (NSArray*) response];
@@ -50,6 +53,7 @@
 -(void) viewDidLoad {
     [super viewDidLoad];
     self.title = @"Choose Origin/Destination";
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
 }
 
 -(void) handleParks: (NSArray*) pts {
@@ -85,7 +89,7 @@
 }
 
 -(void) handleYelp: (NSDictionary*) dic {
-    NSLog([dic description]);
+    NSLog(@"%@", [dic description]);
 }
 
 -(void) handleGeoTag:(GMapsGeolocation *)loc {

@@ -9,8 +9,14 @@
 #import <UIKit/UIKit.h>
 
 
-@interface HistoricalRouteViewController : UIViewController {
+@interface HistoricalRouteViewController : UIViewController <UITableViewDelegate, UITableViewDataSource> {
+    
+    IBOutlet UITableView *tableOfRoutes;
+    NSArray * routes;
     
 }
+
+@property (nonatomic, retain) IBOutlet NSArray * routes;
+@property (nonatomic, retain) IBOutlet UITableView *tableOfRoutes;
 
 @end

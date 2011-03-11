@@ -9,10 +9,20 @@
 #import "ScenicMapViewController.h"
 #import <MapKit/MapKit.h>
 #import "GMapsRoute.h"
+#import "ScenicAnnotation.h"
 
 
 @implementation ScenicMapViewController
-@synthesize mapView, mPlacemark, mapType, locationController, currentLocation;
+@synthesize mapView, mPlacemark, mapType, locationController, currentLocation, mapAnnotations;
+
++ (CGFloat)annotationPadding;
+{
+    return 10.0f;
+}
++ (CGFloat)calloutHeight;
+{
+    return 40.0f;
+}
 
 - (void)dealloc
 {
@@ -28,15 +38,12 @@
     MKMapView* mv = [[MKMapView alloc] initWithFrame:self.view.bounds];
     mv.mapType = MKMapTypeHybrid;
 	
-    mv.showsUserLocation=TRUE;
-    mv.mapType=MKMapTypeStandard;
+    mv.showsUserLocation=FALSE;
+    mv.mapType=MKMapTypeStandard;    
     
     /* get location of user */
+    /* modified below slightly to conform to the usual instance variable assignment convention using properties */    
     
-    /* modified below slightly to conform to the usual instance variable assignment convention using properties */
-    
-    
-
     ScenicLocationCLController* tempCL = [[ScenicLocationCLController alloc] init];
 	tempCL.delegate = self;
 	[tempCL.locationManager startUpdatingLocation];
@@ -49,22 +56,56 @@
     CLLocationCoordinate2D location = CLLocationCoordinate2DMake(37.8716667, -122.2716667);
     MKCoordinateSpan span = MKCoordinateSpanMake(.9, .9);
     MKCoordinateRegion region = MKCoordinateRegionMake(location, span);
-
+    
     [mv setRegion:region animated:TRUE];    
-
+    
     UISegmentedControl* tempSeg = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects: @"Map", @"Satelitte", @"Hybrid", nil]];
+    tempSeg.frame = CGRectMake(33, 300, tempSeg.frame.size.width, tempSeg.frame.size.height);
     [tempSeg addTarget:self action:@selector(changeType) forControlEvents:UIControlEventValueChanged];
     [tempSeg setEnabled:YES forSegmentAtIndex:0];
+    tempSeg.selectedSegmentIndex = 0;
     self.mapType = tempSeg;
     [mv addSubview:mapType];
     [tempSeg release];
+    
     
     // add the map
 	[mv setDelegate:self];
     [self.view addSubview:mv];
     self.mapView = mv;
     [mv release];
-
+    
+    
+    // only add annotations after initializing mapView
+    self.mapAnnotations = [[NSMutableArray alloc] initWithCapacity:3];
+    
+    
+    // annotation for the City of San Francisco
+    ScenicAnnotation *sf = [[ScenicAnnotation alloc] init];
+    [sf setCoordinate:CLLocationCoordinate2DMake(37.786996, -122.419281)];
+    [sf setTitle:@"San Francisco"];
+    [sf setSubtitle:@"Founded: June 29, 1776"];
+    [self.mapAnnotations insertObject:sf atIndex:0];
+    [sf release];
+    
+    // grace cathedral
+    ScenicAnnotation *gt = [[ScenicAnnotation alloc] init];
+    [gt setCoordinate:CLLocationCoordinate2DMake(37.791847, -122.412891)];	
+    [gt setTitle:@"Grace Cathedral"];
+    [gt setSubtitle:@"Grace Cathedral is a house of prayer for all people."];
+    [self.mapAnnotations insertObject:gt atIndex:1];
+    [gt release];
+                                                 
+    // the embarcadero
+    ScenicAnnotation *em = [[ScenicAnnotation alloc] init];
+    [em setCoordinate:CLLocationCoordinate2DMake(37.7945047, -122.3940806)];	
+    [em setTitle:@"The Embarcadero"];
+    [em setSubtitle:@"Whether it's family fun, unique shopping, an up-close look at California's playful sea lions, an encounter with a street performer or delightful dining, San Francisco's PIER 39 is the place to be -- for PIER FUN!"];
+    [self.mapAnnotations insertObject:em atIndex:2];
+    [em release];
+    
+    [mapView addAnnotations:mapAnnotations];
+    
 }
 
 -(void) setRoute: (GMapsRoute*) route {
@@ -75,7 +116,7 @@
     MKReverseGeocoder * geoCoderStart=[[MKReverseGeocoder alloc] initWithCoordinate:startPos];
     [geoCoderStart setDelegate:self];
     [geoCoderStart start];
-
+    
     CLLocationCoordinate2D endPos = [route endPos];
     MKReverseGeocoder * geoCoderEnd=[[MKReverseGeocoder alloc] initWithCoordinate:endPos];
     [geoCoderEnd setDelegate:self];
@@ -108,10 +149,82 @@
 }
 
 - (MKAnnotationView *) mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>) annotation{
-	MKPinAnnotationView *annView=[[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:@"currentloc"];
-	annView.animatesDrop=TRUE;
-	return annView; 
     
+    // if it's the user location, just return nil.
+    if ([annotation isKindOfClass:[MKUserLocation class]])
+        return nil;
+    
+    // handle our two custom annotations
+    //
+    
+    NSLog(@"handling annotation");
+    
+    if ([annotation isKindOfClass:[ScenicAnnotation class]]) {
+        static NSString* ScenicAnnotationIdentifier = @"ScenicAnnotationIdentifier";
+        MKPinAnnotationView* pinView =
+        (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:ScenicAnnotationIdentifier];
+        if (!pinView)
+        {
+            MKAnnotationView *annotationView = [[[MKAnnotationView alloc] initWithAnnotation:annotation
+                                                                             reuseIdentifier:ScenicAnnotationIdentifier] autorelease];
+            annotationView.canShowCallout = YES;
+            
+            UIImage *flagImage = [UIImage imageNamed:@"location.png"];
+            
+            CGRect resizeRect;
+            
+            resizeRect.size = flagImage.size;
+            CGSize maxSize = CGRectInset(self.view.bounds,
+                                         [ScenicMapViewController annotationPadding],
+                                         [ScenicMapViewController annotationPadding]).size;
+            maxSize.height -= self.navigationController.navigationBar.frame.size.height + [ScenicMapViewController calloutHeight];
+            if (resizeRect.size.width > maxSize.width)
+                resizeRect.size = CGSizeMake(maxSize.width, resizeRect.size.height / resizeRect.size.width * maxSize.width);
+            if (resizeRect.size.height > maxSize.height)
+                resizeRect.size = CGSizeMake(resizeRect.size.width / resizeRect.size.height * maxSize.height, maxSize.height);
+            
+            resizeRect.origin = (CGPoint){0.0f, 0.0f};
+            UIGraphicsBeginImageContext(resizeRect.size);
+            [flagImage drawInRect:resizeRect];
+            UIImage *resizedImage = UIGraphicsGetImageFromCurrentImageContext();
+            UIGraphicsEndImageContext();
+            
+            annotationView.image = resizedImage;
+            annotationView.opaque = NO;
+            
+            UIImageView *sfIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"dest.png"]];
+            annotationView.leftCalloutAccessoryView = sfIconView;
+            [sfIconView release];
+            
+            UIButton* rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+            [rightButton addTarget:self
+                            action:@selector(showDetails:)
+                  forControlEvents:UIControlEventTouchUpInside];
+            annotationView.rightCalloutAccessoryView = rightButton;
+
+            
+            return annotationView;
+        }
+        else
+        {
+            pinView.annotation = annotation;
+        }
+        return pinView;
+    }
+    
+    return nil;
+}
+
+- (void)showDetails:(id)sender {
+    // the detail view does not want a toolbar so hide it
+  
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Still working on it;)" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];	
+    [alert release];	
+
+//  [self.navigationController setToolbarHidden:YES animated:NO];    
+//  [self.navigationController pushViewController:self.detailViewController animated:YES];
+
 }
 
 -(MKOverlayView*) mapView:(MKMapView *)mapView viewForOverlay:(id<MKOverlay>)overlay {
@@ -134,14 +247,23 @@
 }
 
 - (void)locationUpdate:(CLLocation *)location {
-     NSLog( @"%@", [location description]);
-     NSLog(@"%f %f", location.coordinate.latitude, location.coordinate.longitude);
-     currentLocation = location;
+    NSLog( @"%@", [location description]);
+    NSLog(@"%f %f", location.coordinate.latitude, location.coordinate.longitude);
+    currentLocation = location;
     
 }
 
 - (void)locationError:(NSError *)error {
     NSLog( @"%@", [error description]);
+}
+
+- (void)gotoLocation:(CLLocation *) location{
+    MKCoordinateRegion newRegion;
+    newRegion.center.latitude = location.coordinate.latitude;
+    newRegion.center.longitude = location.coordinate.longitude;
+    newRegion.span.latitudeDelta = 0.1;
+    newRegion.span.longitudeDelta = 0.1;
+    [self.mapView setRegion:newRegion animated:YES];
 }
 
 @end
