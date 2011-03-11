@@ -11,7 +11,7 @@
 
 static NSString* TYPE = @"yelp";
 static NSString* LAT_KEY = @"lat";
-static NSString* LNG_KEY = @"lng";
+static NSString* LNG_KEY = @"long";
 
 
 @implementation YelpFetcher

@@ -41,6 +41,9 @@
     else if ([fetcher isKindOfClass:[YelpFetcher class]]){
         [self handleYelp: response];
     }
+    else if ([fetcher isKindOfClass:[GMapsRouter class]]) {
+        [self handleRoutes: (NSArray*) response];
+    }
     [fetcher release];
 }
 

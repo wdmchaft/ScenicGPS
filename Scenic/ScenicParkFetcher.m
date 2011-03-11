@@ -12,7 +12,7 @@
 
 
 static NSString* RES_KEY = @"results";
-static NSString* TYPE = @"park";
+static NSString* TYPE = @"parks";
 
 
 @implementation ScenicParkFetcher
