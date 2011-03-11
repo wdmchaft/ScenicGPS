@@ -79,6 +79,8 @@
 		5DCF17D71320A47400D19D04 /* GMapsLeg.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DCF17D61320A47400D19D04 /* GMapsLeg.m */; };
 		AA05D77613298ED30088168C /* ScenicAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = AA05D77513298ED30088168C /* ScenicAnnotation.m */; };
 		AA07BD7313282D6500059D6C /* ScenicLocationCLController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA07BD7213282D6500059D6C /* ScenicLocationCLController.m */; };
+		AA3A912E1329DC4100894C16 /* location.png in Resources */ = {isa = PBXBuildFile; fileRef = AA3A912D1329DC4100894C16 /* location.png */; };
+		AA3A91301329DC4D00894C16 /* dest.png in Resources */ = {isa = PBXBuildFile; fileRef = AA3A912F1329DC4D00894C16 /* dest.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -216,6 +218,8 @@
 		AA05D77513298ED30088168C /* ScenicAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScenicAnnotation.m; sourceTree = "<group>"; };
 		AA07BD7113282D6500059D6C /* ScenicLocationCLController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScenicLocationCLController.h; sourceTree = "<group>"; };
 		AA07BD7213282D6500059D6C /* ScenicLocationCLController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScenicLocationCLController.m; sourceTree = "<group>"; };
+		AA3A912D1329DC4100894C16 /* location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = location.png; sourceTree = "<group>"; };
+		AA3A912F1329DC4D00894C16 /* dest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dest.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -406,8 +410,7 @@
 		5D0587DD132098C400D42F0A = {
 			isa = PBXGroup;
 			children = (
-				5DCAC3EF13270A0700A9D420 /* 29-heart.png */,
-				5DCAC3F013270A0800A9D420 /* 103-map.png */,
+				AA3A91311329DC5400894C16 /* Resources */,
 				5D0587F2132098C500D42F0A /* Scenic */,
 				5D058818132098C500D42F0A /* ScenicTests */,
 				5D0587EB132098C500D42F0A /* Frameworks */,
@@ -472,6 +475,17 @@
 				5D05881E132098C500D42F0A /* ScenicTests-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AA3A91311329DC5400894C16 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				AA3A912F1329DC4D00894C16 /* dest.png */,
+				AA3A912D1329DC4100894C16 /* location.png */,
+				5DCAC3F013270A0800A9D420 /* 103-map.png */,
+				5DCAC3EF13270A0700A9D420 /* 29-heart.png */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -556,6 +570,8 @@
 				5D017ACB1325A4F200B8EA6A /* ScenicMapViewController.xib in Resources */,
 				5DCAC3F113270A0D00A9D420 /* 29-heart.png in Resources */,
 				5DCAC3F213270A0D00A9D420 /* 103-map.png in Resources */,
+				AA3A912E1329DC4100894C16 /* location.png in Resources */,
+				AA3A91301329DC4D00894C16 /* dest.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -171,7 +171,7 @@
                                                                              reuseIdentifier:ScenicAnnotationIdentifier] autorelease];
             annotationView.canShowCallout = YES;
             
-            UIImage *flagImage = [UIImage imageNamed:@"103-map.png"];
+            UIImage *flagImage = [UIImage imageNamed:@"location.png"];
             
             CGRect resizeRect;
             
@@ -194,7 +194,7 @@
             annotationView.image = resizedImage;
             annotationView.opaque = NO;
             
-            UIImageView *sfIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"103-map.png"]];
+            UIImageView *sfIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"dest.png"]];
             annotationView.leftCalloutAccessoryView = sfIconView;
             [sfIconView release];
             
