@@ -1,9 +1,9 @@
 //
 //  TableCell.m
-//  iDeck
+//  Scenic
 //
-//  Created by Class Account on 4/16/10.
-//  Copyright 2010 __MyCompanyName__. All rights reserved.
+//  Created by Dan Lynch on 3/10/11.
+//  Copyright 2011 UC Berkeley. All rights reserved.
 //
 
 #import "TableCell.h"
