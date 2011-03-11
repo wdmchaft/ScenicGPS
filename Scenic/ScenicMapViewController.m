@@ -76,11 +76,33 @@
     
     
     // only add annotations after initializing mapView
-    self.mapAnnotations = [[NSMutableArray alloc] initWithCapacity:1];
+    self.mapAnnotations = [[NSMutableArray alloc] initWithCapacity:3];
+    
+    
     // annotation for the City of San Francisco
-    ScenicAnnotation *scenicAnnotation = [[ScenicAnnotation alloc] init];
-    [self.mapAnnotations insertObject:scenicAnnotation atIndex:0];
-    [scenicAnnotation release];
+    ScenicAnnotation *sf = [[ScenicAnnotation alloc] init];
+    [sf setCoordinate:CLLocationCoordinate2DMake(37.786996, -122.419281)];
+    [sf setTitle:@"San Francisco"];
+    [sf setSubtitle:@"Founded: June 29, 1776"];
+    [self.mapAnnotations insertObject:sf atIndex:0];
+    [sf release];
+    
+    // grace cathedral
+    ScenicAnnotation *gt = [[ScenicAnnotation alloc] init];
+    [gt setCoordinate:CLLocationCoordinate2DMake(37.791847, -122.412891)];	
+    [gt setTitle:@"Grace Cathedral"];
+    [gt setSubtitle:@"Grace Cathedral is a house of prayer for all people."];
+    [self.mapAnnotations insertObject:gt atIndex:1];
+    [gt release];
+                                                 
+    // the embarcadero
+    ScenicAnnotation *em = [[ScenicAnnotation alloc] init];
+    [em setCoordinate:CLLocationCoordinate2DMake(37.7945047, -122.3940806)];	
+    [em setTitle:@"The Embarcadero"];
+    [em setSubtitle:@"Whether it's family fun, unique shopping, an up-close look at California's playful sea lions, an encounter with a street performer or delightful dining, San Francisco's PIER 39 is the place to be -- for PIER FUN!"];
+    [self.mapAnnotations insertObject:em atIndex:2];
+    [em release];
+    
     [mapView addAnnotations:mapAnnotations];
     
 }

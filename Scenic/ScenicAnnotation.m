@@ -10,34 +10,37 @@
 
 
 @implementation ScenicAnnotation
-@synthesize image;
-@synthesize latitude;
-@synthesize longitude;
+@synthesize image, latitude, longitude, title, subtitle;
 
 
-- (CLLocationCoordinate2D)coordinate;
-{
-    CLLocationCoordinate2D theCoordinate;
-    theCoordinate.latitude = 37.786996;
-    theCoordinate.longitude = -122.419281;
-    return theCoordinate; 
+- (CLLocationCoordinate2D)coordinate { 
+    return coordinate;
 }
 
-- (void)dealloc
-{
+- (void)dealloc {
     [image release];
     [super dealloc];
 }
 
-- (NSString *)title
-{
-    return @"San Francisco";
+- (NSString *)title {
+    return title;
 }
 
 // optional
-- (NSString *)subtitle
-{
-    return @"Founded: June 29, 1776";
+- (NSString *)subtitle {
+    return subtitle;
 }
+
+- (void) setCoordinate:(CLLocationCoordinate2D)newCoordinate {
+    coordinate = newCoordinate;
+}
+
+- (void) setTitle : (NSString *) text {
+    title = text;
+}
+- (void) setSubtitle : (NSString *) text {
+    subtitle = text;
+}
+
 
 @end
