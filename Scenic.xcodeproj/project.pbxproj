@@ -255,7 +255,6 @@
 				AA05D77513298ED30088168C /* ScenicAnnotation.m */,
 				AA07BD7113282D6500059D6C /* ScenicLocationCLController.h */,
 				AA07BD7213282D6500059D6C /* ScenicLocationCLController.m */,
-				5D017AA41321A02C00B8EA6A /* Fetchers */,
 				5D05883B13209A3B00D42F0A /* GMapsGeolocation.h */,
 				5D05883C13209A3B00D42F0A /* GMapsGeolocation.m */,
 				5DCF17D11320A33100D19D04 /* GMapsRoute.h */,
@@ -449,6 +448,7 @@
 				5D017AA61321A05700B8EA6A /* Controllers */,
 				5D017AA51321A04E00B8EA6A /* Xibs */,
 				5D017AA313219E3500B8EA6A /* Networking */,
+				5D017AA41321A02C00B8EA6A /* Fetchers */,
 				5D017AA213219D8300B8EA6A /* Routing And Map Objects */,
 			);
 			path = Scenic;
