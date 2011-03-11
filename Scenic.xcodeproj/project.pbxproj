@@ -81,6 +81,7 @@
 		AA07BD7313282D6500059D6C /* ScenicLocationCLController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA07BD7213282D6500059D6C /* ScenicLocationCLController.m */; };
 		AA3A912E1329DC4100894C16 /* location.png in Resources */ = {isa = PBXBuildFile; fileRef = AA3A912D1329DC4100894C16 /* location.png */; };
 		AA3A91301329DC4D00894C16 /* dest.png in Resources */ = {isa = PBXBuildFile; fileRef = AA3A912F1329DC4D00894C16 /* dest.png */; };
+		AA3A91401329E45300894C16 /* TableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3A913F1329E45300894C16 /* TableCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -220,6 +221,8 @@
 		AA07BD7213282D6500059D6C /* ScenicLocationCLController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScenicLocationCLController.m; sourceTree = "<group>"; };
 		AA3A912D1329DC4100894C16 /* location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = location.png; sourceTree = "<group>"; };
 		AA3A912F1329DC4D00894C16 /* dest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dest.png; sourceTree = "<group>"; };
+		AA3A913E1329E45300894C16 /* TableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableCell.h; sourceTree = "<group>"; };
+		AA3A913F1329E45300894C16 /* TableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -374,8 +377,8 @@
 				5D05886F13209A3B00D42F0A /* ScenicAppDelegate.m */,
 				5D05887113209A3B00D42F0A /* HistoricalRouteViewController.h */,
 				5D05887213209A3B00D42F0A /* HistoricalRouteViewController.m */,
-				5D05887413209A3B00D42F0A /* RouteViewController.h */,
 				5D05887513209A3B00D42F0A /* RouteViewController.m */,
+				5D05887413209A3B00D42F0A /* RouteViewController.h */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -383,6 +386,8 @@
 		5D017AA71321A05F00B8EA6A /* Additional */ = {
 			isa = PBXGroup;
 			children = (
+				AA3A913E1329E45300894C16 /* TableCell.h */,
+				AA3A913F1329E45300894C16 /* TableCell.m */,
 				5D05886713209A3B00D42F0A /* Scenic-Info.plist */,
 				5D05886813209A3B00D42F0A /* InfoPlist.strings */,
 				5D05886913209A3B00D42F0A /* Scenic-Prefix.pch */,
@@ -652,6 +657,7 @@
 				5D490DD1132985E0006905A9 /* ScenicParkFetcher.m in Sources */,
 				5D490DD413298693006905A9 /* YelpFetcher.m in Sources */,
 				AA05D77613298ED30088168C /* ScenicAnnotation.m in Sources */,
+				AA3A91401329E45300894C16 /* TableCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

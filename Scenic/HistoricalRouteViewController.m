@@ -7,9 +7,11 @@
 //
 
 #import "HistoricalRouteViewController.h"
-
+#import "TableCell.h"
 
 @implementation HistoricalRouteViewController
+@synthesize tableOfRoutes, routes;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -39,6 +41,11 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    routes = [NSArray arrayWithObjects:@"route1", @"asfas", @"Big Two", @"Custom", nil];
+	[routes retain];
+
+    
 }
 
 - (void)viewDidUnload
@@ -53,5 +60,45 @@
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
+
+
+
+//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {return 1;}
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [routes count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+	
+	static NSString *CellIdentifier = @"Cell";
+	
+	TableCell *cell = (TableCell*)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+	if (cell == nil) {
+		cell = [[[TableCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
+	}
+	
+    cell.primaryLabel.text = [routes objectAtIndex:indexPath.row];
+	cell.secondaryLabel.text = [routes objectAtIndex:indexPath.row];
+    cell.myImageView.image = [UIImage imageNamed:@"dest.png"];
+	
+	return cell;
+	
+}
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+	return 50;
+}
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"selected %d", indexPath.row);	
+}
+
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+	return @"Select a Route";
+}
+
 
 @end
