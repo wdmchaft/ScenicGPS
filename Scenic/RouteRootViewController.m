@@ -44,9 +44,6 @@
     } else {        
         [self handleRoutes: (NSArray*) response];    
     }
-    else if ([fetcher isKindOfClass:[GMapsRouter class]]) {
-        [self handleRoutes: (NSArray*) response];
-    }
     [fetcher release];
 }
 
