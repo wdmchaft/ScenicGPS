@@ -9,12 +9,7 @@
 #import <Foundation/Foundation.h>
 
 
-@interface AnnotationButton : UIButton {
-    
-    NSString * geoHash;
-    
-}
+@interface AnnotationButton : UIButton { }
 
-@property (nonatomic, retain) NSString * geoHash;
 
 @end

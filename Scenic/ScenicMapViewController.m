@@ -199,8 +199,7 @@
             
             AnnotationButton* rightButton = [AnnotationButton buttonWithType:UIButtonTypeDetailDisclosure];
             [rightButton addTarget:self action:@selector(showDetails:) forControlEvents:UIControlEventTouchUpInside];
-//          rightButton.geoHash = [GeoHash hash:[(ScenicAnnotation *)annotation getCoordinate]];
-            [GeoHash hash:[(ScenicAnnotation *)annotation getCoordinate]];
+            //[GeoHash hash:[(ScenicAnnotation *)annotation getCoordinate]];
             annotationView.rightCalloutAccessoryView = rightButton;
 
             
@@ -264,6 +263,13 @@
     newRegion.span.latitudeDelta = 0.1;
     newRegion.span.longitudeDelta = 0.1;
     [self.mapView setRegion:newRegion animated:YES];
+}
+
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
+
+    ScenicAnnotation * a = view.annotation;
+    NSLog(@"we have %@", a);
+    
 }
 
 @end

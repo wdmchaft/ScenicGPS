@@ -10,6 +10,5 @@
 
 
 @implementation AnnotationButton
-@synthesize geoHash;
 
 @end
