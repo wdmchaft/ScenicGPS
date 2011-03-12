@@ -10,7 +10,7 @@
 #import <MapKit/MapKit.h>
 #import "GMapsRoute.h"
 #import "ScenicAnnotation.h"
-
+#import "AnnotationButton.h"
 
 @implementation ScenicMapViewController
 @synthesize mapView, mPlacemark, mapType, locationController, currentLocation, mapAnnotations;
@@ -196,7 +196,7 @@
             annotationView.leftCalloutAccessoryView = sfIconView;
             [sfIconView release];
             
-            UIButton* rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+            AnnotationButton* rightButton = [AnnotationButton buttonWithType:UIButtonTypeDetailDisclosure];
             [rightButton addTarget:self
                             action:@selector(showDetails:)
                   forControlEvents:UIControlEventTouchUpInside];

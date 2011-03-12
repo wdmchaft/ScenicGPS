@@ -82,6 +82,7 @@
 		AACD9568132A8B0B00855892 /* 29-heart.png in Resources */ = {isa = PBXBuildFile; fileRef = AACD9564132A8B0B00855892 /* 29-heart.png */; };
 		AACD9569132A8B0B00855892 /* dest.png in Resources */ = {isa = PBXBuildFile; fileRef = AACD9565132A8B0B00855892 /* dest.png */; };
 		AACD956A132A8B0B00855892 /* location.png in Resources */ = {isa = PBXBuildFile; fileRef = AACD9566132A8B0B00855892 /* location.png */; };
+		AAEB698E132AF2B00013B172 /* AnnotationButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AAEB698D132AF2B00013B172 /* AnnotationButton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -223,6 +224,8 @@
 		AACD9564132A8B0B00855892 /* 29-heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "29-heart.png"; sourceTree = "<group>"; };
 		AACD9565132A8B0B00855892 /* dest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dest.png; sourceTree = "<group>"; };
 		AACD9566132A8B0B00855892 /* location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = location.png; sourceTree = "<group>"; };
+		AAEB698C132AF2B00013B172 /* AnnotationButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnnotationButton.h; sourceTree = "<group>"; };
+		AAEB698D132AF2B00013B172 /* AnnotationButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnnotationButton.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -258,8 +261,6 @@
 		5D017AA213219D8300B8EA6A /* Routing And Map Objects */ = {
 			isa = PBXGroup;
 			children = (
-				AA05D77413298ED30088168C /* ScenicAnnotation.h */,
-				AA05D77513298ED30088168C /* ScenicAnnotation.m */,
 				AA07BD7113282D6500059D6C /* ScenicLocationCLController.h */,
 				AA07BD7213282D6500059D6C /* ScenicLocationCLController.m */,
 				5D05883B13209A3B00D42F0A /* GMapsGeolocation.h */,
@@ -451,6 +452,7 @@
 		5D0587F2132098C500D42F0A /* Scenic */ = {
 			isa = PBXGroup;
 			children = (
+				AAEB698A132AF2810013B172 /* Annotations */,
 				5D017AAB13255C1B00B8EA6A /* Scenic Content */,
 				5D017AA71321A05F00B8EA6A /* Additional */,
 				5D017AA61321A05700B8EA6A /* Controllers */,
@@ -499,6 +501,17 @@
 				AACD9566132A8B0B00855892 /* location.png */,
 			);
 			path = images;
+			sourceTree = "<group>";
+		};
+		AAEB698A132AF2810013B172 /* Annotations */ = {
+			isa = PBXGroup;
+			children = (
+				AA05D77413298ED30088168C /* ScenicAnnotation.h */,
+				AA05D77513298ED30088168C /* ScenicAnnotation.m */,
+				AAEB698C132AF2B00013B172 /* AnnotationButton.h */,
+				AAEB698D132AF2B00013B172 /* AnnotationButton.m */,
+			);
+			name = Annotations;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -666,6 +679,7 @@
 				5D490DD413298693006905A9 /* YelpFetcher.m in Sources */,
 				AA05D77613298ED30088168C /* ScenicAnnotation.m in Sources */,
 				AA3A91401329E45300894C16 /* TableCell.m in Sources */,
+				AAEB698E132AF2B00013B172 /* AnnotationButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
