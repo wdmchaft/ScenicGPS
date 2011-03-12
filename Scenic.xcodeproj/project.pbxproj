@@ -83,6 +83,7 @@
 		AACD9569132A8B0B00855892 /* dest.png in Resources */ = {isa = PBXBuildFile; fileRef = AACD9565132A8B0B00855892 /* dest.png */; };
 		AACD956A132A8B0B00855892 /* location.png in Resources */ = {isa = PBXBuildFile; fileRef = AACD9566132A8B0B00855892 /* location.png */; };
 		AAEB698E132AF2B00013B172 /* AnnotationButton.m in Sources */ = {isa = PBXBuildFile; fileRef = AAEB698D132AF2B00013B172 /* AnnotationButton.m */; };
+		AAEB699A132B2ADC0013B172 /* GeoHash.m in Sources */ = {isa = PBXBuildFile; fileRef = AAEB6999132B2ADC0013B172 /* GeoHash.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -226,6 +227,8 @@
 		AACD9566132A8B0B00855892 /* location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = location.png; sourceTree = "<group>"; };
 		AAEB698C132AF2B00013B172 /* AnnotationButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnnotationButton.h; sourceTree = "<group>"; };
 		AAEB698D132AF2B00013B172 /* AnnotationButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnnotationButton.m; sourceTree = "<group>"; };
+		AAEB6998132B2ADC0013B172 /* GeoHash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeoHash.h; sourceTree = "<group>"; };
+		AAEB6999132B2ADC0013B172 /* GeoHash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeoHash.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -452,6 +455,7 @@
 		5D0587F2132098C500D42F0A /* Scenic */ = {
 			isa = PBXGroup;
 			children = (
+				AAEB6997132B2AB20013B172 /* GeoHash */,
 				AAEB698A132AF2810013B172 /* Annotations */,
 				5D017AAB13255C1B00B8EA6A /* Scenic Content */,
 				5D017AA71321A05F00B8EA6A /* Additional */,
@@ -512,6 +516,15 @@
 				AAEB698D132AF2B00013B172 /* AnnotationButton.m */,
 			);
 			name = Annotations;
+			sourceTree = "<group>";
+		};
+		AAEB6997132B2AB20013B172 /* GeoHash */ = {
+			isa = PBXGroup;
+			children = (
+				AAEB6998132B2ADC0013B172 /* GeoHash.h */,
+				AAEB6999132B2ADC0013B172 /* GeoHash.m */,
+			);
+			name = GeoHash;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -680,6 +693,7 @@
 				AA05D77613298ED30088168C /* ScenicAnnotation.m in Sources */,
 				AA3A91401329E45300894C16 /* TableCell.m in Sources */,
 				AAEB698E132AF2B00013B172 /* AnnotationButton.m in Sources */,
+				AAEB699A132B2ADC0013B172 /* GeoHash.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

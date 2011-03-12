@@ -11,6 +11,7 @@
 #import "GMapsRoute.h"
 #import "ScenicAnnotation.h"
 #import "AnnotationButton.h"
+#import "GeoHash.h"
 
 @implementation ScenicMapViewController
 @synthesize mapView, mPlacemark, mapType, locationController, currentLocation, mapAnnotations;
@@ -79,6 +80,8 @@
     // only add annotations after initializing mapView
     self.mapAnnotations = [[NSMutableArray alloc] initWithCapacity:3];
     
+    [GeoHash hash:CLLocationCoordinate2DMake(57.64911,10.40744)];
+    // should be  u4pruydqqvj
     
     // annotation for the City of San Francisco
     ScenicAnnotation *sf = [[ScenicAnnotation alloc] init];
@@ -157,8 +160,6 @@
     // handle our two custom annotations
     //
     
-    NSLog(@"handling annotation");
-    
     if ([annotation isKindOfClass:[ScenicAnnotation class]]) {
         static NSString* ScenicAnnotationIdentifier = @"ScenicAnnotationIdentifier";
         MKPinAnnotationView* pinView =
@@ -235,26 +236,25 @@
 }
 
 - (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFailWithError:(NSError *)error{
-	NSLog(@"Reverse Geocoder Errored");
-    
+	//NSLog(@"Reverse Geocoder Errored");
 }
 
 - (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFindPlacemark:(MKPlacemark *)placemark{
-	NSLog(@"Reverse Geocoder completed");
+	//NSLog(@"Reverse Geocoder completed");
 	mPlacemark=placemark;
     self.title = [mPlacemark description];
 	[mapView addAnnotation:placemark];
 }
 
 - (void)locationUpdate:(CLLocation *)location {
-    NSLog( @"%@", [location description]);
-    NSLog(@"%f %f", location.coordinate.latitude, location.coordinate.longitude);
+  //  NSLog( @"%@", [location description]);
+  //  NSLog(@"%f %f", location.coordinate.latitude, location.coordinate.longitude);
     currentLocation = location;
     
 }
 
 - (void)locationError:(NSError *)error {
-    NSLog( @"%@", [error description]);
+  //NSLog( @"%@", [error description]);
 }
 
 - (void)gotoLocation:(CLLocation *) location{
