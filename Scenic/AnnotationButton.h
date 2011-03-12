@@ -11,8 +11,10 @@
 
 @interface AnnotationButton : UIButton {
     
+    NSString * geoHash;
     
 }
 
+@property (nonatomic, retain) NSString * geoHash;
 
 @end

@@ -34,6 +34,11 @@
     coordinate = newCoordinate;
 }
 
+- (CLLocationCoordinate2D) getCoordinate {
+    return coordinate;
+}
+
+
 - (void) setTitle : (NSString *) text {
     title = text;
 }

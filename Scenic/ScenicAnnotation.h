@@ -19,11 +19,13 @@
     NSString * subtitle;
     CLLocationCoordinate2D coordinate;
     
+    
 }
 
 - (void) setCoordinate:(CLLocationCoordinate2D)newCoordinate;
 - (void) setTitle : (NSString *) text;
 - (void) setSubtitle : (NSString *) text;
+- (CLLocationCoordinate2D) getCoordinate;
 
 @property (nonatomic, retain) UIImage *image;
 @property (nonatomic, retain) NSString *title;

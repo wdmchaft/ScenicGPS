@@ -198,9 +198,9 @@
             [sfIconView release];
             
             AnnotationButton* rightButton = [AnnotationButton buttonWithType:UIButtonTypeDetailDisclosure];
-            [rightButton addTarget:self
-                            action:@selector(showDetails:)
-                  forControlEvents:UIControlEventTouchUpInside];
+            [rightButton addTarget:self action:@selector(showDetails:) forControlEvents:UIControlEventTouchUpInside];
+//          rightButton.geoHash = [GeoHash hash:[(ScenicAnnotation *)annotation getCoordinate]];
+            [GeoHash hash:[(ScenicAnnotation *)annotation getCoordinate]];
             annotationView.rightCalloutAccessoryView = rightButton;
 
             
