@@ -261,6 +261,15 @@
     
     
     ScenicContentDisplayViewController * details = [[ScenicContentDisplayViewController alloc] init];
+    
+    // temporary for testing
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(50, 100, 200, 100)];
+    titleLabel.text = a.title;
+    UILabel *subtitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(50, 180, 200, 100)];
+    subtitleLabel.text = a.subtitle;
+    [details.view addSubview:subtitleLabel];
+    [details.view addSubview:titleLabel];
+    
     [self.navigationController pushViewController:details animated:YES];
     [details release];
 
