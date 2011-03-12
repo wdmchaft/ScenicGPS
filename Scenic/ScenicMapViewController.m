@@ -12,6 +12,7 @@
 #import "ScenicAnnotation.h"
 #import "AnnotationButton.h"
 #import "GeoHash.h"
+#import "ScenicContentDisplayViewController.h"
 
 @implementation ScenicMapViewController
 @synthesize mapView, mPlacemark, mapType, locationController, currentLocation, mapAnnotations;
@@ -198,7 +199,6 @@
             [sfIconView release];
             
             AnnotationButton* rightButton = [AnnotationButton buttonWithType:UIButtonTypeDetailDisclosure];
-            [rightButton addTarget:self action:@selector(showDetails:) forControlEvents:UIControlEventTouchUpInside];
             //[GeoHash hash:[(ScenicAnnotation *)annotation getCoordinate]];
             annotationView.rightCalloutAccessoryView = rightButton;
 
@@ -215,17 +215,6 @@
     return nil;
 }
 
-- (void)showDetails:(id)sender {
-    // the detail view does not want a toolbar so hide it
-  
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Still working on it;)" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [alert show];	
-    [alert release];	
-
-//  [self.navigationController setToolbarHidden:YES animated:NO];    
-//  [self.navigationController pushViewController:self.detailViewController animated:YES];
-
-}
 
 -(MKOverlayView*) mapView:(MKMapView *)mapView viewForOverlay:(id<MKOverlay>)overlay {
     MKPolylineView* plView = [[[MKPolylineView alloc] initWithPolyline:((MKPolyline*) overlay)] autorelease];
@@ -269,6 +258,12 @@
 
     ScenicAnnotation * a = view.annotation;
     NSLog(@"we have %@", a);
+    
+    
+    ScenicContentDisplayViewController * details = [[ScenicContentDisplayViewController alloc] init];
+    [self.navigationController pushViewController:details animated:YES];
+    [details release];
+
     
 }
 

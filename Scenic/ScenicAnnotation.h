@@ -17,9 +17,8 @@
     UIImage *image;    
     NSString * title;
     NSString * subtitle;
+    
     CLLocationCoordinate2D coordinate;
-    
-    
 }
 
 - (void) setCoordinate:(CLLocationCoordinate2D)newCoordinate;
