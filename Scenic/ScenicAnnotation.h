@@ -14,22 +14,19 @@
 
 @interface ScenicAnnotation : NSObject <MKAnnotation>
 {
-    UIImage *image;
-    NSNumber *latitude;
-    NSNumber *longitude;
-    
+    UIImage *image;    
     NSString * title;
     NSString * subtitle;
+    
     CLLocationCoordinate2D coordinate;
 }
 
 - (void) setCoordinate:(CLLocationCoordinate2D)newCoordinate;
 - (void) setTitle : (NSString *) text;
 - (void) setSubtitle : (NSString *) text;
+- (CLLocationCoordinate2D) getCoordinate;
 
 @property (nonatomic, retain) UIImage *image;
-@property (nonatomic, retain) NSNumber *latitude;
-@property (nonatomic, retain) NSNumber *longitude;
 @property (nonatomic, retain) NSString *title;
 @property (nonatomic, retain) NSString *subtitle;
 

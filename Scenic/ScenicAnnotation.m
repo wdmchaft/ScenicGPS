@@ -10,8 +10,7 @@
 
 
 @implementation ScenicAnnotation
-@synthesize image, latitude, longitude, title, subtitle;
-
+@synthesize image, title, subtitle;
 
 - (CLLocationCoordinate2D)coordinate { 
     return coordinate;
@@ -35,12 +34,16 @@
     coordinate = newCoordinate;
 }
 
+- (CLLocationCoordinate2D) getCoordinate {
+    return coordinate;
+}
+
+
 - (void) setTitle : (NSString *) text {
     title = text;
 }
 - (void) setSubtitle : (NSString *) text {
     subtitle = text;
 }
-
 
 @end

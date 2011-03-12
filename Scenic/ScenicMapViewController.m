@@ -10,7 +10,9 @@
 #import <MapKit/MapKit.h>
 #import "GMapsRoute.h"
 #import "ScenicAnnotation.h"
-
+#import "AnnotationButton.h"
+#import "GeoHash.h"
+#import "ScenicContentDisplayViewController.h"
 
 @implementation ScenicMapViewController
 @synthesize mapView, mPlacemark, mapType, locationController, currentLocation, mapAnnotations;
@@ -79,6 +81,8 @@
     // only add annotations after initializing mapView
     self.mapAnnotations = [[NSMutableArray alloc] initWithCapacity:3];
     
+    [GeoHash hash:CLLocationCoordinate2DMake(57.64911,10.40744)];
+    // should be  u4pruydqqvj
     
     // annotation for the City of San Francisco
     ScenicAnnotation *sf = [[ScenicAnnotation alloc] init];
@@ -157,8 +161,6 @@
     // handle our two custom annotations
     //
     
-    NSLog(@"handling annotation");
-    
     if ([annotation isKindOfClass:[ScenicAnnotation class]]) {
         static NSString* ScenicAnnotationIdentifier = @"ScenicAnnotationIdentifier";
         MKPinAnnotationView* pinView =
@@ -196,10 +198,8 @@
             annotationView.leftCalloutAccessoryView = sfIconView;
             [sfIconView release];
             
-            UIButton* rightButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-            [rightButton addTarget:self
-                            action:@selector(showDetails:)
-                  forControlEvents:UIControlEventTouchUpInside];
+            AnnotationButton* rightButton = [AnnotationButton buttonWithType:UIButtonTypeDetailDisclosure];
+            //[GeoHash hash:[(ScenicAnnotation *)annotation getCoordinate]];
             annotationView.rightCalloutAccessoryView = rightButton;
 
             
@@ -215,17 +215,6 @@
     return nil;
 }
 
-- (void)showDetails:(id)sender {
-    // the detail view does not want a toolbar so hide it
-  
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Still working on it;)" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    [alert show];	
-    [alert release];	
-
-//  [self.navigationController setToolbarHidden:YES animated:NO];    
-//  [self.navigationController pushViewController:self.detailViewController animated:YES];
-
-}
 
 -(MKOverlayView*) mapView:(MKMapView *)mapView viewForOverlay:(id<MKOverlay>)overlay {
     MKPolylineView* plView = [[[MKPolylineView alloc] initWithPolyline:((MKPolyline*) overlay)] autorelease];
@@ -235,26 +224,25 @@
 }
 
 - (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFailWithError:(NSError *)error{
-	NSLog(@"Reverse Geocoder Errored");
-    
+	//NSLog(@"Reverse Geocoder Errored");
 }
 
 - (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFindPlacemark:(MKPlacemark *)placemark{
-	NSLog(@"Reverse Geocoder completed");
+	//NSLog(@"Reverse Geocoder completed");
 	mPlacemark=placemark;
     self.title = [mPlacemark description];
 	[mapView addAnnotation:placemark];
 }
 
 - (void)locationUpdate:(CLLocation *)location {
-    NSLog( @"%@", [location description]);
-    NSLog(@"%f %f", location.coordinate.latitude, location.coordinate.longitude);
+  //  NSLog( @"%@", [location description]);
+  //  NSLog(@"%f %f", location.coordinate.latitude, location.coordinate.longitude);
     currentLocation = location;
     
 }
 
 - (void)locationError:(NSError *)error {
-    NSLog( @"%@", [error description]);
+  //NSLog( @"%@", [error description]);
 }
 
 - (void)gotoLocation:(CLLocation *) location{
@@ -264,6 +252,28 @@
     newRegion.span.latitudeDelta = 0.1;
     newRegion.span.longitudeDelta = 0.1;
     [self.mapView setRegion:newRegion animated:YES];
+}
+
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
+
+    ScenicAnnotation * a = view.annotation;
+    NSLog(@"we have %@", a);
+    
+    
+    ScenicContentDisplayViewController * details = [[ScenicContentDisplayViewController alloc] init];
+    
+    // temporary for testing
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(50, 100, 200, 100)];
+    titleLabel.text = a.title;
+    UILabel *subtitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(50, 180, 200, 100)];
+    subtitleLabel.text = a.subtitle;
+    [details.view addSubview:subtitleLabel];
+    [details.view addSubview:titleLabel];
+    
+    [self.navigationController pushViewController:details animated:YES];
+    [details release];
+
+    
 }
 
 @end
