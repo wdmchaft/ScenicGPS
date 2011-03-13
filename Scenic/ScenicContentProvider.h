@@ -11,6 +11,6 @@
 
 @protocol ScenicContentProvider <NSObject>
 
--(UIImage*) provideImage;
+-(UIView*) provideView;
 
 @end

@@ -1,30 +1,35 @@
 //
-//  ScenicContentViewController.m
+//  ScenicContentTextVC.m
 //  Scenic
 //
-//  Created by Jack Reilly on 3/7/11.
+//  Created by Jack Reilly on 3/12/11.
 //  Copyright 2011 UC Berkeley. All rights reserved.
 //
 
-#import "ScenicContentViewController.h"
-#import "ScenicContent.h"
-#import "ScenicContentDisplayViewController.h"
+#import "ScenicContentTextVC.h"
 
-@implementation ScenicContentViewController
-@synthesize content, displayVC, titleLabel;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andContent: (ScenicContent*) _content
+@implementation ScenicContentTextVC
+@synthesize descriptionLabel, description;
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andDescription: (NSString*) _description
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.content = _content; 
+        self.description = _description;
     }
     return self;
+}
+
+-(UIView*) provideView {
+    return self.view;
 }
 
 - (void)dealloc
 {
     [super dealloc];
+    [description release];
+    [descriptionLabel release];
 }
 
 - (void)didReceiveMemoryWarning
@@ -40,9 +45,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self.displayVC addContentView:[self.content.contentProvider provideView]];
-    self.titleLabel.text = self.content.title;
-    self.title = self.content.title;
+    descriptionLabel.text = description;
 }
 
 - (void)viewDidUnload

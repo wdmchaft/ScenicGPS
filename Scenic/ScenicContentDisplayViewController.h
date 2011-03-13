@@ -12,6 +12,6 @@
 @interface ScenicContentDisplayViewController : UIViewController {
 }
 
--(void) addImage: (UIImage*) image;
+-(void) addContentView: (UIView*) cView;
 
 @end

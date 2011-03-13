@@ -41,11 +41,11 @@
     // Do any additional setup after loading the view from its nib.
 }
 
--(void) addImage: (UIImage*) image {
-    UIImageView* iv = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-    iv.image = image;
-    [self.view addSubview:iv];
-    [iv release];
+-(void) addContentView: (UIView*) cView {
+    cView.contentMode = UIViewContentModeScaleAspectFit;
+    cView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    cView.frame = self.view.bounds;
+    [self.view addSubview:cView];
 }
 
 - (void)viewDidUnload

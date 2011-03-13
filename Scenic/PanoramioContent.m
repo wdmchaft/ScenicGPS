@@ -12,8 +12,10 @@
 @implementation PanoramioContent
 @synthesize url;
 
--(UIImage*) provideImage {
-    return [UIImage imageWithData:[NSData dataWithContentsOfURL:url]];
+-(UIView*) provideView {  
+    UIImage* img = [UIImage imageWithData:[NSData dataWithContentsOfURL:url]];
+    UIImageView* view = [[UIImageView alloc] initWithImage:img];
+    return [view autorelease];
 }
 
 @end

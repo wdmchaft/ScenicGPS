@@ -69,6 +69,8 @@
 		5D0588A313209B8800D42F0A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D05889F13209B8800D42F0A /* SystemConfiguration.framework */; };
 		5D1DCCCB1326A3630013BD05 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D1DCCCA1326A3630013BD05 /* MapKit.framework */; };
 		5D1DCCCE1326A6A80013BD05 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D1DCCCD1326A6A70013BD05 /* CoreLocation.framework */; };
+		5D2FCF56132C0DC7005B08DD /* ScenicContentTextVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D2FCF54132C0DB5005B08DD /* ScenicContentTextVC.m */; };
+		5D2FCF57132C0DC7005B08DD /* ScenicContentTextVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D2FCF55132C0DB8005B08DD /* ScenicContentTextVC.xib */; };
 		5D490DCB13297B43006905A9 /* ScenicServerFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D490DCA13297B41006905A9 /* ScenicServerFetcher.m */; };
 		5D490DCE1329834B006905A9 /* PanoramioPicFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D490DCD1329834A006905A9 /* PanoramioPicFetcher.m */; };
 		5D490DD1132985E0006905A9 /* ScenicParkFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D490DD0132985DE006905A9 /* ScenicParkFetcher.m */; };
@@ -203,6 +205,9 @@
 		5D05889F13209B8800D42F0A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		5D1DCCCA1326A3630013BD05 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		5D1DCCCD1326A6A70013BD05 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		5D2FCF53132C0DB3005B08DD /* ScenicContentTextVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScenicContentTextVC.h; sourceTree = "<group>"; };
+		5D2FCF54132C0DB5005B08DD /* ScenicContentTextVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScenicContentTextVC.m; sourceTree = "<group>"; };
+		5D2FCF55132C0DB8005B08DD /* ScenicContentTextVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScenicContentTextVC.xib; sourceTree = "<group>"; };
 		5D490DC913297B40006905A9 /* ScenicServerFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScenicServerFetcher.h; sourceTree = "<group>"; };
 		5D490DCA13297B41006905A9 /* ScenicServerFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScenicServerFetcher.m; sourceTree = "<group>"; };
 		5D490DCC13298349006905A9 /* PanoramioPicFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanoramioPicFetcher.h; sourceTree = "<group>"; };
@@ -359,6 +364,7 @@
 		5D017AA51321A04E00B8EA6A /* Xibs */ = {
 			isa = PBXGroup;
 			children = (
+				5D2FCF55132C0DB8005B08DD /* ScenicContentTextVC.xib */,
 				5D017ABF13257C9400B8EA6A /* ScenicContentDisplayViewController.xib */,
 				5D017AB013255D3600B8EA6A /* ScenicContentViewController.xib */,
 				5D05886C13209A3B00D42F0A /* RouteRootViewController.xib */,
@@ -412,6 +418,8 @@
 				5D017ABB132564BA00B8EA6A /* PanoramioContent.m */,
 				5D017ABD13257C8D00B8EA6A /* ScenicContentDisplayViewController.h */,
 				5D017ABE13257C8F00B8EA6A /* ScenicContentDisplayViewController.m */,
+				5D2FCF53132C0DB3005B08DD /* ScenicContentTextVC.h */,
+				5D2FCF54132C0DB5005B08DD /* ScenicContentTextVC.m */,
 			);
 			name = "Scenic Content";
 			sourceTree = "<group>";
@@ -611,6 +619,7 @@
 				AACD9568132A8B0B00855892 /* 29-heart.png in Resources */,
 				AACD9569132A8B0B00855892 /* dest.png in Resources */,
 				AACD956A132A8B0B00855892 /* location.png in Resources */,
+				5D2FCF57132C0DC7005B08DD /* ScenicContentTextVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -694,6 +703,7 @@
 				AA3A91401329E45300894C16 /* TableCell.m in Sources */,
 				AAEB698E132AF2B00013B172 /* AnnotationButton.m in Sources */,
 				AAEB699A132B2ADC0013B172 /* GeoHash.m in Sources */,
+				5D2FCF56132C0DC7005B08DD /* ScenicContentTextVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

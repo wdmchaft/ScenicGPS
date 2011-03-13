@@ -10,9 +10,13 @@
 #import <MapKit/MapKit.h>
 #import "GMapsRoute.h"
 #import "ScenicAnnotation.h"
-#import "AnnotationButton.h"
 #import "GeoHash.h"
+#import "AnnotationButton.h"
 #import "ScenicContentDisplayViewController.h"
+#import "ScenicContent.h"
+#import "ScenicContentTextVC.h"
+#import "ScenicContentViewController.h"
+#import "PanoramioContent.h"
 
 @implementation ScenicMapViewController
 @synthesize mapView, mPlacemark, mapType, locationController, currentLocation, mapAnnotations;
@@ -259,7 +263,19 @@
     ScenicAnnotation * a = view.annotation;
     NSLog(@"we have %@", a);
     
+    ScenicContent* content = [[ScenicContent alloc] init];
+    content.title = a.title;
     
+    
+    ScenicContentTextVC* textVC = [[ScenicContentTextVC alloc] initWithNibName:@"ScenicContentTextVC" bundle:nil andDescription:a.subtitle];
+    content.contentProvider = textVC;
+    [textVC release];
+    ScenicContentViewController* scenicVC = [[ScenicContentViewController alloc] initWithNibName:@"ScenicContentViewController" bundle:nil andContent:content];
+    [content release];
+    [self.navigationController pushViewController:scenicVC animated:YES];
+    [scenicVC release];
+    
+    /*
     ScenicContentDisplayViewController * details = [[ScenicContentDisplayViewController alloc] init];
     
     // temporary for testing
@@ -272,6 +288,7 @@
     
     [self.navigationController pushViewController:details animated:YES];
     [details release];
+     */
 
     
 }
