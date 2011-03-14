@@ -11,7 +11,6 @@
 #import "GMapsRoute.h"
 #import "ScenicAnnotation.h"
 #import "GeoHash.h"
-#import "AnnotationButton.h"
 #import "ScenicContentDisplayViewController.h"
 #import "ScenicContent.h"
 #import "ScenicContentTextVC.h"
@@ -202,10 +201,15 @@
             annotationView.leftCalloutAccessoryView = sfIconView;
             [sfIconView release];
             
-            AnnotationButton* rightButton = [AnnotationButton buttonWithType:UIButtonTypeDetailDisclosure];
+            UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
             //[GeoHash hash:[(ScenicAnnotation *)annotation getCoordinate]];
             annotationView.rightCalloutAccessoryView = rightButton;
-
+            
+            UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+            [button setFrame:CGRectMake(0.0,0.0, 28.0, 28.0)];
+            [button setImage:[UIImage imageNamed:@"add-28.png"] forState:UIControlStateNormal];
+            annotationView.leftCalloutAccessoryView = button;
+            
             
             return annotationView;
         }
@@ -261,36 +265,30 @@
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
 
     ScenicAnnotation * a = view.annotation;
-    NSLog(@"we have %@", a);
-    
-    ScenicContent* content = [[ScenicContent alloc] init];
-    content.title = a.title;
     
     
-    ScenicContentTextVC* textVC = [[ScenicContentTextVC alloc] initWithNibName:@"ScenicContentTextVC" bundle:nil andDescription:a.subtitle];
-    content.contentProvider = textVC;
-    [textVC release];
-    ScenicContentViewController* scenicVC = [[ScenicContentViewController alloc] initWithNibName:@"ScenicContentViewController" bundle:nil andContent:content];
-    [content release];
-    [self.navigationController pushViewController:scenicVC animated:YES];
-    [scenicVC release];
     
-    /*
-    ScenicContentDisplayViewController * details = [[ScenicContentDisplayViewController alloc] init];
+    if( view.leftCalloutAccessoryView == control) {
+        
+        NSLog(@"left button clicked");
+        
+    } else {
+        
     
-    // temporary for testing
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(50, 100, 200, 100)];
-    titleLabel.text = a.title;
-    UILabel *subtitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(50, 180, 200, 100)];
-    subtitleLabel.text = a.subtitle;
-    [details.view addSubview:subtitleLabel];
-    [details.view addSubview:titleLabel];
+        ScenicContent* content = [[ScenicContent alloc] init];
+        content.title = a.title;
     
-    [self.navigationController pushViewController:details animated:YES];
-    [details release];
-     */
-
     
+        ScenicContentTextVC* textVC = [[ScenicContentTextVC alloc] initWithNibName:@"ScenicContentTextVC" bundle:nil andDescription:a.subtitle];
+        content.contentProvider = textVC;
+        [textVC release];
+    
+        ScenicContentViewController* scenicVC = [[ScenicContentViewController alloc] initWithNibName:@"ScenicContentViewController" bundle:nil andContent:content];
+        [content release];
+        [self.navigationController pushViewController:scenicVC animated:YES];
+        [scenicVC release];
+    
+    }
 }
 
 @end
