@@ -100,7 +100,7 @@
 }
 
 -(IBAction) getRoutes:(id)sender {
-    GMapsRouter* router = [[GMapsRouter routeWithStart:startTF.text andEnd:endTF.text withDelegate:self] retain];
+    GMapsRouter* router = [[GMapsRouter routeWithStart:startTF.text end:endTF.text waypoints:nil withDelegate:self] retain];
     [router fetch];
 }
 

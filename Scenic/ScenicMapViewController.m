@@ -9,6 +9,8 @@
 #import "ScenicMapViewController.h"
 #import <MapKit/MapKit.h>
 #import "GMapsRoute.h"
+#import "GMapsRouter.h"
+
 #import "ScenicAnnotation.h"
 #import "GeoHash.h"
 #import "AnnotationButton.h"
@@ -17,9 +19,10 @@
 #import "ScenicContentTextVC.h"
 #import "ScenicContentViewController.h"
 #import "PanoramioContent.h"
+#import "ScenicWaypointViewController.h"
 
 @implementation ScenicMapViewController
-@synthesize mapView, mPlacemark, mapType, locationController, currentLocation, mapAnnotations;
+@synthesize mapView, mPlacemark, mapType, locationController, currentLocation, mapAnnotations, currentRoute;
 
 + (CGFloat)annotationPadding;
 {
@@ -117,21 +120,27 @@
 }
 
 -(void) setRoute: (GMapsRoute*) route {
-    self.title = route.summary;
+    self.currentRoute = route;
+    [self.mapView removeOverlays: [self.mapView overlays]];
+    [self drawRoute];
+}
+
+-(void) drawRoute {
+    self.title = currentRoute.summary;
     
     
-    CLLocationCoordinate2D startPos = [route startPos];
+    CLLocationCoordinate2D startPos = [currentRoute startPos];
     MKReverseGeocoder * geoCoderStart=[[MKReverseGeocoder alloc] initWithCoordinate:startPos];
     [geoCoderStart setDelegate:self];
     [geoCoderStart start];
     
-    CLLocationCoordinate2D endPos = [route endPos];
+    CLLocationCoordinate2D endPos = [currentRoute endPos];
     MKReverseGeocoder * geoCoderEnd=[[MKReverseGeocoder alloc] initWithCoordinate:endPos];
     [geoCoderEnd setDelegate:self];
     [geoCoderEnd start];
     
-    GMapsCoordinate* sw = route.bounds.sw;
-    GMapsCoordinate* ne = route.bounds.ne;
+    GMapsCoordinate* sw = currentRoute.bounds.sw;
+    GMapsCoordinate* ne = currentRoute.bounds.ne;
     double swlat = [sw.lat doubleValue];
     double swlng = [sw.lng doubleValue];
     double nelat = [ne.lat doubleValue];
@@ -141,7 +150,7 @@
     MKCoordinateSpan span =  MKCoordinateSpanMake(nelat - swlat, nelng - swlng);
     MKCoordinateRegion region = {center, span};
     [mapView setRegion:region animated:YES];
-    [mapView addOverlay:[route polylineOverlay]];
+    [mapView addOverlay:[currentRoute polylineOverlay]];
 }
 
 - (void)changeType {
@@ -265,6 +274,7 @@
     
     ScenicContent* content = [[ScenicContent alloc] init];
     content.title = a.title;
+    content.coord = [GMapsCoordinate coordFromCLCoord:a.coordinate];
     
     
     ScenicContentTextVC* textVC = [[ScenicContentTextVC alloc] initWithNibName:@"ScenicContentTextVC" bundle:nil andDescription:a.subtitle];
@@ -272,8 +282,16 @@
     [textVC release];
     ScenicContentViewController* scenicVC = [[ScenicContentViewController alloc] initWithNibName:@"ScenicContentViewController" bundle:nil andContent:content];
     [content release];
-    [self.navigationController pushViewController:scenicVC animated:YES];
+    
+    ScenicWaypointViewController* waypointVC = [[ScenicWaypointViewController alloc] init];
+    waypointVC.mainVC = scenicVC;
+    waypointVC.delegate = self;
     [scenicVC release];
+    
+    
+    
+    [self.navigationController pushViewController:waypointVC animated:YES];
+    [waypointVC release];
     
     /*
     ScenicContentDisplayViewController * details = [[ScenicContentDisplayViewController alloc] init];
@@ -291,6 +309,16 @@
      */
 
     
+}
+
+-(void) addWaypointWithContent:(ScenicContent*)content {
+    GMapsRouter* router = [[GMapsRouter routeWithStart:[[currentRoute startCoord] pairString] end:[[currentRoute endCoord] pairString] waypoints:[NSArray arrayWithObject:[content.coord pairString]] withDelegate:self] retain];
+    [router fetch];
+}
+
+-(void) dataFetcher:(DataFetcher *)fetcher hasResponse:(id)response {
+    NSArray* routes = (NSArray*) response;
+    [self setRoute:(GMapsRoute*) [routes objectAtIndex:0]];
 }
 
 @end

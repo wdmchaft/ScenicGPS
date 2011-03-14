@@ -33,5 +33,8 @@
 
 - (CLLocationCoordinate2D) startPos;
 - (CLLocationCoordinate2D) endPos;
+- (GMapsCoordinate*) endCoord;
+- (GMapsCoordinate*) startCoord;
+
 
 @end

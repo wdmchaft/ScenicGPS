@@ -8,7 +8,6 @@
 
 #import "GMapsCoordinate.h"
 
-
 static NSString* LAT_KEY = @"lat";
 static NSString* LNG_KEY = @"lng";
 @implementation GMapsCoordinate
@@ -21,6 +20,17 @@ static NSString* LNG_KEY = @"lng";
     coord.lng = (NSNumber*) [dic objectForKey:LNG_KEY];
     return coord;
     
+}
+
+-(NSString*) pairString {
+    return [NSString stringWithFormat:@"%f,%f",[self.lat doubleValue],[self.lng doubleValue]];
+}
+
++(GMapsCoordinate*) coordFromCLCoord: (CLLocationCoordinate2D)coordinate {
+    GMapsCoordinate* newCoord = [[GMapsCoordinate alloc] init];
+    newCoord.lat = [NSNumber numberWithDouble:coordinate.latitude];
+    newCoord.lng = [NSNumber numberWithDouble:coordinate.longitude];
+    return [newCoord autorelease];
 }
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <MapKit/MapKit.h>
 
 
 @interface GMapsCoordinate : NSObject {
@@ -19,5 +20,6 @@
 
 
 +(id) coordFromJSONDic: (NSDictionary*) dic;
-
+-(NSString*) pairString;
++(GMapsCoordinate*) coordFromCLCoord:(CLLocationCoordinate2D) coordinate;
 @end

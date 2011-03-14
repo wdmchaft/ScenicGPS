@@ -15,9 +15,11 @@
 #import <MapKit/MKAnnotation.h>
 #import <MapKit/MKReverseGeocoder.h>
 #import "ScenicLocationCLController.h"
+#import "ScenicWaypointViewController.h"
+#import "GMapsRouter.h"
 
-@class GMapsRoute;
-@interface ScenicMapViewController : UIViewController <MKReverseGeocoderDelegate,MKMapViewDelegate, ScenicLocationCLControllerDelegate> {
+@class GMapsRoute, ScenicContent;
+@interface ScenicMapViewController : UIViewController <MKReverseGeocoderDelegate,MKMapViewDelegate, ScenicLocationCLControllerDelegate, ScenciContentDelegate, DataFetcherDelegate> {
     MKMapView* mapView;
 	MKPlacemark *mPlacemark;
 	UISegmentedControl *mapType;
@@ -28,6 +30,7 @@
     // for anotations
     //ScenicViewController *scenicViewController;
     NSMutableArray *mapAnnotations;
+    GMapsRoute* currentRoute;
     
 }
 
@@ -42,11 +45,15 @@
 
 - (void)gotoLocation:(CLLocation *) location;
 
+-(void) addWaypointWithContent:(ScenicContent*)content;
+
+-(void) dataFetcher:(DataFetcher *)fetcher hasResponse:(id)response;
+
 @property (nonatomic, retain) MKMapView* mapView;
 @property (nonatomic, retain) MKPlacemark* mPlacemark;
 @property (nonatomic, retain) UISegmentedControl* mapType;
 @property (nonatomic, retain) CLLocation * currentLocation;
 @property (nonatomic, retain) ScenicLocationCLController * locationController;
 @property (nonatomic, retain) NSMutableArray *mapAnnotations;
-
+@property (nonatomic, retain) GMapsRoute* currentRoute;
 @end

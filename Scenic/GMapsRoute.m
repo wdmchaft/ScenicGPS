@@ -70,4 +70,12 @@ static NSString* BOUNDS_KEY = @"bounds";
     return CLLocationCoordinate2DMake([coord.lat doubleValue], [coord.lng doubleValue]);
 }
 
+- (GMapsCoordinate*) startCoord {
+    return [polyline.points objectAtIndex:0];
+}
+
+- (GMapsCoordinate*) endCoord {
+    return [polyline.points objectAtIndex:[polyline.points count]-1];
+}
+
 @end

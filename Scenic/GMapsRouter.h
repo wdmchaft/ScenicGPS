@@ -13,7 +13,7 @@
 
 }
 
-+(id) routeWithStart: (NSString*) start andEnd: (NSString*) end withDelegate: (id<DataFetcherDelegate>) _delegate;
++(id) routeWithStart: (NSString*) start end: (NSString*) end waypoints:(NSArray*) waypoints withDelegate: (id<DataFetcherDelegate>) _delegate;
 
 
 @end

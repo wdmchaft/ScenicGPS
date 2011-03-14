@@ -17,6 +17,8 @@ static NSString* SENSOR_VALUE = @"false";
 static NSString* ROUTES_KEY = @"routes";
 static NSString* ALT_KEY = @"alternatives";
 static NSString* ALT_VALUE = @"true";
+static NSString* WP_KEY = @"waypoints";
+
 
 
 
@@ -34,9 +36,14 @@ static NSString* ALT_VALUE = @"true";
     return response;
 }
 
-+(id) routeWithStart: (NSString*) start andEnd: (NSString*) end withDelegate: (id<DataFetcherDelegate>) _delegate {
-    
-    NSDictionary* queries = [NSDictionary dictionaryWithObjectsAndKeys:start,START_KEY,end,END_KEY,SENSOR_VALUE,SENSOR_KEY,ALT_VALUE,ALT_KEY, nil];
++(id) routeWithStart: (NSString*) start end: (NSString*) end waypoints:(NSArray*) waypoints withDelegate: (id<DataFetcherDelegate>) _delegate {
+    if (waypoints == nil) {
+        NSDictionary* queries = [NSDictionary dictionaryWithObjectsAndKeys:start,START_KEY,end,END_KEY,SENSOR_VALUE,SENSOR_KEY,ALT_VALUE,ALT_KEY, nil];
+        return [[[super alloc] initWithBase:base andQueries:queries andDelegate:_delegate] autorelease];
+    }
+    NSString* waypointValue = [NSString stringWithFormat:@"%@",
+                               [waypoints componentsJoinedByString:@"|"]];
+    NSDictionary* queries = [NSDictionary dictionaryWithObjectsAndKeys:start,START_KEY,end,END_KEY,SENSOR_VALUE,SENSOR_KEY,waypointValue,WP_KEY,ALT_VALUE,ALT_KEY, nil];
     return [[[super alloc] initWithBase:base andQueries:queries andDelegate:_delegate] autorelease];
 }
 

@@ -43,8 +43,14 @@
 
 -(void) addContentView: (UIView*) cView {
     cView.contentMode = UIViewContentModeScaleAspectFit;
-    cView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    self.view.contentMode = UIViewContentModeScaleAspectFit;
+    cView.autoresizesSubviews = YES;
+    NSArray* subviews = [cView subviews];
+    for (UIView* curSV in subviews) {
+                curSV.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    }
     cView.frame = self.view.bounds;
+
     [self.view addSubview:cView];
 }
 
