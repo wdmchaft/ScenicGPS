@@ -296,16 +296,8 @@
     waypointVC.mainVC = scenicVC;
     waypointVC.delegate = self;
     [scenicVC release];
-    
-    
-    
     [self.navigationController pushViewController:waypointVC animated:YES];
     [waypointVC release];
-
-    
-    
-    
-    
 }
 
 -(void) addWaypointWithContent:(ScenicContent*)content {
