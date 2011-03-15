@@ -116,11 +116,11 @@
     [em release];
     
     ScenicAnnotation *sac = [[ScenicAnnotation alloc] init];
-    [em setCoordinate:CLLocationCoordinate2DMake(38.6, -121.5)];	
-    [em setTitle:@"Sacramento"];
-    [em setSubtitle:@"Go Kings!"];
-    [self.mapAnnotations insertObject:em atIndex:3];
-    [em release];
+    [sac setCoordinate:CLLocationCoordinate2DMake(38.6, -121.5)];	
+    [sac setTitle:@"Sacramento"];
+    [sac setSubtitle:@"Go Kings!"];
+    [self.mapAnnotations insertObject:sac atIndex:3];
+    [sac release];
     
     
     
@@ -194,8 +194,7 @@
         (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:ScenicAnnotationIdentifier];
         if (!pinView)
         {
-            MKAnnotationView *annotationView = [[[MKAnnotationView alloc] initWithAnnotation:annotation
-                                                                             reuseIdentifier:ScenicAnnotationIdentifier] autorelease];
+            MKAnnotationView *annotationView = [[[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:ScenicAnnotationIdentifier] autorelease];
             annotationView.canShowCallout = YES;
             
             UIImage *flagImage = [UIImage imageNamed:@"location.png"];
