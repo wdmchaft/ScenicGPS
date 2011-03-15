@@ -17,6 +17,7 @@
 #import "GMapsGeolocation.h"
 #import "PanoramioPicFetcher.h"
 #import "YelpFetcher.h"
+#import "ScenicRoute.h"
 
 @implementation RouteRootViewController
 @synthesize startTF, endTF, routeLabel;
@@ -62,11 +63,11 @@
     [smVC release];
 }
 
--(void) handleRoutes: (NSArray*) routes {
+-(void) handleRoutes: (ScenicRoute*) route {
     
     ScenicMapViewController* smVC = [[ScenicMapViewController alloc] initWithNibName:@"ScenicMapViewController" bundle:nil];
     [self.navigationController pushViewController:smVC animated:YES];
-    [smVC setRoute:(GMapsRoute*) [routes objectAtIndex:0]];
+    [smVC putScenicRoute:route];
     [smVC release];
     
 }

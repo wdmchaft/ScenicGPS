@@ -9,11 +9,17 @@
 #import <Foundation/Foundation.h>
 #import "GMapsGeolocator.h"
 
+@class ScenicRoute;
 @interface GMapsRouter : DataFetcher {
+    ScenicRoute* sRoute;
+    
 
 }
 
-+(id) routeWithStart: (NSString*) start end: (NSString*) end waypoints:(NSArray*) waypoints withDelegate: (id<DataFetcherDelegate>) _delegate;
+@property (nonatomic, retain) ScenicRoute* sRoute;
+
++(id) routeWithStart: (NSString*) start end: (NSString*) end waypoints:(NSMutableArray*) waypoints withDelegate: (id<DataFetcherDelegate>) _delegate;
++(id) routeWithScenicRoute: (ScenicRoute*) route andDelegate: (id<DataFetcherDelegate>) _delegate;
 
 
 @end

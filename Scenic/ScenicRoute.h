@@ -10,16 +10,16 @@
 
 @class GMapsRoute;
 @interface ScenicRoute : NSObject {
-    GMapsRoute* gRoute;
+    NSArray* routes;
     NSString* startRequest;
     NSString* endRequest;
-    NSArray* waypointRequests;
+    NSMutableArray* waypointRequests;
 }
 
-@property (nonatomic, retain) GMapsRoute* gRoute;
+@property (nonatomic, retain) NSArray* routes;
 @property (nonatomic, retain) NSString* startRequest;
 @property (nonatomic, retain) NSString* endRequest;
-@property (nonatomic, retain) NSArray* waypointRequests;
+@property (nonatomic, retain) NSMutableArray* waypointRequests;
 
 
 @end

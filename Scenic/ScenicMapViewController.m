@@ -19,9 +19,10 @@
 #import "ScenicContentViewController.h"
 #import "PanoramioContent.h"
 #import "ScenicWaypointViewController.h"
+#import "ScenicRoute.h"
 
 @implementation ScenicMapViewController
-@synthesize mapView, mPlacemark, mapType, locationController, currentLocation, mapAnnotations, currentRoute;
+@synthesize mapView, mPlacemark, mapType, locationController, currentLocation, scenicRoute, mapAnnotations, currentRoute;
 
 + (CGFloat)annotationPadding;
 {
@@ -85,7 +86,7 @@
     
     
     // only add annotations after initializing mapView
-    self.mapAnnotations = [[NSMutableArray alloc] initWithCapacity:3];
+    self.mapAnnotations = [[NSMutableArray alloc] initWithCapacity:4];
     
     [GeoHash hash:CLLocationCoordinate2DMake(57.64911,10.40744)];
     // should be  u4pruydqqvj
@@ -114,18 +115,32 @@
     [self.mapAnnotations insertObject:em atIndex:2];
     [em release];
     
+    ScenicAnnotation *sac = [[ScenicAnnotation alloc] init];
+    [em setCoordinate:CLLocationCoordinate2DMake(38.6, -121.5)];	
+    [em setTitle:@"Sacramento"];
+    [em setSubtitle:@"Go Kings!"];
+    [self.mapAnnotations insertObject:em atIndex:3];
+    [em release];
+    
+    
+    
     [mapView addAnnotations:mapAnnotations];
     
 }
 
--(void) setRoute: (GMapsRoute*) route {
-    self.currentRoute = route;
-    [self.mapView removeOverlays: [self.mapView overlays]];
+-(void) putScenicRoute: (ScenicRoute*) sr {
+    self.scenicRoute = sr;
+    [self putCurrentRoute:[sr.routes objectAtIndex:0]];
+}
+
+-(void) putCurrentRoute:(GMapsRoute *)  cr {
+    self.currentRoute = cr;
     [self drawRoute];
 }
 
 -(void) drawRoute {
-    self.title = currentRoute.summary;
+    [self.mapView removeOverlays: [self.mapView overlays]];
+    self.title = self.currentRoute.summary;
     
     
     CLLocationCoordinate2D startPos = [currentRoute startPos];
@@ -138,8 +153,8 @@
     [geoCoderEnd setDelegate:self];
     [geoCoderEnd start];
     
-    GMapsCoordinate* sw = currentRoute.bounds.sw;
-    GMapsCoordinate* ne = currentRoute.bounds.ne;
+    GMapsCoordinate* sw = self.currentRoute.bounds.sw;
+    GMapsCoordinate* ne = self.currentRoute.bounds.ne;
     double swlat = [sw.lat doubleValue];
     double swlng = [sw.lng doubleValue];
     double nelat = [ne.lat doubleValue];
@@ -301,13 +316,18 @@
 }
 
 -(void) addWaypointWithContent:(ScenicContent*)content {
-    GMapsRouter* router = [[GMapsRouter routeWithStart:[[currentRoute startCoord] pairString] end:[[currentRoute endCoord] pairString] waypoints:[NSArray arrayWithObject:[content.coord pairString]] withDelegate:self] retain];
+    [self.scenicRoute.waypointRequests addObject:[content.coord pairString]];
+    GMapsRouter* router = [[GMapsRouter routeWithScenicRoute:self.scenicRoute andDelegate:self] retain];
     [router fetch];
 }
 
 -(void) dataFetcher:(DataFetcher *)fetcher hasResponse:(id)response {
-    NSArray* routes = (NSArray*) response;
-    [self setRoute:(GMapsRoute*) [routes objectAtIndex:0]];
+    ScenicRoute* route = (ScenicRoute*) response;
+    self.title = [NSString stringWithFormat:@"%@ added!",route.startRequest];
+    for (id annot in self.mapView.selectedAnnotations) {
+        [self.mapView deselectAnnotation:annot animated:YES];
+    }
+    [self putScenicRoute:(ScenicRoute*) response];
 }
 
 @end
