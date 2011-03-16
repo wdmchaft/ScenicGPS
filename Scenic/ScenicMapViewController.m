@@ -22,30 +22,20 @@
 #import "ScenicRoute.h"
 #import "ScenicTextContent.h"
 #import "ScenicPolyline.h"
+#import "ScenicMapSelectorModel.h"
 
 @implementation ScenicMapViewController
-@synthesize mapView, mPlacemark, mapType, locationController, currentLocation, scenicRoute, mapAnnotations, currentRoute, secondaryRoutes;
-
-+ (CGFloat)annotationPadding;
-{
-    return 10.0f;
-}
-+ (CGFloat)calloutHeight;
-{
-    return 40.0f;
-}
-
-- (void)dealloc
-{
-    [super dealloc];
-    [mapView release];
-}
+@synthesize mapView, mapType, locationController, currentLocation, routeChooser, model;
 
 #pragma mark - View lifecycle
 
 - (void) viewDidLoad {
     
     [super viewDidLoad];
+    
+    ScenicMapSelectorModel* tempModel = [[ScenicMapSelectorModel alloc] init];
+    self.model = tempModel;
+    [tempModel release];
     MKMapView* mv = [[MKMapView alloc] initWithFrame:self.view.bounds];
     mv.mapType = MKMapTypeHybrid;
 	
@@ -71,7 +61,7 @@
     [mv setRegion:region animated:TRUE];    
     
     UISegmentedControl* tempSeg = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects: @"Map", @"Satelitte", @"Hybrid", nil]];
-    tempSeg.frame = CGRectMake(33, 300, tempSeg.frame.size.width, tempSeg.frame.size.height);
+    tempSeg.frame = CGRectMake(33, 250, tempSeg.frame.size.width, tempSeg.frame.size.height);
     [tempSeg addTarget:self action:@selector(changeType) forControlEvents:UIControlEventValueChanged];
     [tempSeg setEnabled:YES forSegmentAtIndex:0];
     tempSeg.selectedSegmentIndex = 0;
@@ -79,6 +69,14 @@
     [mv addSubview:mapType];
     [tempSeg release];
     
+    UISegmentedControl* tempRC = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects: @"1", @"2", @"3", nil]];
+    tempRC.frame = CGRectMake(33, 300, tempSeg.frame.size.width, tempSeg.frame.size.height);
+    [tempRC addTarget:self action:@selector(changeRoute) forControlEvents:UIControlEventValueChanged];
+    [tempRC setEnabled:YES forSegmentAtIndex:0];
+    tempRC.selectedSegmentIndex = 0;
+    self.routeChooser = tempRC;
+    [mv addSubview:self.routeChooser];
+    [tempRC release];
     
     // add the map
 	[mv setDelegate:self];
@@ -86,83 +84,55 @@
     self.mapView = mv;
     [mv release];
     
+    [self.model addTestContent];
     
-    // only add annotations after initializing mapView
-    self.mapAnnotations = [[NSMutableArray alloc] initWithCapacity:4];
-    
-    [GeoHash hash:CLLocationCoordinate2DMake(57.64911,10.40744)];
-    // should be  u4pruydqqvj
+    [self addAnnotationsToMap];
+}
 
-    NSArray* cityTitles = [NSArray arrayWithObjects:@"San Francisco", @"Grace Cathedral", @"The Embarcadero",@"Sacramento",  nil];
-    NSArray* cityDescriptions = [NSArray arrayWithObjects:@"Founded: June 29, 1776", @"Grace Cathedral is a house of prayer for all people.", @"Whether it's family fun, unique shopping, an up-close look at California's playful sea lions, an encounter with a street performer or delightful dining, San Francisco's PIER 39 is the place to be -- for PIER FUN!",@"Go Kings!",  nil];
-    NSArray* locs = [NSArray arrayWithObjects:[GMapsCoordinate coordFromCLCoord:CLLocationCoordinate2DMake(37.786996, -122.419281)],[GMapsCoordinate coordFromCLCoord:CLLocationCoordinate2DMake(37.791847, -122.412891)],[GMapsCoordinate coordFromCLCoord:CLLocationCoordinate2DMake(37.7945047, -122.3940806)],[GMapsCoordinate coordFromCLCoord:CLLocationCoordinate2DMake(38.6, -121.5) ], nil];
-    
-    
-    for (int i = 0; i < [locs count]; i++) {
-        [self.mapAnnotations addObject:[ScenicTextContent contentWithTitle:[cityTitles objectAtIndex:i] subTitle:[cityDescriptions objectAtIndex:i] coordinate:[locs objectAtIndex:i]]];
+-(void) addAnnotationsToMap {
+    [self.mapView addAnnotations:self.model.scenicContents];
+}
+
+-(void) changeRoute {
+    self.model.primaryRouteIndex = routeChooser.selectedSegmentIndex;
+    [self drawRoutes];
+}
+
+-(void) drawRoutes {
+    [self refreshRouteDrawings];
+    ScenicRoute* primRoute = [self.model primaryRoute];
+    BOOL isPrimary;
+    GMapsRoute* gRoute;
+    for (ScenicRoute* route in self.model.routes) {
+        isPrimary = route == primRoute;
+        gRoute = route.gRoute;
+        if (isPrimary)
+            self.title = gRoute.summary;
+        CLLocationCoordinate2D startPos = [gRoute startPos];
+        MKReverseGeocoder * geoCoderStart=[[MKReverseGeocoder alloc] initWithCoordinate:startPos];
+        [geoCoderStart setDelegate:self];
+        [geoCoderStart start];
+        
+        CLLocationCoordinate2D endPos = [gRoute endPos];
+        MKReverseGeocoder * geoCoderEnd=[[MKReverseGeocoder alloc] initWithCoordinate:endPos];
+        [geoCoderEnd setDelegate:self];
+        [geoCoderEnd start];
+        
+        GMapsCoordinate* sw = gRoute.bounds.sw;
+        GMapsCoordinate* ne = gRoute.bounds.ne;
+        double swlat = [sw.lat doubleValue];
+        double swlng = [sw.lng doubleValue];
+        double nelat = [ne.lat doubleValue];
+        double nelng = [ne.lng doubleValue];
+        CLLocationCoordinate2D center = {.latitude = (swlat + nelat)*.5,
+            .longitude = (swlng + nelng)*.5};
+        MKCoordinateSpan span =  MKCoordinateSpanMake(nelat - swlat, nelng - swlng);
+        MKCoordinateRegion region = {center, span};
+        [mapView setRegion:region animated:YES];
+        MKPolyline* sp = [gRoute polylineOverlay];
+        [sp setIsPrimary:isPrimary];
+        [mapView addOverlay:sp];
     }
-    
-    PanoramioContent* pc = [[PanoramioContent alloc] init];
-    pc.title = @"google";
-    pc.coord = [GMapsCoordinate coordFromCLCoord:CLLocationCoordinate2DMake(37.73,-122.37)];
-    pc.url = [NSURL URLWithString:@"http://www.tnpsc.com/downloads/NaturesScenery.jpg"];
-    pc.contentProvider = pc;
-    [self.mapAnnotations addObject:pc];
-    [pc release];
-    [mapView addAnnotations:mapAnnotations];
-    
-}
-
--(void) putScenicRoutes: (NSArray*) sRoutes {
-    [self putScenicRoute:[sRoutes objectAtIndex:0]];
-    [self putSecondaryRoutes:[sRoutes subarrayWithRange:NSMakeRange(1, [sRoutes count] - 1)]];
-    
-}
-
--(void) putSecondaryRoutes: (NSArray*) secRoutes {
-    self.secondaryRoutes = secRoutes;
-    for (ScenicRoute* curRoute in secRoutes) {
-        [self drawRoute: curRoute.gRoute asPrimary: NO];
-    }
-}
-
--(void) putScenicRoute: (ScenicRoute*) sr {
-    self.scenicRoute = sr;
-    [self putCurrentRoute:sr.gRoute];
-}
-
--(void) putCurrentRoute:(GMapsRoute *)  cr {
-    self.currentRoute = cr;
-    [self drawRoute:currentRoute asPrimary:YES];
-}
-
--(void) drawRoute: (GMapsRoute*) route asPrimary: (BOOL) isPrimary {
-    if (isPrimary)
-        self.title = route.summary;
-    CLLocationCoordinate2D startPos = [route startPos];
-    MKReverseGeocoder * geoCoderStart=[[MKReverseGeocoder alloc] initWithCoordinate:startPos];
-    [geoCoderStart setDelegate:self];
-    [geoCoderStart start];
-    
-    CLLocationCoordinate2D endPos = [route endPos];
-    MKReverseGeocoder * geoCoderEnd=[[MKReverseGeocoder alloc] initWithCoordinate:endPos];
-    [geoCoderEnd setDelegate:self];
-    [geoCoderEnd start];
-    
-    GMapsCoordinate* sw = route.bounds.sw;
-    GMapsCoordinate* ne = route.bounds.ne;
-    double swlat = [sw.lat doubleValue];
-    double swlng = [sw.lng doubleValue];
-    double nelat = [ne.lat doubleValue];
-    double nelng = [ne.lng doubleValue];
-    CLLocationCoordinate2D center = {.latitude = (swlat + nelat)*.5,
-        .longitude = (swlng + nelng)*.5};
-    MKCoordinateSpan span =  MKCoordinateSpanMake(nelat - swlat, nelng - swlng);
-    MKCoordinateRegion region = {center, span};
-    [mapView setRegion:region animated:YES];
-    MKPolyline* sp = [route polylineOverlay];
-    [sp setIsPrimary:isPrimary];
-    [mapView addOverlay:sp];
 }
 
 -(void) refreshRouteDrawings {
@@ -186,9 +156,7 @@
     // if it's the user location, just return nil.
     if ([annotation isKindOfClass:[MKUserLocation class]])
         return nil;
-    
-    // handle our two custom annotations
-    //
+
     
     if ([annotation isKindOfClass:[ScenicContent class]]) {
         ScenicContent* sc = (ScenicContent*) annotation;
@@ -209,43 +177,7 @@
 }
 
 
--(MKOverlayView*) mapView:(MKMapView *)mapView viewForOverlay:(id<MKOverlay>)overlay {
-    if ([overlay isKindOfClass:[MKPolyline class]]) {
-        return [((MKPolyline*) overlay) plView];
-    }
-    return nil;
-}
 
-- (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFailWithError:(NSError *)error{
-	//NSLog(@"Reverse Geocoder Errored");
-}
-
-- (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFindPlacemark:(MKPlacemark *)placemark{
-	//NSLog(@"Reverse Geocoder completed");
-	mPlacemark=placemark;
-    self.title = [mPlacemark description];
-	[mapView addAnnotation:placemark];
-}
-
-- (void)locationUpdate:(CLLocation *)location {
-  //  NSLog( @"%@", [location description]);
-  //  NSLog(@"%f %f", location.coordinate.latitude, location.coordinate.longitude);
-    currentLocation = location;
-    
-}
-
-- (void)locationError:(NSError *)error {
-  //NSLog( @"%@", [error description]);
-}
-
-- (void)gotoLocation:(CLLocation *) location{
-    MKCoordinateRegion newRegion;
-    newRegion.center.latitude = location.coordinate.latitude;
-    newRegion.center.longitude = location.coordinate.longitude;
-    newRegion.span.latitudeDelta = 0.1;
-    newRegion.span.longitudeDelta = 0.1;
-    [self.mapView setRegion:newRegion animated:YES];
-}
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
 
@@ -269,8 +201,8 @@
 }
 
 -(void) addWaypointWithContent:(ScenicContent*)content {
-    [self.scenicRoute addContent:content];
-    GMapsRouter* router = [[GMapsRouter routeWithScenicRoute:self.scenicRoute andDelegate:self] retain];
+    [self.model addContentToPrimaryRoute:content];
+    GMapsRouter* router = [[GMapsRouter routeWithScenicRoute:[self.model primaryRoute] andDelegate:self] retain];
     [router fetch];
 }
 
@@ -282,7 +214,56 @@
         [self.mapView deselectAnnotation:annot animated:YES];
     }
     [self refreshRouteDrawings];
-    [self putScenicRoute:(ScenicRoute*) route];
+    [self putNewRoutes: routes];
+}
+
+-(void) putNewRoutes: (NSArray*) routes {
+    self.model.routes = routes;
+    self.model.primaryRouteIndex = 0;
+    [self drawRoutes];
+}
+
+
+-(MKOverlayView*) mapView:(MKMapView *)mapView viewForOverlay:(id<MKOverlay>)overlay {
+    if ([overlay isKindOfClass:[MKPolyline class]]) {
+        return [((MKPolyline*) overlay) plView];
+    }
+    return nil;
+}
+
+- (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFailWithError:(NSError *)error{
+	//NSLog(@"Reverse Geocoder Errored");
+}
+
+- (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFindPlacemark:(MKPlacemark *)placemark{
+    self.title = [placemark description];
+	[mapView addAnnotation:placemark];
+}
+
+- (void)locationUpdate:(CLLocation *)location {
+    //  NSLog( @"%@", [location description]);
+    //  NSLog(@"%f %f", location.coordinate.latitude, location.coordinate.longitude);
+    currentLocation = location;
+    
+}
+
+- (void)locationError:(NSError *)error {
+    //NSLog( @"%@", [error description]);
+}
+
+- (void)gotoLocation:(CLLocation *) location{
+    MKCoordinateRegion newRegion;
+    newRegion.center.latitude = location.coordinate.latitude;
+    newRegion.center.longitude = location.coordinate.longitude;
+    newRegion.span.latitudeDelta = 0.1;
+    newRegion.span.longitudeDelta = 0.1;
+    [self.mapView setRegion:newRegion animated:YES];
+}
+
+- (void)dealloc
+{
+    [super dealloc];
+    [mapView release];
 }
 
 @end

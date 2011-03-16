@@ -70,6 +70,7 @@
 		5D06B8F9132F04770035260F /* ScenicRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D06B8F8132F04770035260F /* ScenicRoute.m */; };
 		5D06B8FD1330272D0035260F /* ScenicTextContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D06B8FC1330272C0035260F /* ScenicTextContent.m */; };
 		5D06B900133038600035260F /* ScenicPolyline.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D06B8FF1330385A0035260F /* ScenicPolyline.m */; };
+		5D06B90713304FCD0035260F /* ScenicMapSelectorModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D06B90613304FCD0035260F /* ScenicMapSelectorModel.m */; };
 		5D1DCCCB1326A3630013BD05 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D1DCCCA1326A3630013BD05 /* MapKit.framework */; };
 		5D1DCCCE1326A6A80013BD05 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D1DCCCD1326A6A70013BD05 /* CoreLocation.framework */; };
 		5D2FCF56132C0DC7005B08DD /* ScenicContentTextVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D2FCF54132C0DB5005B08DD /* ScenicContentTextVC.m */; };
@@ -213,6 +214,8 @@
 		5D06B8FC1330272C0035260F /* ScenicTextContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScenicTextContent.m; sourceTree = "<group>"; };
 		5D06B8FE133038550035260F /* ScenicPolyline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScenicPolyline.h; sourceTree = "<group>"; };
 		5D06B8FF1330385A0035260F /* ScenicPolyline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScenicPolyline.m; sourceTree = "<group>"; };
+		5D06B90513304FCD0035260F /* ScenicMapSelectorModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScenicMapSelectorModel.h; sourceTree = "<group>"; };
+		5D06B90613304FCD0035260F /* ScenicMapSelectorModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScenicMapSelectorModel.m; sourceTree = "<group>"; };
 		5D1DCCCA1326A3630013BD05 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		5D1DCCCD1326A6A70013BD05 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		5D2FCF53132C0DB3005B08DD /* ScenicContentTextVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScenicContentTextVC.h; sourceTree = "<group>"; };
@@ -482,6 +485,7 @@
 		5D0587F2132098C500D42F0A /* Scenic */ = {
 			isa = PBXGroup;
 			children = (
+				5D06B90413304F9F0035260F /* Models */,
 				AAEB6997132B2AB20013B172 /* GeoHash */,
 				AAEB698A132AF2810013B172 /* Annotations */,
 				5D017AAB13255C1B00B8EA6A /* Scenic Content */,
@@ -513,6 +517,15 @@
 				5D05881E132098C500D42F0A /* ScenicTests-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5D06B90413304F9F0035260F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5D06B90513304FCD0035260F /* ScenicMapSelectorModel.h */,
+				5D06B90613304FCD0035260F /* ScenicMapSelectorModel.m */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 		AA3A91311329DC5400894C16 /* Resources */ = {
@@ -726,6 +739,7 @@
 				5D06B8F9132F04770035260F /* ScenicRoute.m in Sources */,
 				5D06B8FD1330272D0035260F /* ScenicTextContent.m in Sources */,
 				5D06B900133038600035260F /* ScenicPolyline.m in Sources */,
+				5D06B90713304FCD0035260F /* ScenicMapSelectorModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

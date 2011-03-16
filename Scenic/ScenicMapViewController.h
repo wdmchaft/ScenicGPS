@@ -18,30 +18,18 @@
 #import "ScenicWaypointViewController.h"
 #import "GMapsRouter.h"
 
-@class ScenicRoute, ScenicContent, GMapsRoute;
+@class ScenicRoute, ScenicContent, GMapsRoute, ScenicMapSelectorModel;
 @interface ScenicMapViewController : UIViewController <MKReverseGeocoderDelegate,MKMapViewDelegate, ScenicLocationCLControllerDelegate, ScenciContentDelegate, DataFetcherDelegate> {
     MKMapView* mapView;
-	MKPlacemark *mPlacemark;
 	UISegmentedControl *mapType;
-    
+    UISegmentedControl* routeChooser;
     ScenicLocationCLController * locationController;
     CLLocation * currentLocation;
-    
-    // for anotations
-    //ScenicViewController *scenicViewController;
-    NSMutableArray *mapAnnotations;
-    ScenicRoute* scenicRoute;
-    GMapsRoute* currentRoute;
-    NSArray* secondaryRoutes;
+    ScenicMapSelectorModel* model;
     
 }
 
-+ (CGFloat)annotationPadding;
-+ (CGFloat)calloutHeight;
 
--(void) putScenicRoute: (ScenicRoute*) route;
--(void) putCurrentRoute: (GMapsRoute*) route;
--(void) putScenicRoutes: (NSArray*) sRoutes;
 
 - (void)changeType;
 
@@ -55,18 +43,12 @@
 -(void) dataFetcher:(DataFetcher *)fetcher hasResponse:(id)response;
 
 
-
--(void) drawRoute: (GMapsRoute*) route asPrimary: (BOOL) isPrimary;
--(void) putSecondaryRoutes: (NSArray*) secRoutes;
+-(void) putNewRoutes: (NSArray*) routes;
+-(void) drawRoutes;
 @property (nonatomic, retain) MKMapView* mapView;
-@property (nonatomic, retain) MKPlacemark* mPlacemark;
 @property (nonatomic, retain) UISegmentedControl* mapType;
 @property (nonatomic, retain) CLLocation * currentLocation;
 @property (nonatomic, retain) ScenicLocationCLController * locationController;
-@property (nonatomic, retain) NSMutableArray *mapAnnotations;
-@property (nonatomic, retain) GMapsRoute* currentRoute;
-@property (nonatomic, retain) ScenicRoute* scenicRoute;
-@property (nonatomic, retain) NSArray* secondaryRoutes;
-
-
+@property (nonatomic, retain) UISegmentedControl* routeChooser;
+@property (nonatomic, retain) ScenicMapSelectorModel* model;
 @end

@@ -67,8 +67,7 @@
     
     ScenicMapViewController* smVC = [[ScenicMapViewController alloc] initWithNibName:@"ScenicMapViewController" bundle:nil];
     [self.navigationController pushViewController:smVC animated:YES];
-    [smVC putScenicRoute:[routes objectAtIndex:0]];
-    [smVC putScenicRoutes:routes];
+    [smVC putNewRoutes:routes];
     [smVC release];
     
 }
