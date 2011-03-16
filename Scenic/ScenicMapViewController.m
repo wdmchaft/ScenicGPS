@@ -219,8 +219,11 @@
 
 -(void) putNewRoutes: (NSArray*) routes {
     self.model.routes = routes;
-    self.model.primaryRouteIndex = 0;
-    [self drawRoutes];
+    if (self.routeChooser.selectedSegmentIndex == 0) {
+        [self drawRoutes];
+        return;
+    }
+    [self.routeChooser setSelectedSegmentIndex:0];
 }
 
 
