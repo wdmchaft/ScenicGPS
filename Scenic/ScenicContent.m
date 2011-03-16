@@ -59,6 +59,10 @@ static NSString* ScenicAnnotationIdentifier = @"ScenicAnnotationIdentifier";
     return ScenicAnnotationIdentifier;
 }
 
+-(NSString*) tag {
+    return ScenicAnnotationIdentifier;
+}
+
 -(CLLocationCoordinate2D) coordinate {
     return CLLocationCoordinate2DMake([self.coord.lat doubleValue], [self.coord.lng doubleValue]);
 }

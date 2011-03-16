@@ -24,4 +24,8 @@
     return [self fetchImage];
 }
 
+-(NSString*) tag {
+    return @"Pano";
+}
+
 @end

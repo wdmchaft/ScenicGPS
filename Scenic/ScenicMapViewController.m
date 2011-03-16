@@ -21,6 +21,7 @@
 #import "ScenicWaypointViewController.h"
 #import "ScenicRoute.h"
 #import "ScenicTextContent.h"
+#import "ScenicPolyline.h"
 
 @implementation ScenicMapViewController
 @synthesize mapView, mPlacemark, mapType, locationController, currentLocation, scenicRoute, mapAnnotations, currentRoute, secondaryRoutes;
@@ -159,7 +160,9 @@
     MKCoordinateSpan span =  MKCoordinateSpanMake(nelat - swlat, nelng - swlng);
     MKCoordinateRegion region = {center, span};
     [mapView setRegion:region animated:YES];
-    [mapView addOverlay:[route polylineOverlay]];
+    MKPolyline* sp = [route polylineOverlay];
+    [sp setIsPrimary:isPrimary];
+    [mapView addOverlay:sp];
 }
 
 -(void) refreshRouteDrawings {
@@ -188,12 +191,11 @@
     //
     
     if ([annotation isKindOfClass:[ScenicContent class]]) {
-        
+        ScenicContent* sc = (ScenicContent*) annotation;
         MKPinAnnotationView* pinView =
-        (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:[ScenicContent SCAVID]];
+        (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:[sc tag]];
         if (!pinView)
         {
-            ScenicContent* sc = (ScenicContent*) annotation;
             return [sc contentAV];
         }
         else
@@ -208,10 +210,10 @@
 
 
 -(MKOverlayView*) mapView:(MKMapView *)mapView viewForOverlay:(id<MKOverlay>)overlay {
-    MKPolylineView* plView = [[[MKPolylineView alloc] initWithPolyline:((MKPolyline*) overlay)] autorelease];
-    plView.strokeColor = [UIColor colorWithRed:100/255.f green:0 blue:207/255.f alpha:0x7f/255.f];
-    plView.lineWidth = 10;
-    return plView;
+    if ([overlay isKindOfClass:[MKPolyline class]]) {
+        return [((MKPolyline*) overlay) plView];
+    }
+    return nil;
 }
 
 - (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFailWithError:(NSError *)error{

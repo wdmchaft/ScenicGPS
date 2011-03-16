@@ -10,7 +10,7 @@
 #import "GMapsBounds.h"
 #import <MapKit/MapKit.h>
 
-@class GMapsPolyline, GMapsBounds, GMapsCoordinate;
+@class GMapsPolyline, GMapsBounds, GMapsCoordinate, MKPolyline;
 @interface GMapsRoute : NSObject {
     NSString* summary;
     NSArray* legs;
