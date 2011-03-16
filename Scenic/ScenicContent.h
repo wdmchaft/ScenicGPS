@@ -8,9 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import "ScenicContentProvider.h"
+#import <MapKit/MapKit.h>
 
-@class GMapsCoordinate, ScenicContentView, ScenicContentProvider;
-@interface ScenicContent : NSObject {
+@class GMapsCoordinate, ScenicContentView, ScenicContentProvider, MKAnnotationView;
+@interface ScenicContent : NSObject <MKAnnotation>{
     GMapsCoordinate* coord;
     NSString* title;
     int score;
@@ -23,5 +24,14 @@
 @property (nonatomic, retain) NSString* title;
 @property (nonatomic, assign) int score;
 @property (nonatomic, retain) id<ScenicContentProvider> contentProvider;
+
+-(MKAnnotationView*) contentAV;
++(NSString*) SCAVID;
+
+-(CLLocationCoordinate2D) coordinate;
++ (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize;
+-(UIImage*) fetchIcon;
+-(UIImage*) iconImage;
++(CGSize) defIconSize;
 
 @end

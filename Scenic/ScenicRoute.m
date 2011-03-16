@@ -7,19 +7,34 @@
 //
 
 #import "ScenicRoute.h"
-
+#import "ScenicContent.h"
 
 @implementation ScenicRoute
 
-@synthesize routes, endRequest, startRequest, waypointRequests;
+@synthesize gRoute, endRequest, startRequest, waypointRequests, scenicContents;
 
 -(id) init {
     if ((self = [super init])) {
-        NSMutableArray* temp = [[NSMutableArray alloc] init];
-        self.waypointRequests = temp;
-        [temp release];
+        self.waypointRequests = [[[NSMutableArray alloc] init] autorelease];
+        self.scenicContents = [[[NSMutableArray alloc] init] autorelease];
     }
     return self;
+}
+
++(id) routeWithScenicRoute: (ScenicRoute*) route andGMapsRoute: (GMapsRoute*) _gRoute {
+    ScenicRoute* newRoute = [[ScenicRoute alloc] init];
+    newRoute.startRequest = route.startRequest;
+    newRoute.endRequest = route.endRequest;
+    newRoute.waypointRequests = [NSMutableArray arrayWithArray:route.waypointRequests];
+    newRoute.scenicContents = [NSMutableArray arrayWithArray:route.scenicContents];
+    newRoute.gRoute = _gRoute;
+    return [newRoute autorelease];
+    
+}
+
+-(void) addContent: (ScenicContent*) content {
+    [self.scenicContents addObject:content];
+    [self.waypointRequests addObject:[content.coord pairString]];
 }
 
 @end

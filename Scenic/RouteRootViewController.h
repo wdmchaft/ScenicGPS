@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "DataFetcher.h"
 
-@class GMapsGeolocation;
+@class GMapsGeolocation, ScenicRoute;
 @interface RouteRootViewController : UIViewController <UITextFieldDelegate, DataFetcherDelegate> {
     UITextField* startTF;
     UITextField* endTF;
@@ -26,6 +26,8 @@
 -(IBAction) getRoutes: (id) sender;
 -(IBAction) getGeoTag: (id) sender;
 -(IBAction) getServerResource: (id) sender;
+-(IBAction) getPanoramio: (id) sender;
+
 -(void) handleParks: (NSArray*) dic;
 -(void) handlePanoramio: (NSDictionary*) dic;
 -(void) handleRoutes: (NSArray*) routes;

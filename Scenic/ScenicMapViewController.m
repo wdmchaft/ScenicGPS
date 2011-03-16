@@ -20,9 +20,10 @@
 #import "PanoramioContent.h"
 #import "ScenicWaypointViewController.h"
 #import "ScenicRoute.h"
+#import "ScenicTextContent.h"
 
 @implementation ScenicMapViewController
-@synthesize mapView, mPlacemark, mapType, locationController, currentLocation, scenicRoute, mapAnnotations, currentRoute;
+@synthesize mapView, mPlacemark, mapType, locationController, currentLocation, scenicRoute, mapAnnotations, currentRoute, secondaryRoutes;
 
 + (CGFloat)annotationPadding;
 {
@@ -90,71 +91,65 @@
     
     [GeoHash hash:CLLocationCoordinate2DMake(57.64911,10.40744)];
     // should be  u4pruydqqvj
-    
-    // annotation for the City of San Francisco
-    ScenicAnnotation *sf = [[ScenicAnnotation alloc] init];
-    [sf setCoordinate:CLLocationCoordinate2DMake(37.786996, -122.419281)];
-    [sf setTitle:@"San Francisco"];
-    [sf setSubtitle:@"Founded: June 29, 1776"];
-    [self.mapAnnotations insertObject:sf atIndex:0];
-    [sf release];
-    
-    // grace cathedral
-    ScenicAnnotation *gt = [[ScenicAnnotation alloc] init];
-    [gt setCoordinate:CLLocationCoordinate2DMake(37.791847, -122.412891)];	
-    [gt setTitle:@"Grace Cathedral"];
-    [gt setSubtitle:@"Grace Cathedral is a house of prayer for all people."];
-    [self.mapAnnotations insertObject:gt atIndex:1];
-    [gt release];
-                                                 
-    // the embarcadero
-    ScenicAnnotation *em = [[ScenicAnnotation alloc] init];
-    [em setCoordinate:CLLocationCoordinate2DMake(37.7945047, -122.3940806)];	
-    [em setTitle:@"The Embarcadero"];
-    [em setSubtitle:@"Whether it's family fun, unique shopping, an up-close look at California's playful sea lions, an encounter with a street performer or delightful dining, San Francisco's PIER 39 is the place to be -- for PIER FUN!"];
-    [self.mapAnnotations insertObject:em atIndex:2];
-    [em release];
-    
-    ScenicAnnotation *sac = [[ScenicAnnotation alloc] init];
-    [em setCoordinate:CLLocationCoordinate2DMake(38.6, -121.5)];	
-    [em setTitle:@"Sacramento"];
-    [em setSubtitle:@"Go Kings!"];
-    [self.mapAnnotations insertObject:em atIndex:3];
-    [em release];
+
+    NSArray* cityTitles = [NSArray arrayWithObjects:@"San Francisco", @"Grace Cathedral", @"The Embarcadero",@"Sacramento",  nil];
+    NSArray* cityDescriptions = [NSArray arrayWithObjects:@"Founded: June 29, 1776", @"Grace Cathedral is a house of prayer for all people.", @"Whether it's family fun, unique shopping, an up-close look at California's playful sea lions, an encounter with a street performer or delightful dining, San Francisco's PIER 39 is the place to be -- for PIER FUN!",@"Go Kings!",  nil];
+    NSArray* locs = [NSArray arrayWithObjects:[GMapsCoordinate coordFromCLCoord:CLLocationCoordinate2DMake(37.786996, -122.419281)],[GMapsCoordinate coordFromCLCoord:CLLocationCoordinate2DMake(37.791847, -122.412891)],[GMapsCoordinate coordFromCLCoord:CLLocationCoordinate2DMake(37.7945047, -122.3940806)],[GMapsCoordinate coordFromCLCoord:CLLocationCoordinate2DMake(38.6, -121.5) ], nil];
     
     
+    for (int i = 0; i < [locs count]; i++) {
+        [self.mapAnnotations addObject:[ScenicTextContent contentWithTitle:[cityTitles objectAtIndex:i] subTitle:[cityDescriptions objectAtIndex:i] coordinate:[locs objectAtIndex:i]]];
+    }
     
+    PanoramioContent* pc = [[PanoramioContent alloc] init];
+    pc.title = @"google";
+    pc.coord = [GMapsCoordinate coordFromCLCoord:CLLocationCoordinate2DMake(37.73,-122.37)];
+    pc.url = [NSURL URLWithString:@"http://www.tnpsc.com/downloads/NaturesScenery.jpg"];
+    pc.contentProvider = pc;
+    [self.mapAnnotations addObject:pc];
+    [pc release];
     [mapView addAnnotations:mapAnnotations];
     
 }
 
+-(void) putScenicRoutes: (NSArray*) sRoutes {
+    [self putScenicRoute:[sRoutes objectAtIndex:0]];
+    [self putSecondaryRoutes:[sRoutes subarrayWithRange:NSMakeRange(1, [sRoutes count] - 1)]];
+    
+}
+
+-(void) putSecondaryRoutes: (NSArray*) secRoutes {
+    self.secondaryRoutes = secRoutes;
+    for (ScenicRoute* curRoute in secRoutes) {
+        [self drawRoute: curRoute.gRoute asPrimary: NO];
+    }
+}
+
 -(void) putScenicRoute: (ScenicRoute*) sr {
     self.scenicRoute = sr;
-    [self putCurrentRoute:[sr.routes objectAtIndex:0]];
+    [self putCurrentRoute:sr.gRoute];
 }
 
 -(void) putCurrentRoute:(GMapsRoute *)  cr {
     self.currentRoute = cr;
-    [self drawRoute];
+    [self drawRoute:currentRoute asPrimary:YES];
 }
 
--(void) drawRoute {
-    [self.mapView removeOverlays: [self.mapView overlays]];
-    self.title = self.currentRoute.summary;
-    
-    
-    CLLocationCoordinate2D startPos = [currentRoute startPos];
+-(void) drawRoute: (GMapsRoute*) route asPrimary: (BOOL) isPrimary {
+    if (isPrimary)
+        self.title = route.summary;
+    CLLocationCoordinate2D startPos = [route startPos];
     MKReverseGeocoder * geoCoderStart=[[MKReverseGeocoder alloc] initWithCoordinate:startPos];
     [geoCoderStart setDelegate:self];
     [geoCoderStart start];
     
-    CLLocationCoordinate2D endPos = [currentRoute endPos];
+    CLLocationCoordinate2D endPos = [route endPos];
     MKReverseGeocoder * geoCoderEnd=[[MKReverseGeocoder alloc] initWithCoordinate:endPos];
     [geoCoderEnd setDelegate:self];
     [geoCoderEnd start];
     
-    GMapsCoordinate* sw = self.currentRoute.bounds.sw;
-    GMapsCoordinate* ne = self.currentRoute.bounds.ne;
+    GMapsCoordinate* sw = route.bounds.sw;
+    GMapsCoordinate* ne = route.bounds.ne;
     double swlat = [sw.lat doubleValue];
     double swlng = [sw.lng doubleValue];
     double nelat = [ne.lat doubleValue];
@@ -164,7 +159,11 @@
     MKCoordinateSpan span =  MKCoordinateSpanMake(nelat - swlat, nelng - swlng);
     MKCoordinateRegion region = {center, span};
     [mapView setRegion:region animated:YES];
-    [mapView addOverlay:[currentRoute polylineOverlay]];
+    [mapView addOverlay:[route polylineOverlay]];
+}
+
+-(void) refreshRouteDrawings {
+    [self.mapView removeOverlays: [self.mapView overlays]];
 }
 
 - (void)changeType {
@@ -188,54 +187,14 @@
     // handle our two custom annotations
     //
     
-    if ([annotation isKindOfClass:[ScenicAnnotation class]]) {
-        static NSString* ScenicAnnotationIdentifier = @"ScenicAnnotationIdentifier";
+    if ([annotation isKindOfClass:[ScenicContent class]]) {
+        
         MKPinAnnotationView* pinView =
-        (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:ScenicAnnotationIdentifier];
+        (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:[ScenicContent SCAVID]];
         if (!pinView)
         {
-            MKAnnotationView *annotationView = [[[MKAnnotationView alloc] initWithAnnotation:annotation
-                                                                             reuseIdentifier:ScenicAnnotationIdentifier] autorelease];
-            annotationView.canShowCallout = YES;
-            
-            UIImage *flagImage = [UIImage imageNamed:@"location.png"];
-            
-            CGRect resizeRect;
-            
-            resizeRect.size = flagImage.size;
-            CGSize maxSize = CGRectInset(self.view.bounds,
-                                         [ScenicMapViewController annotationPadding],
-                                         [ScenicMapViewController annotationPadding]).size;
-            maxSize.height -= self.navigationController.navigationBar.frame.size.height + [ScenicMapViewController calloutHeight];
-            if (resizeRect.size.width > maxSize.width)
-                resizeRect.size = CGSizeMake(maxSize.width, resizeRect.size.height / resizeRect.size.width * maxSize.width);
-            if (resizeRect.size.height > maxSize.height)
-                resizeRect.size = CGSizeMake(resizeRect.size.width / resizeRect.size.height * maxSize.height, maxSize.height);
-            
-            resizeRect.origin = (CGPoint){0.0f, 0.0f};
-            UIGraphicsBeginImageContext(resizeRect.size);
-            [flagImage drawInRect:resizeRect];
-            UIImage *resizedImage = UIGraphicsGetImageFromCurrentImageContext();
-            UIGraphicsEndImageContext();
-            
-            annotationView.image = resizedImage;
-            annotationView.opaque = NO;
-            
-            UIImageView *sfIconView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"dest.png"]];
-            annotationView.leftCalloutAccessoryView = sfIconView;
-            [sfIconView release];
-            
-            UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
-            //[GeoHash hash:[(ScenicAnnotation *)annotation getCoordinate]];
-            annotationView.rightCalloutAccessoryView = rightButton;
-            
-            UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-            [button setFrame:CGRectMake(0.0,0.0, 28.0, 28.0)];
-            [button setImage:[UIImage imageNamed:@"add-28.png"] forState:UIControlStateNormal];
-            annotationView.leftCalloutAccessoryView = button;
-            
-            
-            return annotationView;
+            ScenicContent* sc = (ScenicContent*) annotation;
+            return [sc contentAV];
         }
         else
         {
@@ -288,46 +247,40 @@
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
 
-    ScenicAnnotation * a = view.annotation;
-    NSLog(@"we have %@", a);
+    ScenicTextContent * content = (ScenicTextContent*) view.annotation;
+    NSLog(@"we have %@", content);
     
-    ScenicContent* content = [[ScenicContent alloc] init];
-    content.title = a.title;
-    content.coord = [GMapsCoordinate coordFromCLCoord:a.coordinate];
     
     if( view.leftCalloutAccessoryView == control) {
         [self addWaypointWithContent:content];
         return;
     }
     
-    
-    ScenicContentTextVC* textVC = [[ScenicContentTextVC alloc] initWithNibName:@"ScenicContentTextVC" bundle:nil andDescription:a.subtitle];
-    content.contentProvider = textVC;
-    [textVC release];
-    ScenicContentViewController* scenicVC = [[ScenicContentViewController alloc] initWithNibName:@"ScenicContentViewController" bundle:nil andContent:content];
-    [content release];
-    
     ScenicWaypointViewController* waypointVC = [[ScenicWaypointViewController alloc] init];
-    waypointVC.mainVC = scenicVC;
+    ScenicContentViewController* scVC = [[ScenicContentViewController alloc] initWithNibName:@"ScenicContentViewController" bundle:nil andContent:content];
+    
+    waypointVC.mainVC = scVC;
+    [scVC release];
     waypointVC.delegate = self;
-    [scenicVC release];
     [self.navigationController pushViewController:waypointVC animated:YES];
     [waypointVC release];
 }
 
 -(void) addWaypointWithContent:(ScenicContent*)content {
-    [self.scenicRoute.waypointRequests addObject:[content.coord pairString]];
+    [self.scenicRoute addContent:content];
     GMapsRouter* router = [[GMapsRouter routeWithScenicRoute:self.scenicRoute andDelegate:self] retain];
     [router fetch];
 }
 
 -(void) dataFetcher:(DataFetcher *)fetcher hasResponse:(id)response {
-    ScenicRoute* route = (ScenicRoute*) response;
+    NSArray* routes = (NSArray*) response;
+    ScenicRoute* route = [routes objectAtIndex:0];
     self.title = [NSString stringWithFormat:@"%@ added!",route.startRequest];
     for (id annot in self.mapView.selectedAnnotations) {
         [self.mapView deselectAnnotation:annot animated:YES];
     }
-    [self putScenicRoute:(ScenicRoute*) response];
+    [self refreshRouteDrawings];
+    [self putScenicRoute:(ScenicRoute*) route];
 }
 
 @end

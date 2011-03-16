@@ -63,11 +63,12 @@
     [smVC release];
 }
 
--(void) handleRoutes: (ScenicRoute*) route {
+-(void) handleRoutes: (NSArray*) routes {
     
     ScenicMapViewController* smVC = [[ScenicMapViewController alloc] initWithNibName:@"ScenicMapViewController" bundle:nil];
     [self.navigationController pushViewController:smVC animated:YES];
-    [smVC putScenicRoute:route];
+    [smVC putScenicRoute:[routes objectAtIndex:0]];
+    [smVC putScenicRoutes:routes];
     [smVC release];
     
 }
@@ -91,7 +92,8 @@
 }
 
 -(void) handleGeoTag:(GMapsGeolocation *)loc {
-    YelpFetcher* fetcher = [[YelpFetcher fetcherForCoord:loc.coord andDelegate:self] retain];
+    //YelpFetcher* fetcher = [[YelpFetcher fetcherForCoord:loc.coord andDelegate:self] retain];
+    PanoramioPicFetcher* fetcher = [[PanoramioPicFetcher panDicFromCoord:loc.coord withDelegate:self] retain];
     [fetcher fetch];
 }
 
@@ -107,6 +109,11 @@
 
 -(IBAction) getServerResource: (id) sender {
     ScenicParkFetcher* fetcher = [[ScenicParkFetcher parkFetcherWithDelegate:self] retain];
+    [fetcher fetch];
+}
+
+-(IBAction) getPanoramio:(id)sender {
+    GMapsGeolocator* fetcher = [[GMapsGeolocator geolocatorWithAddress:startTF.text withDelegate:self] retain];
     [fetcher fetch];
 }
 

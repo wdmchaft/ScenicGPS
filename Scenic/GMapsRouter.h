@@ -11,7 +11,7 @@
 
 @class ScenicRoute;
 @interface GMapsRouter : DataFetcher {
-    ScenicRoute* sRoute;
+    NSArray* sRoutes;
     
 
 }

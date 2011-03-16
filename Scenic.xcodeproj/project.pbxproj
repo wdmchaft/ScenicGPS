@@ -68,6 +68,7 @@
 		5D0588A213209B8800D42F0A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D05889E13209B8800D42F0A /* MobileCoreServices.framework */; };
 		5D0588A313209B8800D42F0A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D05889F13209B8800D42F0A /* SystemConfiguration.framework */; };
 		5D06B8F9132F04770035260F /* ScenicRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D06B8F8132F04770035260F /* ScenicRoute.m */; };
+		5D06B8FD1330272D0035260F /* ScenicTextContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D06B8FC1330272C0035260F /* ScenicTextContent.m */; };
 		5D1DCCCB1326A3630013BD05 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D1DCCCA1326A3630013BD05 /* MapKit.framework */; };
 		5D1DCCCE1326A6A80013BD05 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D1DCCCD1326A6A70013BD05 /* CoreLocation.framework */; };
 		5D2FCF56132C0DC7005B08DD /* ScenicContentTextVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D2FCF54132C0DB5005B08DD /* ScenicContentTextVC.m */; };
@@ -207,6 +208,8 @@
 		5D05889F13209B8800D42F0A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		5D06B8F7132F04770035260F /* ScenicRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScenicRoute.h; sourceTree = "<group>"; };
 		5D06B8F8132F04770035260F /* ScenicRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScenicRoute.m; sourceTree = "<group>"; };
+		5D06B8FB1330272C0035260F /* ScenicTextContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScenicTextContent.h; sourceTree = "<group>"; };
+		5D06B8FC1330272C0035260F /* ScenicTextContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScenicTextContent.m; sourceTree = "<group>"; };
 		5D1DCCCA1326A3630013BD05 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		5D1DCCCD1326A6A70013BD05 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		5D2FCF53132C0DB3005B08DD /* ScenicContentTextVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScenicContentTextVC.h; sourceTree = "<group>"; };
@@ -351,9 +354,9 @@
 			isa = PBXGroup;
 			children = (
 				5D05883713209A3B00D42F0A /* GMapsRouter.h */,
+				5D05883813209A3B00D42F0A /* GMapsRouter.m */,
 				5D05889913209A8100D42F0A /* GMapsGeolocator.h */,
 				5D05889A13209A8100D42F0A /* GMapsGeolocator.m */,
-				5D05883813209A3B00D42F0A /* GMapsRouter.m */,
 				5D05883913209A3B00D42F0A /* DataFetcher.h */,
 				5D05883A13209A3B00D42F0A /* DataFetcher.m */,
 				5D490DC913297B40006905A9 /* ScenicServerFetcher.h */,
@@ -429,6 +432,8 @@
 				5D2FCF54132C0DB5005B08DD /* ScenicContentTextVC.m */,
 				5D2FCF5B132EAA3B005B08DD /* ScenicWaypointViewController.h */,
 				5D2FCF5C132EAA41005B08DD /* ScenicWaypointViewController.m */,
+				5D06B8FB1330272C0035260F /* ScenicTextContent.h */,
+				5D06B8FC1330272C0035260F /* ScenicTextContent.m */,
 			);
 			name = "Scenic Content";
 			sourceTree = "<group>";
@@ -714,6 +719,7 @@
 				5D2FCF56132C0DC7005B08DD /* ScenicContentTextVC.m in Sources */,
 				5D2FCF5D132EAA48005B08DD /* ScenicWaypointViewController.m in Sources */,
 				5D06B8F9132F04770035260F /* ScenicRoute.m in Sources */,
+				5D06B8FD1330272D0035260F /* ScenicTextContent.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

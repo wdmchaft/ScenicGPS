@@ -35,8 +35,11 @@ static NSString* WP_KEY = @"waypoints";
     }
     NSArray* response = [NSArray arrayWithArray:routesTemp];
     [routesTemp release];
-    self.sRoute.routes = response;
-    return sRoute;
+    NSMutableArray* returned = [[[NSMutableArray alloc] initWithCapacity:[result count]] autorelease];
+    for (GMapsRoute* gRoute in response) {
+        [returned addObject:[ScenicRoute routeWithScenicRoute:self.sRoute andGMapsRoute:gRoute]];
+    }
+    return returned;
 }
 
 +(id) routeWithScenicRoute: (ScenicRoute*) route andDelegate: (id<DataFetcherDelegate>) _delegate {

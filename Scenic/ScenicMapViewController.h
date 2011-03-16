@@ -32,6 +32,7 @@
     NSMutableArray *mapAnnotations;
     ScenicRoute* scenicRoute;
     GMapsRoute* currentRoute;
+    NSArray* secondaryRoutes;
     
 }
 
@@ -40,6 +41,7 @@
 
 -(void) putScenicRoute: (ScenicRoute*) route;
 -(void) putCurrentRoute: (GMapsRoute*) route;
+-(void) putScenicRoutes: (NSArray*) sRoutes;
 
 - (void)changeType;
 
@@ -52,8 +54,10 @@
 
 -(void) dataFetcher:(DataFetcher *)fetcher hasResponse:(id)response;
 
--(void) drawRoute;
 
+
+-(void) drawRoute: (GMapsRoute*) route asPrimary: (BOOL) isPrimary;
+-(void) putSecondaryRoutes: (NSArray*) secRoutes;
 @property (nonatomic, retain) MKMapView* mapView;
 @property (nonatomic, retain) MKPlacemark* mPlacemark;
 @property (nonatomic, retain) UISegmentedControl* mapType;
@@ -62,5 +66,7 @@
 @property (nonatomic, retain) NSMutableArray *mapAnnotations;
 @property (nonatomic, retain) GMapsRoute* currentRoute;
 @property (nonatomic, retain) ScenicRoute* scenicRoute;
+@property (nonatomic, retain) NSArray* secondaryRoutes;
+
 
 @end

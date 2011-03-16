@@ -8,11 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import "ScenicContentProvider.h"
+#import "ScenicContent.h"
 
-@interface PanoramioContent : NSObject <ScenicContentProvider> {
+@interface PanoramioContent : ScenicContent <ScenicContentProvider> {
     NSURL* url;
 }
 
 @property(nonatomic, retain) NSURL* url;
+
+-(UIImage*) fetchImage;
 
 @end

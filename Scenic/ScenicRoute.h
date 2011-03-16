@@ -8,18 +8,25 @@
 
 #import <Foundation/Foundation.h>
 
-@class GMapsRoute;
+
+@class GMapsRoute, ScenicContent;
 @interface ScenicRoute : NSObject {
-    NSArray* routes;
+    GMapsRoute* gRoute;
     NSString* startRequest;
     NSString* endRequest;
     NSMutableArray* waypointRequests;
+    NSMutableArray* scenicContents;
 }
 
-@property (nonatomic, retain) NSArray* routes;
+@property (nonatomic, retain) GMapsRoute* gRoute;
 @property (nonatomic, retain) NSString* startRequest;
 @property (nonatomic, retain) NSString* endRequest;
 @property (nonatomic, retain) NSMutableArray* waypointRequests;
+@property (nonatomic, retain) NSMutableArray* scenicContents;
 
+
++(id) routeWithScenicRoute: (ScenicRoute*) route andGMapsRoute: (GMapsRoute*) _gRoute;
+
+-(void) addContent: (ScenicContent*) content;
 
 @end

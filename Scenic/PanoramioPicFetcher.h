@@ -9,9 +9,11 @@
 #import <Foundation/Foundation.h>
 #import "ScenicServerFetcher.h"
 
-
+@class GMapsCoordinate;
 @interface PanoramioPicFetcher : ScenicServerFetcher {
     
 }
+
++(id) panDicFromCoord:(GMapsCoordinate*) coord withDelegate: (id<DataFetcherDelegate>) _delegate;
 
 @end

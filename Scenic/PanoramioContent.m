@@ -13,9 +13,15 @@
 @synthesize url;
 
 -(UIView*) provideView {  
-    UIImage* img = [UIImage imageWithData:[NSData dataWithContentsOfURL:url]];
-    UIImageView* view = [[UIImageView alloc] initWithImage:img];
-    return [view autorelease];
+    return [[[UIImageView alloc] initWithImage:[self fetchImage]] autorelease];
+}
+
+-(UIImage*) fetchImage {
+    return [UIImage imageWithData:[NSData dataWithContentsOfURL:url]];
+}
+
+-(UIImage*) iconImage {
+    return [self fetchImage];
 }
 
 @end
