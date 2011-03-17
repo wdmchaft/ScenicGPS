@@ -28,4 +28,9 @@
     return @"Pano";
 }
 
+- (void) dealloc {
+    [url release];
+    [super dealloc];
+}
+
 @end
