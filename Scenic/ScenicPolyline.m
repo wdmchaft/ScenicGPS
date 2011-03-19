@@ -7,6 +7,7 @@
 //
 
 #import "ScenicPolyline.h"
+static NSString *MYPrimaryString = @"MYPrimaryString";
 
 
 

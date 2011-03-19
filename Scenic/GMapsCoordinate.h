@@ -22,4 +22,5 @@
 +(id) coordFromJSONDic: (NSDictionary*) dic;
 -(NSString*) pairString;
 +(GMapsCoordinate*) coordFromCLCoord:(CLLocationCoordinate2D) coordinate;
+-(NSString*) pairString;
 @end

@@ -83,8 +83,6 @@
 		5DBF2BB1132ED72F004C1F90 /* add-28.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DBF2BB0132ED72F004C1F90 /* add-28.png */; };
 		5DCF17D31320A33100D19D04 /* GMapsRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DCF17D21320A33100D19D04 /* GMapsRoute.m */; };
 		5DCF17D71320A47400D19D04 /* GMapsLeg.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DCF17D61320A47400D19D04 /* GMapsLeg.m */; };
-		AA05D77613298ED30088168C /* ScenicAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = AA05D77513298ED30088168C /* ScenicAnnotation.m */; };
-		AA07BD7313282D6500059D6C /* ScenicLocationCLController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA07BD7213282D6500059D6C /* ScenicLocationCLController.m */; };
 		AA3A91401329E45300894C16 /* TableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3A913F1329E45300894C16 /* TableCell.m */; };
 		AACD9567132A8B0B00855892 /* 103-map.png in Resources */ = {isa = PBXBuildFile; fileRef = AACD9563132A8B0B00855892 /* 103-map.png */; };
 		AACD9568132A8B0B00855892 /* 29-heart.png in Resources */ = {isa = PBXBuildFile; fileRef = AACD9564132A8B0B00855892 /* 29-heart.png */; };
@@ -236,10 +234,6 @@
 		5DCF17D21320A33100D19D04 /* GMapsRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMapsRoute.m; sourceTree = "<group>"; };
 		5DCF17D51320A47400D19D04 /* GMapsLeg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMapsLeg.h; sourceTree = "<group>"; };
 		5DCF17D61320A47400D19D04 /* GMapsLeg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMapsLeg.m; sourceTree = "<group>"; };
-		AA05D77413298ED30088168C /* ScenicAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScenicAnnotation.h; sourceTree = "<group>"; };
-		AA05D77513298ED30088168C /* ScenicAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScenicAnnotation.m; sourceTree = "<group>"; };
-		AA07BD7113282D6500059D6C /* ScenicLocationCLController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScenicLocationCLController.h; sourceTree = "<group>"; };
-		AA07BD7213282D6500059D6C /* ScenicLocationCLController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScenicLocationCLController.m; sourceTree = "<group>"; };
 		AA3A913E1329E45300894C16 /* TableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableCell.h; sourceTree = "<group>"; };
 		AA3A913F1329E45300894C16 /* TableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableCell.m; sourceTree = "<group>"; };
 		AACD9563132A8B0B00855892 /* 103-map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "103-map.png"; sourceTree = "<group>"; };
@@ -283,8 +277,6 @@
 		5D017AA213219D8300B8EA6A /* Routing And Map Objects */ = {
 			isa = PBXGroup;
 			children = (
-				AA07BD7113282D6500059D6C /* ScenicLocationCLController.h */,
-				AA07BD7213282D6500059D6C /* ScenicLocationCLController.m */,
 				5D05883B13209A3B00D42F0A /* GMapsGeolocation.h */,
 				5D05883C13209A3B00D42F0A /* GMapsGeolocation.m */,
 				5DCF17D11320A33100D19D04 /* GMapsRoute.h */,
@@ -551,8 +543,6 @@
 		AAEB698A132AF2810013B172 /* Annotations */ = {
 			isa = PBXGroup;
 			children = (
-				AA05D77413298ED30088168C /* ScenicAnnotation.h */,
-				AA05D77513298ED30088168C /* ScenicAnnotation.m */,
 			);
 			name = Annotations;
 			sourceTree = "<group>";
@@ -726,12 +716,10 @@
 				5D017ABC132564C000B8EA6A /* PanoramioContent.m in Sources */,
 				5D017AC013257C9B00B8EA6A /* ScenicContentDisplayViewController.m in Sources */,
 				5D017ACA1325A4F200B8EA6A /* ScenicMapViewController.m in Sources */,
-				AA07BD7313282D6500059D6C /* ScenicLocationCLController.m in Sources */,
 				5D490DCB13297B43006905A9 /* ScenicServerFetcher.m in Sources */,
 				5D490DCE1329834B006905A9 /* PanoramioPicFetcher.m in Sources */,
 				5D490DD1132985E0006905A9 /* ScenicParkFetcher.m in Sources */,
 				5D490DD413298693006905A9 /* YelpFetcher.m in Sources */,
-				AA05D77613298ED30088168C /* ScenicAnnotation.m in Sources */,
 				AA3A91401329E45300894C16 /* TableCell.m in Sources */,
 				AAEB699A132B2ADC0013B172 /* GeoHash.m in Sources */,
 				5D2FCF56132C0DC7005B08DD /* ScenicContentTextVC.m in Sources */,

@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "ScenicContentProvider.h"
 #import <MapKit/MapKit.h>
+#import "GMapsCoordinate.h"
 
 @class GMapsCoordinate, ScenicContentView, ScenicContentProvider, MKAnnotationView;
 @interface ScenicContent : NSObject <MKAnnotation>{

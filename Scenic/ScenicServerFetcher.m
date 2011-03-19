@@ -23,9 +23,11 @@ static NSString* TYPE_KEY = @"req_type";
 }
 
 +(NSDictionary*) newQueries: (NSString*) _type withOldQueries: (NSDictionary*) old {
-    NSMutableDictionary* dic = [[[NSMutableDictionary alloc] initWithObjectsAndKeys:_type,TYPE_KEY, nil] autorelease];
+    NSMutableDictionary* dic = [[NSMutableDictionary alloc] initWithObjectsAndKeys:_type,TYPE_KEY, nil];
     [dic addEntriesFromDictionary:old];
-    return [NSDictionary dictionaryWithDictionary:dic];
+    NSDictionary* returnDic =  [NSDictionary dictionaryWithDictionary:dic];
+    [dic release];
+    return returnDic;
 }
 
 +(id) fetcherWithType: (NSString*) type withQueries: (NSDictionary*) queries andDelegate: (id<DataFetcherDelegate>) _delegate {

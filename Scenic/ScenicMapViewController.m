@@ -11,7 +11,7 @@
 #import "GMapsRoute.h"
 #import "GMapsRouter.h"
 
-#import "ScenicAnnotation.h"
+
 #import "GeoHash.h"
 #import "ScenicContentDisplayViewController.h"
 #import "ScenicContent.h"
@@ -25,68 +25,52 @@
 #import "ScenicMapSelectorModel.h"
 
 @implementation ScenicMapViewController
-@synthesize mapView, mapType, locationController, currentLocation, routeChooser, model;
+@synthesize mapView, mapType, model, toggleMapType, mapTypeToolbar;
 
 #pragma mark - View lifecycle
 
-- (void) viewDidLoad {
-    
-    [super viewDidLoad];
-    
+-(void) createModel {
     ScenicMapSelectorModel* tempModel = [[ScenicMapSelectorModel alloc] init];
     self.model = tempModel;
+    self.model.delegate = self;
     [tempModel release];
-    MKMapView* mv = [[MKMapView alloc] initWithFrame:self.view.bounds];
-    mv.mapType = MKMapTypeHybrid;
-	
-    mv.showsUserLocation=FALSE;
-    mv.mapType=MKMapTypeStandard;    
+}
+
+-(void) mapSelectorModelFinishedGettingRoutes:(ScenicMapSelectorModel *)model {
+    [self putNewRoutes:self.model.routes];
+}
+
+- (void) viewDidLoad {
+    [super viewDidLoad];
     
-    /* get location of user */
-    /* modified below slightly to conform to the usual instance variable assignment convention using properties */    
-    
-    ScenicLocationCLController* tempCL = [[ScenicLocationCLController alloc] init];
-	tempCL.delegate = self;
-	[tempCL.locationManager startUpdatingLocation];
-    self.locationController = tempCL;
-    [tempCL release];
-    
-    // now currentLocation.coordinate.latitude, currentLocation.coordinate.longitude are available
-    
-    /*Region and Zoom*/
-    CLLocationCoordinate2D location = CLLocationCoordinate2DMake(37.8716667, -122.2716667);
-    MKCoordinateSpan span = MKCoordinateSpanMake(.9, .9);
-    MKCoordinateRegion region = MKCoordinateRegionMake(location, span);
-    
-    [mv setRegion:region animated:TRUE];    
-    
-    UISegmentedControl* tempSeg = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects: @"Map", @"Satelitte", @"Hybrid", nil]];
-    tempSeg.frame = CGRectMake(33, 250, tempSeg.frame.size.width, tempSeg.frame.size.height);
-    [tempSeg addTarget:self action:@selector(changeType) forControlEvents:UIControlEventValueChanged];
-    [tempSeg setEnabled:YES forSegmentAtIndex:0];
-    tempSeg.selectedSegmentIndex = 0;
-    self.mapType = tempSeg;
-    [mv addSubview:mapType];
-    [tempSeg release];
-    
-    UISegmentedControl* tempRC = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects: @"1", @"2", @"3", nil]];
-    tempRC.frame = CGRectMake(33, 300, tempSeg.frame.size.width, tempSeg.frame.size.height);
-    [tempRC addTarget:self action:@selector(changeRoute) forControlEvents:UIControlEventValueChanged];
-    [tempRC setEnabled:YES forSegmentAtIndex:0];
-    tempRC.selectedSegmentIndex = 0;
-    self.routeChooser = tempRC;
-    [mv addSubview:self.routeChooser];
-    [tempRC release];
-    
-    // add the map
-	[mv setDelegate:self];
-    [self.view addSubview:mv];
-    self.mapView = mv;
-    [mv release];
-    
+    [self createModel];
     [self.model addTestContent];
-    
     [self addAnnotationsToMap];
+}
+
+-(IBAction) hideToolbar: (id) sender {
+    [self.mapTypeToolbar setHidden:YES];
+    [self.toggleMapType setHidden:NO];
+}
+-(IBAction) showToolbar: (id) sender {
+    [self.mapTypeToolbar setHidden:NO];
+    [self.toggleMapType setHidden:YES];
+}
+
+-(IBAction) changeMapType: (id) sender {
+    switch (self.mapType.selectedSegmentIndex) {
+        case 0:
+            self.mapView.mapType = MKMapTypeStandard;
+            break;
+        case 1:
+            self.mapView.mapType = MKMapTypeSatellite;
+            break;
+        case 2:
+            self.mapView.mapType = MKMapTypeHybrid;
+            break;
+        default:
+            break;
+    }
 }
 
 -(void) addAnnotationsToMap {
@@ -94,7 +78,7 @@
 }
 
 -(void) changeRoute {
-    self.model.primaryRouteIndex = routeChooser.selectedSegmentIndex;
+    // do somethin
     [self drawRoutes];
 }
 
@@ -151,7 +135,7 @@
 	}
 }
 
-- (MKAnnotationView *) mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>) annotation{
+- (MKAnnotationView *) mapView:(MKMapView *)_mapView viewForAnnotation:(id <MKAnnotation>) annotation{
     
     // if it's the user location, just return nil.
     if ([annotation isKindOfClass:[MKUserLocation class]])
@@ -161,7 +145,7 @@
     if ([annotation isKindOfClass:[ScenicContent class]]) {
         ScenicContent* sc = (ScenicContent*) annotation;
         MKPinAnnotationView* pinView =
-        (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:[sc tag]];
+        (MKPinAnnotationView *)[_mapView dequeueReusableAnnotationViewWithIdentifier:[sc tag]];
         if (!pinView)
         {
             return [sc contentAV];
@@ -186,7 +170,7 @@
     
     
     if( view.leftCalloutAccessoryView == control) {
-        [self addWaypointWithContent:content];
+        [self.model addWaypointWithContent:content];
         return;
     }
     
@@ -195,35 +179,14 @@
     
     waypointVC.mainVC = scVC;
     [scVC release];
-    waypointVC.delegate = self;
+    waypointVC.delegate = self.model;
     [self.navigationController pushViewController:waypointVC animated:YES];
     [waypointVC release];
 }
 
--(void) addWaypointWithContent:(ScenicContent*)content {
-    [self.model addContentToPrimaryRoute:content];
-    GMapsRouter* router = [[GMapsRouter routeWithScenicRoute:[self.model primaryRoute] andDelegate:self] retain];
-    [router fetch];
-}
-
--(void) dataFetcher:(DataFetcher *)fetcher hasResponse:(id)response {
-    NSArray* routes = (NSArray*) response;
-    ScenicRoute* route = [routes objectAtIndex:0];
-    self.title = [NSString stringWithFormat:@"%@ added!",route.startRequest];
-    for (id annot in self.mapView.selectedAnnotations) {
-        [self.mapView deselectAnnotation:annot animated:YES];
-    }
-    [self refreshRouteDrawings];
-    [self putNewRoutes: routes];
-}
-
 -(void) putNewRoutes: (NSArray*) routes {
     self.model.routes = routes;
-    if (self.routeChooser.selectedSegmentIndex == 0) {
-        [self drawRoutes];
-        return;
-    }
-    [self.routeChooser setSelectedSegmentIndex:0];
+    [self drawRoutes];
 }
 
 
@@ -239,19 +202,7 @@
 }
 
 - (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFindPlacemark:(MKPlacemark *)placemark{
-    self.title = [placemark description];
 	[mapView addAnnotation:placemark];
-}
-
-- (void)locationUpdate:(CLLocation *)location {
-    //  NSLog( @"%@", [location description]);
-    //  NSLog(@"%f %f", location.coordinate.latitude, location.coordinate.longitude);
-    currentLocation = location;
-    
-}
-
-- (void)locationError:(NSError *)error {
-    //NSLog( @"%@", [error description]);
 }
 
 - (void)gotoLocation:(CLLocation *) location{

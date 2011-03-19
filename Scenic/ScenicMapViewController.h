@@ -14,41 +14,36 @@
 #import <MapKit/MapKit.h>
 #import <MapKit/MKAnnotation.h>
 #import <MapKit/MKReverseGeocoder.h>
-#import "ScenicLocationCLController.h"
 #import "ScenicWaypointViewController.h"
 #import "GMapsRouter.h"
+#import "ScenicMapSelectorModel.h"
 
-@class ScenicRoute, ScenicContent, GMapsRoute, ScenicMapSelectorModel;
-@interface ScenicMapViewController : UIViewController <MKReverseGeocoderDelegate,MKMapViewDelegate, ScenicLocationCLControllerDelegate, ScenciContentDelegate, DataFetcherDelegate> {
-    MKMapView* mapView;
-	UISegmentedControl *mapType;
-    UISegmentedControl* routeChooser;
-    ScenicLocationCLController * locationController;
-    CLLocation * currentLocation;
+@class ScenicRoute, ScenicContent, GMapsRoute;
+@interface ScenicMapViewController : UIViewController <MKReverseGeocoderDelegate,MKMapViewDelegate,ScenciContentDelegate, ScenicMapSelectorModelDelegate> {
+    IBOutlet MKMapView* mapView;
+	IBOutlet UISegmentedControl *mapType;
     ScenicMapSelectorModel* model;
-    
+    IBOutlet UIButton* toggleMapType;
+    IBOutlet UIToolbar* mapTypeToolbar;
 }
 
 
 
-- (void)changeType;
-
-- (void)locationUpdate:(CLLocation *)location; 
-- (void)locationError:(NSError *)error;
-
-- (void)gotoLocation:(CLLocation *) location;
-
+-(void)gotoLocation:(CLLocation *) location;
 -(void) addWaypointWithContent:(ScenicContent*)content;
-
 -(void) dataFetcher:(DataFetcher *)fetcher hasResponse:(id)response;
-
-
 -(void) putNewRoutes: (NSArray*) routes;
 -(void) drawRoutes;
-@property (nonatomic, retain) MKMapView* mapView;
-@property (nonatomic, retain) UISegmentedControl* mapType;
-@property (nonatomic, retain) CLLocation * currentLocation;
-@property (nonatomic, retain) ScenicLocationCLController * locationController;
-@property (nonatomic, retain) UISegmentedControl* routeChooser;
+-(void) addAnnotationsToMap;
+-(void) refreshRouteDrawings;
+-(void) createModel;
+-(IBAction) hideToolbar: (id) sender;
+-(IBAction) showToolbar: (id) sender;
+-(IBAction) changeMapType: (id) sender;
+
+@property (nonatomic, retain) IBOutlet MKMapView* mapView;
+@property (nonatomic, retain) IBOutlet UISegmentedControl* mapType;
 @property (nonatomic, retain) ScenicMapSelectorModel* model;
+@property (nonatomic, retain) IBOutlet UIButton* toggleMapType;
+@property (nonatomic, retain) IBOutlet UIToolbar* mapTypeToolbar;
 @end

@@ -15,7 +15,33 @@
 
 
 @implementation ScenicMapSelectorModel
-@synthesize routes, scenicContents, primaryRouteIndex;
+@synthesize routes, scenicContents, primaryRouteIndex, locationManager, delegate;
+
+-(id) init {
+    if ((self = [super init])) {
+        [self initContents];
+        CLLocationManager* manager = [[CLLocationManager alloc] init]; 
+        manager.delegate = self;
+        [manager startUpdatingLocation];
+        self.locationManager = manager;
+        [manager release];
+    }
+    return self;
+}
+
+-(void) addWaypointWithContent:(ScenicContent*)content {
+    [self addContentToPrimaryRoute:content];
+    GMapsRouter* router = [[GMapsRouter routeWithScenicRoute:[self primaryRoute] andDelegate:self] retain];
+    [router fetch];
+}
+
+-(void) dataFetcher:(DataFetcher *)fetcher hasResponse:(id)response {
+    NSArray* newRoutes = (NSArray*) response;
+    self.routes = newRoutes;
+    self.primaryRouteIndex = 0;
+    if (delegate != nil)
+        [delegate mapSelectorModelFinishedGettingRoutes:self];
+}
 
 -(void) dealloc {
     [super dealloc];
@@ -76,6 +102,14 @@
     [temp addObject:pc];
     [pc release];
     return temp;
+}
+
+-(void) locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
+    return;
+}
+
+-(void) locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
+    return;
 }
 
 @end
