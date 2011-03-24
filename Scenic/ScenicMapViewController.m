@@ -23,6 +23,7 @@
 #import "ScenicTextContent.h"
 #import "ScenicPolyline.h"
 #import "ScenicMapSelectorModel.h"
+#import "ScenicMapView.h"
 
 @implementation ScenicMapViewController
 @synthesize mapView, mapType, model, toggleMapType, mapTypeToolbar;
@@ -190,11 +191,37 @@
 }
 
 
+
+
 -(MKOverlayView*) mapView:(MKMapView *)mapView viewForOverlay:(id<MKOverlay>)overlay {
     if ([overlay isKindOfClass:[MKPolyline class]]) {
-        return [((MKPolyline*) overlay) plView];
+        MKOverlayView* olView =  [((MKPolyline*) overlay) plView];
+        olView.userInteractionEnabled = YES;
+        olView.multipleTouchEnabled = YES;
+        UITapGestureRecognizer* tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(asfdas:)];
+        tap.numberOfTapsRequired = 1;
+        tap.numberOfTouchesRequired = 1;
+        [olView addGestureRecognizer:tap];
+        [tap release];
+        return olView;
     }
     return nil;
+}
+
+
+-(void) mapView:(MKMapView *)mapView didAddOverlayViews:(NSArray *)overlayViews {
+    for (MKOverlayView* olView in overlayViews) {
+        [mapView bringSubviewToFront:olView];
+    }
+}
+
+-(void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    NSLog(@"yo");
+    [super touchesEnded:touches withEvent:event];
+}
+
+-(void) overlayTouched: (MKOverlayView*) olView {
+    NSLog(@"touched");
 }
 
 - (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFailWithError:(NSError *)error{

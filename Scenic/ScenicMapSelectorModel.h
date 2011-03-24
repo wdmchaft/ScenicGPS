@@ -9,9 +9,10 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 #import "GMapsRouter.h"
+#import "ScenicContent.h"
 
 @protocol ScenicMapSelectorModelDelegate;
-@class ScenicRoute, ScenicContent;
+@class ScenicRoute;
 @interface ScenicMapSelectorModel : NSObject <CLLocationManagerDelegate, DataFetcherDelegate> {
     NSArray* routes;
     int primaryRouteIndex;

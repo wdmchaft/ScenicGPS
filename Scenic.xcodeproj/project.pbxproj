@@ -80,6 +80,8 @@
 		5D490DCE1329834B006905A9 /* PanoramioPicFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D490DCD1329834A006905A9 /* PanoramioPicFetcher.m */; };
 		5D490DD1132985E0006905A9 /* ScenicParkFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D490DD0132985DE006905A9 /* ScenicParkFetcher.m */; };
 		5D490DD413298693006905A9 /* YelpFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D490DD313298691006905A9 /* YelpFetcher.m */; };
+		5D718D8513398AD000E5DAEF /* ScenicMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D718D8413398AD000E5DAEF /* ScenicMapView.m */; };
+		5D718D89133993FA00E5DAEF /* WildcardGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D718D88133993FA00E5DAEF /* WildcardGestureRecognizer.m */; };
 		5DBF2BB1132ED72F004C1F90 /* add-28.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DBF2BB0132ED72F004C1F90 /* add-28.png */; };
 		5DCF17D31320A33100D19D04 /* GMapsRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DCF17D21320A33100D19D04 /* GMapsRoute.m */; };
 		5DCF17D71320A47400D19D04 /* GMapsLeg.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DCF17D61320A47400D19D04 /* GMapsLeg.m */; };
@@ -229,6 +231,10 @@
 		5D490DD0132985DE006905A9 /* ScenicParkFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScenicParkFetcher.m; sourceTree = "<group>"; };
 		5D490DD213298691006905A9 /* YelpFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YelpFetcher.h; sourceTree = "<group>"; };
 		5D490DD313298691006905A9 /* YelpFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YelpFetcher.m; sourceTree = "<group>"; };
+		5D718D8313398AD000E5DAEF /* ScenicMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScenicMapView.h; sourceTree = "<group>"; };
+		5D718D8413398AD000E5DAEF /* ScenicMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScenicMapView.m; sourceTree = "<group>"; };
+		5D718D87133993FA00E5DAEF /* WildcardGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WildcardGestureRecognizer.h; sourceTree = "<group>"; };
+		5D718D88133993FA00E5DAEF /* WildcardGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WildcardGestureRecognizer.m; sourceTree = "<group>"; };
 		5DBF2BB0132ED72F004C1F90 /* add-28.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add-28.png"; sourceTree = "<group>"; };
 		5DCF17D11320A33100D19D04 /* GMapsRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMapsRoute.h; sourceTree = "<group>"; };
 		5DCF17D21320A33100D19D04 /* GMapsRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMapsRoute.m; sourceTree = "<group>"; };
@@ -295,6 +301,8 @@
 				5D06B8F8132F04770035260F /* ScenicRoute.m */,
 				5D06B8FE133038550035260F /* ScenicPolyline.h */,
 				5D06B8FF1330385A0035260F /* ScenicPolyline.m */,
+				5D718D8313398AD000E5DAEF /* ScenicMapView.h */,
+				5D718D8413398AD000E5DAEF /* ScenicMapView.m */,
 			);
 			name = "Routing And Map Objects";
 			sourceTree = "<group>";
@@ -412,6 +420,8 @@
 				5D05886813209A3B00D42F0A /* InfoPlist.strings */,
 				5D05886913209A3B00D42F0A /* Scenic-Prefix.pch */,
 				5D05886A13209A3B00D42F0A /* main.m */,
+				5D718D87133993FA00E5DAEF /* WildcardGestureRecognizer.h */,
+				5D718D88133993FA00E5DAEF /* WildcardGestureRecognizer.m */,
 			);
 			name = Additional;
 			sourceTree = "<group>";
@@ -605,7 +615,6 @@
 			};
 			buildConfigurationList = 5D0587E2132098C400D42F0A /* Build configuration list for PBXProject "Scenic" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
@@ -728,6 +737,8 @@
 				5D06B8FD1330272D0035260F /* ScenicTextContent.m in Sources */,
 				5D06B900133038600035260F /* ScenicPolyline.m in Sources */,
 				5D06B90713304FCD0035260F /* ScenicMapSelectorModel.m in Sources */,
+				5D718D8513398AD000E5DAEF /* ScenicMapView.m in Sources */,
+				5D718D89133993FA00E5DAEF /* WildcardGestureRecognizer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

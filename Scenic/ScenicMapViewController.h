@@ -18,9 +18,9 @@
 #import "GMapsRouter.h"
 #import "ScenicMapSelectorModel.h"
 
-@class ScenicRoute, ScenicContent, GMapsRoute;
-@interface ScenicMapViewController : UIViewController <MKReverseGeocoderDelegate,MKMapViewDelegate,ScenciContentDelegate, ScenicMapSelectorModelDelegate> {
-    IBOutlet MKMapView* mapView;
+@class ScenicRoute, ScenicContent, GMapsRoute, ScenicMapView;
+@interface ScenicMapViewController : UIViewController <MKReverseGeocoderDelegate,MKMapViewDelegate, ScenicMapSelectorModelDelegate> {
+    IBOutlet ScenicMapView* mapView;
 	IBOutlet UISegmentedControl *mapType;
     ScenicMapSelectorModel* model;
     IBOutlet UIButton* toggleMapType;
@@ -30,7 +30,6 @@
 
 
 -(void)gotoLocation:(CLLocation *) location;
--(void) addWaypointWithContent:(ScenicContent*)content;
 -(void) dataFetcher:(DataFetcher *)fetcher hasResponse:(id)response;
 -(void) putNewRoutes: (NSArray*) routes;
 -(void) drawRoutes;
@@ -41,7 +40,7 @@
 -(IBAction) showToolbar: (id) sender;
 -(IBAction) changeMapType: (id) sender;
 
-@property (nonatomic, retain) IBOutlet MKMapView* mapView;
+@property (nonatomic, retain) IBOutlet ScenicMapView* mapView;
 @property (nonatomic, retain) IBOutlet UISegmentedControl* mapType;
 @property (nonatomic, retain) ScenicMapSelectorModel* model;
 @property (nonatomic, retain) IBOutlet UIButton* toggleMapType;
