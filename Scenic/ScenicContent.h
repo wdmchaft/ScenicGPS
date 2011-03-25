@@ -18,6 +18,7 @@
     int score;
     id<ScenicContentProvider> contentProvider;
     ScenicContentView* contentView;
+    BOOL visible;
 }
 
 @property (nonatomic, retain) ScenicContentView* contentView;
@@ -28,7 +29,8 @@
 
 -(MKAnnotationView*) contentAV;
 +(NSString*) SCAVID;
-
+- (void) setVisibility : (BOOL) vis;
+- (BOOL) visibility;
 -(CLLocationCoordinate2D) coordinate;
 + (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize;
 -(UIImage*) fetchIcon;

@@ -55,6 +55,14 @@ static NSString* ScenicAnnotationIdentifier = @"ScenicAnnotationIdentifier";
     return annotationView;
 }
 
+- (void) setVisibility : (BOOL) vis {
+    visible = vis;
+}
+
+- (BOOL) visibility {
+    return visible;
+}
+
 +(NSString*) SCAVID {
     return ScenicAnnotationIdentifier;
 }

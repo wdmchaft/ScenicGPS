@@ -148,7 +148,7 @@
         MKPinAnnotationView* pinView =
         (MKPinAnnotationView *)[_mapView dequeueReusableAnnotationViewWithIdentifier:[sc tag]];
         if (!pinView)
-        {
+        {                
             return [sc contentAV];
         }
         else
@@ -161,7 +161,17 @@
     return nil;
 }
 
-
+-(void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated{
+ 
+    for( id<MKAnnotation> annotation in [[self mapView] annotations] ){
+        
+        if( [annotation isKindOfClass:[ScenicContent class]] && [annotation conformsToProtocol:@protocol(MKAnnotation)] ){
+            //ScenicContent * s = (ScenicContent*) annotation;
+            //[s setVisibility:![s visibility]];
+        }
+        
+    }
+}
 
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
