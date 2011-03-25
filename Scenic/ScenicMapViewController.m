@@ -162,23 +162,30 @@
 }
 
 -(void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated{
- 
-    for( id<MKAnnotation> annotation in [[self mapView] annotations] ){
-        
-        if( [annotation isKindOfClass:[ScenicContent class]] && [annotation conformsToProtocol:@protocol(MKAnnotation)] ){
-            //ScenicContent * s = (ScenicContent*) annotation;
-            //[s setVisibility:![s visibility]];
-        }
-        
+
+    MKCoordinateRegion region = [[self mapView] region];
+    
+    if (region.span.latitudeDelta < 1.0) {
+        [self.mapView addAnnotations:self.model.scenicContents];
+    } else {
+        [self.mapView removeAnnotations:self.model.scenicContents];
     }
+    
+    /*
+    for( id<MKAnnotation> annotation in [[self mapView] annotations] ){
+        if( [annotation isKindOfClass:[ScenicContent class]] ){
+
+        }
+    }
+    */    
+    
+    
 }
 
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
 
-    ScenicTextContent * content = (ScenicTextContent*) view.annotation;
-    NSLog(@"we have %@", content);
-    
+    ScenicTextContent * content = (ScenicTextContent*) view.annotation;    
     
     if( view.leftCalloutAccessoryView == control) {
         [self.model addWaypointWithContent:content];

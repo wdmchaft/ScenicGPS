@@ -9,13 +9,16 @@
 #import "ScenicContent.h"
 #import <MapKit/MapKit.h>
 #import "GMapsCoordinate.h"
+#import "GeoHash.h"
 
 static NSString* ScenicAnnotationIdentifier = @"ScenicAnnotationIdentifier";
 
 @implementation ScenicContent
-@synthesize coord, title, score, contentProvider, contentView;
+@synthesize coord, title, score, contentProvider, contentView, geoHash;
 
-
+- (void) computeHash {
+    geoHash = [GeoHash hash:CLLocationCoordinate2DMake([coord.lat doubleValue], [coord.lng doubleValue])];
+}
 
 -(MKAnnotationView*) contentAV {
     MKAnnotationView *annotationView = [[[MKAnnotationView alloc] initWithAnnotation:self
@@ -53,14 +56,6 @@ static NSString* ScenicAnnotationIdentifier = @"ScenicAnnotationIdentifier";
     [button setImage:[UIImage imageNamed:@"add-28.png"] forState:UIControlStateNormal];
     annotationView.leftCalloutAccessoryView = button;
     return annotationView;
-}
-
-- (void) setVisibility : (BOOL) vis {
-    visible = vis;
-}
-
-- (BOOL) visibility {
-    return visible;
 }
 
 +(NSString*) SCAVID {

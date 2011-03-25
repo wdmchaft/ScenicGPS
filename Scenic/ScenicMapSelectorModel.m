@@ -92,6 +92,8 @@
     
     for (int i = 0; i < [locs count]; i++) {
         [temp addObject:[ScenicTextContent contentWithTitle:[cityTitles objectAtIndex:i] subTitle:[cityDescriptions objectAtIndex:i] coordinate:[locs objectAtIndex:i]]];
+        
+        [[temp objectAtIndex:i] computeHash];
     }
     
     PanoramioContent* pc = [[PanoramioContent alloc] init];

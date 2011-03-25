@@ -15,10 +15,11 @@
 @interface ScenicContent : NSObject <MKAnnotation>{
     GMapsCoordinate* coord;
     NSString* title;
+
     int score;
     id<ScenicContentProvider> contentProvider;
     ScenicContentView* contentView;
-    BOOL visible;
+    NSString* geoHash;
 }
 
 @property (nonatomic, retain) ScenicContentView* contentView;
@@ -26,16 +27,16 @@
 @property (nonatomic, retain) NSString* title;
 @property (nonatomic, assign) int score;
 @property (nonatomic, retain) id<ScenicContentProvider> contentProvider;
+@property (nonatomic, retain) NSString* geoHash;
 
 -(MKAnnotationView*) contentAV;
 +(NSString*) SCAVID;
-- (void) setVisibility : (BOOL) vis;
-- (BOOL) visibility;
 -(CLLocationCoordinate2D) coordinate;
 + (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize;
 -(UIImage*) fetchIcon;
 -(UIImage*) iconImage;
 +(CGSize) defIconSize;
 -(NSString*) tag;
+- (void) computeHash;
 
 @end
