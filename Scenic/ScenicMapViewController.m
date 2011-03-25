@@ -164,7 +164,7 @@
 -(void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated{
 
     MKCoordinateRegion region = self.mMapView.region;
-    int level;
+    int level = 1;
     NSLog(@"%f is the delta", region.span.latitudeDelta);
     
     if (region.span.latitudeDelta < 0.05) {
@@ -176,12 +176,10 @@
     } else if (region.span.latitudeDelta < 0.3) {
         level = 5;
     } else if (region.span.latitudeDelta < 0.5) {
-        level = 4;
-    } else if (region.span.latitudeDelta < 0.8) {
         level = 3;
-    } else if (region.span.latitudeDelta < 0.9) {
+    } else if (region.span.latitudeDelta < 0.8) {
         level = 2;
-    } else {
+    } else if (region.span.latitudeDelta < 1.0) {
         level = 1;
     }
 
