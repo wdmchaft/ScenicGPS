@@ -10,12 +10,16 @@
 #import <MapKit/MapKit.h>
 #import "GMapsCoordinate.h"
 #import "ScenicRoute.h"
+#import "GeoHash.h"
 
 static NSString* ScenicAnnotationIdentifier = @"ScenicAnnotationIdentifier";
 
 @implementation ScenicContent
-@synthesize coord, title, score, contentProvider, contentView;
+@synthesize coord, title, score, contentProvider, contentView, geoHash;
 
+- (void) computeHash {
+    geoHash = [GeoHash hash:CLLocationCoordinate2DMake([coord.lat doubleValue], [coord.lng doubleValue])];
+}
 
 
 -(MKAnnotationView*) contentAVWithRoute: (ScenicRoute*) route {

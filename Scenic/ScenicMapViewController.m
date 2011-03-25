@@ -161,7 +161,26 @@
     return nil;
 }
 
+-(void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated{
 
+    MKCoordinateRegion region = [[self mMapView] region];
+    
+    if (region.span.latitudeDelta < 1.0) {
+        [self.mMapView addAnnotations:self.model.scenicContents];
+    } else {
+        [self.mMapView removeAnnotations:self.model.scenicContents];
+    }
+    
+    /*
+    for( id<MKAnnotation> annotation in [[self mapView] annotations] ){
+        if( [annotation isKindOfClass:[ScenicContent class]] ){
+
+        }
+    }
+    */    
+    
+    
+}
 
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
