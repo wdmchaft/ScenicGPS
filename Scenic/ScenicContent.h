@@ -11,7 +11,7 @@
 #import <MapKit/MapKit.h>
 #import "GMapsCoordinate.h"
 
-@class GMapsCoordinate, ScenicContentView, ScenicContentProvider, MKAnnotationView;
+@class GMapsCoordinate, ScenicContentView, ScenicContentProvider, MKAnnotationView, ScenicRoute;
 @interface ScenicContent : NSObject <MKAnnotation>{
     GMapsCoordinate* coord;
     NSString* title;
@@ -29,7 +29,7 @@
 @property (nonatomic, retain) id<ScenicContentProvider> contentProvider;
 @property (nonatomic, retain) NSString* geoHash;
 
--(MKAnnotationView*) contentAV;
+-(MKAnnotationView*) contentAVWithRoute: (ScenicRoute*) route;
 +(NSString*) SCAVID;
 -(CLLocationCoordinate2D) coordinate;
 + (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize;

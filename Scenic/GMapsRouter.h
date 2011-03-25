@@ -18,7 +18,7 @@
 
 @property (nonatomic, retain) ScenicRoute* sRoute;
 
-+(id) routeWithStart: (NSString*) start end: (NSString*) end waypoints:(NSMutableArray*) waypoints withDelegate: (id<DataFetcherDelegate>) _delegate;
++(id) routeWithStart: (NSString*) start end: (NSString*) end scenicContents: (NSMutableArray*) scenicContents scenicWaypoints:(NSMutableArray*) waypoints withDelegate: (id<DataFetcherDelegate>) _delegate;
 +(id) routeWithScenicRoute: (ScenicRoute*) route andDelegate: (id<DataFetcherDelegate>) _delegate;
 
 

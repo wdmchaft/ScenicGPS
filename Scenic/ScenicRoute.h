@@ -28,5 +28,6 @@
 +(id) routeWithScenicRoute: (ScenicRoute*) route andGMapsRoute: (GMapsRoute*) _gRoute;
 
 -(void) addContent: (ScenicContent*) content;
+-(void) removeContent: (ScenicContent*) content;
 
 @end

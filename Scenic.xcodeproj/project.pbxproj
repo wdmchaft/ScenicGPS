@@ -85,6 +85,7 @@
 		5DBF2BB1132ED72F004C1F90 /* add-28.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DBF2BB0132ED72F004C1F90 /* add-28.png */; };
 		5DCF17D31320A33100D19D04 /* GMapsRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DCF17D21320A33100D19D04 /* GMapsRoute.m */; };
 		5DCF17D71320A47400D19D04 /* GMapsLeg.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DCF17D61320A47400D19D04 /* GMapsLeg.m */; };
+		5DE4663D133BEFF10095385F /* remove.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DE4663C133BEFF10095385F /* remove.png */; };
 		AA3A91401329E45300894C16 /* TableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3A913F1329E45300894C16 /* TableCell.m */; };
 		AACD9567132A8B0B00855892 /* 103-map.png in Resources */ = {isa = PBXBuildFile; fileRef = AACD9563132A8B0B00855892 /* 103-map.png */; };
 		AACD9568132A8B0B00855892 /* 29-heart.png in Resources */ = {isa = PBXBuildFile; fileRef = AACD9564132A8B0B00855892 /* 29-heart.png */; };
@@ -240,6 +241,7 @@
 		5DCF17D21320A33100D19D04 /* GMapsRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMapsRoute.m; sourceTree = "<group>"; };
 		5DCF17D51320A47400D19D04 /* GMapsLeg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMapsLeg.h; sourceTree = "<group>"; };
 		5DCF17D61320A47400D19D04 /* GMapsLeg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMapsLeg.m; sourceTree = "<group>"; };
+		5DE4663C133BEFF10095385F /* remove.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = remove.png; sourceTree = "<group>"; };
 		AA3A913E1329E45300894C16 /* TableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableCell.h; sourceTree = "<group>"; };
 		AA3A913F1329E45300894C16 /* TableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableCell.m; sourceTree = "<group>"; };
 		AACD9563132A8B0B00855892 /* 103-map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "103-map.png"; sourceTree = "<group>"; };
@@ -541,6 +543,7 @@
 		AACD9562132A8B0B00855892 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				5DE4663C133BEFF10095385F /* remove.png */,
 				5DBF2BB0132ED72F004C1F90 /* add-28.png */,
 				AACD9563132A8B0B00855892 /* 103-map.png */,
 				AACD9564132A8B0B00855892 /* 29-heart.png */,
@@ -652,6 +655,7 @@
 				AACD956A132A8B0B00855892 /* location.png in Resources */,
 				5D2FCF5A132EA2F5005B08DD /* ScenicContentTextVC.xib in Resources */,
 				5DBF2BB1132ED72F004C1F90 /* add-28.png in Resources */,
+				5DE4663D133BEFF10095385F /* remove.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -785,7 +789,7 @@
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
@@ -802,7 +806,7 @@
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";

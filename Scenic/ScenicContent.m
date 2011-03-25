@@ -9,6 +9,7 @@
 #import "ScenicContent.h"
 #import <MapKit/MapKit.h>
 #import "GMapsCoordinate.h"
+#import "ScenicRoute.h"
 #import "GeoHash.h"
 
 static NSString* ScenicAnnotationIdentifier = @"ScenicAnnotationIdentifier";
@@ -20,40 +21,27 @@ static NSString* ScenicAnnotationIdentifier = @"ScenicAnnotationIdentifier";
     geoHash = [GeoHash hash:CLLocationCoordinate2DMake([coord.lat doubleValue], [coord.lng doubleValue])];
 }
 
--(MKAnnotationView*) contentAV {
+
+-(MKAnnotationView*) contentAVWithRoute: (ScenicRoute*) route {
     MKAnnotationView *annotationView = [[[MKAnnotationView alloc] initWithAnnotation:self
                                                                      reuseIdentifier:ScenicAnnotationIdentifier] autorelease];
     annotationView.canShowCallout = YES;
     
     UIImage *flagImage = [self fetchIcon];
-    /*
-     CGRect resizeRect;
-     
-     resizeRect.size = flagImage.size;
-     CGSize maxSize = CGRectInset(self.view.bounds,
-     [ScenicMapViewController annotationPadding],
-     [ScenicMapViewController annotationPadding]).size;
-     maxSize.height -= self.navigationController.navigationBar.frame.size.height + [ScenicMapViewController calloutHeight];
-     if (resizeRect.size.width > maxSize.width)
-     resizeRect.size = CGSizeMake(maxSize.width, resizeRect.size.height / resizeRect.size.width * maxSize.width);
-     if (resizeRect.size.height > maxSize.height)
-     resizeRect.size = CGSizeMake(resizeRect.size.width / resizeRect.size.height * maxSize.height, maxSize.height);
-     
-     resizeRect.origin = (CGPoint){0.0f, 0.0f};
-     UIGraphicsBeginImageContext(resizeRect.size);
-     [flagImage drawInRect:resizeRect];
-     UIImage *resizedImage = UIGraphicsGetImageFromCurrentImageContext();
-     UIGraphicsEndImageContext();
-     */
     annotationView.image = flagImage;
     annotationView.opaque = NO;
     
     UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
     annotationView.rightCalloutAccessoryView = rightButton;
+    UIImage* image;
+    if (![route.scenicContents containsObject:self])
+        image = [UIImage imageNamed:@"add-28.png"];
+    else
+        image = [UIImage imageNamed:@"remove.png"];
     
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setFrame:CGRectMake(0.0,0.0, 28.0, 28.0)];
-    [button setImage:[UIImage imageNamed:@"add-28.png"] forState:UIControlStateNormal];
+    [button setImage:image forState:UIControlStateNormal];
     annotationView.leftCalloutAccessoryView = button;
     return annotationView;
 }

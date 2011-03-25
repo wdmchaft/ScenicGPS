@@ -31,6 +31,15 @@
 
 -(void) addWaypointWithContent:(ScenicContent*)content {
     [self addContentToPrimaryRoute:content];
+    [self refetch];
+}
+
+-(void) removeWaypointWithContent:(ScenicContent*)content {
+    [self removeContentFromPrimaryRoute:content];
+    [self refetch];
+}
+
+-(void) refetch {
     GMapsRouter* router = [[GMapsRouter routeWithScenicRoute:[self primaryRoute] andDelegate:self] retain];
     [router fetch];
 }
@@ -74,6 +83,10 @@
 
 -(void) addContentToPrimaryRoute: (ScenicContent*) content {
     [[self primaryRoute] addContent:content];
+}
+
+-(void) removeContentFromPrimaryRoute: (ScenicContent*) content {
+    [[self primaryRoute] removeContent:content];
 }
 
 -(void) addTestContent {

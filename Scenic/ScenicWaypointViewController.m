@@ -11,7 +11,7 @@
 
 
 @implementation ScenicWaypointViewController
-@synthesize mainVC, delegate;
+@synthesize mainVC, delegate, toolTitle;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -53,13 +53,19 @@
     UIToolbar* toolbar = [[UIToolbar alloc] init];
     [toolbar sizeToFit];
     toolbar.barStyle = UIBarStyleBlackTranslucent;
-    UIBarButtonItem* buttonItem = [[UIBarButtonItem alloc] initWithTitle:@"Add Location to Route" style:UIBarButtonSystemItemAction target:self action:@selector(addWaypoint)];
+    UIBarButtonItem* buttonItem = [[UIBarButtonItem alloc] initWithTitle:[self getBackTitle] style:UIBarButtonSystemItemAction target:self action:@selector(addWaypoint)];
     [toolbar setItems:[NSArray arrayWithObject:buttonItem]];
     [buttonItem release];
     [self.view addSubview:toolbar];
     [toolbar release];
 }
 
+
+-(NSString*) getBackTitle {
+    if (!self.toolTitle)
+        self.toolTitle = @"Add to Route";
+    return self.toolTitle;
+}
 
 - (void)viewDidUnload
 {
