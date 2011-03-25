@@ -163,7 +163,7 @@
 
 -(void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated{
 
-    MKCoordinateRegion region = [[self mapView] region];
+    MKCoordinateRegion region = self.mMapView.region;
     int level;
     NSLog(@"%f is the delta", region.span.latitudeDelta);
     
@@ -197,8 +197,8 @@
     for( id<MKAnnotation> annotation in self.model.scenicContents ){
         NSString * checkStr = [[NSString alloc] initWithFormat:@"%@", [((ScenicContent*)annotation).geoHash substringToIndex:level]];
         if ([[aDict objectForKey:checkStr] isEqual:annotation]) {
-            [self.mapView addAnnotation:annotation];
-        } else [self.mapView removeAnnotation:annotation];
+            [self.mMapView addAnnotation:annotation];
+        } else [self.mMapView removeAnnotation:annotation];
     }
 }
 
