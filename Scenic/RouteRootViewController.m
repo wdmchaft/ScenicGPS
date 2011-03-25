@@ -58,7 +58,7 @@
     ScenicMapViewController* smVC = [[ScenicMapViewController alloc] initWithNibName:@"ScenicMapViewController" bundle:nil];
     [self.navigationController pushViewController:smVC animated:YES];
     for (GMapsCoordinate* coord in pts) {
-        [smVC.mapView addAnnotation:[[[MKPlacemark alloc] initWithCoordinate:CLLocationCoordinate2DMake([coord.lat doubleValue], [coord.lng doubleValue]) addressDictionary:nil] autorelease]];
+        [smVC.mMapView addAnnotation:[[[MKPlacemark alloc] initWithCoordinate:CLLocationCoordinate2DMake([coord.lat doubleValue], [coord.lng doubleValue]) addressDictionary:nil] autorelease]];
     }
     [smVC release];
 }
@@ -102,7 +102,7 @@
 }
 
 -(IBAction) getRoutes:(id)sender {
-    GMapsRouter* router = [[GMapsRouter routeWithStart:startTF.text end:endTF.text waypoints:nil withDelegate:self] retain];
+    GMapsRouter* router = [[GMapsRouter routeWithStart:startTF.text end:endTF.text scenicContents:nil scenicWaypoints:nil withDelegate:self] retain];
     [router fetch];
 }
 

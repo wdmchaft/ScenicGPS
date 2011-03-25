@@ -26,7 +26,7 @@
 #import "ScenicMapView.h"
 
 @implementation ScenicMapViewController
-@synthesize mapView, mapType, model, toggleMapType, mapTypeToolbar;
+@synthesize mMapView, mapType, model, toggleMapType, mapTypeToolbar, routePicker;
 
 #pragma mark - View lifecycle
 
@@ -61,13 +61,13 @@
 -(IBAction) changeMapType: (id) sender {
     switch (self.mapType.selectedSegmentIndex) {
         case 0:
-            self.mapView.mapType = MKMapTypeStandard;
+            self.mMapView.mapType = MKMapTypeStandard;
             break;
         case 1:
-            self.mapView.mapType = MKMapTypeSatellite;
+            self.mMapView.mapType = MKMapTypeSatellite;
             break;
         case 2:
-            self.mapView.mapType = MKMapTypeHybrid;
+            self.mMapView.mapType = MKMapTypeHybrid;
             break;
         default:
             break;
@@ -75,11 +75,11 @@
 }
 
 -(void) addAnnotationsToMap {
-    [self.mapView addAnnotations:self.model.scenicContents];
+    [self.mMapView addAnnotations:self.model.scenicContents];
 }
 
--(void) changeRoute {
-    // do somethin
+-(IBAction) changeRoute: (id) sender {
+    self.model.primaryRouteIndex = self.routePicker.selectedSegmentIndex;
     [self drawRoutes];
 }
 
@@ -113,26 +113,26 @@
             .longitude = (swlng + nelng)*.5};
         MKCoordinateSpan span =  MKCoordinateSpanMake(nelat - swlat, nelng - swlng);
         MKCoordinateRegion region = {center, span};
-        [mapView setRegion:region animated:YES];
+        [mMapView setRegion:region animated:YES];
         MKPolyline* sp = [gRoute polylineOverlay];
         [sp setIsPrimary:isPrimary];
-        [mapView addOverlay:sp];
+        [mMapView addOverlay:sp];
     }
 }
 
 -(void) refreshRouteDrawings {
-    [self.mapView removeOverlays: [self.mapView overlays]];
+    [self.mMapView removeOverlays: [self.mMapView overlays]];
 }
 
 - (void)changeType {
 	if(mapType.selectedSegmentIndex==0){
-		mapView.mapType=MKMapTypeStandard;
+		mMapView.mapType=MKMapTypeStandard;
 	}
 	else if (mapType.selectedSegmentIndex==1){
-		mapView.mapType=MKMapTypeSatellite;
+		mMapView.mapType=MKMapTypeSatellite;
 	}
 	else if (mapType.selectedSegmentIndex==2){
-		mapView.mapType=MKMapTypeHybrid;
+		mMapView.mapType=MKMapTypeHybrid;
 	}
 }
 
@@ -149,7 +149,7 @@
         (MKPinAnnotationView *)[_mapView dequeueReusableAnnotationViewWithIdentifier:[sc tag]];
         if (!pinView)
         {
-            return [sc contentAV];
+            return [sc contentAVWithRoute:[self.model primaryRoute]];
         }
         else
         {
@@ -168,10 +168,15 @@
 
     ScenicTextContent * content = (ScenicTextContent*) view.annotation;
     NSLog(@"we have %@", content);
-    
+    bool alreadyAdded = [[self.model primaryRoute].scenicContents containsObject:content];
     
     if( view.leftCalloutAccessoryView == control) {
-        [self.model addWaypointWithContent:content];
+        if (alreadyAdded)
+            [self.model removeWaypointWithContent:content];
+        else
+            [self.model addWaypointWithContent:content];
+        [self.mMapView removeAnnotation:content];
+        [self.mMapView addAnnotation:content];
         return;
     }
     
@@ -181,15 +186,41 @@
     waypointVC.mainVC = scVC;
     [scVC release];
     waypointVC.delegate = self.model;
+    if (alreadyAdded)
+        waypointVC.toolTitle = @"Remove from Route";
     [self.navigationController pushViewController:waypointVC animated:YES];
     [waypointVC release];
 }
 
 -(void) putNewRoutes: (NSArray*) routes {
     self.model.routes = routes;
+    [self updateRoutePicker];
     [self drawRoutes];
 }
 
+-(void) updateRoutePicker {
+    int nRoutes = [self.model.routes count];
+    if (nRoutes < 2) {
+        self.routePicker.hidden = YES;
+        return;
+    }
+    self.routePicker.hidden = NO;
+    int oldNRoutes = self.routePicker.numberOfSegments;
+    int difference = oldNRoutes - nRoutes;
+    if (difference == 0) return;
+    if (difference > 0) {
+        for (int i = 0; i < difference; i++) {
+            [self.routePicker removeSegmentAtIndex:self.routePicker.numberOfSegments - 1 animated:YES];
+        }
+        return;
+    }
+    for (int i = 0; i > difference; i--) {
+        [self.routePicker insertSegmentWithTitle:[NSString stringWithFormat:@"%i",self.routePicker.numberOfSegments+1] atIndex:self.routePicker.numberOfSegments animated:YES];
+    }
+    self.routePicker.selectedSegmentIndex = 0;
+    return;
+    
+}
 
 
 
@@ -229,7 +260,7 @@
 }
 
 - (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFindPlacemark:(MKPlacemark *)placemark{
-	[mapView addAnnotation:placemark];
+	[mMapView addAnnotation:placemark];
 }
 
 - (void)gotoLocation:(CLLocation *) location{
@@ -238,13 +269,13 @@
     newRegion.center.longitude = location.coordinate.longitude;
     newRegion.span.latitudeDelta = 0.1;
     newRegion.span.longitudeDelta = 0.1;
-    [self.mapView setRegion:newRegion animated:YES];
+    [self.mMapView setRegion:newRegion animated:YES];
 }
 
 - (void)dealloc
 {
     [super dealloc];
-    [mapView release];
+    [mMapView release];
 }
 
 @end

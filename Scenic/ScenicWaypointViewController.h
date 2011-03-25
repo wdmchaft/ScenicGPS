@@ -7,23 +7,25 @@
 //
 
 #import <UIKit/UIKit.h>
-@protocol ScenciContentDelegate;
+@protocol ScenicContentDelegate;
 @class ScenicContentViewController, ScenicContent;
 @interface ScenicWaypointViewController : UIViewController {
     ScenicContentViewController* mainVC;
-    id<ScenciContentDelegate> delegate;
+    id<ScenicContentDelegate> delegate;
+    NSString* toolTitle;
 }
 
 -(void) addWaypoint;
 
 @property (nonatomic, retain) ScenicContentViewController* mainVC;
-@property (nonatomic, assign)     id<ScenciContentDelegate> delegate;
-
+@property (nonatomic, assign)     id<ScenicContentDelegate> delegate;
+@property (nonatomic, retain) NSString* toolTitle;
 
 @end
 
-@protocol ScenciContentDelegate <NSObject>
+@protocol ScenicContentDelegate <NSObject>
 
 -(void) addWaypointWithContent: (ScenicContent*) content;
+-(NSString*) getBackTitle;
 
 @end

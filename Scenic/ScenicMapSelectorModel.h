@@ -10,10 +10,11 @@
 #import <CoreLocation/CoreLocation.h>
 #import "GMapsRouter.h"
 #import "ScenicContent.h"
+#import "ScenicWaypointViewController.h"
 
 @protocol ScenicMapSelectorModelDelegate;
 @class ScenicRoute;
-@interface ScenicMapSelectorModel : NSObject <CLLocationManagerDelegate, DataFetcherDelegate> {
+@interface ScenicMapSelectorModel : NSObject <CLLocationManagerDelegate, DataFetcherDelegate, ScenicContentDelegate> {
     NSArray* routes;
     int primaryRouteIndex;
     NSMutableArray* scenicContents;
@@ -35,6 +36,9 @@
 -(NSArray*) testContent;
 -(void) addTestContent;
 -(void) addContentToPrimaryRoute: (ScenicContent*) content;
+-(void) removeWaypointWithContent:(ScenicContent*)content;
+-(void) refetch;
+-(void) removeContentFromPrimaryRoute: (ScenicContent*) content;
 @end
 
 @protocol ScenicMapSelectorModelDelegate

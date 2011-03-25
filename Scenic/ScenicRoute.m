@@ -37,4 +37,9 @@
     [self.waypointRequests addObject:[content.coord pairString]];
 }
 
+-(void) removeContent: (ScenicContent*) content {
+    [self.scenicContents removeObject:content];
+    [self.waypointRequests removeObject:[content.coord pairString]];
+}
+
 @end

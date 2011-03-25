@@ -43,13 +43,15 @@ static NSString* WP_KEY = @"waypoints";
 }
 
 +(id) routeWithScenicRoute: (ScenicRoute*) route andDelegate: (id<DataFetcherDelegate>) _delegate {
-    return [GMapsRouter routeWithStart:route.startRequest end:route.endRequest waypoints:route.waypointRequests withDelegate:_delegate];
+    return [GMapsRouter routeWithStart:route.startRequest end:route.endRequest scenicContents: route.scenicContents scenicWaypoints:route.waypointRequests withDelegate:_delegate];
 }
 
-+(id) routeWithStart: (NSString*) start end: (NSString*) end waypoints:(NSMutableArray*) waypoints withDelegate: (id<DataFetcherDelegate>) _delegate {
+
++(id) routeWithStart: (NSString*) start end: (NSString*) end scenicContents: (NSMutableArray*) scenicContents scenicWaypoints:(NSMutableArray*) waypoints withDelegate: (id<DataFetcherDelegate>) _delegate {
     ScenicRoute* temp = [[ScenicRoute alloc] init];
     temp.startRequest = start;
     temp.endRequest = end;
+    temp.scenicContents = scenicContents;
     NSDictionary* queries;
     if (waypoints == nil) {
         queries = [NSDictionary dictionaryWithObjectsAndKeys:start,START_KEY,end,END_KEY,SENSOR_VALUE,SENSOR_KEY,ALT_VALUE,ALT_KEY, nil];
