@@ -164,22 +164,42 @@
 -(void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated{
 
     MKCoordinateRegion region = [[self mapView] region];
+    int level;
+    NSLog(@"%f is the delta", region.span.latitudeDelta);
     
-    if (region.span.latitudeDelta < 1.0) {
-        [self.mapView addAnnotations:self.model.scenicContents];
+    if (region.span.latitudeDelta < 0.05) {
+        level = 8;
+    } else if (region.span.latitudeDelta < 0.01) {
+        level = 7;
+    } else if (region.span.latitudeDelta < 0.1) {
+        level = 6;
+    } else if (region.span.latitudeDelta < 0.3) {
+        level = 5;
+    } else if (region.span.latitudeDelta < 0.5) {
+        level = 4;
+    } else if (region.span.latitudeDelta < 0.8) {
+        level = 3;
+    } else if (region.span.latitudeDelta < 0.9) {
+        level = 2;
     } else {
-        [self.mapView removeAnnotations:self.model.scenicContents];
+        level = 1;
     }
-    
-    /*
-    for( id<MKAnnotation> annotation in [[self mapView] annotations] ){
-        if( [annotation isKindOfClass:[ScenicContent class]] ){
 
-        }
+    
+    NSMutableDictionary * aDict = [[NSMutableDictionary alloc] init];
+    // ADD ALL TO HASH (since only unique key will contain 1 object)
+    for( id<MKAnnotation> annotation in self.model.scenicContents ){
+        NSString * checkStr = [[NSString alloc] initWithFormat:@"%@", [((ScenicContent*)annotation).geoHash substringToIndex:level]];
+       [aDict setObject:annotation forKey:checkStr];
     }
-    */    
-    
-    
+        
+    // SEE IF IT EXISTS OR NOT
+    for( id<MKAnnotation> annotation in self.model.scenicContents ){
+        NSString * checkStr = [[NSString alloc] initWithFormat:@"%@", [((ScenicContent*)annotation).geoHash substringToIndex:level]];
+        if ([[aDict objectForKey:checkStr] isEqual:annotation]) {
+            [self.mapView addAnnotation:annotation];
+        } else [self.mapView removeAnnotation:annotation];
+    }
 }
 
 
