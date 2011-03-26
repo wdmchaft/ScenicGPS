@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "DataFetcher.h"
 
-@class GMapsCoordinate;
+@class GMapsCoordinate, GMapsBounds;
 @interface PanoramioFetcher : DataFetcher {
     
 }
@@ -17,5 +17,7 @@
 -(id) getResponseFromResult:(id)result;
 
 +(id) fetcherForCoord: (GMapsCoordinate*) coord andDelegate: (id<DataFetcherDelegate>) _delegate;
++(id) fetcherForBounds: (GMapsBounds*) bounds andDelegate: (id<DataFetcherDelegate>) _delegate;
+
 
 @end

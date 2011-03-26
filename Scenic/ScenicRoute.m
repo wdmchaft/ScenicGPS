@@ -8,7 +8,6 @@
 
 #import "ScenicRoute.h"
 #import "ScenicContent.h"
-#import "GMapsRoute.h"
 
 @implementation ScenicRoute
 

@@ -7,9 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "GMapsRoute.h"
 
-
-@class GMapsRoute, ScenicContent, GMapsCoordinate;
+@class ScenicContent, GMapsCoordinate;
 @interface ScenicRoute : NSObject {
     GMapsRoute* gRoute;
     NSString* startRequest;

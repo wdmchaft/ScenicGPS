@@ -135,7 +135,7 @@
 }
 
 -(void) fetchNewContent {
-    PanoramioFetcher* fetcher = [[PanoramioFetcher fetcherForCoord:[[self primaryRoute] startCoord] andDelegate:self] retain];
+    PanoramioFetcher* fetcher = [[PanoramioFetcher fetcherForBounds:[self primaryRoute].gRoute.bounds  andDelegate:self] retain];
     [fetcher fetch];
 }
 

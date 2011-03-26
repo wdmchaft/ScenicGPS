@@ -8,6 +8,7 @@
 
 #import "PanoramioFetcher.h"
 #import "PanoramioContent.h"
+#import "GMapsBounds.h"
 
 static NSString* base = @"http://www.panoramio.com/map/get_panoramas.php";
 static NSString* SET_KEY = @"set";
@@ -24,7 +25,7 @@ static NSString* MINY_KEY = @"miny";
 static NSString* MAXY_KEY = @"maxy";
 static NSString* DEF_FROM = @"0";
 
-static double DEF_RANGE_DEGREES = .01f;
+static double DEF_RANGE_DEGREES = .1f;
 static int DEF_N_RETURNS = 20;
 
 @implementation PanoramioFetcher
@@ -39,20 +40,27 @@ static int DEF_N_RETURNS = 20;
     double range = DEF_RANGE_DEGREES;
     double lng = [coord.lng doubleValue];
     double lat = [coord.lat doubleValue];
-    NSString* minx = [NSString stringWithFormat:@"%f",lng - range / 2];
-    NSString* maxx = [NSString stringWithFormat:@"%f",lng + range / 2];
-    NSString* miny = [NSString stringWithFormat:@"%f",lat - range / 2];
-    NSString* maxy = [NSString stringWithFormat:@"%f",lat + range / 2];
+    double minx = lng - range / 2;
+    double maxx = lng + range / 2;
+    double miny = lng - range / 2;
+    double maxy = lat + range / 2;
+    GMapsBounds* bounds = [[[GMapsBounds alloc] init] autorelease];
+    bounds.sw = [GMapsCoordinate coordFromCLCoord:CLLocationCoordinate2DMake(minx, miny)];
+    bounds.ne = [GMapsCoordinate coordFromCLCoord:CLLocationCoordinate2DMake(maxx, maxy)];
+    return [PanoramioFetcher fetcherForBounds:bounds andDelegate:_delegate];
     
+}
+
++(id) fetcherForBounds: (GMapsBounds*) bounds andDelegate: (id<DataFetcherDelegate>) _delegate {
     
     NSMutableDictionary* queries = [[NSMutableDictionary alloc] init];
     [queries setObject:SET_VALUE forKey:SET_KEY];
     [queries setObject:DEF_SIZE forKey:SIZE_KEY];
     [queries setObject:DEF_FILTER forKey:FILTER_KEY];
-    [queries setObject:minx forKey:MINX_KEY];
-    [queries setObject:maxx forKey:MAXX_KEY];
-    [queries setObject:miny forKey:MINY_KEY];
-    [queries setObject:maxy forKey:MAXY_KEY];
+    [queries setObject:[NSString stringWithFormat:@"%f",[bounds.sw.lng doubleValue]] forKey:MINX_KEY];
+    [queries setObject:[NSString stringWithFormat:@"%f",[bounds.ne.lng doubleValue]] forKey:MAXX_KEY];
+    [queries setObject:[NSString stringWithFormat:@"%f",[bounds.sw.lat doubleValue]] forKey:MINY_KEY];
+    [queries setObject:[NSString stringWithFormat:@"%f",[bounds.ne.lat doubleValue]] forKey:MAXY_KEY];
     [queries setObject:@"0" forKey:FROM_KEY];
     [queries setObject:[NSString stringWithFormat:@"%i",DEF_N_RETURNS] forKey:TO_KEY];
     NSDictionary* queriesDic = [NSDictionary dictionaryWithDictionary:queries];
