@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 
-@class GMapsRoute, ScenicContent;
+@class GMapsRoute, ScenicContent, GMapsCoordinate;
 @interface ScenicRoute : NSObject {
     GMapsRoute* gRoute;
     NSString* startRequest;
@@ -29,5 +29,7 @@
 
 -(void) addContent: (ScenicContent*) content;
 -(void) removeContent: (ScenicContent*) content;
+
+-(GMapsCoordinate*) startCoord;
 
 @end

@@ -12,6 +12,7 @@
 #import "GMapsCoordinate.h"
 #import "PanoramioContent.h"
 #import "ScenicTextContent.h"
+#import "PanoramioFetcher.h"
 
 
 @implementation ScenicMapSelectorModel
@@ -45,11 +46,19 @@
 }
 
 -(void) dataFetcher:(DataFetcher *)fetcher hasResponse:(id)response {
-    NSArray* newRoutes = (NSArray*) response;
-    self.routes = newRoutes;
-    self.primaryRouteIndex = 0;
-    if (delegate != nil)
-        [delegate mapSelectorModelFinishedGettingRoutes:self];
+    
+    if ([fetcher isKindOfClass:[GMapsRouter class]]) {
+        NSArray* newRoutes = (NSArray*) response;
+        self.routes = newRoutes;
+        self.primaryRouteIndex = 0;
+        if (delegate != nil)
+            [delegate mapSelectorModelFinishedGettingRoutes:self];
+    } else if ([fetcher isKindOfClass:[PanoramioFetcher class]]) {
+        NSArray* newPanContents = (NSArray*) response;
+        [self.scenicContents addObjectsFromArray:newPanContents];
+    }
+    [fetcher release];
+    
 }
 
 -(void) dealloc {
@@ -120,10 +129,14 @@
     pc.title = @"google";
     pc.coord = [GMapsCoordinate coordFromCLCoord:CLLocationCoordinate2DMake(37.73,-122.37)];
     pc.url = [NSURL URLWithString:@"http://www.tnpsc.com/downloads/NaturesScenery.jpg"];
-    pc.contentProvider = pc;
     [temp addObject:pc];
     [pc release];
     return temp;
+}
+
+-(void) fetchNewContent {
+    PanoramioFetcher* fetcher = [[PanoramioFetcher fetcherForCoord:[[self primaryRoute] startCoord] andDelegate:self] retain];
+    [fetcher fetch];
 }
 
 -(void) locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {

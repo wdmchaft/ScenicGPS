@@ -20,6 +20,14 @@ static NSString* TITLE_KEY = @"photo_title";
 @implementation PanoramioContent
 @synthesize url;
 
+
+-(id) init {
+    if ((self = [super init])) {
+        self.contentProvider = self;
+    }
+    return self;
+}
+
 -(UIView*) provideView {  
     return [[[UIImageView alloc] initWithImage:[self fetchImage]] autorelease];
 }

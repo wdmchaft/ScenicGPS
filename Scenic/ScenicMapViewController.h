@@ -43,6 +43,10 @@
 -(void) updateRoutePicker;
 -(NSArray*) visibleContentsForCurrentRegion;
 -(void) updateVisibleContents;
+-(void) addNewContent;
+-(void) setInitialRoutes: (NSArray*) routes;
+-(void) updateRoutesOnMap;
+-(id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withRoutes: (NSArray*) routes;
 
 @property (nonatomic, retain) IBOutlet ScenicMapView* mMapView;
 @property (nonatomic, retain) IBOutlet UISegmentedControl* mapType;

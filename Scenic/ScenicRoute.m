@@ -8,6 +8,7 @@
 
 #import "ScenicRoute.h"
 #import "ScenicContent.h"
+#import "GMapsRoute.h"
 
 @implementation ScenicRoute
 
@@ -40,6 +41,10 @@
 -(void) removeContent: (ScenicContent*) content {
     [self.scenicContents removeObject:content];
     [self.waypointRequests removeObject:[content.coord pairString]];
+}
+
+-(GMapsCoordinate*) startCoord {
+    return [self.gRoute startCoord];
 }
 
 @end

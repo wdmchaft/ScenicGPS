@@ -39,6 +39,7 @@
 -(void) removeWaypointWithContent:(ScenicContent*)content;
 -(void) refetch;
 -(void) removeContentFromPrimaryRoute: (ScenicContent*) content;
+-(void) fetchNewContent;
 @end
 
 @protocol ScenicMapSelectorModelDelegate

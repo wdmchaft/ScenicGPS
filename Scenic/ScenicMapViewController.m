@@ -30,11 +30,27 @@
 
 #pragma mark - View lifecycle
 
+-(id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withRoutes: (NSArray*) routes {
+    if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
+        [self createModel];
+        [self setInitialRoutes:routes];
+    }
+    return self;
+}
+
+-(void) setInitialRoutes: (NSArray*) routes {
+    self.model.routes = routes;
+}
+
 -(void) createModel {
     ScenicMapSelectorModel* tempModel = [[ScenicMapSelectorModel alloc] init];
     self.model = tempModel;
     self.model.delegate = self;
     [tempModel release];
+}
+
+-(void) awakeFromNib {
+    self.hidesBottomBarWhenPushed = YES;
 }
 
 -(void) mapSelectorModelFinishedGettingRoutes:(ScenicMapSelectorModel *)model {
@@ -43,9 +59,13 @@
 
 - (void) viewDidLoad {
     [super viewDidLoad];
-    
-    [self createModel];
+    [self addNewContent];
+    [self updateRoutesOnMap];
+}
+
+-(void) addNewContent {
     [self.model addTestContent];
+    [self.model fetchNewContent];
     [self updateVisibleContents];
 }
 
@@ -175,7 +195,7 @@
     NSArray* mapAnnotations = [NSArray arrayWithArray:self.mMapView.annotations];
     
     for (id<MKAnnotation> annotation in mapAnnotations) {
-        if ([annotation isMemberOfClass:[ScenicContent class]]) {
+        if ([annotation isKindOfClass:[ScenicContent class]]) {
             if (![visibleContents containsObject:annotation ]) {
                 [self.mMapView removeAnnotation:annotation];
             }
@@ -250,6 +270,10 @@
 
 -(void) putNewRoutes: (NSArray*) routes {
     self.model.routes = routes;
+    [self updateRoutesOnMap];
+}
+
+-(void) updateRoutesOnMap {
     [self updateRoutePicker];
     [self drawRoutes];
 }
