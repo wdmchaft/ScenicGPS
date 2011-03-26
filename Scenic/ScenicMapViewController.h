@@ -41,6 +41,9 @@
 -(IBAction) changeMapType: (id) sender;
 -(IBAction) changeRoute: (id) sender;
 -(void) updateRoutePicker;
+-(NSArray*) visibleContentsForCurrentRegion;
+-(void) updateVisibleContents;
+
 @property (nonatomic, retain) IBOutlet ScenicMapView* mMapView;
 @property (nonatomic, retain) IBOutlet UISegmentedControl* mapType;
 @property (nonatomic, retain) ScenicMapSelectorModel* model;

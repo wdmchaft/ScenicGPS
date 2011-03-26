@@ -71,6 +71,13 @@ static NSString* ScenicAnnotationIdentifier = @"ScenicAnnotationIdentifier";
 }
 
 
+-(void) setCoord:(GMapsCoordinate *)newCoord {
+    [newCoord retain];
+    [coord release];
+    coord = newCoord;
+    [self computeHash];
+}
+
 + (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize {
     UIGraphicsBeginImageContext(newSize);
     [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];

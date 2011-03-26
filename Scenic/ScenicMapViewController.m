@@ -46,7 +46,7 @@
     
     [self createModel];
     [self.model addTestContent];
-    [self addAnnotationsToMap];
+    [self updateVisibleContents];
 }
 
 -(IBAction) hideToolbar: (id) sender {
@@ -72,10 +72,6 @@
         default:
             break;
     }
-}
-
--(void) addAnnotationsToMap {
-    [self.mMapView addAnnotations:self.model.scenicContents];
 }
 
 -(IBAction) changeRoute: (id) sender {
@@ -165,7 +161,38 @@
 #define max(a, b) (((a) > (b)) ? (a) : (b))
 
 -(void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated{
+    [self updateVisibleContents];
+}
 
+-(void) updateVisibleContents {
+    NSArray* routeContents = [self.model primaryRoute].scenicContents;
+    NSArray* visibleMapContents = [self visibleContentsForCurrentRegion];
+    NSArray* visibleContents = [routeContents arrayByAddingObjectsFromArray:visibleMapContents];
+    
+    
+    // remove nonvisible
+    
+    NSArray* mapAnnotations = [NSArray arrayWithArray:self.mMapView.annotations];
+    
+    for (id<MKAnnotation> annotation in mapAnnotations) {
+        if ([annotation isMemberOfClass:[ScenicContent class]]) {
+            if (![visibleContents containsObject:annotation ]) {
+                [self.mMapView removeAnnotation:annotation];
+            }
+        }
+    }
+    
+    // add unadded
+    NSArray* currentAnnotations = self.mMapView.annotations;
+    for (ScenicContent* content in visibleContents) {
+        if (![currentAnnotations containsObject:content]) {
+            [self.mMapView addAnnotation:content];
+        }
+    }
+    
+}
+
+-(NSArray*) visibleContentsForCurrentRegion {
     MKCoordinateRegion region = self.mMapView.region;
     int level = 1;
     
@@ -176,27 +203,20 @@
     b = 1; // could be 1 (or 0 theoretically) this is the lowest number of characters to match 
     u = 0.48;
     v = 1; // max [0.818, 188] 
-
+    
     level = max (0,ceilf(-(delta*(b-a)+a*(v-u))/(u-v)));
     NSLog(@"t: %f, a: %f, b: %f, u: %f, v: %f",delta,a,b,u,v);
     NSLog(@"level: %d", level);
     
     
     
-    NSMutableDictionary * aDict = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary * aDict = [[[NSMutableDictionary alloc] init] autorelease];
     // ADD ALL TO HASH (since only unique key will contain 1 object)
-    for( id<MKAnnotation> annotation in self.model.scenicContents ){
-        NSString * checkStr = [[NSString alloc] initWithFormat:@"%@", [((ScenicContent*)annotation).geoHash substringToIndex:level]];
-       [aDict setObject:annotation forKey:checkStr];
+    for( ScenicContent* content in self.model.scenicContents ){
+        NSString * checkStr =[content.geoHash substringToIndex:level];
+        [aDict setObject:content forKey:checkStr];
     }
-        
-    // SEE IF IT EXISTS OR NOT
-    for( id<MKAnnotation> annotation in self.model.scenicContents ){
-        NSString * checkStr = [[NSString alloc] initWithFormat:@"%@", [((ScenicContent*)annotation).geoHash substringToIndex:level]];
-        if ([[aDict objectForKey:checkStr] isEqual:annotation]) {
-            [self.mMapView addAnnotation:annotation];
-        } else [self.mMapView removeAnnotation:annotation];
-    }
+    return [aDict allValues];
 }
 
 
@@ -273,13 +293,6 @@
         return olView;
     }
     return nil;
-}
-
-
--(void) mapView:(MKMapView *)mapView didAddOverlayViews:(NSArray *)overlayViews {
-    for (MKOverlayView* olView in overlayViews) {
-        [mapView bringSubviewToFront:olView];
-    }
 }
 
 -(void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
