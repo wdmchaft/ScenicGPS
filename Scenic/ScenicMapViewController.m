@@ -161,28 +161,27 @@
     return nil;
 }
 
+
+#define max(a, b) (((a) > (b)) ? (a) : (b))
+
 -(void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated{
 
     MKCoordinateRegion region = self.mMapView.region;
     int level = 1;
-    NSLog(@"%f is the delta", region.span.latitudeDelta);
     
-    if (region.span.latitudeDelta < 0.05) {
-        level = 8;
-    } else if (region.span.latitudeDelta < 0.01) {
-        level = 7;
-    } else if (region.span.latitudeDelta < 0.1) {
-        level = 6;
-    } else if (region.span.latitudeDelta < 0.3) {
-        level = 5;
-    } else if (region.span.latitudeDelta < 0.5) {
-        level = 3;
-    } else if (region.span.latitudeDelta < 0.8) {
-        level = 2;
-    } else if (region.span.latitudeDelta < 1.0) {
-        level = 1;
-    }
+    double delta = (region.span.latitudeDelta + region.span.longitudeDelta)/2.0;
+    
+    float a, b, u, v;
+    a = 10; // max 11? this is the total number of chars of a geoHash string
+    b = 1; // could be 1 (or 0 theoretically) this is the lowest number of characters to match 
+    u = 0.48;
+    v = 1; // max [0.818, 188] 
 
+    level = max (0,ceilf(-(delta*(b-a)+a*(v-u))/(u-v)));
+    NSLog(@"t: %f, a: %f, b: %f, u: %f, v: %f",delta,a,b,u,v);
+    NSLog(@"level: %d", level);
+    
+    
     
     NSMutableDictionary * aDict = [[NSMutableDictionary alloc] init];
     // ADD ALL TO HASH (since only unique key will contain 1 object)
