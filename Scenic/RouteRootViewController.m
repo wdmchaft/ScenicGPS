@@ -18,6 +18,7 @@
 #import "PanoramioPicFetcher.h"
 #import "YelpFetcher.h"
 #import "ScenicRoute.h"
+#import "PanoramioFetcher.h"
 
 @implementation RouteRootViewController
 @synthesize startTF, endTF, routeLabel;
@@ -37,7 +38,7 @@
     else if ([fetcher isKindOfClass:[ScenicParkFetcher class]]) {
         [self handleParks: (NSArray*) response];
     }
-    else if ([fetcher isKindOfClass:[PanoramioPicFetcher class]]) {
+    else if ([fetcher isKindOfClass:[PanoramioFetcher class]]) {
         [self handlePanoramio:(NSDictionary*) response];
     }
     else if ([fetcher isKindOfClass:[YelpFetcher class]]){
@@ -73,6 +74,7 @@
 }
 
 -(void) handlePanoramio:(NSDictionary*) dic {
+    /*
     NSURL* MyURL = [NSURL URLWithString:(NSString*) [dic objectForKey:@"url"]];
     PanoramioContent* panCon = [[PanoramioContent alloc] init];
     panCon.url = MyURL;
@@ -83,7 +85,9 @@
     [self.navigationController pushViewController:vc animated:YES];
     [vc release];
     [panCon release];
-    [scenic release];
+    [scenic release]; */
+    
+    
 }
 
 -(void) handleYelp: (NSDictionary*) dic {
@@ -92,7 +96,7 @@
 
 -(void) handleGeoTag:(GMapsGeolocation *)loc {
     //YelpFetcher* fetcher = [[YelpFetcher fetcherForCoord:loc.coord andDelegate:self] retain];
-    PanoramioPicFetcher* fetcher = [[PanoramioPicFetcher panDicFromCoord:loc.coord withDelegate:self] retain];
+    PanoramioFetcher* fetcher = [[PanoramioFetcher fetcherForCoord:loc.coord andDelegate:self] retain];
     [fetcher fetch];
 }
 
@@ -112,8 +116,7 @@
 }
 
 -(IBAction) getPanoramio:(id)sender {
-    GMapsGeolocator* fetcher = [[GMapsGeolocator geolocatorWithAddress:startTF.text withDelegate:self] retain];
-    [fetcher fetch];
+    return;
 }
 
 @end

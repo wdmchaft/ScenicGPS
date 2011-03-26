@@ -67,6 +67,7 @@
 		5D0588A113209B8800D42F0A /* libz.1.2.3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D05889D13209B8800D42F0A /* libz.1.2.3.dylib */; };
 		5D0588A213209B8800D42F0A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D05889E13209B8800D42F0A /* MobileCoreServices.framework */; };
 		5D0588A313209B8800D42F0A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D05889F13209B8800D42F0A /* SystemConfiguration.framework */; };
+		5D063712133E885E00BF2EF0 /* PanoramioFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D063711133E885E00BF2EF0 /* PanoramioFetcher.m */; };
 		5D06B8F9132F04770035260F /* ScenicRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D06B8F8132F04770035260F /* ScenicRoute.m */; };
 		5D06B8FD1330272D0035260F /* ScenicTextContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D06B8FC1330272C0035260F /* ScenicTextContent.m */; };
 		5D06B900133038600035260F /* ScenicPolyline.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D06B8FF1330385A0035260F /* ScenicPolyline.m */; };
@@ -209,6 +210,8 @@
 		5D05889D13209B8800D42F0A /* libz.1.2.3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.3.dylib; path = usr/lib/libz.1.2.3.dylib; sourceTree = SDKROOT; };
 		5D05889E13209B8800D42F0A /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		5D05889F13209B8800D42F0A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		5D063710133E885E00BF2EF0 /* PanoramioFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanoramioFetcher.h; sourceTree = "<group>"; };
+		5D063711133E885E00BF2EF0 /* PanoramioFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PanoramioFetcher.m; sourceTree = "<group>"; };
 		5D06B8F7132F04770035260F /* ScenicRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScenicRoute.h; sourceTree = "<group>"; };
 		5D06B8F8132F04770035260F /* ScenicRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScenicRoute.m; sourceTree = "<group>"; };
 		5D06B8FB1330272C0035260F /* ScenicTextContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScenicTextContent.h; sourceTree = "<group>"; };
@@ -364,6 +367,8 @@
 			isa = PBXGroup;
 			children = (
 				5D05883713209A3B00D42F0A /* GMapsRouter.h */,
+				5D063710133E885E00BF2EF0 /* PanoramioFetcher.h */,
+				5D063711133E885E00BF2EF0 /* PanoramioFetcher.m */,
 				5D05883813209A3B00D42F0A /* GMapsRouter.m */,
 				5D05889913209A8100D42F0A /* GMapsGeolocator.h */,
 				5D05889A13209A8100D42F0A /* GMapsGeolocator.m */,
@@ -744,6 +749,7 @@
 				5D06B90713304FCD0035260F /* ScenicMapSelectorModel.m in Sources */,
 				5D718D8513398AD000E5DAEF /* ScenicMapView.m in Sources */,
 				5D718D89133993FA00E5DAEF /* WildcardGestureRecognizer.m in Sources */,
+				5D063712133E885E00BF2EF0 /* PanoramioFetcher.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
