@@ -22,8 +22,6 @@ static NSString* MINX_KEY = @"minx";
 static NSString* MAXX_KEY = @"maxx";
 static NSString* MINY_KEY = @"miny";
 static NSString* MAXY_KEY = @"maxy";
-static NSString* PHOTOS_KEY = @"photos";
-static NSString* PHOTO_URL_KEY = @"photo_file_url";
 static NSString* DEF_FROM = @"0";
 
 static double DEF_RANGE_DEGREES = .01f;
@@ -32,7 +30,8 @@ static int DEF_N_RETURNS = 20;
 @implementation PanoramioFetcher
 
 -(id) getResponseFromResult:(id)result {
-    NSLog(@"%@",[result description]);
+    NSDictionary* dic = (NSDictionary*) result;
+    return [PanoramioContent contentsFromJSONDic:dic];
 }
 
 

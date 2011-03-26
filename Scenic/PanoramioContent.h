@@ -18,4 +18,7 @@
 
 -(UIImage*) fetchImage;
 
++(NSArray*) contentsFromJSONDic: (NSDictionary*) dic;
+
+
 @end

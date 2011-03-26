@@ -39,7 +39,7 @@
         [self handleParks: (NSArray*) response];
     }
     else if ([fetcher isKindOfClass:[PanoramioFetcher class]]) {
-        [self handlePanoramio:(NSDictionary*) response];
+        [self handlePanoramio:(NSArray*) response];
     }
     else if ([fetcher isKindOfClass:[YelpFetcher class]]){
         [self handleYelp: response];
@@ -73,7 +73,7 @@
     
 }
 
--(void) handlePanoramio:(NSDictionary*) dic {
+-(void) handlePanoramio:(NSArray*) contents {
     /*
     NSURL* MyURL = [NSURL URLWithString:(NSString*) [dic objectForKey:@"url"]];
     PanoramioContent* panCon = [[PanoramioContent alloc] init];
@@ -88,6 +88,7 @@
     [scenic release]; */
     
     
+    return;
 }
 
 -(void) handleYelp: (NSDictionary*) dic {

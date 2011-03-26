@@ -29,7 +29,7 @@
 -(IBAction) getPanoramio: (id) sender;
 
 -(void) handleParks: (NSArray*) dic;
--(void) handlePanoramio: (NSDictionary*) dic;
+-(void) handlePanoramio: (NSArray*) contents;
 -(void) handleRoutes: (NSArray*) routes;
 -(void) handleGeoTag: (GMapsGeolocation*) loc;
 -(void) handleYelp: (NSDictionary*) dic;
