@@ -214,18 +214,31 @@
 
 -(NSArray*) visibleContentsForCurrentRegion {
     MKCoordinateRegion region = self.mMapView.region;
-    int level = 1;
+    int level = 4;
     
     double delta = (region.span.latitudeDelta + region.span.longitudeDelta)/2.0;
-    
+    /*
     float a, b, u, v;
-    a = 10; // max 11? this is the total number of chars of a geoHash string
+    a = 12; // max 11? this is the total number of chars of a geoHash string
     b = 1; // could be 1 (or 0 theoretically) this is the lowest number of characters to match 
     u = 0.48;
     v = 1; // max [0.818, 188] 
+    */
+    double delta_max = 188;
+    double delta_min = .00818;
+    int c_max = 12;
+    int c_min  = 3;
+    double rho = 1000.;
+    double cDel = (double) (c_max - c_min);
+    double dDel = delta_max - delta_min;
+    NSLog(@"%f",delta);
     
-    level = max (0,ceilf(-(delta*(b-a)+a*(v-u))/(u-v)));
-    NSLog(@"t: %f, a: %f, b: %f, u: %f, v: %f",delta,a,b,u,v);
+    level = (int) (c_min + floor(cDel*(dDel - (delta - delta_min))/(rho*(delta - delta_min) + dDel)));
+                                                                        
+    
+    
+    
+
     NSLog(@"level: %d", level);
     
     
@@ -233,7 +246,7 @@
     NSMutableDictionary * aDict = [[[NSMutableDictionary alloc] init] autorelease];
     // ADD ALL TO HASH (since only unique key will contain 1 object)
     for( ScenicContent* content in self.model.scenicContents ){
-        NSString * checkStr =[content.geoHash substringToIndex:level];
+        NSString * checkStr =[content.geoHash substringToIndex:level-1];
         [aDict setObject:content forKey:checkStr];
     }
     return [aDict allValues];

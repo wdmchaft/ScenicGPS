@@ -20,5 +20,5 @@
 
 +(NSArray*) contentsFromJSONDic: (NSDictionary*) dic;
 
-
+- (UIImage*)imageWithBorderFromImage:(UIImage*)source;
 @end

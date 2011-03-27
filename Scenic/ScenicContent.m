@@ -24,7 +24,7 @@ static NSString* ScenicAnnotationIdentifier = @"ScenicAnnotationIdentifier";
 
 -(MKAnnotationView*) contentAVWithRoute: (ScenicRoute*) route {
     MKAnnotationView *annotationView = [[[MKAnnotationView alloc] initWithAnnotation:self
-                                                                     reuseIdentifier:ScenicAnnotationIdentifier] autorelease];
+                                                                     reuseIdentifier:[self tag]] autorelease];
     annotationView.canShowCallout = YES;
     
     UIImage *flagImage = [self fetchIcon];
@@ -51,7 +51,7 @@ static NSString* ScenicAnnotationIdentifier = @"ScenicAnnotationIdentifier";
 }
 
 -(NSString*) tag {
-    return ScenicAnnotationIdentifier;
+    return self.title;
 }
 
 -(CLLocationCoordinate2D) coordinate {

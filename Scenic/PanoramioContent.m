@@ -7,6 +7,7 @@
 //
 
 #import "PanoramioContent.h"
+#import <QuartzCore/QuartzCore.h>
 
 static NSString* PHOTOS_KEY = @"photos";
 static NSString* PHOTO_URL_KEY = @"photo_file_url";
@@ -14,6 +15,8 @@ static NSString* LAT_KEY = @"latitude";
 static NSString* LNG_KEY = @"longitude";
 static NSString* TITLE_KEY = @"photo_title";
 
+
+static double scaler = .9;
 
 
 
@@ -37,16 +40,32 @@ static NSString* TITLE_KEY = @"photo_title";
 }
 
 -(UIImage*) iconImage {
-    return [self fetchImage];
+    return [self imageWithBorderFromImage:[self fetchImage]];
 }
 
 -(NSString*) tag {
-    return @"Pano";
+    return [self.url description];
 }
 
 - (void) dealloc {
     [url release];
     [super dealloc];
+}
+
+- (UIImage*)imageWithBorderFromImage:(UIImage*)source
+{
+    CGSize size = [source size];
+    UIGraphicsBeginImageContext(size);
+    CGRect rect = CGRectMake(0, 0, size.width, size.height);
+    [source drawInRect:rect blendMode:kCGBlendModeNormal alpha:1.0];
+    
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    CGContextSetRGBStrokeColor(context, 0.0, 0.0, 0.0, 1.0); 
+    CGContextSetLineWidth(context, size.width/(20.));
+    CGContextStrokeRect(context, rect);
+    UIImage *testImg =  UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return testImg;
 }
 
 +(NSArray*) contentsFromJSONDic: (NSDictionary*) dic {
