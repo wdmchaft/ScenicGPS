@@ -83,6 +83,9 @@
 		5D490DD413298693006905A9 /* YelpFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D490DD313298691006905A9 /* YelpFetcher.m */; };
 		5D718D8513398AD000E5DAEF /* ScenicMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D718D8413398AD000E5DAEF /* ScenicMapView.m */; };
 		5D718D89133993FA00E5DAEF /* WildcardGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D718D88133993FA00E5DAEF /* WildcardGestureRecognizer.m */; };
+		5D99EF0D1340E99900E1412E /* ScenicTripViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D99EF0B1340E99900E1412E /* ScenicTripViewController.m */; };
+		5D99EF0E1340E99900E1412E /* ScenicTripViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D99EF0C1340E99900E1412E /* ScenicTripViewController.xib */; };
+		5D99EF111340EBDA00E1412E /* ScenicTripModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D99EF101340EBDA00E1412E /* ScenicTripModel.m */; };
 		5DBF2BB1132ED72F004C1F90 /* add-28.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DBF2BB0132ED72F004C1F90 /* add-28.png */; };
 		5DCF17D31320A33100D19D04 /* GMapsRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DCF17D21320A33100D19D04 /* GMapsRoute.m */; };
 		5DCF17D71320A47400D19D04 /* GMapsLeg.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DCF17D61320A47400D19D04 /* GMapsLeg.m */; };
@@ -239,6 +242,11 @@
 		5D718D8413398AD000E5DAEF /* ScenicMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScenicMapView.m; sourceTree = "<group>"; };
 		5D718D87133993FA00E5DAEF /* WildcardGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WildcardGestureRecognizer.h; sourceTree = "<group>"; };
 		5D718D88133993FA00E5DAEF /* WildcardGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WildcardGestureRecognizer.m; sourceTree = "<group>"; };
+		5D99EF0A1340E99900E1412E /* ScenicTripViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScenicTripViewController.h; sourceTree = "<group>"; };
+		5D99EF0B1340E99900E1412E /* ScenicTripViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScenicTripViewController.m; sourceTree = "<group>"; };
+		5D99EF0C1340E99900E1412E /* ScenicTripViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScenicTripViewController.xib; sourceTree = "<group>"; };
+		5D99EF0F1340EBDA00E1412E /* ScenicTripModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScenicTripModel.h; sourceTree = "<group>"; };
+		5D99EF101340EBDA00E1412E /* ScenicTripModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScenicTripModel.m; sourceTree = "<group>"; };
 		5DBF2BB0132ED72F004C1F90 /* add-28.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add-28.png"; sourceTree = "<group>"; };
 		5DCF17D11320A33100D19D04 /* GMapsRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMapsRoute.h; sourceTree = "<group>"; };
 		5DCF17D21320A33100D19D04 /* GMapsRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMapsRoute.m; sourceTree = "<group>"; };
@@ -389,6 +397,7 @@
 		5D017AA51321A04E00B8EA6A /* Xibs */ = {
 			isa = PBXGroup;
 			children = (
+				5D99EF0C1340E99900E1412E /* ScenicTripViewController.xib */,
 				5D017ABF13257C9400B8EA6A /* ScenicContentDisplayViewController.xib */,
 				5D017AB013255D3600B8EA6A /* ScenicContentViewController.xib */,
 				5D05886C13209A3B00D42F0A /* RouteRootViewController.xib */,
@@ -414,6 +423,8 @@
 				5D05887213209A3B00D42F0A /* HistoricalRouteViewController.m */,
 				5D05887513209A3B00D42F0A /* RouteViewController.m */,
 				5D05887413209A3B00D42F0A /* RouteViewController.h */,
+				5D99EF0A1340E99900E1412E /* ScenicTripViewController.h */,
+				5D99EF0B1340E99900E1412E /* ScenicTripViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -533,6 +544,8 @@
 			children = (
 				5D06B90513304FCD0035260F /* ScenicMapSelectorModel.h */,
 				5D06B90613304FCD0035260F /* ScenicMapSelectorModel.m */,
+				5D99EF0F1340EBDA00E1412E /* ScenicTripModel.h */,
+				5D99EF101340EBDA00E1412E /* ScenicTripModel.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -661,6 +674,7 @@
 				5D2FCF5A132EA2F5005B08DD /* ScenicContentTextVC.xib in Resources */,
 				5DBF2BB1132ED72F004C1F90 /* add-28.png in Resources */,
 				5DE4663D133BEFF10095385F /* remove.png in Resources */,
+				5D99EF0E1340E99900E1412E /* ScenicTripViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -750,6 +764,8 @@
 				5D718D8513398AD000E5DAEF /* ScenicMapView.m in Sources */,
 				5D718D89133993FA00E5DAEF /* WildcardGestureRecognizer.m in Sources */,
 				5D063712133E885E00BF2EF0 /* PanoramioFetcher.m in Sources */,
+				5D99EF0D1340E99900E1412E /* ScenicTripViewController.m in Sources */,
+				5D99EF111340EBDA00E1412E /* ScenicTripModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

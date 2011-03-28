@@ -66,8 +66,9 @@
 
 -(void) handleRoutes: (NSArray*) routes {
     
-    ScenicMapViewController* smVC = [[ScenicMapViewController alloc] initWithNibName:@"ScenicMapViewController" bundle:nil withRoutes:routes];
+    ScenicMapViewController* smVC = [[ScenicMapViewController alloc] initWithNibName:@"ScenicMapViewController" bundle:nil];
     [self.navigationController pushViewController:smVC animated:YES];
+    [smVC setInitialRoutes:routes];
     [smVC release];
     
 }

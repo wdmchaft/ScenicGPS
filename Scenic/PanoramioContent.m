@@ -16,8 +16,6 @@ static NSString* LNG_KEY = @"longitude";
 static NSString* TITLE_KEY = @"photo_title";
 
 
-static double scaler = .9;
-
 
 
 @implementation PanoramioContent

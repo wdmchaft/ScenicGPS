@@ -17,9 +17,10 @@
 #import "ScenicWaypointViewController.h"
 #import "GMapsRouter.h"
 #import "ScenicMapSelectorModel.h"
+#import "ScenicMapView.h"
 
-@class ScenicRoute, ScenicContent, GMapsRoute, ScenicMapView;
-@interface ScenicMapViewController : UIViewController <MKReverseGeocoderDelegate,MKMapViewDelegate, ScenicMapSelectorModelDelegate> {
+@class ScenicRoute, ScenicContent, GMapsRoute;
+@interface ScenicMapViewController : UIViewController <ScenicMapViewDelegate> {
     IBOutlet ScenicMapView* mMapView;
 	IBOutlet UISegmentedControl *mapType;
     IBOutlet UISegmentedControl *routePicker;
@@ -31,22 +32,15 @@
 
 
 -(void)gotoLocation:(CLLocation *) location;
--(void) putNewRoutes: (NSArray*) routes;
--(void) drawRoutes;
--(void) addAnnotationsToMap;
--(void) refreshRouteDrawings;
--(void) createModel;
+
 -(IBAction) hideToolbar: (id) sender;
 -(IBAction) showToolbar: (id) sender;
 -(IBAction) changeMapType: (id) sender;
 -(IBAction) changeRoute: (id) sender;
 -(void) updateRoutePicker;
--(NSArray*) visibleContentsForCurrentRegion;
--(void) updateVisibleContents;
--(void) addNewContent;
+
 -(void) setInitialRoutes: (NSArray*) routes;
--(void) updateRoutesOnMap;
--(id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withRoutes: (NSArray*) routes;
+-(void) updateTitle;
 
 @property (nonatomic, retain) IBOutlet ScenicMapView* mMapView;
 @property (nonatomic, retain) IBOutlet UISegmentedControl* mapType;

@@ -16,7 +16,7 @@
 }
 
 -(void) addWaypoint;
-
+-(NSString*) getBackTitle;
 @property (nonatomic, retain) ScenicContentViewController* mainVC;
 @property (nonatomic, assign)     id<ScenicContentDelegate> delegate;
 @property (nonatomic, retain) NSString* toolTitle;
@@ -26,6 +26,6 @@
 @protocol ScenicContentDelegate <NSObject>
 
 -(void) addWaypointWithContent: (ScenicContent*) content;
--(NSString*) getBackTitle;
+
 
 @end

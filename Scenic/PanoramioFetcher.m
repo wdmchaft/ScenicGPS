@@ -23,7 +23,6 @@ static NSString* MINX_KEY = @"minx";
 static NSString* MAXX_KEY = @"maxx";
 static NSString* MINY_KEY = @"miny";
 static NSString* MAXY_KEY = @"maxy";
-static NSString* DEF_FROM = @"0";
 
 static double DEF_RANGE_DEGREES = .1f;
 static int DEF_N_RETURNS = 20;

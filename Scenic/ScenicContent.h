@@ -38,6 +38,5 @@
 +(CGSize) defIconSize;
 -(NSString*) tag;
 - (void) computeHash;
--(NSString*) getGeoHash;
 
 @end
