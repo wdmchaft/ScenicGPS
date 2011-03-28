@@ -12,42 +12,41 @@
 #import "GMapsRouter.h"
 #import "ScenicMapView.h"
 #import "ScenicRoute.h"
+#import "ScenicTripViewController.h"
 
 @implementation ScenicMapViewController
-@synthesize mMapView, mapType, model, toggleMapType, mapTypeToolbar, routePicker;
+@synthesize mMapView, mapType, mapTypeToolbar, routePicker, _routes;
 
 
--(id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+-(id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil routes:(NSArray*) routes {
     if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
         self.hidesBottomBarWhenPushed = YES;
+        self._routes = routes;
     }
     return self;
 }
 
 #pragma mark - View lifecycle
--(void) setInitialRoutes: (NSArray*) routes {
-    [self.mMapView setInitialRoutes:routes];
-}
 
 - (void) viewDidLoad {
     [super viewDidLoad];
+    [self addTripButton];
     self.mMapView.navigationController = self.navigationController;
     self.mMapView.scenicDelegate = self;
+    [self.mMapView setInitialRoutes:self._routes];
+    [self._routes release];
+}
+
+-(void) addTripButton {
+    UIBarButtonItem* item = [[UIBarButtonItem alloc] initWithTitle:@"Start Trip" style:UIBarButtonItemStyleBordered target:self action:@selector(startTrip:)];
+    self.navigationItem.rightBarButtonItem = item;
+    [item release];
 }
 
 
 -(void) scenicMapViewUpdatedRoutes {
     [self updateRoutePicker];
     [self updateTitle];
-}
-
--(IBAction) hideToolbar: (id) sender {
-    [self.mapTypeToolbar setHidden:YES];
-    [self.toggleMapType setHidden:NO];
-}
--(IBAction) showToolbar: (id) sender {
-    [self.mapTypeToolbar setHidden:NO];
-    [self.toggleMapType setHidden:YES];
 }
 
 -(IBAction) changeMapType: (id) sender {
@@ -64,6 +63,12 @@
         default:
             break;
     }
+}
+
+-(void) startTrip: (id) sender {
+    ScenicTripViewController* tripVC = [[ScenicTripViewController alloc] initWithNibName:@"ScenicTripViewController" bundle:nil model:self.mMapView.model];
+    [self.navigationController pushViewController:tripVC animated:YES];
+    [tripVC release];
 }
 
 -(IBAction) changeRoute: (id) sender {

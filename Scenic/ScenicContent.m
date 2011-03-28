@@ -21,31 +21,6 @@ static NSString* ScenicAnnotationIdentifier = @"ScenicAnnotationIdentifier";
     geoHash = [GeoHash hash:CLLocationCoordinate2DMake([coord.lat doubleValue], [coord.lng doubleValue])];
 }
 
-
--(MKAnnotationView*) contentAVWithRoute: (ScenicRoute*) route {
-    MKAnnotationView *annotationView = [[[MKAnnotationView alloc] initWithAnnotation:self
-                                                                     reuseIdentifier:[self tag]] autorelease];
-    annotationView.canShowCallout = YES;
-    
-    UIImage *flagImage = [self fetchIcon];
-    annotationView.image = flagImage;
-    annotationView.opaque = NO;
-    
-    UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
-    annotationView.rightCalloutAccessoryView = rightButton;
-    UIImage* image;
-    if (![route.scenicContents containsObject:self])
-        image = [UIImage imageNamed:@"add-28.png"];
-    else
-        image = [UIImage imageNamed:@"remove.png"];
-    
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button setFrame:CGRectMake(0.0,0.0, 28.0, 28.0)];
-    [button setImage:image forState:UIControlStateNormal];
-    annotationView.leftCalloutAccessoryView = button;
-    return annotationView;
-}
-
 +(NSString*) SCAVID {
     return ScenicAnnotationIdentifier;
 }

@@ -29,7 +29,7 @@
 @property (nonatomic, retain) id<ScenicContentProvider> contentProvider;
 @property (nonatomic, retain) NSString* geoHash;
 
--(MKAnnotationView*) contentAVWithRoute: (ScenicRoute*) route;
+
 +(NSString*) SCAVID;
 -(CLLocationCoordinate2D) coordinate;
 + (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize;

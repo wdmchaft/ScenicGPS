@@ -17,7 +17,7 @@
 
 @implementation ScenicMapSelectorModel
 @synthesize routes, scenicContents, primaryRouteIndex, locationManager, delegate;
-
+@synthesize frozen;
 -(id) init {
     if ((self = [super init])) {
         [self initContents];
@@ -25,6 +25,7 @@
         manager.delegate = self;
         [manager startUpdatingLocation];
         self.locationManager = manager;
+        self.frozen = NO;
         [manager release];
     }
     return self;
@@ -56,6 +57,7 @@
     } else if ([fetcher isKindOfClass:[PanoramioFetcher class]]) {
         NSArray* newPanContents = (NSArray*) response;
         [self.scenicContents addObjectsFromArray:newPanContents];
+        [self.delegate mapSelectorModelFinishedFetchingContent:self];
     }
     [fetcher release];
     
@@ -145,6 +147,16 @@
 
 -(void) locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
     return;
+}
+
+-(id) copyWithZone:(NSZone *)zone {
+    ScenicMapSelectorModel* modelCopy = [[ScenicMapSelectorModel allocWithZone:zone] init];
+    modelCopy.scenicContents = [NSArray arrayWithArray:self.scenicContents];
+    modelCopy.locationManager = self.locationManager;
+    modelCopy.frozen = self.frozen;
+    modelCopy.primaryRouteIndex = self.primaryRouteIndex;
+    modelCopy.routes = [NSArray arrayWithArray:self.routes];
+    return modelCopy;
 }
 
 @end

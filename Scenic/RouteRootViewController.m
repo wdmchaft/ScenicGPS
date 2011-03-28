@@ -51,8 +51,10 @@
 
 -(void) viewDidLoad {
     [super viewDidLoad];
+    UIBarButtonItem* backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:nil action:nil];
+    self.navigationItem.backBarButtonItem = backButton;
+    [backButton release];
     self.title = @"Choose Origin/Destination";
-    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
 }
 
 -(void) handleParks: (NSArray*) pts {
@@ -66,9 +68,8 @@
 
 -(void) handleRoutes: (NSArray*) routes {
     
-    ScenicMapViewController* smVC = [[ScenicMapViewController alloc] initWithNibName:@"ScenicMapViewController" bundle:nil];
+    ScenicMapViewController* smVC = [[ScenicMapViewController alloc] initWithNibName:@"ScenicMapViewController" bundle:nil routes:routes];
     [self.navigationController pushViewController:smVC animated:YES];
-    [smVC setInitialRoutes:routes];
     [smVC release];
     
 }

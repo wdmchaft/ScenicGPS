@@ -28,7 +28,7 @@
 -(void) addNewContent;
 -(void) changeToRouteNumber: (int) n;
 -(void) setInitialRoutes: (NSArray*) routes;
-
+-(MKAnnotationView*) annotationViewForContent:(ScenicContent*) content;
 @property (nonatomic, retain) ScenicMapSelectorModel* model;
 @property (nonatomic, retain)     UINavigationController* navigationController;
 @property (nonatomic, assign) id<ScenicMapViewDelegate> scenicDelegate;
@@ -37,5 +37,6 @@
 @protocol ScenicMapViewDelegate <NSObject>
 
 -(void) scenicMapViewUpdatedRoutes;
+
 
 @end

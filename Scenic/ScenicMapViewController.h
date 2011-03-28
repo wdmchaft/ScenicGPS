@@ -24,28 +24,25 @@
     IBOutlet ScenicMapView* mMapView;
 	IBOutlet UISegmentedControl *mapType;
     IBOutlet UISegmentedControl *routePicker;
-    ScenicMapSelectorModel* model;
-    IBOutlet UIButton* toggleMapType;
     IBOutlet UIToolbar* mapTypeToolbar;
+    NSArray* _routes;
 }
 
 
-
+-(id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil routes:(NSArray*) routes;
 -(void)gotoLocation:(CLLocation *) location;
 
--(IBAction) hideToolbar: (id) sender;
--(IBAction) showToolbar: (id) sender;
 -(IBAction) changeMapType: (id) sender;
 -(IBAction) changeRoute: (id) sender;
 -(void) updateRoutePicker;
 
 -(void) setInitialRoutes: (NSArray*) routes;
 -(void) updateTitle;
+-(void) addTripButton;
 
 @property (nonatomic, retain) IBOutlet ScenicMapView* mMapView;
 @property (nonatomic, retain) IBOutlet UISegmentedControl* mapType;
-@property (nonatomic, retain) ScenicMapSelectorModel* model;
-@property (nonatomic, retain) IBOutlet UIButton* toggleMapType;
 @property (nonatomic, retain) IBOutlet UIToolbar* mapTypeToolbar;
 @property (nonatomic, retain) IBOutlet UISegmentedControl* routePicker;
+@property (nonatomic, retain)     NSArray* _routes;
 @end

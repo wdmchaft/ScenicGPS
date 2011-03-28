@@ -14,12 +14,13 @@
 
 @protocol ScenicMapSelectorModelDelegate;
 @class ScenicRoute;
-@interface ScenicMapSelectorModel : NSObject <CLLocationManagerDelegate, DataFetcherDelegate, ScenicContentDelegate> {
+@interface ScenicMapSelectorModel : NSObject <CLLocationManagerDelegate, DataFetcherDelegate, ScenicContentDelegate, NSCopying> {
     NSArray* routes;
     int primaryRouteIndex;
     NSMutableArray* scenicContents;
     CLLocationManager* locationManager;
     id<ScenicMapSelectorModelDelegate> delegate;
+    bool frozen;
 }
 
 @property (nonatomic, retain) NSArray* routes;
@@ -27,7 +28,7 @@
 @property (nonatomic, retain) NSMutableArray* scenicContents;
 @property (nonatomic, retain) CLLocationManager* locationManager;
 @property (nonatomic, assign) id<ScenicMapSelectorModelDelegate> delegate;
-
+@property (nonatomic, assign) bool frozen;
 -(id) init;
 -(void) initContents;
 -(void) addContent: (ScenicContent*) content;
@@ -45,5 +46,6 @@
 @protocol ScenicMapSelectorModelDelegate
 
 -(void) mapSelectorModelFinishedGettingRoutes: (ScenicMapSelectorModel*) model;
+-(void)mapSelectorModelFinishedFetchingContent: (ScenicMapSelectorModel*) model;
 
 @end

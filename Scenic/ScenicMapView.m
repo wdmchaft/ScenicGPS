@@ -23,6 +23,20 @@
 @implementation ScenicMapView
 @synthesize model, navigationController, scenicDelegate;
 
+
+-(id) initWithCoder:(NSCoder *)aDecoder {
+    if ((self = [super initWithCoder:aDecoder])) {
+        self.delegate = self;
+    }
+    return self;
+}
+-(id) initWithFrame:(CGRect)frame {
+    if ((self = [super initWithFrame:frame])) {
+        self.delegate = self;
+    }
+    return self;
+}
+
 -(void) changeToRouteNumber: (int) n {
     self.model.primaryRouteIndex = n;
     [self drawRoutes];
@@ -76,7 +90,7 @@
         (MKPinAnnotationView *)[_mapView dequeueReusableAnnotationViewWithIdentifier:[sc tag]];
         if (!pinView)
         {
-            return [sc contentAVWithRoute:[self.model primaryRoute]];
+            return [self annotationViewForContent:sc];
         }
         else
         {
@@ -88,9 +102,37 @@
     return nil;
 }
 
+-(MKAnnotationView*) annotationViewForContent:(ScenicContent*) content {
+    MKAnnotationView* annotationView = [[[MKAnnotationView alloc] initWithAnnotation:content reuseIdentifier:[content tag]] autorelease];
+    annotationView.canShowCallout = YES;
+    
+    UIImage *flagImage = [content fetchIcon];
+    annotationView.image = flagImage;
+    annotationView.opaque = NO;
+    
+    UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeInfoLight];
+    annotationView.rightCalloutAccessoryView = rightButton;
+    if (!self.model.frozen) {
+        UIImage* image;
+        if (![[self.model primaryRoute].scenicContents containsObject:content])
+            image = [UIImage imageNamed:@"add-28.png"];
+        else
+            image = [UIImage imageNamed:@"remove.png"];
+        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+        [button setFrame:CGRectMake(0.0,0.0, 28.0, 28.0)];
+        [button setImage:image forState:UIControlStateNormal];
+        annotationView.leftCalloutAccessoryView = button;
+    }
+    return annotationView;
+}
+
 
 -(void) mapSelectorModelFinishedGettingRoutes:(ScenicMapSelectorModel *)model {
     [self putNewRoutes:self.model.routes];
+}
+
+-(void)mapSelectorModelFinishedFetchingContent: (ScenicMapSelectorModel*) model {
+    [self updateVisibleContents];
 }
 
 -(void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated{
@@ -116,9 +158,8 @@
     }
     
     // add unadded
-    NSArray* currentAnnotations = self.annotations;
     for (ScenicContent* content in visibleContents) {
-        if (![currentAnnotations containsObject:content]) {
+        if (![self.annotations containsObject:content]) {
             [self addAnnotation:content];
         }
     }
@@ -149,9 +190,6 @@
     level = (int) (c_min + floor(cDel*(dDel - (delta - delta_min))/(rho*(delta - delta_min) + dDel)));
     
     
-    
-    
-    
     NSLog(@"level: %d", level);
     
     
@@ -169,26 +207,29 @@
     if (!self.model) {
         [self createModel];
     }
-    self.model.routes = routes;
-    self.delegate = self;
+    [self putNewRoutes:routes];
     [self addNewContent];
-    [self updateRoutesOnMap];
 }
 
 
 -(void) addNewContent {
     [self.model addTestContent];
     [self.model fetchNewContent];
-    [self updateVisibleContents];
 }
 
 -(void) createModel {
     ScenicMapSelectorModel* tempModel = [[ScenicMapSelectorModel alloc] init];
     self.model = tempModel;
-    self.model.delegate = self;
     [tempModel release];
 }
 
+
+-(void) setModel:(ScenicMapSelectorModel *)_model {
+    [_model retain];
+    [model release];
+    model = _model;
+    self.model.delegate = self;
+}
 
 - (void)reverseGeocoder:(MKReverseGeocoder *)geocoder didFailWithError:(NSError *)error{
 	//NSLog(@"Reverse Geocoder Errored");

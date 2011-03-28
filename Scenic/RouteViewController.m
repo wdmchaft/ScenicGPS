@@ -38,6 +38,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.navigationBar.barStyle = UIBarStyleBlack;
     // Do any additional setup after loading the view from its nib.
     RouteRootViewController* rootVC = [[RouteRootViewController alloc] initWithNibName:@"RouteRootViewController" bundle:nil];
     [self pushViewController:rootVC animated:NO];

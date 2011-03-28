@@ -8,15 +8,19 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
+#import "ScenicMapView.h"
 
-@class ScenicTripModel;
-@interface ScenicTripViewController : UIViewController {
-    MKMapView* mMapView;
+@class ScenicTripModel, ScenicMapView;
+@interface ScenicTripViewController : UIViewController <ScenicMapViewDelegate> {
+    ScenicMapView* mMapView;
     ScenicTripModel* trip;
     
 }
 
-@property (nonatomic, retain) IBOutlet MKMapView* mMapView;
+-(IBAction) takePicture: (id) sender;
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil model: (ScenicMapSelectorModel*) model;
+
+@property (nonatomic, retain) IBOutlet ScenicMapView* mMapView;
 @property (nonatomic, retain) ScenicTripModel* trip;
 
 @end

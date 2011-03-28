@@ -8,12 +8,15 @@
 
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
+#import "ScenicMapSelectorModel.h"
 
 @class GMapsCoordinate, ScenicRoute;
-@interface ScenicTripModel : NSObject {
+@interface ScenicTripModel : ScenicMapSelectorModel {
     ScenicRoute* route;
     GMapsCoordinate* location;
 }
+
++(id) modelFromModel: (ScenicMapSelectorModel*) model;
 
 @property (nonatomic, retain) ScenicRoute* route;
 @property (nonatomic, retain) GMapsCoordinate* location;

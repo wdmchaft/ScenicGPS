@@ -7,16 +7,17 @@
 //
 
 #import "ScenicTripViewController.h"
+#import "ScenicTripModel.h"
 
 
 @implementation ScenicTripViewController
 @synthesize mMapView, trip;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil model: (ScenicMapSelectorModel*) model
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        self.trip = [ScenicTripModel modelFromModel:model];
     }
     return self;
 }
@@ -39,7 +40,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    self.mMapView.navigationController = self.navigationController;
+    self.mMapView.model = self.trip;
+    self.mMapView.scenicDelegate = self;
+    [self.mMapView updateRoutesOnMap];
+}
+
+-(void) scenicMapViewUpdatedRoutes {
+    return;
 }
 
 - (void)viewDidUnload
@@ -53,6 +61,10 @@
 {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+-(IBAction) takePicture: (id) sender {
+    return;
 }
 
 @end
