@@ -61,4 +61,18 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+-(void) encodeWithCoder:(NSCoder *)aCoder {
+    [super  encodeWithCoder:aCoder];
+    [aCoder encodeObject:self.description];
+    [aCoder encodeObject:self.descriptionLabel];
+}
+
+-(id) initWithCoder:(NSCoder *)aDecoder {
+    if ((self = [super initWithCoder:aDecoder])) {
+        self.description = [aDecoder decodeObject];
+        self.descriptionLabel = [aDecoder decodeObject];
+    }
+    return self;
+}
+
 @end

@@ -15,13 +15,13 @@
 #import "PanoramioContent.h"
 #import "ScenicWaypointViewController.h"
 #import "ScenicRoute.h"
-#import "ScenicTextContent.h"
 #import "ScenicPolyline.h"
+#import "ScenicTextContent.h"
 #import "ScenicMapSelectorModel.h"
 
 
 @implementation ScenicMapView
-@synthesize model, navigationController, scenicDelegate;
+@synthesize model, navigationController, scenicDelegate, primaryPL;
 
 
 -(id) initWithCoder:(NSCoder *)aDecoder {
@@ -44,14 +44,7 @@
 
 -(MKOverlayView*) mapView:(MKMapView *)mapView viewForOverlay:(id<MKOverlay>)overlay {
     if ([overlay isKindOfClass:[MKPolyline class]]) {
-        MKOverlayView* olView =  [((MKPolyline*) overlay) plView];
-        olView.userInteractionEnabled = YES;
-        olView.multipleTouchEnabled = YES;
-        UITapGestureRecognizer* tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(asfdas:)];
-        tap.numberOfTapsRequired = 1;
-        tap.numberOfTouchesRequired = 1;
-        [olView addGestureRecognizer:tap];
-        [tap release];
+        MKOverlayView* olView =  [((MKPolyline*) overlay) plViewWithPrimary:(overlay == self.primaryPL)];
         return olView;
     }
     return nil;
@@ -298,7 +291,9 @@
         MKCoordinateRegion region = {center, span};
         [self setRegion:region animated:YES];
         MKPolyline* sp = [gRoute polylineOverlay];
-        [sp setIsPrimary:isPrimary];
+        if (isPrimary) {
+            self.primaryPL = sp;
+        }
         [self addOverlay:sp];
     }
 }

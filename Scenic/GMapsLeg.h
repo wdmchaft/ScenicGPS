@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class GMapsPoint, GMapsGeolocation;
-@interface GMapsLeg : NSObject {
+@interface GMapsLeg : NSObject <NSCoding>{
     NSArray* steps;
     NSNumber* seconds;
     NSNumber* meters;

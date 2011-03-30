@@ -14,7 +14,7 @@
 #import <Foundation/Foundation.h>
 
 @class GMapsCoordinate;
-@interface GMapsGeolocation : NSObject {
+@interface GMapsGeolocation : NSObject <NSCoding> {
     NSString* title;
     GMapsCoordinate* coord;
 }

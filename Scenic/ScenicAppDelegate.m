@@ -9,6 +9,8 @@
 #import "ScenicAppDelegate.h"
 #import "CDRoute.h"
 #import "ScenicRoute.h"
+#import "ScenicContent.h"
+#import "PanoramioContent.h"
 
 @implementation ScenicAppDelegate
 @synthesize tabVC;
@@ -33,6 +35,12 @@
     model1.title = [[NSDate date] description];
     ScenicRoute* testRoute = [[[ScenicRoute alloc] init] autorelease];
     testRoute.startRequest = @"test start";
+    testRoute.endRequest = @"test end";
+    testRoute.gRoute = [[[GMapsRoute alloc] init] autorelease];
+    testRoute.gRoute.summary = @"gRouteSummary";
+    PanoramioContent* pContent = [[[PanoramioContent alloc] init] autorelease];
+    pContent.url = [NSURL URLWithString:@"http://google.com"];
+    [testRoute.scenicContents addObject:pContent];
     model1.route = testRoute;
     
     
@@ -51,7 +59,9 @@
     for (CDRoute *route in fetchedObjects) {
         NSLog(@"Title: %@", route.title);
         NSLog(@"Date: %@", [route.createDate description]);
-        NSLog(@"start route: %@", R(route.route).startRequest);
+        ScenicRoute* sRoute = R(route.route);
+        NSLog(@"gRoute summary: %@", sRoute.gRoute.summary);
+        NSLog(@"Panoramio url: %@",((PanoramioContent*)[sRoute.scenicContents objectAtIndex:0]).url);
     }        
     [fetchRequest release];
     

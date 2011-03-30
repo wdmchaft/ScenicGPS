@@ -10,7 +10,7 @@
 #import "GMapsCoordinate.h"
 
 @class GMapsCoordinate;
-@interface GMapsBounds : NSObject {
+@interface GMapsBounds : NSObject <NSCoding>{
     GMapsCoordinate* sw;
     GMapsCoordinate* ne;
     

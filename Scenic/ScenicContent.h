@@ -11,18 +11,17 @@
 #import <MapKit/MapKit.h>
 #import "GMapsCoordinate.h"
 
-@class GMapsCoordinate, ScenicContentView, ScenicContentProvider, MKAnnotationView, ScenicRoute;
-@interface ScenicContent : NSObject <MKAnnotation>{
+@class GMapsCoordinate, ScenicContentProvider, MKAnnotationView, ScenicRoute;
+@interface ScenicContent : NSObject <MKAnnotation, NSCoding>{
     GMapsCoordinate* coord;
     NSString* title;
 
     int score;
     id<ScenicContentProvider> contentProvider;
-    ScenicContentView* contentView;
     NSString* geoHash;
 }
 
-@property (nonatomic, retain) ScenicContentView* contentView;
+
 @property (nonatomic, retain) GMapsCoordinate* coord;
 @property (nonatomic, retain) NSString* title;
 @property (nonatomic, assign) int score;

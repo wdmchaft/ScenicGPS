@@ -10,7 +10,7 @@
 #import <MapKit/MapKit.h>
 
 
-@interface GMapsCoordinate : NSObject {
+@interface GMapsCoordinate : NSObject <NSCoding>{
     NSNumber* lat;
     NSNumber* lng;
 }

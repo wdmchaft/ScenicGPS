@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 
-@protocol ScenicContentProvider <NSObject>
+@protocol ScenicContentProvider <NSObject, NSCoding>
 
 -(UIView*) provideView;
 

@@ -71,5 +71,18 @@ static NSString* POINTS_KEY = @"points";
     return ptArray;
 }
 
+-(void) encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:self.levels];
+    [aCoder encodeObject:self.points];
+}
+
+-(id) initWithCoder:(NSCoder *)aDecoder {
+    if ((self = [super init])) {
+        self.levels = [aDecoder decodeObject];
+        self.points = [aDecoder decodeObject];
+    }
+    return self;
+}
+
 
 @end

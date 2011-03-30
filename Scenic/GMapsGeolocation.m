@@ -37,4 +37,17 @@
     //[title release];
 }
 
+-(void) encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:self.title];
+    [aCoder encodeObject:self.coord];
+}
+
+
+-(id) initWithCoder:(NSCoder *)aDecoder {
+    if ((self = [super init])) {
+        self.title = [aDecoder decodeObject];
+        self.coord = [aDecoder decodeObject];
+    }
+    return self;
+}
 @end

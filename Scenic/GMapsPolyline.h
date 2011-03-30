@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 
-@interface GMapsPolyline : NSObject {
+@interface GMapsPolyline : NSObject <NSCoding>{
     NSArray* points;
     NSString* levels;
     

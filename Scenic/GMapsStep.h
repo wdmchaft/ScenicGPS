@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class GMapsCoordinate, GMapsPolyline;
-@interface GMapsStep : NSObject {
+@interface GMapsStep : NSObject <NSCoding> {
     NSString* mode;
     NSNumber* seconds;
     NSNumber* meters;

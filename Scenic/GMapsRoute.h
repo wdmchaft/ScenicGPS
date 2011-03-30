@@ -11,7 +11,7 @@
 #import <MapKit/MapKit.h>
 
 @class GMapsPolyline, GMapsBounds, GMapsCoordinate, MKPolyline;
-@interface GMapsRoute : NSObject {
+@interface GMapsRoute : NSObject <NSCoding> {
     NSString* summary;
     NSArray* legs;
     NSString* copyrights;

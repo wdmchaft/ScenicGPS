@@ -15,6 +15,7 @@
     ScenicMapSelectorModel* model;
     UINavigationController* navigationController;
     id<ScenicMapViewDelegate> scenicDelegate;
+    MKPolyline* primaryPL;
 }
 
 
@@ -32,6 +33,7 @@
 @property (nonatomic, retain) ScenicMapSelectorModel* model;
 @property (nonatomic, retain)     UINavigationController* navigationController;
 @property (nonatomic, assign) id<ScenicMapViewDelegate> scenicDelegate;
+@property (nonatomic, retain) MKPolyline* primaryPL;
 @end
 
 @protocol ScenicMapViewDelegate <NSObject>

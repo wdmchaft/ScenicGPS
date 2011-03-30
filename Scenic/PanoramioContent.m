@@ -88,4 +88,16 @@ static NSString* TITLE_KEY = @"photo_title";
     return finalArray;
 }
 
+-(void) encodeWithCoder:(NSCoder *)aCoder {
+    [super encodeWithCoder:aCoder];
+    [aCoder encodeObject:self.url];
+}
+
+-(id) initWithCoder:(NSCoder *)aDecoder {
+    if ((self = [super initWithCoder:aDecoder])) {
+        self.url = [aDecoder decodeObject];
+    }
+    return self;
+}
+
 @end

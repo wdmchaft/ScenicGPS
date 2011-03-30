@@ -36,4 +36,28 @@ static NSString* INS_KEY = @"html_instructions";
     return step;
 }
 
+-(void) encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:end];
+    [aCoder encodeObject:start];
+    [aCoder encodeObject:mode];
+    [aCoder encodeObject:meters];
+    [aCoder encodeObject:seconds];
+    [aCoder encodeObject:polyline];
+    [aCoder encodeObject:instructions];
+    
+}
+
+-(id) initWithCoder:(NSCoder *)aDecoder {
+    if ((self = [super init])) {
+        self.end = [aDecoder decodeObject];
+        self.start = [aDecoder decodeObject];
+        self.mode = [aDecoder decodeObject];
+        self.meters = [aDecoder decodeObject];
+        self.seconds = [aDecoder decodeObject];
+        self.polyline = [aDecoder decodeObject];
+        self.instructions = [aDecoder decodeObject];
+    }
+    return self;
+}
+
 @end

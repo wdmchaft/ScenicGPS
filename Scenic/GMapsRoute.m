@@ -78,4 +78,25 @@ static NSString* BOUNDS_KEY = @"bounds";
     return [polyline.points objectAtIndex:[polyline.points count]-1];
 }
 
+-(void) encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:self.summary];
+    [aCoder encodeObject:self.copyrights];
+    [aCoder encodeObject:self.bounds];
+    [aCoder encodeObject:self.polyline];
+    [aCoder encodeObject:self.legs];
+    
+}
+
+-(id) initWithCoder:(NSCoder *)aDecoder {
+    if ((self = [super init])) {
+        self.summary = [aDecoder decodeObject];
+        self.copyrights = [aDecoder decodeObject];
+        self.bounds = [aDecoder decodeObject];
+        self.polyline = [aDecoder decodeObject];
+        self.legs = [aDecoder decodeObject];
+        
+    }
+    return self;
+}
+
 @end

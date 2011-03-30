@@ -13,8 +13,6 @@
 
 
 @interface MKPolyline (isPrimary)
--(void)setIsPrimary:(BOOL)myBool;
--(BOOL)isPrimary;
--(MKPolylineView*) plView;
--(UIColor*) lineColor;
+-(MKPolylineView*) plViewWithPrimary: (bool) isPrim;
+-(UIColor*) lineColorWithPrimary: (bool) isPrim;
 @end

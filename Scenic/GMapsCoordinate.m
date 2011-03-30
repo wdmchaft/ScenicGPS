@@ -33,4 +33,17 @@ static NSString* LNG_KEY = @"lng";
     return [newCoord autorelease];
 }
 
+-(void) encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:self.lat];
+    [aCoder encodeObject:self.lng];
+}
+
+-(id) initWithCoder:(NSCoder *)aDecoder {
+    if ((self = [super init])) {
+        self.lat = [aDecoder decodeObject];
+        self.lng = [aDecoder decodeObject];
+    }
+    return self;
+}
+
 @end

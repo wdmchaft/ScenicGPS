@@ -48,4 +48,27 @@ static NSString* STEPS_KEY = @"steps";
     return leg;
 }
 
+-(void) encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:end];
+    [aCoder encodeObject:start];
+    [aCoder encodeObject:steps];
+    [aCoder encodeObject:meters];
+    [aCoder encodeObject:seconds];
+    [aCoder encodeObject:viaWaypoint];
+    
+}
+
+-(id) initWithCoder:(NSCoder *)aDecoder {
+    if ((self  = [super init])) {
+        self.end = [aDecoder decodeObject];
+        self.start = [aDecoder decodeObject];
+        self.steps = [aDecoder decodeObject];
+        self.meters = [aDecoder decodeObject];
+        self.seconds = [aDecoder decodeObject];
+        self.viaWaypoint = [aDecoder decodeObject];
+        
+    }
+    return self;
+}
+
 @end

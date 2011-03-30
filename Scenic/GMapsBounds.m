@@ -26,4 +26,17 @@ static NSString* SW_KEY = @"southwest";
     
 }
 
+-(void) encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:self.ne];
+    [aCoder encodeObject:self.sw];
+}
+
+-(id) initWithCoder:(NSCoder *)aDecoder {
+    if ((self = [super init])) {
+        self.ne = [aDecoder decodeObject];
+        self.sw = [aDecoder decodeObject];
+    }
+    return self;
+}
+
 @end

@@ -24,6 +24,15 @@
 -(id) initWithCoder:(NSCoder *)aDecoder {
     if ((self = [super init])) {
         self.startRequest = [aDecoder decodeObject];
+        self.endRequest = [aDecoder decodeObject];
+        if (!(self.waypointRequests = [aDecoder decodeObject])) {
+            self.waypointRequests = [[[NSMutableArray alloc] init] autorelease];
+        }
+        if (!(self.scenicContents = [aDecoder decodeObject])) {
+            self.scenicContents = [[[NSMutableArray alloc] init] autorelease];
+        }
+        self.gRoute = [aDecoder decodeObject];
+        
     }
     return self;
 }
@@ -54,8 +63,12 @@
 }
 
 -(void) encodeWithCoder:(NSCoder *)aCoder {
-    //[super encodeWithCoder: aCoder];
     [aCoder encodeObject:self.startRequest];
+    [aCoder encodeObject:self.endRequest];
+    [aCoder encodeObject:self.waypointRequests];
+    [aCoder encodeObject:self.scenicContents];
+    [aCoder encodeObject:self.gRoute];
+    
 }
 
 @end

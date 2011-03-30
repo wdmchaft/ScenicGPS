@@ -15,7 +15,7 @@
 static NSString* ScenicAnnotationIdentifier = @"ScenicAnnotationIdentifier";
 
 @implementation ScenicContent
-@synthesize coord, title, score, contentProvider, contentView, geoHash;
+@synthesize coord, title, score, contentProvider, geoHash;
 
 - (void) computeHash {
     geoHash = [GeoHash hash:CLLocationCoordinate2DMake([coord.lat doubleValue], [coord.lng doubleValue])];
@@ -59,6 +59,25 @@ static NSString* ScenicAnnotationIdentifier = @"ScenicAnnotationIdentifier";
     UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();    
     UIGraphicsEndImageContext();
     return newImage;
+}
+
+-(void) encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:self.coord];
+    [aCoder encodeObject:self.contentProvider];
+    [aCoder encodeObject:self.geoHash];
+    [aCoder encodeObject:self.title];
+    [aCoder encodeFloat:self.score forKey:@"score"];
+}
+
+-(id) initWithCoder:(NSCoder *)aDecoder {
+    if ((self = [super init])) {
+        self.coord = [aDecoder decodeObject];
+        self.contentProvider = [aDecoder decodeObject];
+        self.geoHash = [aDecoder decodeObject];
+        self.title = [aDecoder decodeObject];
+        self.score = [aDecoder decodeFloatForKey:@"score"];
+    }
+    return self;
 }
 
 @end
