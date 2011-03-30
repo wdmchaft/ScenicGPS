@@ -89,6 +89,7 @@
 		5D99EF111340EBDA00E1412E /* ScenicTripModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D99EF101340EBDA00E1412E /* ScenicTripModel.m */; };
 		5DBF2BB1132ED72F004C1F90 /* add-28.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DBF2BB0132ED72F004C1F90 /* add-28.png */; };
 		5DCB3F6F1343B5D5006CF30B /* CDRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DCB3F6E1343B5D5006CF30B /* CDRoute.m */; };
+		5DCB3F731343D920006CF30B /* CDHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DCB3F721343D920006CF30B /* CDHelper.m */; };
 		5DCF17D31320A33100D19D04 /* GMapsRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DCF17D21320A33100D19D04 /* GMapsRoute.m */; };
 		5DCF17D71320A47400D19D04 /* GMapsLeg.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DCF17D61320A47400D19D04 /* GMapsLeg.m */; };
 		5DE4663D133BEFF10095385F /* remove.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DE4663C133BEFF10095385F /* remove.png */; };
@@ -254,6 +255,8 @@
 		5DBF2BB0132ED72F004C1F90 /* add-28.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add-28.png"; sourceTree = "<group>"; };
 		5DCB3F6D1343B5D5006CF30B /* CDRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDRoute.h; sourceTree = "<group>"; };
 		5DCB3F6E1343B5D5006CF30B /* CDRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDRoute.m; sourceTree = "<group>"; };
+		5DCB3F711343D920006CF30B /* CDHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDHelper.h; sourceTree = "<group>"; };
+		5DCB3F721343D920006CF30B /* CDHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDHelper.m; sourceTree = "<group>"; };
 		5DCF17D11320A33100D19D04 /* GMapsRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMapsRoute.h; sourceTree = "<group>"; };
 		5DCF17D21320A33100D19D04 /* GMapsRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMapsRoute.m; sourceTree = "<group>"; };
 		5DCF17D51320A47400D19D04 /* GMapsLeg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMapsLeg.h; sourceTree = "<group>"; };
@@ -513,6 +516,7 @@
 		5D0587F2132098C500D42F0A /* Scenic */ = {
 			isa = PBXGroup;
 			children = (
+				5DCB3F701343D8F8006CF30B /* Helpers */,
 				5D06B90413304F9F0035260F /* Models */,
 				AAEB6997132B2AB20013B172 /* GeoHash */,
 				AAEB698A132AF2810013B172 /* Annotations */,
@@ -559,6 +563,15 @@
 				5DCB3F6E1343B5D5006CF30B /* CDRoute.m */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		5DCB3F701343D8F8006CF30B /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				5DCB3F711343D920006CF30B /* CDHelper.h */,
+				5DCB3F721343D920006CF30B /* CDHelper.m */,
+			);
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 		AA3A91311329DC5400894C16 /* Resources */ = {
@@ -778,6 +791,7 @@
 				5D99EF111340EBDA00E1412E /* ScenicTripModel.m in Sources */,
 				5D8AAE051343B37100007FD9 /* Scenic.xcdatamodeld in Sources */,
 				5DCB3F6F1343B5D5006CF30B /* CDRoute.m in Sources */,
+				5DCB3F731343D920006CF30B /* CDHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
