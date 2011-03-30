@@ -7,10 +7,12 @@
 //
 
 #import "CDRoute.h"
-
+#import "ScenicRoute.h"
 
 @implementation CDRoute
 @dynamic createDate;
 @dynamic title;
-
+@dynamic route;                
+                           
+                           
 @end

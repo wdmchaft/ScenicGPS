@@ -8,6 +8,7 @@
 
 #import "ScenicAppDelegate.h"
 #import "CDRoute.h"
+#import "ScenicRoute.h"
 
 @implementation ScenicAppDelegate
 @synthesize tabVC;
@@ -18,7 +19,7 @@
 @synthesize persistentStoreCoordinator = __persistentStoreCoordinator;
 
 #define createModel(model) CDRoute* model = [NSEntityDescription insertNewObjectForEntityForName:@"CDRoute" inManagedObjectContext:context]
-
+#define R(x) ((ScenicRoute* ) x)
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -30,6 +31,9 @@
     createModel(model1);
     model1.createDate = [NSDate date];
     model1.title = [[NSDate date] description];
+    ScenicRoute* testRoute = [[[ScenicRoute alloc] init] autorelease];
+    testRoute.startRequest = @"test start";
+    model1.route = testRoute;
     
     
 
@@ -47,6 +51,7 @@
     for (CDRoute *route in fetchedObjects) {
         NSLog(@"Title: %@", route.title);
         NSLog(@"Date: %@", [route.createDate description]);
+        NSLog(@"start route: %@", R(route.route).startRequest);
     }        
     [fetchRequest release];
     

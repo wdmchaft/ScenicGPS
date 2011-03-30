@@ -84,11 +84,11 @@
 		5D718D89133993FA00E5DAEF /* WildcardGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D718D88133993FA00E5DAEF /* WildcardGestureRecognizer.m */; };
 		5D8AAD5B1343A62400007FD9 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D8AAD5A1343A62400007FD9 /* CoreData.framework */; };
 		5D8AAE051343B37100007FD9 /* Scenic.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5D8AAE031343B37100007FD9 /* Scenic.xcdatamodeld */; };
-		5D8AAE081343B3B200007FD9 /* CDRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D8AAE071343B3B200007FD9 /* CDRoute.m */; };
 		5D99EF0D1340E99900E1412E /* ScenicTripViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D99EF0B1340E99900E1412E /* ScenicTripViewController.m */; };
 		5D99EF0E1340E99900E1412E /* ScenicTripViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D99EF0C1340E99900E1412E /* ScenicTripViewController.xib */; };
 		5D99EF111340EBDA00E1412E /* ScenicTripModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D99EF101340EBDA00E1412E /* ScenicTripModel.m */; };
 		5DBF2BB1132ED72F004C1F90 /* add-28.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DBF2BB0132ED72F004C1F90 /* add-28.png */; };
+		5DCB3F6F1343B5D5006CF30B /* CDRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DCB3F6E1343B5D5006CF30B /* CDRoute.m */; };
 		5DCF17D31320A33100D19D04 /* GMapsRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DCF17D21320A33100D19D04 /* GMapsRoute.m */; };
 		5DCF17D71320A47400D19D04 /* GMapsLeg.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DCF17D61320A47400D19D04 /* GMapsLeg.m */; };
 		5DE4663D133BEFF10095385F /* remove.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DE4663C133BEFF10095385F /* remove.png */; };
@@ -246,14 +246,14 @@
 		5D718D88133993FA00E5DAEF /* WildcardGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WildcardGestureRecognizer.m; sourceTree = "<group>"; };
 		5D8AAD5A1343A62400007FD9 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		5D8AAE041343B37100007FD9 /* Scenic.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Scenic.xcdatamodel; sourceTree = "<group>"; };
-		5D8AAE061343B3B200007FD9 /* CDRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDRoute.h; sourceTree = "<group>"; };
-		5D8AAE071343B3B200007FD9 /* CDRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDRoute.m; sourceTree = "<group>"; };
 		5D99EF0A1340E99900E1412E /* ScenicTripViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScenicTripViewController.h; sourceTree = "<group>"; };
 		5D99EF0B1340E99900E1412E /* ScenicTripViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScenicTripViewController.m; sourceTree = "<group>"; };
 		5D99EF0C1340E99900E1412E /* ScenicTripViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScenicTripViewController.xib; sourceTree = "<group>"; };
 		5D99EF0F1340EBDA00E1412E /* ScenicTripModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScenicTripModel.h; sourceTree = "<group>"; };
 		5D99EF101340EBDA00E1412E /* ScenicTripModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScenicTripModel.m; sourceTree = "<group>"; };
 		5DBF2BB0132ED72F004C1F90 /* add-28.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add-28.png"; sourceTree = "<group>"; };
+		5DCB3F6D1343B5D5006CF30B /* CDRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDRoute.h; sourceTree = "<group>"; };
+		5DCB3F6E1343B5D5006CF30B /* CDRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDRoute.m; sourceTree = "<group>"; };
 		5DCF17D11320A33100D19D04 /* GMapsRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMapsRoute.h; sourceTree = "<group>"; };
 		5DCF17D21320A33100D19D04 /* GMapsRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMapsRoute.m; sourceTree = "<group>"; };
 		5DCF17D51320A47400D19D04 /* GMapsLeg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMapsLeg.h; sourceTree = "<group>"; };
@@ -555,8 +555,8 @@
 				5D99EF0F1340EBDA00E1412E /* ScenicTripModel.h */,
 				5D99EF101340EBDA00E1412E /* ScenicTripModel.m */,
 				5D8AAE031343B37100007FD9 /* Scenic.xcdatamodeld */,
-				5D8AAE061343B3B200007FD9 /* CDRoute.h */,
-				5D8AAE071343B3B200007FD9 /* CDRoute.m */,
+				5DCB3F6D1343B5D5006CF30B /* CDRoute.h */,
+				5DCB3F6E1343B5D5006CF30B /* CDRoute.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -777,7 +777,7 @@
 				5D99EF0D1340E99900E1412E /* ScenicTripViewController.m in Sources */,
 				5D99EF111340EBDA00E1412E /* ScenicTripModel.m in Sources */,
 				5D8AAE051343B37100007FD9 /* Scenic.xcdatamodeld in Sources */,
-				5D8AAE081343B3B200007FD9 /* CDRoute.m in Sources */,
+				5DCB3F6F1343B5D5006CF30B /* CDRoute.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

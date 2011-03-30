@@ -15,5 +15,6 @@
 }
 @property (nonatomic, retain) NSDate * createDate;
 @property (nonatomic, retain) NSString * title;
+@property (nonatomic, retain) id route;
 
 @end

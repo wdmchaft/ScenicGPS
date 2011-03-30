@@ -21,6 +21,13 @@
     return self;
 }
 
+-(id) initWithCoder:(NSCoder *)aDecoder {
+    if ((self = [super init])) {
+        self.startRequest = [aDecoder decodeObject];
+    }
+    return self;
+}
+
 +(id) routeWithScenicRoute: (ScenicRoute*) route andGMapsRoute: (GMapsRoute*) _gRoute {
     ScenicRoute* newRoute = [[ScenicRoute alloc] init];
     newRoute.startRequest = route.startRequest;
@@ -44,6 +51,11 @@
 
 -(GMapsCoordinate*) startCoord {
     return [self.gRoute startCoord];
+}
+
+-(void) encodeWithCoder:(NSCoder *)aCoder {
+    //[super encodeWithCoder: aCoder];
+    [aCoder encodeObject:self.startRequest];
 }
 
 @end

@@ -10,7 +10,7 @@
 #import "GMapsRoute.h"
 
 @class ScenicContent, GMapsCoordinate;
-@interface ScenicRoute : NSObject {
+@interface ScenicRoute : NSObject <NSCoding> {
     GMapsRoute* gRoute;
     NSString* startRequest;
     NSString* endRequest;
