@@ -16,7 +16,7 @@ static NSString *MYPrimaryString = @"MYPrimaryString";
 
 -(void)setIsPrimary: (BOOL)myBool
 {
-    objc_setAssociatedObject(self, &MYPrimaryString, myBool, OBJC_ASSOCIATION_ASSIGN);
+    objc_setAssociatedObject(self, &MYPrimaryString,myBool, OBJC_ASSOCIATION_ASSIGN);
 }
 
 -(BOOL)isPrimary

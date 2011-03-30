@@ -36,7 +36,6 @@
 -(IBAction) changeRoute: (id) sender;
 -(void) updateRoutePicker;
 
--(void) setInitialRoutes: (NSArray*) routes;
 -(void) updateTitle;
 -(void) addTripButton;
 
