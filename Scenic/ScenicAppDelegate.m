@@ -18,8 +18,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // core data test
-    CDHelper* cdHelper = [CDHelper sharedHelper];
-    NSArray* routes = [cdHelper allRoutes];
+    NSArray* allRoutes = [[CDHelper sharedHelper] allRoutes];
     
     
     

@@ -13,6 +13,7 @@
 #import "ScenicMapView.h"
 #import "ScenicRoute.h"
 #import "ScenicTripViewController.h"
+#import "CDHelper.h"
 
 @implementation ScenicMapViewController
 @synthesize mMapView, mapType, mapTypeToolbar, routePicker, _routes;
@@ -69,6 +70,7 @@
     ScenicTripViewController* tripVC = [[ScenicTripViewController alloc] initWithNibName:@"ScenicTripViewController" bundle:nil model:self.mMapView.model];
     [self.navigationController pushViewController:tripVC animated:YES];
     [tripVC release];
+    [[CDHelper sharedHelper] saveRoute:[self.mMapView.model primaryRoute]];
 }
 
 -(IBAction) changeRoute: (id) sender {

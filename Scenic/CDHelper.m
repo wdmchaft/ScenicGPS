@@ -55,9 +55,7 @@ static CDHelper *sharedSingleton;
     for (CDRoute* route in fetchedObjects ) {
         [routeArray addObject:R(route.route)];
     }
-    NSArray* returnArray = [NSArray arrayWithArray:routeArray];
-    [routeArray release];
-    return returnArray;
+    return [NSArray arrayWithArray:routeArray];
 }
 
 -(void) saveRoute: (ScenicRoute*) route {
