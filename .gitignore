@@ -3,7 +3,7 @@
 *~.nib
 .*~
 build/
-
+DerivedData/
 *.pbxuser
 *.perspective
 *.perspectivev3
