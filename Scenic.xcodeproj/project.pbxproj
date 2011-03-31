@@ -77,6 +77,7 @@
 		5D2FCF5A132EA2F5005B08DD /* ScenicContentTextVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D2FCF59132EA2F5005B08DD /* ScenicContentTextVC.xib */; };
 		5D2FCF5D132EAA48005B08DD /* ScenicWaypointViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D2FCF5C132EAA41005B08DD /* ScenicWaypointViewController.m */; };
 		5D3BE3941343F79200534241 /* UserPhotoContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3BE3931343F79200534241 /* UserPhotoContent.m */; };
+		5D3BE3971344152B00534241 /* CDUserContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3BE3961344152A00534241 /* CDUserContent.m */; };
 		5D490DCB13297B43006905A9 /* ScenicServerFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D490DCA13297B41006905A9 /* ScenicServerFetcher.m */; };
 		5D490DCE1329834B006905A9 /* PanoramioPicFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D490DCD1329834A006905A9 /* PanoramioPicFetcher.m */; };
 		5D490DD1132985E0006905A9 /* ScenicParkFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D490DD0132985DE006905A9 /* ScenicParkFetcher.m */; };
@@ -236,6 +237,8 @@
 		5D2FCF5C132EAA41005B08DD /* ScenicWaypointViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScenicWaypointViewController.m; sourceTree = "<group>"; };
 		5D3BE3921343F79200534241 /* UserPhotoContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserPhotoContent.h; sourceTree = "<group>"; };
 		5D3BE3931343F79200534241 /* UserPhotoContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserPhotoContent.m; sourceTree = "<group>"; };
+		5D3BE3951344152A00534241 /* CDUserContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDUserContent.h; sourceTree = "<group>"; };
+		5D3BE3961344152A00534241 /* CDUserContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDUserContent.m; sourceTree = "<group>"; };
 		5D490DC913297B40006905A9 /* ScenicServerFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScenicServerFetcher.h; sourceTree = "<group>"; };
 		5D490DCA13297B41006905A9 /* ScenicServerFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScenicServerFetcher.m; sourceTree = "<group>"; };
 		5D490DCC13298349006905A9 /* PanoramioPicFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanoramioPicFetcher.h; sourceTree = "<group>"; };
@@ -564,6 +567,8 @@
 				5D99EF0F1340EBDA00E1412E /* ScenicTripModel.h */,
 				5D99EF101340EBDA00E1412E /* ScenicTripModel.m */,
 				5D8AAE031343B37100007FD9 /* Scenic.xcdatamodeld */,
+				5D3BE3951344152A00534241 /* CDUserContent.h */,
+				5D3BE3961344152A00534241 /* CDUserContent.m */,
 				5DCB3F6D1343B5D5006CF30B /* CDRoute.h */,
 				5DCB3F6E1343B5D5006CF30B /* CDRoute.m */,
 			);
@@ -798,6 +803,7 @@
 				5DCB3F6F1343B5D5006CF30B /* CDRoute.m in Sources */,
 				5DCB3F731343D920006CF30B /* CDHelper.m in Sources */,
 				5D3BE3941343F79200534241 /* UserPhotoContent.m in Sources */,
+				5D3BE3971344152B00534241 /* CDUserContent.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

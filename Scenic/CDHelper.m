@@ -11,6 +11,7 @@
 #import "ScenicRoute.h"
 #import "ScenicContent.h"
 #import "PanoramioContent.h"
+#import "CDUserContent.h"
 
 
 
@@ -21,6 +22,7 @@
 
 #define createModel(model) CDRoute* model = [NSEntityDescription insertNewObjectForEntityForName:@"CDRoute" inManagedObjectContext:[self managedObjectContext]]
 #define R(x) ((ScenicRoute* ) x)
+#define createPhoto(model) CDUserContent* model = [NSEntityDescription insertNewObjectForEntityForName:@"CDUserContent" inManagedObjectContext:[self managedObjectContext]]
 
 
 static CDHelper *sharedSingleton;
@@ -63,6 +65,13 @@ static CDHelper *sharedSingleton;
     model.title = route.gRoute.summary;
     model.createDate = [NSDate date];
     model.route = route;
+    [self saveContext];
+}
+
+-(void) storePhoto: (UIImage*) photo {
+    createPhoto(model);
+    model.photo = photo;
+    model.createdDate = [NSDate date];
     [self saveContext];
 }
 

@@ -9,6 +9,7 @@
 #import "ScenicTripViewController.h"
 #import "ScenicTripModel.h"
 #import "UserPhotoContent.h"
+#import "CDHelper.h"
 
 
 @implementation ScenicTripViewController
@@ -53,7 +54,11 @@
     UIImagePickerController* tmp = [[UIImagePickerController alloc] init];
     tmp.delegate = self;
     tmp.allowsEditing = YES;
-    tmp.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        tmp.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    } else {
+        tmp.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    }
     self.imgPicker = tmp;
     
     [tmp release];
@@ -72,6 +77,7 @@
 -(void) handleImage: (UIImage*) image {
     UserPhotoContent* content = [UserPhotoContent contentWithPhoto:image andCoordinate:[GMapsCoordinate coordFromCLCoord:self.mMapView.model.locationManager.location.coordinate]];
     [self.mMapView addUserContent:content];
+    [[CDHelper sharedHelper] storePhoto: image];
     
 }
 

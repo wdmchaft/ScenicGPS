@@ -22,4 +22,5 @@
 -(NSArray*) allRoutes;
 -(void) saveRoute: (ScenicRoute*) route;
 +(id) sharedHelper;
+-(void) storePhoto: (UIImage*) photo;
 @end
