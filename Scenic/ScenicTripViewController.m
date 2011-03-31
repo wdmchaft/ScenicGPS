@@ -8,10 +8,11 @@
 
 #import "ScenicTripViewController.h"
 #import "ScenicTripModel.h"
+#import "UserPhotoContent.h"
 
 
 @implementation ScenicTripViewController
-@synthesize mMapView, trip;
+@synthesize mMapView, trip, imgPicker;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil model: (ScenicMapSelectorModel*) model
 {
@@ -44,7 +45,36 @@
     self.mMapView.model = self.trip;
     self.mMapView.scenicDelegate = self;
     [self.mMapView updateRoutesOnMap];
+    [self initImagePicker];
+    
 }
+
+-(void) initImagePicker {
+    UIImagePickerController* tmp = [[UIImagePickerController alloc] init];
+    tmp.delegate = self;
+    tmp.allowsEditing = YES;
+    tmp.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    self.imgPicker = tmp;
+    
+    [tmp release];
+}
+
+-(void) imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    [[picker parentViewController] dismissModalViewControllerAnimated:YES];
+}
+
+-(void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    [self handleImage: (UIImage*) [info objectForKey:UIImagePickerControllerOriginalImage]];
+    [[picker parentViewController] dismissModalViewControllerAnimated:YES];
+    
+}
+
+-(void) handleImage: (UIImage*) image {
+    UserPhotoContent* content = [UserPhotoContent contentWithPhoto:image andCoordinate:[GMapsCoordinate coordFromCLCoord:self.mMapView.model.locationManager.location.coordinate]];
+    [self.mMapView addUserContent:content];
+    
+}
+
 
 -(void) scenicMapViewUpdatedRoutes {
     return;
@@ -64,7 +94,7 @@
 }
 
 -(IBAction) takePicture: (id) sender {
-    return;
+    [self presentModalViewController:self.imgPicker animated:YES];
 }
 
 @end

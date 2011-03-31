@@ -11,6 +11,7 @@
 #import "ScenicMapSelectorModel.h"
 
 @protocol ScenicMapViewDelegate;
+@class UserPhotoContent;
 @interface ScenicMapView : MKMapView <MKMapViewDelegate, ScenicMapSelectorModelDelegate, MKReverseGeocoderDelegate>{
     ScenicMapSelectorModel* model;
     UINavigationController* navigationController;
@@ -29,6 +30,7 @@
 -(void) addNewContent;
 -(void) changeToRouteNumber: (int) n;
 -(void) setInitialRoutes: (NSArray*) routes;
+-(void) addUserContent: (ScenicContent*) content;
 -(MKAnnotationView*) annotationViewForContent:(ScenicContent*) content;
 @property (nonatomic, retain) ScenicMapSelectorModel* model;
 @property (nonatomic, retain)     UINavigationController* navigationController;

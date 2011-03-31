@@ -142,7 +142,6 @@
 }
 
 -(void) locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
-    return;
 }
 
 -(void) locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
@@ -151,7 +150,7 @@
 
 -(id) copyWithZone:(NSZone *)zone {
     ScenicMapSelectorModel* modelCopy = [[ScenicMapSelectorModel allocWithZone:zone] init];
-    modelCopy.scenicContents = [NSArray arrayWithArray:self.scenicContents];
+    modelCopy.scenicContents = [NSMutableArray arrayWithArray:self.scenicContents];
     modelCopy.locationManager = self.locationManager;
     modelCopy.frozen = self.frozen;
     modelCopy.primaryRouteIndex = self.primaryRouteIndex;

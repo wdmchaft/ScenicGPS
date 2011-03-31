@@ -232,6 +232,11 @@
 	[self addAnnotation:placemark];
 }
 
+-(void) addUserContent: (ScenicContent*) content {
+    [self.model addContent:content];
+    [self updateVisibleContents];
+}
+
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
     
