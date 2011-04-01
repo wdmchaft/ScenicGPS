@@ -76,6 +76,8 @@
 		5D2FCF56132C0DC7005B08DD /* ScenicContentTextVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D2FCF54132C0DB5005B08DD /* ScenicContentTextVC.m */; };
 		5D2FCF5A132EA2F5005B08DD /* ScenicContentTextVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D2FCF59132EA2F5005B08DD /* ScenicContentTextVC.xib */; };
 		5D2FCF5D132EAA48005B08DD /* ScenicWaypointViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D2FCF5C132EAA41005B08DD /* ScenicWaypointViewController.m */; };
+		5D33448913464B5E0091C215 /* HistoricalRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D33448713464B5E0091C215 /* HistoricalRootViewController.m */; };
+		5D33448A13464B5E0091C215 /* HistoricalRootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D33448813464B5E0091C215 /* HistoricalRootViewController.xib */; };
 		5D3BE3941343F79200534241 /* UserPhotoContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3BE3931343F79200534241 /* UserPhotoContent.m */; };
 		5D3BE3971344152B00534241 /* CDUserContent.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D3BE3961344152A00534241 /* CDUserContent.m */; };
 		5D490DCB13297B43006905A9 /* ScenicServerFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D490DCA13297B41006905A9 /* ScenicServerFetcher.m */; };
@@ -235,6 +237,9 @@
 		5D2FCF59132EA2F5005B08DD /* ScenicContentTextVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScenicContentTextVC.xib; sourceTree = "<group>"; };
 		5D2FCF5B132EAA3B005B08DD /* ScenicWaypointViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScenicWaypointViewController.h; sourceTree = "<group>"; };
 		5D2FCF5C132EAA41005B08DD /* ScenicWaypointViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScenicWaypointViewController.m; sourceTree = "<group>"; };
+		5D33448613464B5E0091C215 /* HistoricalRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoricalRootViewController.h; sourceTree = "<group>"; };
+		5D33448713464B5E0091C215 /* HistoricalRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoricalRootViewController.m; sourceTree = "<group>"; };
+		5D33448813464B5E0091C215 /* HistoricalRootViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HistoricalRootViewController.xib; sourceTree = "<group>"; };
 		5D3BE3921343F79200534241 /* UserPhotoContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserPhotoContent.h; sourceTree = "<group>"; };
 		5D3BE3931343F79200534241 /* UserPhotoContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserPhotoContent.m; sourceTree = "<group>"; };
 		5D3BE3951344152A00534241 /* CDUserContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDUserContent.h; sourceTree = "<group>"; };
@@ -422,6 +427,7 @@
 				5D05887613209A3B00D42F0A /* RouteViewController.xib */,
 				5D017AC91325A4EE00B8EA6A /* ScenicMapViewController.xib */,
 				5D2FCF59132EA2F5005B08DD /* ScenicContentTextVC.xib */,
+				5D33448813464B5E0091C215 /* HistoricalRootViewController.xib */,
 			);
 			name = Xibs;
 			sourceTree = "<group>";
@@ -430,6 +436,8 @@
 			isa = PBXGroup;
 			children = (
 				5D05886B13209A3B00D42F0A /* RouteRootViewController.h */,
+				5D33448613464B5E0091C215 /* HistoricalRootViewController.h */,
+				5D33448713464B5E0091C215 /* HistoricalRootViewController.m */,
 				5D05886D13209A3B00D42F0A /* RouteRootViewController.m */,
 				5D05886E13209A3B00D42F0A /* ScenicAppDelegate.h */,
 				5D017AC71325A4EB00B8EA6A /* ScenicMapViewController.h */,
@@ -708,6 +716,7 @@
 				5DBF2BB1132ED72F004C1F90 /* add-28.png in Resources */,
 				5DE4663D133BEFF10095385F /* remove.png in Resources */,
 				5D99EF0E1340E99900E1412E /* ScenicTripViewController.xib in Resources */,
+				5D33448A13464B5E0091C215 /* HistoricalRootViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -804,6 +813,7 @@
 				5DCB3F731343D920006CF30B /* CDHelper.m in Sources */,
 				5D3BE3941343F79200534241 /* UserPhotoContent.m in Sources */,
 				5D3BE3971344152B00534241 /* CDUserContent.m in Sources */,
+				5D33448913464B5E0091C215 /* HistoricalRootViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
