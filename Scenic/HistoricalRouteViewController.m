@@ -8,6 +8,8 @@
 
 #import "HistoricalRouteViewController.h"
 #import "TableCell.h"
+#import "CDHelper.h"
+#import "ScenicRoute.h"
 
 @implementation HistoricalRouteViewController
 @synthesize tableOfRoutes, routes;
@@ -42,7 +44,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    routes = [NSArray arrayWithObjects:@"route1", @"asfas", @"Big Two", @"Custom", nil];
+    CDHelper* helper = [CDHelper sharedHelper];
+    routes = [helper allRoutes];
+    
+    //routes = [NSArray arrayWithObjects:@"route1", @"asfas", @"Big Two", @"Custom", nil];
 	[routes retain];
 
     
@@ -77,8 +82,11 @@
 		cell = [[[TableCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
 	}
 	
-    cell.primaryLabel.text = [routes objectAtIndex:indexPath.row];
-	cell.secondaryLabel.text = [routes objectAtIndex:indexPath.row];
+    ScenicRoute * route = [routes objectAtIndex:indexPath.row];
+    NSLog(@" %@", [route description]);
+    
+    cell.primaryLabel.text = @"title";
+    cell.secondaryLabel.text = cell.primaryLabel.text;
     cell.myImageView.image = [UIImage imageNamed:@"dest.png"];
 	
 	return cell;
