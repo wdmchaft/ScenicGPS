@@ -85,7 +85,7 @@
     ScenicRoute * route = [routes objectAtIndex:indexPath.row];
     NSLog(@" %@", [route description]);
     
-    cell.primaryLabel.text = @"title";
+    cell.primaryLabel.text = route.gRoute.summary;
     cell.secondaryLabel.text = cell.primaryLabel.text;
     cell.myImageView.image = [UIImage imageNamed:@"dest.png"];
 	
