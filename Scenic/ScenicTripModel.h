@@ -17,6 +17,7 @@
 }
 
 +(id) modelFromModel: (ScenicMapSelectorModel*) model;
++(id) modelFromRoute: (ScenicRoute*) route;
 
 @property (nonatomic, retain) ScenicRoute* route;
 @property (nonatomic, retain) GMapsCoordinate* location;

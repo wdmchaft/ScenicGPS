@@ -20,6 +20,7 @@
 
 -(IBAction) takePicture: (id) sender;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil model: (ScenicMapSelectorModel*) model;
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil route: (ScenicRoute*) route;
 
 -(void) handleImage: (UIImage*) image;
 -(void) initImagePicker;

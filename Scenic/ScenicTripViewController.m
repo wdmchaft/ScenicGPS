@@ -24,6 +24,15 @@
     return self;
 }
 
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil route: (ScenicRoute*) route
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        self.trip = [ScenicTripModel modelFromRoute:route];
+    }
+    return self;
+}
+
 - (void)dealloc
 {
     [super dealloc];

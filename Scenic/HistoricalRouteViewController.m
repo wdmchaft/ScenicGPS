@@ -10,6 +10,8 @@
 #import "TableCell.h"
 #import "CDHelper.h"
 #import "ScenicRoute.h"
+#import "ScenicTripViewController.h"
+#import "ScenicAppDelegate.h"
 
 @implementation HistoricalRouteViewController
 @synthesize tableOfRoutes, routes;
@@ -101,6 +103,16 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"selected %d", indexPath.row);	
+    // push a map on!
+    ScenicRoute * route = [routes objectAtIndex:indexPath.row];
+    ScenicTripViewController* tripVC = [[ScenicTripViewController alloc] initWithNibName:@"ScenicTripViewController" bundle:nil route:route];
+
+    ScenicAppDelegate * delegate = [[UIApplication sharedApplication] delegate];
+    UINavigationController *navController = [[[UINavigationController alloc] initWithRootViewController:tripVC] autorelease];
+    [[delegate window] addSubview:[navController view]];
+    [[delegate window] setRootViewController:navController];
+    
+    [tripVC release];
 }
 
 

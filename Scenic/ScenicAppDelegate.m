@@ -16,12 +16,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
-    // core data test
-    NSArray* allRoutes = [[CDHelper sharedHelper] allRoutes];
-    
-    
-    
+{   
     // Override point for customization after application launch.
     self.window.rootViewController = tabVC;
     [self.window makeKeyAndVisible];

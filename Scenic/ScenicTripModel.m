@@ -20,5 +20,13 @@
     return tripModel;
 }
 
++(id) modelFromRoute: (ScenicRoute*) route {
+    ScenicTripModel* tripModel = [[[ScenicTripModel alloc] init] autorelease];
+    tripModel.routes = [[[NSArray alloc] initWithObjects:route, nil] autorelease];
+    tripModel.primaryRouteIndex = 0;
+    tripModel.frozen = YES;
+    return tripModel;
+}
+
 
 @end
