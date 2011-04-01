@@ -107,11 +107,7 @@
     ScenicRoute * route = [routes objectAtIndex:indexPath.row];
     ScenicTripViewController* tripVC = [[ScenicTripViewController alloc] initWithNibName:@"ScenicTripViewController" bundle:nil route:route];
 
-    ScenicAppDelegate * delegate = [[UIApplication sharedApplication] delegate];
-    UINavigationController *navController = [[[UINavigationController alloc] initWithRootViewController:tripVC] autorelease];
-    [[delegate window] addSubview:[navController view]];
-    [[delegate window] setRootViewController:navController];
-    
+    [[self navigationController] pushViewController:tripVC animated:YES];
     [tripVC release];
 }
 
