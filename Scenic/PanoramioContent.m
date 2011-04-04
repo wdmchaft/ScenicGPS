@@ -19,7 +19,7 @@ static NSString* TITLE_KEY = @"photo_title";
 
 
 @implementation PanoramioContent
-@synthesize url;
+@synthesize url, image;
 
 
 -(id) init {
@@ -30,7 +30,7 @@ static NSString* TITLE_KEY = @"photo_title";
 }
 
 -(UIView*) provideView {  
-    return [[[UIImageView alloc] initWithImage:[self fetchImage]] autorelease];
+    return [[[UIImageView alloc] initWithImage:self.image] autorelease];
 }
 
 -(UIImage*) fetchImage {
@@ -86,6 +86,13 @@ static NSString* TITLE_KEY = @"photo_title";
     NSArray* finalArray = [NSArray arrayWithArray:contents];
     [contents release];
     return finalArray;
+}
+
+-(void) setUrl:(NSURL *)newUrl {
+    [newUrl retain];
+    [url release];
+    url = newUrl;
+    self.image = [self fetchImage];
 }
 
 -(void) encodeWithCoder:(NSCoder *)aCoder {

@@ -12,10 +12,11 @@
 
 @interface PanoramioContent : ScenicContent <ScenicContentProvider> {
     NSURL* url;
+    UIImage* image;
 }
 
 @property(nonatomic, retain) NSURL* url;
-
+@property(nonatomic, retain) UIImage* image;
 -(UIImage*) fetchImage;
 
 +(NSArray*) contentsFromJSONDic: (NSDictionary*) dic;
