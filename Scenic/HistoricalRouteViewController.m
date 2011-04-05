@@ -102,7 +102,7 @@
 		cell = [[[TableCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
 	}
 	
-    [[cell mEditButton] addTarget:self action:@selector(pushEditView) forControlEvents:UIControlEventTouchUpInside];
+    [[cell mEditButton] addTarget:self action:@selector(pushEditView:) forControlEvents:UIControlEventTouchUpInside];
     [[cell mEditButton] setTag:indexPath.row];
      
     ScenicRoute * route = [routes objectAtIndex:indexPath.row];
@@ -137,12 +137,12 @@
 	return @"Select a Route";
 }
 
-- (void) pushEditView {
+- (void) pushEditView:(id)sender {
 
     ScenicContentEditViewController * tmp = [[ScenicContentEditViewController alloc] initWithNibName:@"ScenicContentEditViewController" bundle:nil];
     [[self navigationController] pushViewController:tmp animated:YES];
     
-//    NSLog(@" %@ ", [sender description]);
+    NSLog(@" %@ ", [sender description]);
     
 }
 
