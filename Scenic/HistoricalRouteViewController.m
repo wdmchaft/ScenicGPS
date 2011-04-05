@@ -12,6 +12,7 @@
 #import "ScenicRoute.h"
 #import "ScenicTripViewController.h"
 #import "ScenicAppDelegate.h"
+#import "ScenicContentEditViewController.h"
 
 @implementation HistoricalRouteViewController
 @synthesize tableOfRoutes, routes;
@@ -101,6 +102,9 @@
 		cell = [[[TableCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
 	}
 	
+    [[cell mEditButton] addTarget:self action:@selector(pushEditView) forControlEvents:UIControlEventTouchUpInside];
+    [[cell mEditButton] setTag:indexPath.row];
+     
     ScenicRoute * route = [routes objectAtIndex:indexPath.row];
     NSLog(@" %@", [route description]);
     
@@ -131,6 +135,15 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
 	return @"Select a Route";
+}
+
+- (void) pushEditView {
+
+    ScenicContentEditViewController * tmp = [[ScenicContentEditViewController alloc] initWithNibName:@"ScenicContentEditViewController" bundle:nil];
+    [[self navigationController] pushViewController:tmp animated:YES];
+    
+//    NSLog(@" %@ ", [sender description]);
+    
 }
 
 

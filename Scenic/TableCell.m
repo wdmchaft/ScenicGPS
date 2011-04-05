@@ -24,6 +24,7 @@
 		secondaryLabel.font = [UIFont systemFontOfSize:12];
 		myImageView = [[UIImageView alloc]init];
         mEditButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+        
 		[self.contentView addSubview:primaryLabel];
 		[self.contentView addSubview:secondaryLabel];
 		[self.contentView addSubview:myImageView];
