@@ -98,6 +98,8 @@
 		5DCF17D71320A47400D19D04 /* GMapsLeg.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DCF17D61320A47400D19D04 /* GMapsLeg.m */; };
 		5DE4663D133BEFF10095385F /* remove.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DE4663C133BEFF10095385F /* remove.png */; };
 		AA3A91401329E45300894C16 /* TableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3A913F1329E45300894C16 /* TableCell.m */; };
+		AA7B7BDB134B7EAB007FE5A3 /* ScenicContentEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7B7BD9134B7EAB007FE5A3 /* ScenicContentEditViewController.m */; };
+		AA7B7BDC134B7EAB007FE5A3 /* ScenicContentEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA7B7BDA134B7EAB007FE5A3 /* ScenicContentEditViewController.xib */; };
 		AACD9567132A8B0B00855892 /* 103-map.png in Resources */ = {isa = PBXBuildFile; fileRef = AACD9563132A8B0B00855892 /* 103-map.png */; };
 		AACD9568132A8B0B00855892 /* 29-heart.png in Resources */ = {isa = PBXBuildFile; fileRef = AACD9564132A8B0B00855892 /* 29-heart.png */; };
 		AACD9569132A8B0B00855892 /* dest.png in Resources */ = {isa = PBXBuildFile; fileRef = AACD9565132A8B0B00855892 /* dest.png */; };
@@ -275,6 +277,9 @@
 		5DE4663C133BEFF10095385F /* remove.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = remove.png; sourceTree = "<group>"; };
 		AA3A913E1329E45300894C16 /* TableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableCell.h; sourceTree = "<group>"; };
 		AA3A913F1329E45300894C16 /* TableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableCell.m; sourceTree = "<group>"; };
+		AA7B7BD8134B7EAB007FE5A3 /* ScenicContentEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScenicContentEditViewController.h; sourceTree = "<group>"; };
+		AA7B7BD9134B7EAB007FE5A3 /* ScenicContentEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScenicContentEditViewController.m; sourceTree = "<group>"; };
+		AA7B7BDA134B7EAB007FE5A3 /* ScenicContentEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScenicContentEditViewController.xib; sourceTree = "<group>"; };
 		AACD9563132A8B0B00855892 /* 103-map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "103-map.png"; sourceTree = "<group>"; };
 		AACD9564132A8B0B00855892 /* 29-heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "29-heart.png"; sourceTree = "<group>"; };
 		AACD9565132A8B0B00855892 /* dest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dest.png; sourceTree = "<group>"; };
@@ -435,6 +440,7 @@
 		5D017AA61321A05700B8EA6A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				AA7B7BDA134B7EAB007FE5A3 /* ScenicContentEditViewController.xib */,
 				5D05886B13209A3B00D42F0A /* RouteRootViewController.h */,
 				5D33448613464B5E0091C215 /* HistoricalRootViewController.h */,
 				5D33448713464B5E0091C215 /* HistoricalRootViewController.m */,
@@ -488,6 +494,8 @@
 				5D06B8FC1330272C0035260F /* ScenicTextContent.m */,
 				5D3BE3921343F79200534241 /* UserPhotoContent.h */,
 				5D3BE3931343F79200534241 /* UserPhotoContent.m */,
+				AA7B7BD8134B7EAB007FE5A3 /* ScenicContentEditViewController.h */,
+				AA7B7BD9134B7EAB007FE5A3 /* ScenicContentEditViewController.m */,
 			);
 			name = "Scenic Content";
 			sourceTree = "<group>";
@@ -717,6 +725,7 @@
 				5DE4663D133BEFF10095385F /* remove.png in Resources */,
 				5D99EF0E1340E99900E1412E /* ScenicTripViewController.xib in Resources */,
 				5D33448A13464B5E0091C215 /* HistoricalRootViewController.xib in Resources */,
+				AA7B7BDC134B7EAB007FE5A3 /* ScenicContentEditViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -814,6 +823,7 @@
 				5D3BE3941343F79200534241 /* UserPhotoContent.m in Sources */,
 				5D3BE3971344152B00534241 /* CDUserContent.m in Sources */,
 				5D33448913464B5E0091C215 /* HistoricalRootViewController.m in Sources */,
+				AA7B7BDB134B7EAB007FE5A3 /* ScenicContentEditViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

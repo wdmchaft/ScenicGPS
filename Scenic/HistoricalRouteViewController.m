@@ -16,12 +16,27 @@
 @implementation HistoricalRouteViewController
 @synthesize tableOfRoutes, routes;
 
+//- (void)setEditing:(BOOL)editing animated:(BOOL)animate {
+//    
+//    [super setEditing:editing animated:animate];
+//    if(editing)
+//    {
+//        NSLog(@"editMode on");
+//    }
+//    else
+//    {
+//        NSLog(@"Done leave editmode");
+//    }
+//}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        // add edit button
+        //self.navigationItem.rightBarButtonItem = self.editButtonItem;
+
     }
     return self;
 }
@@ -60,6 +75,8 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+
+    
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
