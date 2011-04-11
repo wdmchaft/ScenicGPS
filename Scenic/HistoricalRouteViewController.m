@@ -9,6 +9,7 @@
 #import "HistoricalRouteViewController.h"
 #import "TableCell.h"
 #import "CDHelper.h"
+#import "CDRoute.h"
 #import "ScenicRoute.h"
 #import "ScenicTripViewController.h"
 #import "ScenicAppDelegate.h"
@@ -63,7 +64,7 @@
     // Do any additional setup after loading the view from its nib.
     
     CDHelper* helper = [CDHelper sharedHelper];
-    routes = [helper allRoutes];
+    routes = [helper allCDRoutes];
     
     //routes = [NSArray arrayWithObjects:@"route1", @"asfas", @"Big Two", @"Custom", nil];
 	[routes retain];
@@ -105,7 +106,8 @@
     [[cell mEditButton] addTarget:self action:@selector(pushEditView:) forControlEvents:UIControlEventTouchUpInside];
     [[cell mEditButton] setTag:indexPath.row];
      
-    ScenicRoute * route = [routes objectAtIndex:indexPath.row];
+    CDRoute * cdRoute = (CDRoute*)[routes objectAtIndex:indexPath.row];
+    ScenicRoute * route = cdRoute.route;
     NSLog(@" %@", [route description]);
     
     cell.primaryLabel.text = route.gRoute.summary;
@@ -125,7 +127,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"selected %d", indexPath.row);	
     // push a map on!
-    ScenicRoute * route = [routes objectAtIndex:indexPath.row];
+    CDRoute * cdRoute = (CDRoute*)[routes objectAtIndex:indexPath.row];
+    ScenicRoute * route = cdRoute.route;
     ScenicTripViewController* tripVC = [[ScenicTripViewController alloc] initWithNibName:@"ScenicTripViewController" bundle:nil route:route];
 
     [[self navigationController] pushViewController:tripVC animated:YES];
@@ -142,7 +145,11 @@
     ScenicRouteEditViewController * tmp = [[ScenicRouteEditViewController alloc] initWithNibName:@"ScenicRouteEditViewController" bundle:nil];
     [[self navigationController] pushViewController:tmp animated:YES];
     
-    NSLog(@" %@ ", [sender description]);
+    NSLog(@" pressed on %d", ((UIButton*)sender).tag);
+    
+
+    
+//    NSLog(@" %@ ", [sender description]);
     
 }
 

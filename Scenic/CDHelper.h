@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 
 @class ScenicRoute;
+@class CDRoute;
+
 @interface CDHelper : NSObject {
     
 }
@@ -20,7 +22,11 @@
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
 -(NSArray*) allRoutes;
--(void) saveRoute: (ScenicRoute*) route;
+-(NSArray*) allCDRoutes;
+
+-(void) saveRoute: (CDRoute*) route;
+- (void) deleteRoute: (ScenicRoute*) route;
+
 +(id) sharedHelper;
 -(void) storePhoto: (UIImage*) photo;
 @end

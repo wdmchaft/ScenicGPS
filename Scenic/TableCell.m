@@ -7,9 +7,10 @@
 //
 
 #import "TableCell.h"
+#import "CDRoute.h"
 
 @implementation TableCell
-@synthesize primaryLabel,secondaryLabel,myImageView, mEditButton;
+@synthesize primaryLabel,secondaryLabel,myImageView, mEditButton, route;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     
