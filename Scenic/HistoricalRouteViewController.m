@@ -12,7 +12,7 @@
 #import "ScenicRoute.h"
 #import "ScenicTripViewController.h"
 #import "ScenicAppDelegate.h"
-#import "ScenicContentEditViewController.h"
+#import "ScenicRouteEditViewController.h"
 
 @implementation HistoricalRouteViewController
 @synthesize tableOfRoutes, routes;
@@ -139,7 +139,7 @@
 
 - (void) pushEditView:(id)sender {
 
-    ScenicContentEditViewController * tmp = [[ScenicContentEditViewController alloc] initWithNibName:@"ScenicContentEditViewController" bundle:nil];
+    ScenicRouteEditViewController * tmp = [[ScenicRouteEditViewController alloc] initWithNibName:@"ScenicRouteEditViewController" bundle:nil];
     [[self navigationController] pushViewController:tmp animated:YES];
     
     NSLog(@" %@ ", [sender description]);
