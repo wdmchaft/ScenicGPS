@@ -10,7 +10,7 @@
 
 @class CDRoute;
 
-@interface ScenicRouteEditViewController : UIViewController {
+@interface ScenicRouteEditViewController : UIViewController <UITextFieldDelegate> {
     CDRoute * route;
     UITextField * rTitle;
     UITextView * desc;
@@ -27,5 +27,8 @@
 - (id)initWithRoute:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil route:(CDRoute*)r;
 
 - (IBAction) deleteCDRoute;
+- (IBAction) updateTitle;    
+- (IBAction) updateDescription;
+
 
 @end

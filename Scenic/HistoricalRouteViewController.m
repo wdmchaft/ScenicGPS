@@ -65,15 +65,18 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
     CDHelper* helper = [CDHelper sharedHelper];
-    routes = [helper allCDRoutes];
-    
-    //routes = [NSArray arrayWithObjects:@"route1", @"asfas", @"Big Two", @"Custom", nil];
-	[routes retain];
-
-    
+    routes = [helper allCDRoutes];    
+	[routes retain]; 
+ 
 }
+
+
+- (void)viewWillAppear:(BOOL)animated {
+    NSLog(@"we need to reload the table view!");    
+//    [tableView reloadData];
+}
+
 
 - (void)viewDidUnload
 {
@@ -113,8 +116,8 @@
     ScenicRoute * route = cdRoute.route;
     NSLog(@" %@", [route description]);
     
-    cell.primaryLabel.text = route.gRoute.summary;
-    cell.secondaryLabel.text = cell.primaryLabel.text;
+    cell.primaryLabel.text = cdRoute.title;
+    cell.secondaryLabel.text = route.gRoute.summary;
     cell.myImageView.image = [UIImage imageNamed:@"dest.png"];
 	
 	return cell;
@@ -169,18 +172,6 @@
 
     ScenicRouteEditViewController * tmp = [[ScenicRouteEditViewController alloc] initWithRoute:@"ScenicRouteEditViewController" bundle:nil route:cdRoute];
     [[self navigationController] pushViewController:tmp animated:YES];
-  
-    
-//    NSLog(@" pressed on %d", ((UIButton*)sender).tag);
-    
-    
-//    CDHelper* helper = [CDHelper sharedHelper];
-//    [helper deleteRoute:cdRoute];
-    
-    
-    
-    
-//    NSLog(@" %@ ", [sender description]);
     
 }
 @end

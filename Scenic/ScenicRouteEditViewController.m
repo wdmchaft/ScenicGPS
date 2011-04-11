@@ -9,6 +9,7 @@
 #import "ScenicRouteEditViewController.h"
 #import "CDHelper.h"
 #import "CDRoute.h"
+#import "ScenicRoute.h"
 
 @implementation ScenicRouteEditViewController
 @synthesize route, rTitle, desc, delButton;
@@ -27,8 +28,6 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         route = r;
-        rTitle.text = r.title;
-        desc.text = @"text goes here";
     }
     return self;
 }
@@ -52,6 +51,10 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    self.rTitle.text = route.title; //route.title;
+    self.desc.text = ((ScenicRoute*)route.route).gRoute.summary;
+
 }
 
 - (void)viewDidUnload
@@ -76,6 +79,33 @@
     
     // need to tell table view to reload!
     // pop this view off as well
+}
+
+
+- (IBAction) updateTitle {
+    
+    CDHelper * helper = [CDHelper sharedHelper];
+    route.title = rTitle.text;
+    [helper saveContext];
+        
+}
+
+
+- (IBAction) updateDescription {
+    
+    
+    CDHelper * helper = [CDHelper sharedHelper];
+    
+    ScenicRoute * sroute = route.route;    
+    sroute.gRoute.summary = desc.text;
+    route.route = sroute;
+    [helper saveContext];
+
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [textField resignFirstResponder];
+    return YES;
 }
 
 @end
