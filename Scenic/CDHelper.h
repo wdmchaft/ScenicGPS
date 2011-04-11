@@ -24,8 +24,8 @@
 -(NSArray*) allRoutes;
 -(NSArray*) allCDRoutes;
 
--(void) saveRoute: (CDRoute*) route;
-- (void) deleteRoute: (ScenicRoute*) route;
+-(void) saveRoute: (ScenicRoute*) route;
+- (void) deleteRoute: (CDRoute*) route;
 
 +(id) sharedHelper;
 -(void) storePhoto: (UIImage*) photo;

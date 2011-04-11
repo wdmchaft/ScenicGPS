@@ -67,6 +67,7 @@
 
 - (void)dealloc {
     [super dealloc];
+    [route release];
 }
 
 

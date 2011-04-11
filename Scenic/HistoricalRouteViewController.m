@@ -45,7 +45,10 @@
 
 - (void)dealloc
 {
+
     [super dealloc];
+    [routes release];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -125,7 +128,7 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"selected %d", indexPath.row);	
+
     // push a map on!
     CDRoute * cdRoute = (CDRoute*)[routes objectAtIndex:indexPath.row];
     ScenicRoute * route = cdRoute.route;
@@ -140,18 +143,44 @@
 	return @"Select a Route";
 }
 
+
+//- (BOOL)tableView:(UITableView *)tableView
+//canEditRowAtIndexPath:(NSIndexPath *)indexPath
+//{return YES;}
+//
+//- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+//    
+//    if (editingStyle == UITableViewCellEditingStyleDelete) {
+//		
+//        // Delete the managed object at the given index path.
+//		
+//		// Update the array and table view.
+//        // [routes removeObjectAtIndex:indexPath.row];
+//        // reload the table view
+//        
+//		// Commit the change.
+//    }   
+//}
+
+
 - (void) pushEditView:(id)sender {
 
-    ScenicRouteEditViewController * tmp = [[ScenicRouteEditViewController alloc] initWithNibName:@"ScenicRouteEditViewController" bundle:nil];
-    [[self navigationController] pushViewController:tmp animated:YES];
-    
-    NSLog(@" pressed on %d", ((UIButton*)sender).tag);
-    
+    CDRoute * cdRoute = (CDRoute*)[routes objectAtIndex:((UIButton*)sender).tag];
 
+    ScenicRouteEditViewController * tmp = [[ScenicRouteEditViewController alloc] initWithRoute:@"ScenicRouteEditViewController" bundle:nil route:cdRoute];
+    [[self navigationController] pushViewController:tmp animated:YES];
+  
+    
+//    NSLog(@" pressed on %d", ((UIButton*)sender).tag);
+    
+    
+//    CDHelper* helper = [CDHelper sharedHelper];
+//    [helper deleteRoute:cdRoute];
+    
+    
+    
     
 //    NSLog(@" %@ ", [sender description]);
     
 }
-
-
 @end

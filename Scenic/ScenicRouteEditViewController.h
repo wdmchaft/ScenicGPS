@@ -8,9 +8,24 @@
 
 #import <UIKit/UIKit.h>
 
+@class CDRoute;
 
 @interface ScenicRouteEditViewController : UIViewController {
-    
+    CDRoute * route;
+    UITextField * rTitle;
+    UITextView * desc;
+    UIButton * delButton;
 }
+
+@property (nonatomic, retain) CDRoute * route;
+@property (nonatomic, retain) IBOutlet UITextView * desc;
+@property (nonatomic, retain) IBOutlet UIButton * delButton;
+@property (nonatomic, retain) IBOutlet UITextField * rTitle;
+
+
+
+- (id)initWithRoute:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil route:(CDRoute*)r;
+
+- (IBAction) deleteCDRoute;
 
 @end
