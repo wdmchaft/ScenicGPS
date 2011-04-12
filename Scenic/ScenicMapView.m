@@ -51,12 +51,12 @@
 }
 
 -(void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    NSLog(@"yo");
+    //NSLog(@"yo");
     [super touchesEnded:touches withEvent:event];
 }
 
 -(void) overlayTouched: (MKOverlayView*) olView {
-    NSLog(@"touched");
+    //NSLog(@"touched");
 }
 
 -(void) putNewRoutes: (NSArray*) routes {
@@ -178,12 +178,12 @@
     double rho = 1000.;
     double cDel = (double) (c_max - c_min);
     double dDel = delta_max - delta_min;
-    NSLog(@"%f",delta);
+    //NSLog(@"%f",delta);
     
     level = (int) (c_min + floor(cDel*(dDel - (delta - delta_min))/(rho*(delta - delta_min) + dDel)));
     
     
-    NSLog(@"level: %d", level);
+    //NSLog(@"level: %d", level);
     
     
     
@@ -241,7 +241,7 @@
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
     
     ScenicTextContent * content = (ScenicTextContent*) view.annotation;
-    NSLog(@"we have %@", content);
+    //NSLog(@"we have %@", content);
     bool alreadyAdded = [[self.model primaryRoute].scenicContents containsObject:content];
     
     if( view.leftCalloutAccessoryView == control) {

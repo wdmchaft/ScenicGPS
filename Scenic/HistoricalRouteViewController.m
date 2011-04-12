@@ -73,8 +73,7 @@
 
 
 - (void)viewWillAppear:(BOOL)animated {
-    NSLog(@"we need to reload the table view!");    
-//    [tableView reloadData];
+    [tableOfRoutes reloadData];
 }
 
 
@@ -113,8 +112,6 @@
     [[cell mEditButton] setTag:indexPath.row];
      
     CDRoute * cdRoute = (CDRoute*)[routes objectAtIndex:indexPath.row];
-    ScenicRoute * route = cdRoute.route;
-    NSLog(@" %@", [route description]);
     
     cell.primaryLabel.text = cdRoute.title;
     cell.secondaryLabel.text = cdRoute.desc;
