@@ -95,10 +95,7 @@
     
     
     CDHelper * helper = [CDHelper sharedHelper];
-    
-    ScenicRoute * sroute = route.route;    
-    sroute.gRoute.summary = desc.text;
-    route.route = sroute;
+    route.desc = desc.text;
     [helper saveContext];
 
 }

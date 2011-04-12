@@ -117,7 +117,7 @@
     NSLog(@" %@", [route description]);
     
     cell.primaryLabel.text = cdRoute.title;
-    cell.secondaryLabel.text = route.gRoute.summary;
+    cell.secondaryLabel.text = cdRoute.desc;
     cell.myImageView.image = [UIImage imageNamed:@"dest.png"];
 	
 	return cell;

@@ -80,6 +80,7 @@ static CDHelper *sharedSingleton;
 -(void) saveRoute: (ScenicRoute*) route {
     createModel(model);
     model.title = route.gRoute.summary;
+    model.desc = route.gRoute.summary;
     model.createDate = [NSDate date];
     model.route = route;
     [self saveContext];

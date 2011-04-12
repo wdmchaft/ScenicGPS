@@ -12,7 +12,8 @@
 @implementation CDRoute
 @dynamic createDate;
 @dynamic title;
-@dynamic route;                
+@dynamic route;        
+@dynamic desc;
                            
                            
 @end
