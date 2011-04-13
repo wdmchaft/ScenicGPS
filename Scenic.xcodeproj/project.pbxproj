@@ -91,6 +91,9 @@
 		5D99EF0D1340E99900E1412E /* ScenicTripViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D99EF0B1340E99900E1412E /* ScenicTripViewController.m */; };
 		5D99EF0E1340E99900E1412E /* ScenicTripViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D99EF0C1340E99900E1412E /* ScenicTripViewController.xib */; };
 		5D99EF111340EBDA00E1412E /* ScenicTripModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D99EF101340EBDA00E1412E /* ScenicTripModel.m */; };
+		5DA395E1134B80CE00D15D25 /* panologo.gif in Resources */ = {isa = PBXBuildFile; fileRef = 5DA395E0134B80CE00D15D25 /* panologo.gif */; };
+		5DA395E5134B814000D15D25 /* PanoramioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DA395E3134B814000D15D25 /* PanoramioViewController.m */; };
+		5DA395E6134B814000D15D25 /* PanoramioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5DA395E4134B814000D15D25 /* PanoramioViewController.xib */; };
 		5DBF2BB1132ED72F004C1F90 /* add-28.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DBF2BB0132ED72F004C1F90 /* add-28.png */; };
 		5DCB3F6F1343B5D5006CF30B /* CDRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DCB3F6E1343B5D5006CF30B /* CDRoute.m */; };
 		5DCB3F731343D920006CF30B /* CDHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DCB3F721343D920006CF30B /* CDHelper.m */; };
@@ -263,6 +266,10 @@
 		5D99EF0C1340E99900E1412E /* ScenicTripViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScenicTripViewController.xib; sourceTree = "<group>"; };
 		5D99EF0F1340EBDA00E1412E /* ScenicTripModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScenicTripModel.h; sourceTree = "<group>"; };
 		5D99EF101340EBDA00E1412E /* ScenicTripModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScenicTripModel.m; sourceTree = "<group>"; };
+		5DA395E0134B80CE00D15D25 /* panologo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = panologo.gif; sourceTree = "<group>"; };
+		5DA395E2134B814000D15D25 /* PanoramioViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanoramioViewController.h; sourceTree = "<group>"; };
+		5DA395E3134B814000D15D25 /* PanoramioViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PanoramioViewController.m; sourceTree = "<group>"; };
+		5DA395E4134B814000D15D25 /* PanoramioViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PanoramioViewController.xib; sourceTree = "<group>"; };
 		5DBF2BB0132ED72F004C1F90 /* add-28.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "add-28.png"; sourceTree = "<group>"; };
 		5DCB3F6D1343B5D5006CF30B /* CDRoute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDRoute.h; sourceTree = "<group>"; };
 		5DCB3F6E1343B5D5006CF30B /* CDRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDRoute.m; sourceTree = "<group>"; };
@@ -428,6 +435,7 @@
 				5D017AC91325A4EE00B8EA6A /* ScenicMapViewController.xib */,
 				5D2FCF59132EA2F5005B08DD /* ScenicContentTextVC.xib */,
 				5D33448813464B5E0091C215 /* HistoricalRootViewController.xib */,
+				5DA395E4134B814000D15D25 /* PanoramioViewController.xib */,
 			);
 			name = Xibs;
 			sourceTree = "<group>";
@@ -436,6 +444,8 @@
 			isa = PBXGroup;
 			children = (
 				5D05886B13209A3B00D42F0A /* RouteRootViewController.h */,
+				5DA395E2134B814000D15D25 /* PanoramioViewController.h */,
+				5DA395E3134B814000D15D25 /* PanoramioViewController.m */,
 				5D33448613464B5E0091C215 /* HistoricalRootViewController.h */,
 				5D33448713464B5E0091C215 /* HistoricalRootViewController.m */,
 				5D05886D13209A3B00D42F0A /* RouteRootViewController.m */,
@@ -603,6 +613,7 @@
 		AACD9562132A8B0B00855892 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				5DA395E0134B80CE00D15D25 /* panologo.gif */,
 				5DE4663C133BEFF10095385F /* remove.png */,
 				5DBF2BB0132ED72F004C1F90 /* add-28.png */,
 				AACD9563132A8B0B00855892 /* 103-map.png */,
@@ -717,6 +728,8 @@
 				5DE4663D133BEFF10095385F /* remove.png in Resources */,
 				5D99EF0E1340E99900E1412E /* ScenicTripViewController.xib in Resources */,
 				5D33448A13464B5E0091C215 /* HistoricalRootViewController.xib in Resources */,
+				5DA395E1134B80CE00D15D25 /* panologo.gif in Resources */,
+				5DA395E6134B814000D15D25 /* PanoramioViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -814,6 +827,7 @@
 				5D3BE3941343F79200534241 /* UserPhotoContent.m in Sources */,
 				5D3BE3971344152B00534241 /* CDUserContent.m in Sources */,
 				5D33448913464B5E0091C215 /* HistoricalRootViewController.m in Sources */,
+				5DA395E5134B814000D15D25 /* PanoramioViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,6 +8,7 @@
 
 #import "PanoramioContent.h"
 #import <QuartzCore/QuartzCore.h>
+#import "PanoramioViewController.h"
 
 static NSString* PHOTOS_KEY = @"photos";
 static NSString* PHOTO_URL_KEY = @"photo_file_url";
@@ -30,7 +31,9 @@ static NSString* TITLE_KEY = @"photo_title";
 }
 
 -(UIView*) provideView {  
-    return [[[UIImageView alloc] initWithImage:self.image] autorelease];
+    PanoramioViewController* pVC = [[[PanoramioViewController alloc] initWithNibName:@"PanoramioViewController" bundle:nil] autorelease];
+    pVC.content = self;
+    return pVC.view;
 }
 
 -(UIImage*) fetchImage {
