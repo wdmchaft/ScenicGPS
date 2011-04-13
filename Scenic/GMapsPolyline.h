@@ -12,12 +12,12 @@
 @interface GMapsPolyline : NSObject <NSCoding>{
     NSArray* points;
     NSString* levels;
-    
+    NSString* plString;
 }
 
 @property (nonatomic, retain) NSArray* points;
 @property (nonatomic, retain) NSString* levels;
-
+@property (nonatomic, retain) NSString* plString;
 
 +(id) polylineFromJSONDic: (NSDictionary*) dic;
 +(NSArray *)decodePolyLine: (NSMutableString *)encoded;

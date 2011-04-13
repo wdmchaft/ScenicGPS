@@ -15,12 +15,15 @@ static NSString* POINTS_KEY = @"points";
 
 
 @implementation GMapsPolyline
-@synthesize levels, points;
+@synthesize levels, points, plString;
 
 +(id) polylineFromJSONDic: (NSDictionary*) dic {
     GMapsPolyline* pl =  [[[GMapsPolyline alloc] init] autorelease];
+    
+    pl.plString = (NSString*) [dic objectForKey:POINTS_KEY];
     pl.levels = (NSString*) [dic objectForKey:LEVELS_KEY];
-    pl.points = [GMapsPolyline decodePolyLine: [NSMutableString stringWithString: (NSString*) [dic objectForKey:POINTS_KEY]]];
+    pl.points = [GMapsPolyline decodePolyLine: [NSMutableString stringWithString: pl.plString]];
+    
     return pl;
     
 }
@@ -74,15 +77,23 @@ static NSString* POINTS_KEY = @"points";
 -(void) encodeWithCoder:(NSCoder *)aCoder {
     [aCoder encodeObject:self.levels];
     [aCoder encodeObject:self.points];
+    [aCoder encodeObject:self.plString];
 }
 
 -(id) initWithCoder:(NSCoder *)aDecoder {
     if ((self = [super init])) {
         self.levels = [aDecoder decodeObject];
         self.points = [aDecoder decodeObject];
+        self.plString = [aDecoder decodeObject];
     }
     return self;
 }
 
+- (void) dealloc {
+    [super dealloc];
+    [points release];
+    [levels release];
+    [plString release];
+}
 
 @end
