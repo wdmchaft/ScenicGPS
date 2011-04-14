@@ -9,26 +9,46 @@
 #import "HistoricalRouteViewController.h"
 #import "TableCell.h"
 #import "CDHelper.h"
+#import "CDRoute.h"
 #import "ScenicRoute.h"
 #import "ScenicTripViewController.h"
 #import "ScenicAppDelegate.h"
+#import "ScenicRouteEditViewController.h"
 
 @implementation HistoricalRouteViewController
 @synthesize tableOfRoutes, routes;
 
+//- (void)setEditing:(BOOL)editing animated:(BOOL)animate {
+//    
+//    [super setEditing:editing animated:animate];
+//    if(editing)
+//    {
+//        NSLog(@"editMode on");
+//    }
+//    else
+//    {
+//        NSLog(@"Done leave editmode");
+//    }
+//}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        // add edit button
+        //self.navigationItem.rightBarButtonItem = self.editButtonItem;
+
     }
     return self;
 }
 
 - (void)dealloc
 {
+
     [super dealloc];
+    [routes release];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -45,21 +65,25 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
     CDHelper* helper = [CDHelper sharedHelper];
-    routes = [helper allRoutes];
-    
-    //routes = [NSArray arrayWithObjects:@"route1", @"asfas", @"Big Two", @"Custom", nil];
-	[routes retain];
-
-    
+    routes = [helper allCDRoutes];    
+	[routes retain]; 
+ 
 }
+
+
+- (void)viewWillAppear:(BOOL)animated {
+    [tableOfRoutes reloadData];
+}
+
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+
+    
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -84,11 +108,13 @@
 		cell = [[[TableCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
 	}
 	
-    ScenicRoute * route = [routes objectAtIndex:indexPath.row];
-    NSLog(@" %@", [route description]);
+    [[cell mEditButton] addTarget:self action:@selector(pushEditView:) forControlEvents:UIControlEventTouchUpInside];
+    [[cell mEditButton] setTag:indexPath.row];
+     
+    CDRoute * cdRoute = (CDRoute*)[routes objectAtIndex:indexPath.row];
     
-    cell.primaryLabel.text = route.gRoute.summary;
-    cell.secondaryLabel.text = cell.primaryLabel.text;
+    cell.primaryLabel.text = cdRoute.title;
+    cell.secondaryLabel.text = cdRoute.desc;
     cell.myImageView.image = [UIImage imageNamed:@"dest.png"];
 	
 	return cell;
@@ -102,9 +128,10 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"selected %d", indexPath.row);	
+
     // push a map on!
-    ScenicRoute * route = [routes objectAtIndex:indexPath.row];
+    CDRoute * cdRoute = (CDRoute*)[routes objectAtIndex:indexPath.row];
+    ScenicRoute * route = (ScenicRoute*) cdRoute.route;
     ScenicTripViewController* tripVC = [[ScenicTripViewController alloc] initWithNibName:@"ScenicTripViewController" bundle:nil route:route];
 
     [[self navigationController] pushViewController:tripVC animated:YES];
@@ -117,4 +144,32 @@
 }
 
 
+//- (BOOL)tableView:(UITableView *)tableView
+//canEditRowAtIndexPath:(NSIndexPath *)indexPath
+//{return YES;}
+//
+//- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+//    
+//    if (editingStyle == UITableViewCellEditingStyleDelete) {
+//		
+//        // Delete the managed object at the given index path.
+//		
+//		// Update the array and table view.
+//        // [routes removeObjectAtIndex:indexPath.row];
+//        // reload the table view
+//        
+//		// Commit the change.
+//    }   
+//}
+
+
+- (void) pushEditView:(id)sender {
+
+    CDRoute * cdRoute = (CDRoute*)[routes objectAtIndex:((UIButton*)sender).tag];
+
+    ScenicRouteEditViewController* eVC = [[ScenicRouteEditViewController alloc] initWithRoute:cdRoute];
+    [self.navigationController pushViewController:eVC animated:YES];
+    [eVC release];
+    
+}
 @end

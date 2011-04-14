@@ -60,11 +60,34 @@ static CDHelper *sharedSingleton;
     return [NSArray arrayWithArray:routeArray];
 }
 
+-(NSArray*) allCDRoutes {
+    
+    // Test listing all FailedBankInfos from the store
+    NSError *err;
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"CDRoute"
+                                              inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    NSArray *fetchedObjects = [self.managedObjectContext executeFetchRequest:fetchRequest error:&err];
+    [fetchRequest release];
+    NSMutableArray* routeArray = [NSMutableArray arrayWithCapacity:[fetchedObjects count]];
+    for (CDRoute* route in fetchedObjects ) {
+        [routeArray addObject:route];
+    }
+    return [NSArray arrayWithArray:routeArray];
+}
+
 -(void) saveRoute: (ScenicRoute*) route {
     createModel(model);
     model.title = route.gRoute.summary;
+    model.desc = route.gRoute.summary;
     model.createDate = [NSDate date];
     model.route = route;
+    [self saveContext];
+}
+
+- (void) deleteRoute: (CDRoute*) route {    
+    [self.managedObjectContext deleteObject:route];
     [self saveContext];
 }
 

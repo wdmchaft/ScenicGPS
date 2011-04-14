@@ -16,6 +16,8 @@
     
 }
 
+- (void) pushEditView:(id)sender;
+
 @property (nonatomic, retain) IBOutlet NSArray * routes;
 @property (nonatomic, retain) IBOutlet UITableView *tableOfRoutes;
 

@@ -9,8 +9,10 @@
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
 #import "ScenicMapSelectorModel.h"
+#import "ScenicRoute.h"
 
-@class GMapsCoordinate, ScenicRoute;
+
+@class GMapsCoordinate;
 @interface ScenicTripModel : ScenicMapSelectorModel {
     ScenicRoute* route;
     GMapsCoordinate* location;

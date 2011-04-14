@@ -112,4 +112,14 @@
     [self presentModalViewController:self.imgPicker animated:YES];
 }
 
+-(IBAction) rateRoute: (id) sender {
+    int rating = 5;
+    RoutePutter* putter = [[RoutePutter putterWithPL:[self.mMapView.model primaryRoute].gRoute.polyline rating:rating andDelegate:self] retain];
+    [putter fetch];
+}
+
+-(void) putterHasError:(ServerPutter *)putter {
+    NSLog(@"%@",[putter description]);
+}
+
 @end

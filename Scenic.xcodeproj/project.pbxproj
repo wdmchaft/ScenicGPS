@@ -91,8 +91,11 @@
 		5D99EF0D1340E99900E1412E /* ScenicTripViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D99EF0B1340E99900E1412E /* ScenicTripViewController.m */; };
 		5D99EF0E1340E99900E1412E /* ScenicTripViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D99EF0C1340E99900E1412E /* ScenicTripViewController.xib */; };
 		5D99EF111340EBDA00E1412E /* ScenicTripModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D99EF101340EBDA00E1412E /* ScenicTripModel.m */; };
+		5D9F1D4413568A2100789FF7 /* ServerPutter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D9F1D4313568A2100789FF7 /* ServerPutter.m */; };
+		5D9F1D4713568F7A00789FF7 /* RoutePutter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D9F1D4613568F7900789FF7 /* RoutePutter.m */; };
+		5D9F1D48135692D300789FF7 /* PanoramioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DA395E3134B814000D15D25 /* PanoramioViewController.m */; };
+		5D9F1D49135695B800789FF7 /* ScenicRouteEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA7B7BDA134B7EAB007FE5A3 /* ScenicRouteEditViewController.xib */; };
 		5DA395E1134B80CE00D15D25 /* panologo.gif in Resources */ = {isa = PBXBuildFile; fileRef = 5DA395E0134B80CE00D15D25 /* panologo.gif */; };
-		5DA395E5134B814000D15D25 /* PanoramioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DA395E3134B814000D15D25 /* PanoramioViewController.m */; };
 		5DA395E6134B814000D15D25 /* PanoramioViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5DA395E4134B814000D15D25 /* PanoramioViewController.xib */; };
 		5DBF2BB1132ED72F004C1F90 /* add-28.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DBF2BB0132ED72F004C1F90 /* add-28.png */; };
 		5DCB3F6F1343B5D5006CF30B /* CDRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DCB3F6E1343B5D5006CF30B /* CDRoute.m */; };
@@ -101,6 +104,7 @@
 		5DCF17D71320A47400D19D04 /* GMapsLeg.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DCF17D61320A47400D19D04 /* GMapsLeg.m */; };
 		5DE4663D133BEFF10095385F /* remove.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DE4663C133BEFF10095385F /* remove.png */; };
 		AA3A91401329E45300894C16 /* TableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3A913F1329E45300894C16 /* TableCell.m */; };
+		AA7B7BDB134B7EAB007FE5A3 /* ScenicRouteEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7B7BD9134B7EAB007FE5A3 /* ScenicRouteEditViewController.m */; };
 		AACD9567132A8B0B00855892 /* 103-map.png in Resources */ = {isa = PBXBuildFile; fileRef = AACD9563132A8B0B00855892 /* 103-map.png */; };
 		AACD9568132A8B0B00855892 /* 29-heart.png in Resources */ = {isa = PBXBuildFile; fileRef = AACD9564132A8B0B00855892 /* 29-heart.png */; };
 		AACD9569132A8B0B00855892 /* dest.png in Resources */ = {isa = PBXBuildFile; fileRef = AACD9565132A8B0B00855892 /* dest.png */; };
@@ -266,6 +270,10 @@
 		5D99EF0C1340E99900E1412E /* ScenicTripViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScenicTripViewController.xib; sourceTree = "<group>"; };
 		5D99EF0F1340EBDA00E1412E /* ScenicTripModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScenicTripModel.h; sourceTree = "<group>"; };
 		5D99EF101340EBDA00E1412E /* ScenicTripModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScenicTripModel.m; sourceTree = "<group>"; };
+		5D9F1D4213568A2100789FF7 /* ServerPutter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerPutter.h; sourceTree = "<group>"; };
+		5D9F1D4313568A2100789FF7 /* ServerPutter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerPutter.m; sourceTree = "<group>"; };
+		5D9F1D4513568F7900789FF7 /* RoutePutter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoutePutter.h; sourceTree = "<group>"; };
+		5D9F1D4613568F7900789FF7 /* RoutePutter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoutePutter.m; sourceTree = "<group>"; };
 		5DA395E0134B80CE00D15D25 /* panologo.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = panologo.gif; sourceTree = "<group>"; };
 		5DA395E2134B814000D15D25 /* PanoramioViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanoramioViewController.h; sourceTree = "<group>"; };
 		5DA395E3134B814000D15D25 /* PanoramioViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PanoramioViewController.m; sourceTree = "<group>"; };
@@ -282,6 +290,9 @@
 		5DE4663C133BEFF10095385F /* remove.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = remove.png; sourceTree = "<group>"; };
 		AA3A913E1329E45300894C16 /* TableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableCell.h; sourceTree = "<group>"; };
 		AA3A913F1329E45300894C16 /* TableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableCell.m; sourceTree = "<group>"; };
+		AA7B7BD8134B7EAB007FE5A3 /* ScenicRouteEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScenicRouteEditViewController.h; sourceTree = "<group>"; };
+		AA7B7BD9134B7EAB007FE5A3 /* ScenicRouteEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScenicRouteEditViewController.m; sourceTree = "<group>"; };
+		AA7B7BDA134B7EAB007FE5A3 /* ScenicRouteEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScenicRouteEditViewController.xib; sourceTree = "<group>"; };
 		AACD9563132A8B0B00855892 /* 103-map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "103-map.png"; sourceTree = "<group>"; };
 		AACD9564132A8B0B00855892 /* 29-heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "29-heart.png"; sourceTree = "<group>"; };
 		AACD9565132A8B0B00855892 /* dest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dest.png; sourceTree = "<group>"; };
@@ -418,6 +429,10 @@
 				5D490DD0132985DE006905A9 /* ScenicParkFetcher.m */,
 				5D490DD213298691006905A9 /* YelpFetcher.h */,
 				5D490DD313298691006905A9 /* YelpFetcher.m */,
+				5D9F1D4213568A2100789FF7 /* ServerPutter.h */,
+				5D9F1D4313568A2100789FF7 /* ServerPutter.m */,
+				5D9F1D4513568F7900789FF7 /* RoutePutter.h */,
+				5D9F1D4613568F7900789FF7 /* RoutePutter.m */,
 			);
 			name = Fetchers;
 			sourceTree = "<group>";
@@ -425,6 +440,7 @@
 		5D017AA51321A04E00B8EA6A /* Xibs */ = {
 			isa = PBXGroup;
 			children = (
+				AA7B7BDA134B7EAB007FE5A3 /* ScenicRouteEditViewController.xib */,
 				5D99EF0C1340E99900E1412E /* ScenicTripViewController.xib */,
 				5D017ABF13257C9400B8EA6A /* ScenicContentDisplayViewController.xib */,
 				5D017AB013255D3600B8EA6A /* ScenicContentViewController.xib */,
@@ -498,6 +514,8 @@
 				5D06B8FC1330272C0035260F /* ScenicTextContent.m */,
 				5D3BE3921343F79200534241 /* UserPhotoContent.h */,
 				5D3BE3931343F79200534241 /* UserPhotoContent.m */,
+				AA7B7BD8134B7EAB007FE5A3 /* ScenicRouteEditViewController.h */,
+				AA7B7BD9134B7EAB007FE5A3 /* ScenicRouteEditViewController.m */,
 			);
 			name = "Scenic Content";
 			sourceTree = "<group>";
@@ -710,6 +728,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D9F1D49135695B800789FF7 /* ScenicRouteEditViewController.xib in Resources */,
 				5D05888413209A3B00D42F0A /* strict.xcconfig in Resources */,
 				5D05888F13209A3B00D42F0A /* InfoPlist.strings in Resources */,
 				5D05889113209A3B00D42F0A /* RouteRootViewController.xib in Resources */,
@@ -765,6 +784,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5D9F1D48135692D300789FF7 /* PanoramioViewController.m in Sources */,
 				5D05887713209A3B00D42F0A /* JSONFetcher.m in Sources */,
 				5D05887813209A3B00D42F0A /* GMapsRouter.m in Sources */,
 				5D05887913209A3B00D42F0A /* DataFetcher.m in Sources */,
@@ -827,7 +847,9 @@
 				5D3BE3941343F79200534241 /* UserPhotoContent.m in Sources */,
 				5D3BE3971344152B00534241 /* CDUserContent.m in Sources */,
 				5D33448913464B5E0091C215 /* HistoricalRootViewController.m in Sources */,
-				5DA395E5134B814000D15D25 /* PanoramioViewController.m in Sources */,
+				AA7B7BDB134B7EAB007FE5A3 /* ScenicRouteEditViewController.m in Sources */,
+				5D9F1D4413568A2100789FF7 /* ServerPutter.m in Sources */,
+				5D9F1D4713568F7A00789FF7 /* RoutePutter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

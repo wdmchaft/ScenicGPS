@@ -7,9 +7,10 @@
 //
 
 #import "TableCell.h"
+#import "CDRoute.h"
 
 @implementation TableCell
-@synthesize primaryLabel,secondaryLabel,myImageView;
+@synthesize primaryLabel,secondaryLabel,myImageView, mEditButton, route;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     
@@ -23,9 +24,12 @@
 		secondaryLabel.textAlignment = UITextAlignmentLeft;
 		secondaryLabel.font = [UIFont systemFontOfSize:12];
 		myImageView = [[UIImageView alloc]init];
+        mEditButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+        
 		[self.contentView addSubview:primaryLabel];
 		[self.contentView addSubview:secondaryLabel];
 		[self.contentView addSubview:myImageView];
+        [self.contentView addSubview:mEditButton];
     }
     return self;
 }
@@ -41,9 +45,15 @@
 	
 	frame= CGRectMake(boundsX+70 ,5, 200, 25);
 	primaryLabel.frame = frame;
-	
+
+    
 	frame= CGRectMake(boundsX+70 ,30, 200, 15);
 	secondaryLabel.frame = frame;
+    
+    frame= CGRectMake(boundsX+270 ,0, 50, 50);
+    mEditButton.frame = frame;
+    
+    
 }
 
 
@@ -57,6 +67,7 @@
 
 - (void)dealloc {
     [super dealloc];
+    [route release];
 }
 
 

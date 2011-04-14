@@ -9,9 +9,10 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import "ScenicMapView.h"
+#import "RoutePutter.h"
 
 @class ScenicTripModel, ScenicMapView;
-@interface ScenicTripViewController : UIViewController <ScenicMapViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate> {
+@interface ScenicTripViewController : UIViewController <ScenicMapViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, ServerPutterDelegate> {
     ScenicMapView* mMapView;
     ScenicTripModel* trip;
     UIImagePickerController* imgPicker;
@@ -19,6 +20,7 @@
 }
 
 -(IBAction) takePicture: (id) sender;
+-(IBAction) rateRoute: (id) sender;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil model: (ScenicMapSelectorModel*) model;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil route: (ScenicRoute*) route;
 

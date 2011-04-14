@@ -93,7 +93,7 @@
 }
 
 -(void) handleYelp: (NSDictionary*) dic {
-    NSLog(@"%@", [dic description]);
+    //NSLog(@"%@", [dic description]);
 }
 
 -(void) handleGeoTag:(GMapsGeolocation *)loc {
