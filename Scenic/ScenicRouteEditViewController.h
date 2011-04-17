@@ -10,15 +10,15 @@
 
 @class CDRoute;
 
-@interface ScenicRouteEditViewController : UIViewController <UITextFieldDelegate> {
+@interface ScenicRouteEditViewController : UIViewController <UIAlertViewDelegate, UITextFieldDelegate>  {
     CDRoute * route;
     UITextField * rTitle;
-    UITextView * desc;
+    UITextField * desc;
     UIButton * delButton;
 }
 
 @property (nonatomic, retain) CDRoute * route;
-@property (nonatomic, retain) IBOutlet UITextView * desc;
+@property (nonatomic, retain) IBOutlet UITextField * desc;
 @property (nonatomic, retain) IBOutlet UIButton * delButton;
 @property (nonatomic, retain) IBOutlet UITextField * rTitle;
 
@@ -26,9 +26,9 @@
 
 - (id)initWithRoute:(CDRoute*)r;
 
-- (IBAction) deleteCDRoute;
-- (IBAction) updateTitle;    
-- (IBAction) updateDescription;
 
+
+- (IBAction) deleteCDRoute;
+- (IBAction) updateFields; 
 
 @end

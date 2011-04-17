@@ -45,7 +45,7 @@
     // Do any additional setup after loading the view from its nib.
     
     self.rTitle.text = route.title; //route.title;
-    self.desc.text = ((ScenicRoute*)route.route).gRoute.summary;
+    self.desc.text = route.desc;
 
 }
 
@@ -64,31 +64,34 @@
 
 - (IBAction) deleteCDRoute {
     
-    CDHelper * helper = [CDHelper sharedHelper];
-    [helper deleteRoute:route];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Are you sure?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Yes, delete it!", nil];
+    [alert show];  
+    [alert release];
     
-    NSLog(@"attempted to delete route!");
-    
-    // need to tell table view to reload!
-    // pop this view off as well
 }
 
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
 
-- (IBAction) updateTitle {
+    if (buttonIndex == 0) return;
+    
+   CDHelper * helper = [CDHelper sharedHelper];
+   [helper deleteRoute:route];
+      
+   // need to tell table view to reload!
+   // pop this view off as well
+   
+   [[self navigationController] popViewControllerAnimated:YES];
+}
+
+- (IBAction) updateFields {
+    
     
     CDHelper * helper = [CDHelper sharedHelper];
     route.title = rTitle.text;
-    [helper saveContext];
-        
-}
-
-
-- (IBAction) updateDescription {
-    
-    
-    CDHelper * helper = [CDHelper sharedHelper];
     route.desc = desc.text;
     [helper saveContext];
+    
+    [[self navigationController] popViewControllerAnimated:YES];
 
 }
 

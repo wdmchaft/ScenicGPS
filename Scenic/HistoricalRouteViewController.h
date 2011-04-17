@@ -16,6 +16,7 @@
     
 }
 
+- (void) reloadRoutes;
 - (void) pushEditView:(id)sender;
 
 @property (nonatomic, retain) IBOutlet NSArray * routes;

@@ -71,8 +71,15 @@
  
 }
 
+- (void) reloadRoutes {
+    if (routes) [routes release];
+    CDHelper* helper = [CDHelper sharedHelper];
+    routes = [helper allCDRoutes];    
+	[routes retain];
+}
 
 - (void)viewWillAppear:(BOOL)animated {
+    [self reloadRoutes];
     [tableOfRoutes reloadData];
 }
 
