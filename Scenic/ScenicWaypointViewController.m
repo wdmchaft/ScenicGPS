@@ -8,7 +8,8 @@
 
 #import "ScenicWaypointViewController.h"
 #import "ScenicContentViewController.h"
-
+#import "PlacePutter.h"
+#import "ScenicContent.h"
 
 @implementation ScenicWaypointViewController
 @synthesize mainVC, delegate, toolTitle;
@@ -53,13 +54,42 @@
     UIToolbar* toolbar = [[UIToolbar alloc] init];
     [toolbar sizeToFit];
     toolbar.barStyle = UIBarStyleBlackTranslucent;
+    
     UIBarButtonItem* buttonItem = [[UIBarButtonItem alloc] initWithTitle:[self getBackTitle] style:UIBarButtonSystemItemAction target:self action:@selector(addWaypoint)];
-    [toolbar setItems:[NSArray arrayWithObject:buttonItem]];
+    
+    UIImage *buttonImage = [UIImage imageNamed:@"thumbsup.png"];
+    UIBarButtonItem * buttonUp = [[UIBarButtonItem alloc] initWithImage:buttonImage style:UIBarButtonSystemItemAction target:self action:@selector(voteUp)];    
+    [buttonImage release];
+
+    UIImage *buttonImage2 = [UIImage imageNamed:@"thumbsdown.png"];
+    UIBarButtonItem * buttonDown = [[UIBarButtonItem alloc] initWithImage:buttonImage2 style:UIBarButtonSystemItemAction target:self action:@selector(voteDown)];    
+    [buttonImage2 release];
+
+ 
+    [toolbar setItems:[NSArray arrayWithObjects:buttonItem, buttonDown, buttonUp, nil]];
+    [buttonUp release];
+    [buttonDown release];
     [buttonItem release];
+    
     [self.view addSubview:toolbar];
     [toolbar release];
 }
 
+- (void) voteUp {
+    
+    int rating = 1;
+    PlacePutter* putter = [[PlacePutter putterWithCoords:mainVC.content.coord rating:rating andDelegate:self] retain];
+                                                        
+    [putter fetch];
+    
+}
+
+- (void) voteDown {
+    int rating = -1;
+    PlacePutter* putter = [[PlacePutter putterWithCoords:mainVC.content.coord rating:rating andDelegate:self] retain];
+    
+    [putter fetch];
+}
 
 -(NSString*) getBackTitle {
     if (!self.toolTitle)

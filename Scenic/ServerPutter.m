@@ -14,6 +14,9 @@ static NSString* STATUS_KEY = @"status";
 static NSString* ERROR_KEY = @"error";
 static NSString* ROUTE_COMMAND = @"route";
 static NSString* ROUTE_LOC = @"putroute";
+static NSString* PLACE_COMMAND = @"place";
+static NSString* PLACE_LOC = @"rateplace";
+
 static NSDictionary* commandLookup;
 
 
@@ -23,7 +26,7 @@ static NSDictionary* commandLookup;
 
 +(NSDictionary*) commandLookup {
     if (!commandLookup)
-        commandLookup = [[NSDictionary dictionaryWithObjectsAndKeys:ROUTE_LOC,ROUTE_COMMAND, nil] retain];
+        commandLookup = [[NSDictionary dictionaryWithObjectsAndKeys:ROUTE_LOC,ROUTE_COMMAND, PLACE_LOC, PLACE_COMMAND, nil] retain];
     return commandLookup;
 }
 

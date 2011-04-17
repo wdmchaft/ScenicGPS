@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ServerPutter.h"
+
 @protocol ScenicContentDelegate;
+
 @class ScenicContentViewController, ScenicContent;
-@interface ScenicWaypointViewController : UIViewController {
+@interface ScenicWaypointViewController : UIViewController <ServerPutterDelegate> {
     ScenicContentViewController* mainVC;
     id<ScenicContentDelegate> delegate;
     NSString* toolTitle;
@@ -17,6 +20,10 @@
 
 -(void) addWaypoint;
 -(NSString*) getBackTitle;
+
+- (void) voteUp;
+- (void) voteDown;
+
 @property (nonatomic, retain) ScenicContentViewController* mainVC;
 @property (nonatomic, assign)     id<ScenicContentDelegate> delegate;
 @property (nonatomic, retain) NSString* toolTitle;
