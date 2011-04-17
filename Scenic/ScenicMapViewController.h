@@ -23,8 +23,8 @@
 @interface ScenicMapViewController : UIViewController <ScenicMapViewDelegate> {
     IBOutlet ScenicMapView* mMapView;
 	IBOutlet UISegmentedControl *mapType;
-    IBOutlet UISegmentedControl *routePicker;
     IBOutlet UIToolbar* mapTypeToolbar;
+    int routeNum;
     NSArray* _routes;
 }
 
@@ -33,8 +33,9 @@
 -(void)gotoLocation:(CLLocation *) location;
 
 -(IBAction) changeMapType: (id) sender;
--(IBAction) changeRoute: (id) sender;
--(void) updateRoutePicker;
+-(IBAction) nextRoute: (id) sender;
+-(IBAction) prevRoute: (id) sender;
+//-(void) updateRoutePicker;
 
 -(void) updateTitle;
 -(void) addTripButton;
@@ -42,6 +43,7 @@
 @property (nonatomic, retain) IBOutlet ScenicMapView* mMapView;
 @property (nonatomic, retain) IBOutlet UISegmentedControl* mapType;
 @property (nonatomic, retain) IBOutlet UIToolbar* mapTypeToolbar;
-@property (nonatomic, retain) IBOutlet UISegmentedControl* routePicker;
 @property (nonatomic, retain)     NSArray* _routes;
+@property (nonatomic, assign) int routeNum;
+
 @end

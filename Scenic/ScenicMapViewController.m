@@ -16,7 +16,7 @@
 #import "CDHelper.h"
 
 @implementation ScenicMapViewController
-@synthesize mMapView, mapType, mapTypeToolbar, routePicker, _routes;
+@synthesize mMapView, mapType, mapTypeToolbar, routeNum, _routes;
 
 
 -(id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil routes:(NSArray*) routes {
@@ -46,7 +46,6 @@
 
 
 -(void) scenicMapViewUpdatedRoutes {
-    [self updateRoutePicker];
     [self updateTitle];
 }
 
@@ -73,9 +72,22 @@
     [[CDHelper sharedHelper] saveRoute:[self.mMapView.model primaryRoute]];
 }
 
--(IBAction) changeRoute: (id) sender {
-    [self.mMapView changeToRouteNumber:self.routePicker.selectedSegmentIndex];
+-(IBAction) nextRoute: (id) sender {
+    int nRoutes = [self.mMapView.model.routes count];
+    routeNum = (routeNum+1) % nRoutes;
+    [self.mMapView changeToRouteNumber:routeNum];
 }
+
+-(IBAction) prevRoute: (id) sender {
+    int nRoutes = [self.mMapView.model.routes count];
+    if (nRoutes==0) return;
+    routeNum = (routeNum-1) % nRoutes;
+    if (routeNum < 0) {
+        routeNum = nRoutes - 1;
+    }
+    [self.mMapView changeToRouteNumber:routeNum];
+}
+
 
 - (void)changeType {
 	if(mapType.selectedSegmentIndex==0){
@@ -91,29 +103,29 @@
 
 
 
--(void) updateRoutePicker {
-    int nRoutes = [self.mMapView.model.routes count];
-    if (nRoutes < 2) {
-        self.routePicker.hidden = YES;
-        return;
-    }
-    self.routePicker.hidden = NO;
-    int oldNRoutes = self.routePicker.numberOfSegments;
-    int difference = oldNRoutes - nRoutes;
-    if (difference == 0) return;
-    if (difference > 0) {
-        for (int i = 0; i < difference; i++) {
-            [self.routePicker removeSegmentAtIndex:self.routePicker.numberOfSegments - 1 animated:YES];
-        }
-        return;
-    }
-    for (int i = 0; i > difference; i--) {
-        [self.routePicker insertSegmentWithTitle:[NSString stringWithFormat:@"%i",self.routePicker.numberOfSegments+1] atIndex:self.routePicker.numberOfSegments animated:YES];
-    }
-    self.routePicker.selectedSegmentIndex = 0;
-    return;
-    
-}
+//-(void) updateRoutePicker {
+//    int nRoutes = [self.mMapView.model.routes count];
+//    if (nRoutes < 2) {
+//        self.routePicker.hidden = YES;
+//        return;
+//    }
+//    self.routePicker.hidden = NO;
+//    int oldNRoutes = self.routePicker.numberOfSegments;
+//    int difference = oldNRoutes - nRoutes;
+//    if (difference == 0) return;
+//    if (difference > 0) {
+//        for (int i = 0; i < difference; i++) {
+//            [self.routePicker removeSegmentAtIndex:self.routePicker.numberOfSegments - 1 animated:YES];
+//        }
+//        return;
+//    }
+//    for (int i = 0; i > difference; i--) {
+//        [self.routePicker insertSegmentWithTitle:[NSString stringWithFormat:@"%i",self.routePicker.numberOfSegments+1] atIndex:self.routePicker.numberOfSegments animated:YES];
+//    }
+//    self.routePicker.selectedSegmentIndex = 0;
+//    return;
+//    
+//}
 
 -(void) updateTitle {
     self.title = [self.mMapView.model primaryRoute].gRoute.summary;
