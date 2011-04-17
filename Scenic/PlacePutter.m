@@ -23,7 +23,7 @@ static NSString* DEVICE_KEY = @"device";
 
 +(id) putterWithCoords: (GMapsCoordinate*) coord rating: (int) rating andDelegate: (id<ServerPutterDelegate>) _pDelegate {
     
-    NSDictionary* qs = [NSDictionary dictionaryWithObjectsAndKeys:i2f(coord.lat), LAT_KEY, i2f(coord.lng), LNG_KEY,i2s(rating),RATING_KEY, [[UIDevice currentDevice] uniqueIdentifier], DEVICE_KEY, nil];
+    NSDictionary* qs = [NSDictionary dictionaryWithObjectsAndKeys:i2f([coord.lat doubleValue]), LAT_KEY, i2f([coord.lng doubleValue]), LNG_KEY,i2s(rating),RATING_KEY, [[UIDevice currentDevice] uniqueIdentifier], DEVICE_KEY, nil];
     return [PlacePutter serverPutterWithCommand:@"place" queries:qs delegate:_pDelegate];
 }
 
