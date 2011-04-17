@@ -20,7 +20,11 @@
 }
 
 -(IBAction) takePicture: (id) sender;
--(IBAction) rateRoute: (id) sender;
+
+-(IBAction) rateRouteDown: (id) sender;
+-(IBAction) rateRouteUp: (id) sender;
+
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil model: (ScenicMapSelectorModel*) model;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil route: (ScenicRoute*) route;
 
