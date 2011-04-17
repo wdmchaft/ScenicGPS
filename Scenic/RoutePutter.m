@@ -11,14 +11,17 @@
 
 static NSString* PL_KEY = @"plstring";
 static NSString* RATING_KEY = @"rating";
-
+static NSString* DEVICE_KEY = @"device";
 
 
 @implementation RoutePutter
 
 
 +(id) putterWithPL: (GMapsPolyline*) pl rating: (int) rating andDelegate: (id<ServerPutterDelegate>) _pDelegate {
-    NSDictionary* qs = [NSDictionary dictionaryWithObjectsAndKeys:pl.plString,PL_KEY,[NSString stringWithFormat:@"%i",rating],RATING_KEY, nil];
+    NSDictionary* qs = [NSDictionary dictionaryWithObjectsAndKeys:pl.plString,PL_KEY,[NSString stringWithFormat:@"%i",rating],RATING_KEY, [[UIDevice currentDevice] uniqueIdentifier], DEVICE_KEY, nil];
+    
+    NSLog(@"devID: %@", [[UIDevice currentDevice] uniqueIdentifier]);
+    
     return [RoutePutter serverPutterWithCommand:@"route" queries:qs delegate:_pDelegate];
 }
 
