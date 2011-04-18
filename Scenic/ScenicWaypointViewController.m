@@ -116,4 +116,6 @@
     
 }
 
+- (void) putterHasError:(ServerPutter *)putter {}
+
 @end
