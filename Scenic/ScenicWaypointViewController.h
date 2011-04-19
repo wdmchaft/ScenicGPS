@@ -20,7 +20,7 @@
 
 -(void) addWaypoint;
 -(NSString*) getBackTitle;
-
+-(void) voteWithRating: (int) rating;
 - (void) voteUp;
 - (void) voteDown;
 

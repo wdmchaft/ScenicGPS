@@ -33,6 +33,7 @@
                      [value stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]];
         flag = @"&";
     }
+    NSLog(@"%@",urlString);
     return [NSURL URLWithString:urlString];
 }
 

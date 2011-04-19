@@ -8,7 +8,7 @@
 
 #import "ScenicWaypointViewController.h"
 #import "ScenicContentViewController.h"
-#import "PlacePutter.h"
+#import "PanoramioRater.h"
 #import "ScenicContent.h"
 
 @implementation ScenicWaypointViewController
@@ -76,20 +76,23 @@
 }
 
 - (void) voteUp {
-    
     int rating = 1;
-    PlacePutter* putter = [[PlacePutter putterWithCoords:mainVC.content.coord rating:rating andDelegate:self] retain];
-                                                        
-    [putter fetch];
+    [self voteWithRating:rating];
     
 }
 
 - (void) voteDown {
     int rating = -1;
-    PlacePutter* putter = [[PlacePutter putterWithCoords:mainVC.content.coord rating:rating andDelegate:self] retain];
-    
+    [self voteWithRating:rating];
+}
+
+
+-(void) voteWithRating: (int) rating {
+    PanoramioRater* putter = [[PanoramioRater putterWithContent:mainVC.content rating:rating andDelegate:self] retain];
     [putter fetch];
 }
+
+
 
 -(NSString*) getBackTitle {
     if (!self.toolTitle)

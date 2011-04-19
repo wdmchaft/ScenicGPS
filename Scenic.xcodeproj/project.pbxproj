@@ -91,6 +91,7 @@
 		5D99EF0D1340E99900E1412E /* ScenicTripViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D99EF0B1340E99900E1412E /* ScenicTripViewController.m */; };
 		5D99EF0E1340E99900E1412E /* ScenicTripViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D99EF0C1340E99900E1412E /* ScenicTripViewController.xib */; };
 		5D99EF111340EBDA00E1412E /* ScenicTripModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D99EF101340EBDA00E1412E /* ScenicTripModel.m */; };
+		5D9E1FC6135CD34900740218 /* PanoramioRater.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D9E1FC5135CD34900740218 /* PanoramioRater.m */; };
 		5D9F1D4413568A2100789FF7 /* ServerPutter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D9F1D4313568A2100789FF7 /* ServerPutter.m */; };
 		5D9F1D4713568F7A00789FF7 /* RoutePutter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D9F1D4613568F7900789FF7 /* RoutePutter.m */; };
 		5D9F1D48135692D300789FF7 /* PanoramioViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DA395E3134B814000D15D25 /* PanoramioViewController.m */; };
@@ -110,7 +111,7 @@
 		AA8F9676135AB72600E57A17 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8F9675135AB72600E57A17 /* icon.png */; };
 		AA8F9699135B715400E57A17 /* next.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8F9697135B715400E57A17 /* next.png */; };
 		AA8F969A135B715400E57A17 /* prev.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8F9698135B715400E57A17 /* prev.png */; };
-		AA8F96AE135B85B700E57A17 /* PlacePutter.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8F96AD135B85B700E57A17 /* PlacePutter.m */; };
+		AA8F96AE135B85B700E57A17 /* ContentRater.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8F96AD135B85B700E57A17 /* ContentRater.m */; };
 		AACD9567132A8B0B00855892 /* 103-map.png in Resources */ = {isa = PBXBuildFile; fileRef = AACD9563132A8B0B00855892 /* 103-map.png */; };
 		AACD9568132A8B0B00855892 /* 29-heart.png in Resources */ = {isa = PBXBuildFile; fileRef = AACD9564132A8B0B00855892 /* 29-heart.png */; };
 		AACD9569132A8B0B00855892 /* dest.png in Resources */ = {isa = PBXBuildFile; fileRef = AACD9565132A8B0B00855892 /* dest.png */; };
@@ -276,6 +277,8 @@
 		5D99EF0C1340E99900E1412E /* ScenicTripViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScenicTripViewController.xib; sourceTree = "<group>"; };
 		5D99EF0F1340EBDA00E1412E /* ScenicTripModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScenicTripModel.h; sourceTree = "<group>"; };
 		5D99EF101340EBDA00E1412E /* ScenicTripModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScenicTripModel.m; sourceTree = "<group>"; };
+		5D9E1FC4135CD34900740218 /* PanoramioRater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PanoramioRater.h; sourceTree = "<group>"; };
+		5D9E1FC5135CD34900740218 /* PanoramioRater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PanoramioRater.m; sourceTree = "<group>"; };
 		5D9F1D4213568A2100789FF7 /* ServerPutter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerPutter.h; sourceTree = "<group>"; };
 		5D9F1D4313568A2100789FF7 /* ServerPutter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerPutter.m; sourceTree = "<group>"; };
 		5D9F1D4513568F7900789FF7 /* RoutePutter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoutePutter.h; sourceTree = "<group>"; };
@@ -304,8 +307,8 @@
 		AA8F9675135AB72600E57A17 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ../icon.png; sourceTree = "<group>"; };
 		AA8F9697135B715400E57A17 /* next.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = next.png; sourceTree = "<group>"; };
 		AA8F9698135B715400E57A17 /* prev.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = prev.png; sourceTree = "<group>"; };
-		AA8F96AC135B85B700E57A17 /* PlacePutter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlacePutter.h; sourceTree = "<group>"; };
-		AA8F96AD135B85B700E57A17 /* PlacePutter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlacePutter.m; sourceTree = "<group>"; };
+		AA8F96AC135B85B700E57A17 /* ContentRater.h */ = {isa = PBXFileReference; fileEncoding = 4; path = ContentRater.h; sourceTree = "<group>"; };
+		AA8F96AD135B85B700E57A17 /* ContentRater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentRater.m; sourceTree = "<group>"; };
 		AACD9563132A8B0B00855892 /* 103-map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "103-map.png"; sourceTree = "<group>"; };
 		AACD9564132A8B0B00855892 /* 29-heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "29-heart.png"; sourceTree = "<group>"; };
 		AACD9565132A8B0B00855892 /* dest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dest.png; sourceTree = "<group>"; };
@@ -446,8 +449,10 @@
 				5D9F1D4313568A2100789FF7 /* ServerPutter.m */,
 				5D9F1D4513568F7900789FF7 /* RoutePutter.h */,
 				5D9F1D4613568F7900789FF7 /* RoutePutter.m */,
-				AA8F96AC135B85B700E57A17 /* PlacePutter.h */,
-				AA8F96AD135B85B700E57A17 /* PlacePutter.m */,
+				AA8F96AC135B85B700E57A17 /* ContentRater.h */,
+				AA8F96AD135B85B700E57A17 /* ContentRater.m */,
+				5D9E1FC4135CD34900740218 /* PanoramioRater.h */,
+				5D9E1FC5135CD34900740218 /* PanoramioRater.m */,
 			);
 			name = Fetchers;
 			sourceTree = "<group>";
@@ -875,7 +880,8 @@
 				AA7B7BDB134B7EAB007FE5A3 /* ScenicRouteEditViewController.m in Sources */,
 				5D9F1D4413568A2100789FF7 /* ServerPutter.m in Sources */,
 				5D9F1D4713568F7A00789FF7 /* RoutePutter.m in Sources */,
-				AA8F96AE135B85B700E57A17 /* PlacePutter.m in Sources */,
+				AA8F96AE135B85B700E57A17 /* ContentRater.m in Sources */,
+				5D9E1FC6135CD34900740218 /* PanoramioRater.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
