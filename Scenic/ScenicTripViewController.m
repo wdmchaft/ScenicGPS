@@ -64,7 +64,7 @@
     tmp.delegate = self;
     tmp.allowsEditing = YES;
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-        tmp.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        tmp.sourceType = UIImagePickerControllerSourceTypeCamera;
     } else {
         tmp.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     }

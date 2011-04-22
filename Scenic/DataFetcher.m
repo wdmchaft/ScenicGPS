@@ -38,7 +38,6 @@
 -(void) fetcherFinished:(JSONFetcher *)_fetcher withResult:(id)result {
     id response = [self getResponseFromResult:result];
     [delegate dataFetcher:self hasResponse:response];
-    
 }
 
 -(void) dealloc {
