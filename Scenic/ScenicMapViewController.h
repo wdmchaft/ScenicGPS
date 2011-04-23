@@ -37,6 +37,9 @@
 -(IBAction) prevRoute: (id) sender;
 //-(void) updateRoutePicker;
 
+- (IBAction) queryRoutesAlongRoute;
+- (IBAction) queryRoutes;
+
 -(void) updateTitle;
 -(void) addTripButton;
 

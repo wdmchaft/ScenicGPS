@@ -147,6 +147,10 @@
     [fetcher fetch];
 }
 
+-(void) fetchNewContentWithCoord:(GMapsCoordinate*)coord {
+    PanoramioFetcher* fetcher = [PanoramioFetcher fetcherForCoord:coord andDelegate:self];
+    [fetcher fetch];
+}
 
 -(void) locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
 }

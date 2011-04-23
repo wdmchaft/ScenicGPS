@@ -13,7 +13,11 @@
 #import "ScenicMapView.h"
 #import "ScenicRoute.h"
 #import "ScenicTripViewController.h"
+#import "GMapsPolyline.h"
 #import "CDHelper.h"
+
+#define COORD(x) [[mMapView.model primaryRoute].gRoute.polyline.points objectAtIndex:x]
+#define COORDS [mMapView.model primaryRoute].gRoute.polyline.points
 
 @implementation ScenicMapViewController
 @synthesize mMapView, mapType, mapTypeToolbar, routeNum, _routes;
@@ -89,10 +93,23 @@
 }
 
 - (IBAction) queryRoutes {
-    
     [mMapView.model fetchNewContentWithBounds:[GMapsBounds boundsFromMapView:mMapView]];
+}
+
+- (IBAction) queryRoutesAlongRoute {
+         
+  
+    for (int i=0; i<[COORDS count]; i+=50) {
+        GMapsCoordinate * coord = COORD(i);
+        NSLog(@"query along route: (%@, %@)", coord.lat, coord.lng) ;
+                
+        [mMapView.model fetchNewContentWithCoord:COORD(i)];        
+        
+    }
+    
     
 }
+
 
 - (void)changeType {
 	if(mapType.selectedSegmentIndex==0){

@@ -13,7 +13,7 @@
 #import "ScenicWaypointViewController.h"
 
 @protocol ScenicMapSelectorModelDelegate;
-@class ScenicRoute, GMapsBounds;
+@class ScenicRoute, GMapsBounds, GMapsCoordinate;
 @interface ScenicMapSelectorModel : NSObject <CLLocationManagerDelegate, DataFetcherDelegate, ScenicContentDelegate, NSCopying> {
     NSArray* routes;
     int primaryRouteIndex;
@@ -42,6 +42,7 @@
 -(void) removeContentFromPrimaryRoute: (ScenicContent*) content;
 -(void) fetchNewContent;
 -(void) fetchNewContentWithBounds:(GMapsBounds*)bounds;
+-(void) fetchNewContentWithCoord:(GMapsCoordinate*)coord;
 @end
 
 @protocol ScenicMapSelectorModelDelegate
