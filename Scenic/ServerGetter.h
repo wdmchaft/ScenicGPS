@@ -14,7 +14,8 @@
 }
 
 +(id) serverGetterWithCommand: (NSString*) _command queries: (NSDictionary*) _queries delegate: (id<DataFetcherDelegate>) _delegate;
-
++(NSString*) getBaseFromCommand: (NSString*) command;
+-(id) initWithCommand:(NSString *)_command andQueries:(NSDictionary *)_queries andDelegate:(id<DataFetcherDelegate>)_delegate;
                                                                                                  
 
 @end

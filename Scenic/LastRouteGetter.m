@@ -15,6 +15,13 @@ static NSString* ROUTE_KEY = @"plstring";
 
 @implementation LastRouteGetter
 
+-(id) initWithCommand:(NSString *)_command andQueries:(NSDictionary *)_queries andDelegate:(id<DataFetcherDelegate>)_delegate {
+    if ((self = [super initWithCommand:_command andQueries:_queries andDelegate:_delegate])) {
+        
+    }
+    return self;
+}
+
 -(id) getResponseFromResult:(id)result {
     id firstResponse = [super getResponseFromResult:result];
     if (firstResponse) {
@@ -25,7 +32,7 @@ static NSString* ROUTE_KEY = @"plstring";
 }
 
 +(LastRouteGetter*) lastRouteFetcherWithDelegate: (id<DataFetcherDelegate>) delegate {
-    LastRouteGetter* getter = [LastRouteGetter serverGetterWithCommand:command queries:[NSDictionary dictionary] delegate:delegate];
+    LastRouteGetter* getter = [[[LastRouteGetter alloc] initWithCommand:command andQueries:[NSDictionary dictionary] andDelegate:delegate] autorelease];
     return getter;
 }
 

@@ -18,11 +18,16 @@ static NSString* debugBase = @"127.0.0.1:9880/scenic";
 
 static NSString* STATUS_KEY = @"status";
 static NSString* ERROR_KEY = @"error";
-static NSString* RESPONSE_KEY = @"reponse";
+static NSString* RESPONSE_KEY = @"response";
 static NSString* LAST_ROUTE_COMMAND = @"lastroute";
 static NSString* LAST_ROUTE_LOC = @"lastroute";
 
-
+-(id) initWithCommand:(NSString *)_command andQueries:(NSDictionary *)_queries andDelegate:(id<DataFetcherDelegate>)_delegate {
+    if ((self = [super initWithBase:[ServerGetter getBaseFromCommand:_command] andQueries:_queries andDelegate:_delegate])) {
+        
+    }
+    return self;
+}
 
 
 +(NSDictionary*) commandLookup {
@@ -52,7 +57,7 @@ static NSString* LAST_ROUTE_LOC = @"lastroute";
 
 +(id) serverGetterWithCommand: (NSString*) _command queries: (NSDictionary*) _queries delegate: (id<DataFetcherDelegate>) _delegate {
     NSString* base = [ServerGetter getBaseFromCommand:_command];
-    ServerGetter* getter = [[[ServerGetter alloc] initWithBase:base andQueries:_queries andDelegate:nil] autorelease];
+    ServerGetter* getter = [[[ServerGetter alloc] initWithCommand:base andQueries:_queries andDelegate:_delegate] autorelease];
     getter.delegate = _delegate;
     return getter;
 }

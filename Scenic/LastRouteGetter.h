@@ -14,4 +14,7 @@
     
 }
 
++(LastRouteGetter*) lastRouteFetcherWithDelegate: (id<DataFetcherDelegate>) delegate;
+
+-(id) getResponseFromResult:(id)result;
 @end
