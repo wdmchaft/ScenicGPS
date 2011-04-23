@@ -18,7 +18,7 @@ static NSString* ScenicAnnotationIdentifier = @"ScenicAnnotationIdentifier";
 @synthesize coord, title, score, contentProvider, geoHash;
 
 - (void) computeHash {
-    geoHash = [GeoHash hash:CLLocationCoordinate2DMake([coord.lat doubleValue], [coord.lng doubleValue])];
+    self.geoHash = [GeoHash hash:CLLocationCoordinate2DMake([coord.lat doubleValue], [coord.lng doubleValue])];
 }
 
 +(NSString*) SCAVID {

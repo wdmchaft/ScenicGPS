@@ -15,19 +15,17 @@ static NSString* TYPE_KEY = @"req_type";
 @synthesize type;
 
 -(id) initWithType: (NSString*) _type withQueries: (NSDictionary*) _queries andDelegate: (id<DataFetcherDelegate>) _delegate {
-    if ((self = [super initWithBase:server_base andQueries:[ScenicServerFetcher newQueries: _type withOldQueries: _queries] andDelegate:_delegate])) {
+    if ((self = [super initWithBase:server_base andQueries:[ScenicServerFetcher queries: _type withOldQueries: _queries] andDelegate:_delegate])) {
         self.type = _type;
     }
     return self;
     
 }
 
-+(NSDictionary*) newQueries: (NSString*) _type withOldQueries: (NSDictionary*) old {
-    NSMutableDictionary* dic = [[NSMutableDictionary alloc] initWithObjectsAndKeys:_type,TYPE_KEY, nil];
++(NSDictionary*) queries: (NSString*) _type withOldQueries: (NSDictionary*) old {
+    NSMutableDictionary* dic = [NSMutableDictionary dictionaryWithObjectsAndKeys:_type,TYPE_KEY, nil];
     [dic addEntriesFromDictionary:old];
-    NSDictionary* returnDic =  [NSDictionary dictionaryWithDictionary:dic];
-    [dic release];
-    return returnDic;
+    return [NSDictionary dictionaryWithDictionary:dic];
 }
 
 +(id) fetcherWithType: (NSString*) type withQueries: (NSDictionary*) queries andDelegate: (id<DataFetcherDelegate>) _delegate {

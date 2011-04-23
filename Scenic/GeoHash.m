@@ -65,8 +65,8 @@ NSString * generate_binary(double input, double max, double min, int cutoff) {
  
     //NSLog(@"Just hashed (%f, %f) to %@", coord.latitude, coord.longitude, result);
     
-    [result retain];
-    return result;
+    
+    return [NSString stringWithString:result];
     
 }
 

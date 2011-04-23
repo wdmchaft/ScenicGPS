@@ -43,7 +43,7 @@
 }
 
 -(void) refetch {
-    GMapsRouter* router = [[GMapsRouter routeWithScenicRoute:[self primaryRoute] andDelegate:self] retain];
+    GMapsRouter* router = [GMapsRouter routeWithScenicRoute:[self primaryRoute] andDelegate:self];
     [router fetch];
 }
 
@@ -138,12 +138,12 @@
 }
 
 -(void) fetchNewContent {
-    PanoramioFetcher* fetcher = [[PanoramioFetcher fetcherForBounds:[self primaryRoute].gRoute.bounds  andDelegate:self] retain];
+    PanoramioFetcher* fetcher = [PanoramioFetcher fetcherForBounds:[self primaryRoute].gRoute.bounds  andDelegate:self];
     [fetcher fetch];
 }
 
 -(void) fetchNewContentWithBounds:(GMapsBounds*)bounds {
-    PanoramioFetcher* fetcher = [[PanoramioFetcher fetcherForBounds:bounds  andDelegate:self] retain];
+    PanoramioFetcher* fetcher = [PanoramioFetcher fetcherForBounds:bounds  andDelegate:self];
     [fetcher fetch];
 }
 

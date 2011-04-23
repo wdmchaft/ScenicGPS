@@ -59,11 +59,9 @@
     
     UIImage *buttonImage = [UIImage imageNamed:@"thumbsup.png"];
     UIBarButtonItem * buttonUp = [[UIBarButtonItem alloc] initWithImage:buttonImage style:UIBarButtonSystemItemAction target:self action:@selector(voteUp)];    
-    [buttonImage release];
 
     UIImage *buttonImage2 = [UIImage imageNamed:@"thumbsdown.png"];
     UIBarButtonItem * buttonDown = [[UIBarButtonItem alloc] initWithImage:buttonImage2 style:UIBarButtonSystemItemAction target:self action:@selector(voteDown)];    
-    [buttonImage2 release];
 
  
     [toolbar setItems:[NSArray arrayWithObjects:buttonItem, buttonDown, buttonUp, nil]];
@@ -88,7 +86,7 @@
 
 
 -(void) voteWithRating: (int) rating {
-    PanoramioRater* putter = [[PanoramioRater putterWithContent:mainVC.content rating:rating andDelegate:self] retain];
+    PanoramioRater* putter = [PanoramioRater putterWithContent:mainVC.content rating:rating andDelegate:self];
     [putter fetch];
 }
 

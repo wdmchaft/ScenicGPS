@@ -86,7 +86,7 @@
 -(void) handleImage: (UIImage*) image {
     UserPhotoContent* content = [UserPhotoContent contentWithPhoto:image andCoordinate:[GMapsCoordinate coordFromCLCoord:self.mMapView.model.locationManager.location.coordinate]];
     [self.mMapView addUserContent:content];
-    [[CDHelper sharedHelper] storePhoto: image];
+    //[[CDHelper sharedHelper] storePhoto: image];
     
 }
 
@@ -114,13 +114,13 @@
 
 -(IBAction) rateRouteUp: (id) sender {
     int rating = 1;
-    RoutePutter* putter = [[RoutePutter putterWithPL:[self.mMapView.model primaryRoute].gRoute.polyline rating:rating andDelegate:self] retain];
+    RoutePutter* putter = [RoutePutter putterWithPL:[self.mMapView.model primaryRoute].gRoute.polyline rating:rating andDelegate:self];
     [putter fetch];
 }
 
 -(IBAction) rateRouteDown: (id) sender {
     int rating = -1;
-    RoutePutter* putter = [[RoutePutter putterWithPL:[self.mMapView.model primaryRoute].gRoute.polyline rating:rating andDelegate:self] retain];
+    RoutePutter* putter = [RoutePutter putterWithPL:[self.mMapView.model primaryRoute].gRoute.polyline rating:rating andDelegate:self];
     [putter fetch];
 }
 

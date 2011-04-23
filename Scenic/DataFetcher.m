@@ -26,6 +26,8 @@
     self.fetcher = temp;
     [temp release];
     fetcher._delegate = self;
+    [self retain];
+    NSLog(@"%d",[self retainCount]);
     [fetcher fetchURL:base withQueries:queries];
 }
 

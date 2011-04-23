@@ -24,13 +24,5 @@
 -(void) dataFetcher: (DataFetcher*) fetcher hasResponse: (id) response;
 
 -(IBAction) getRoutes: (id) sender;
--(IBAction) getGeoTag: (id) sender;
--(IBAction) getServerResource: (id) sender;
--(IBAction) getPanoramio: (id) sender;
-
--(void) handleParks: (NSArray*) dic;
--(void) handlePanoramio: (NSArray*) contents;
 -(void) handleRoutes: (NSArray*) routes;
--(void) handleGeoTag: (GMapsGeolocation*) loc;
--(void) handleYelp: (NSDictionary*) dic;
 @end
