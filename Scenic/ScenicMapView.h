@@ -27,7 +27,6 @@
 -(void) updateRoutesOnMap;
 -(NSArray*) visibleContentsForCurrentRegion;
 -(void) updateVisibleContents;
--(void) addNewContent;
 -(void) changeToRouteNumber: (int) n;
 -(void) setInitialRoutes: (NSArray*) routes;
 -(void) addUserContent: (ScenicContent*) content;

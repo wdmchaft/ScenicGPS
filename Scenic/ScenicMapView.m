@@ -201,12 +201,6 @@
         [self createModel];
     }
     [self putNewRoutes:routes];
-    [self addNewContent];
-}
-
-
--(void) addNewContent {
-    [self.model addTestContent];
     [self.model fetchNewContent];
 }
 
@@ -215,7 +209,6 @@
     self.model = tempModel;
     [tempModel release];
 }
-
 
 -(void) setModel:(ScenicMapSelectorModel *)_model {
     [_model retain];

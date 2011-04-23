@@ -10,6 +10,7 @@
 #import "ScenicRoute.h"
 #import "ScenicContent.h"
 #import "GMapsCoordinate.h"
+#import "GMapsBounds.h"
 #import "PanoramioContent.h"
 #import "ScenicTextContent.h"
 #import "PanoramioFetcher.h"
@@ -140,6 +141,12 @@
     PanoramioFetcher* fetcher = [[PanoramioFetcher fetcherForBounds:[self primaryRoute].gRoute.bounds  andDelegate:self] retain];
     [fetcher fetch];
 }
+
+-(void) fetchNewContentWithBounds:(GMapsBounds*)bounds {
+    PanoramioFetcher* fetcher = [[PanoramioFetcher fetcherForBounds:bounds  andDelegate:self] retain];
+    [fetcher fetch];
+}
+
 
 -(void) locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
 }

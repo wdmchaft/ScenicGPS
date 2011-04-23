@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "GMapsCoordinate.h"
 
+@class ScenicMapView;
 @class GMapsCoordinate;
 @interface GMapsBounds : NSObject <NSCoding>{
     GMapsCoordinate* sw;
@@ -21,6 +22,6 @@
 @property (nonatomic, retain) GMapsCoordinate* ne;
 
 +(id) boundsFromJSONDic: (NSDictionary*) dic;
-
++(id) boundsFromMapView:(ScenicMapView*) mMapView;
 
 @end

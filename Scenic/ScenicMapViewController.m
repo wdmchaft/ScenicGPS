@@ -88,6 +88,11 @@
     [self.mMapView changeToRouteNumber:routeNum];
 }
 
+- (IBAction) queryRoutes {
+    
+    [mMapView.model fetchNewContentWithBounds:[GMapsBounds boundsFromMapView:mMapView]];
+    
+}
 
 - (void)changeType {
 	if(mapType.selectedSegmentIndex==0){
