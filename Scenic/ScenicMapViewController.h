@@ -18,14 +18,16 @@
 #import "GMapsRouter.h"
 #import "ScenicMapSelectorModel.h"
 #import "ScenicMapView.h"
+#import "CameraHelper.h"
 
 @class ScenicRoute, ScenicContent, GMapsRoute;
-@interface ScenicMapViewController : UIViewController <ScenicMapViewDelegate> {
+@interface ScenicMapViewController : UIViewController <ScenicMapViewDelegate, CameraHelperDelegate> {
     IBOutlet ScenicMapView* mMapView;
 	IBOutlet UISegmentedControl *mapType;
     IBOutlet UIToolbar* mapTypeToolbar;
     int routeNum;
     NSArray* _routes;
+    CameraHelper * camera;
 }
 
 
@@ -37,8 +39,9 @@
 -(IBAction) prevRoute: (id) sender;
 //-(void) updateRoutePicker;
 
-- (IBAction) queryRoutesAlongRoute;
-- (IBAction) queryRoutes;
+- (IBAction) queryRoutesAlongRoute: (id) sender;
+- (IBAction) queryRoutes: (id) sender;
+-(IBAction) takePicture: (id) sender;
 
 -(void) updateTitle;
 -(void) addTripButton;
@@ -48,5 +51,7 @@
 @property (nonatomic, retain) IBOutlet UIToolbar* mapTypeToolbar;
 @property (nonatomic, retain)     NSArray* _routes;
 @property (nonatomic, assign) int routeNum;
+
+@property (nonatomic, retain) CameraHelper* camera;
 
 @end

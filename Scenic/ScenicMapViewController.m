@@ -15,18 +15,21 @@
 #import "ScenicTripViewController.h"
 #import "GMapsPolyline.h"
 #import "CDHelper.h"
+#import "UserPhotoContent.h"
 
 #define COORD(x) [[mMapView.model primaryRoute].gRoute.polyline.points objectAtIndex:x]
 #define COORDS [mMapView.model primaryRoute].gRoute.polyline.points
 
 @implementation ScenicMapViewController
-@synthesize mMapView, mapType, mapTypeToolbar, routeNum, _routes;
+@synthesize mMapView, mapType, mapTypeToolbar, routeNum, _routes, camera;
 
 
 -(id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil routes:(NSArray*) routes {
     if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])) {
         self.hidesBottomBarWhenPushed = YES;
         self._routes = routes;
+        camera = [[CameraHelper alloc] initWithViewController:self camDelegate:self];
+        
     }
     return self;
 }
@@ -40,6 +43,15 @@
     self.mMapView.scenicDelegate = self;
     [self.mMapView setInitialRoutes:self._routes];
     [self._routes release];
+}
+
+-(void) handleImage: (UIImage*) image {
+    
+    UserPhotoContent* content = [UserPhotoContent contentWithPhoto:image andCoordinate:[GMapsCoordinate coordFromCLCoord:mMapView.model.locationManager.location.coordinate]];
+    [mMapView addUserContent:content];
+    //[[CDHelper sharedHelper] storePhoto: image];
+    NSLog(@"handling image!");
+    
 }
 
 -(void) addTripButton {
@@ -92,13 +104,17 @@
     [self.mMapView changeToRouteNumber:routeNum];
 }
 
-- (IBAction) queryRoutes {
+- (IBAction) takePicture: (id) sender {
+    [camera takePicture];
+}
+
+- (IBAction) queryRoutes: (id) sender {
     [mMapView.model fetchNewContentWithBounds:[GMapsBounds boundsFromMapView:mMapView]];
 }
 
-- (IBAction) queryRoutesAlongRoute {
+- (IBAction) queryRoutesAlongRoute: (id) sender {
          
-  
+
     for (int i=0; i<[COORDS count]; i+=50) {
         GMapsCoordinate * coord = COORD(i);
         NSLog(@"query along route: (%@, %@)", coord.lat, coord.lng) ;

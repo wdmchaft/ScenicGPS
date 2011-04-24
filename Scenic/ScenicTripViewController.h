@@ -10,13 +10,13 @@
 #import <MapKit/MapKit.h>
 #import "ScenicMapView.h"
 #import "RoutePutter.h"
+#import "CameraHelper.h"
 
 @class ScenicTripModel, ScenicMapView;
-@interface ScenicTripViewController : UIViewController <ScenicMapViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, ServerPutterDelegate> {
+@interface ScenicTripViewController : UIViewController <ScenicMapViewDelegate, ServerPutterDelegate, CameraHelperDelegate> {
     ScenicMapView* mMapView;
     ScenicTripModel* trip;
-    UIImagePickerController* imgPicker;
-    
+    CameraHelper* camera;
 }
 
 -(IBAction) takePicture: (id) sender;
@@ -28,11 +28,8 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil model: (ScenicMapSelectorModel*) model;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil route: (ScenicRoute*) route;
 
--(void) handleImage: (UIImage*) image;
--(void) initImagePicker;
-
 @property (nonatomic, retain) IBOutlet ScenicMapView* mMapView;
 @property (nonatomic, retain) ScenicTripModel* trip;
-@property (nonatomic, retain) UIImagePickerController* imgPicker;
+@property (nonatomic, retain) CameraHelper* camera;
 
 @end

@@ -11,15 +11,16 @@
 #import "UserPhotoContent.h"
 #import "CDHelper.h"
 
-
 @implementation ScenicTripViewController
-@synthesize mMapView, trip, imgPicker;
+@synthesize mMapView, trip, camera;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil model: (ScenicMapSelectorModel*) model
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.trip = [ScenicTripModel modelFromModel:model];
+        camera = [[CameraHelper alloc] initWithViewController:self camDelegate:self];
+
     }
     return self;
 }
@@ -29,6 +30,8 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         self.trip = [ScenicTripModel modelFromRoute:route];
+        camera = [[CameraHelper alloc] initWithViewController:self camDelegate:self];
+
     }
     return self;
 }
@@ -36,6 +39,9 @@
 - (void)dealloc
 {
     [super dealloc];
+    [camera release];
+    [trip release];
+    [mMapView release];
 }
 
 - (void)didReceiveMemoryWarning
@@ -55,31 +61,6 @@
     self.mMapView.model = self.trip;
     self.mMapView.scenicDelegate = self;
     [self.mMapView updateRoutesOnMap];
-    [self initImagePicker];
-    
-}
-
--(void) initImagePicker {
-    UIImagePickerController* tmp = [[UIImagePickerController alloc] init];
-    tmp.delegate = self;
-    tmp.allowsEditing = YES;
-    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-        tmp.sourceType = UIImagePickerControllerSourceTypeCamera;
-    } else {
-        tmp.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    }
-    self.imgPicker = tmp;
-    
-    [tmp release];
-}
-
--(void) imagePickerControllerDidCancel:(UIImagePickerController *)picker {
-    [[picker parentViewController] dismissModalViewControllerAnimated:YES];
-}
-
--(void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-    [self handleImage: (UIImage*) [info objectForKey:UIImagePickerControllerOriginalImage]];
-    [[picker parentViewController] dismissModalViewControllerAnimated:YES];
     
 }
 
@@ -87,7 +68,6 @@
     UserPhotoContent* content = [UserPhotoContent contentWithPhoto:image andCoordinate:[GMapsCoordinate coordFromCLCoord:self.mMapView.model.locationManager.location.coordinate]];
     [self.mMapView addUserContent:content];
     //[[CDHelper sharedHelper] storePhoto: image];
-    
 }
 
 
@@ -109,7 +89,7 @@
 }
 
 -(IBAction) takePicture: (id) sender {
-    [self presentModalViewController:self.imgPicker animated:YES];
+    [camera takePicture];    
 }
 
 -(IBAction) rateRouteUp: (id) sender {

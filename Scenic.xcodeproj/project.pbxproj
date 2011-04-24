@@ -107,6 +107,7 @@
 		5DCF17D71320A47400D19D04 /* GMapsLeg.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DCF17D61320A47400D19D04 /* GMapsLeg.m */; };
 		5DE4663D133BEFF10095385F /* remove.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DE4663C133BEFF10095385F /* remove.png */; };
 		AA3A91401329E45300894C16 /* TableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3A913F1329E45300894C16 /* TableCell.m */; };
+		AA48498C1364D62200E23E03 /* CameraHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AA48498B1364D62200E23E03 /* CameraHelper.m */; };
 		AA7B7BDB134B7EAB007FE5A3 /* ScenicRouteEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7B7BD9134B7EAB007FE5A3 /* ScenicRouteEditViewController.m */; };
 		AA8F9670135AB70000E57A17 /* thumbsdown.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8F966E135AB70000E57A17 /* thumbsdown.png */; };
 		AA8F9671135AB70000E57A17 /* thumbsup.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8F966F135AB70000E57A17 /* thumbsup.png */; };
@@ -305,6 +306,8 @@
 		5DE4663C133BEFF10095385F /* remove.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = remove.png; sourceTree = "<group>"; };
 		AA3A913E1329E45300894C16 /* TableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableCell.h; sourceTree = "<group>"; };
 		AA3A913F1329E45300894C16 /* TableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableCell.m; sourceTree = "<group>"; };
+		AA48498A1364D62200E23E03 /* CameraHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraHelper.h; sourceTree = "<group>"; };
+		AA48498B1364D62200E23E03 /* CameraHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraHelper.m; sourceTree = "<group>"; };
 		AA7B7BD8134B7EAB007FE5A3 /* ScenicRouteEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScenicRouteEditViewController.h; sourceTree = "<group>"; };
 		AA7B7BD9134B7EAB007FE5A3 /* ScenicRouteEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScenicRouteEditViewController.m; sourceTree = "<group>"; };
 		AA7B7BDA134B7EAB007FE5A3 /* ScenicRouteEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScenicRouteEditViewController.xib; sourceTree = "<group>"; };
@@ -489,6 +492,7 @@
 		5D017AA61321A05700B8EA6A /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				AA4849881364D60500E23E03 /* Maps */,
 				5D05886B13209A3B00D42F0A /* RouteRootViewController.h */,
 				5DA395E2134B814000D15D25 /* PanoramioViewController.h */,
 				5DA395E3134B814000D15D25 /* PanoramioViewController.m */,
@@ -496,15 +500,11 @@
 				5D33448713464B5E0091C215 /* HistoricalRootViewController.m */,
 				5D05886D13209A3B00D42F0A /* RouteRootViewController.m */,
 				5D05886E13209A3B00D42F0A /* ScenicAppDelegate.h */,
-				5D017AC71325A4EB00B8EA6A /* ScenicMapViewController.h */,
-				5D017AC81325A4EC00B8EA6A /* ScenicMapViewController.m */,
 				5D05886F13209A3B00D42F0A /* ScenicAppDelegate.m */,
 				5D05887113209A3B00D42F0A /* HistoricalRouteViewController.h */,
 				5D05887213209A3B00D42F0A /* HistoricalRouteViewController.m */,
 				5D05887513209A3B00D42F0A /* RouteViewController.m */,
 				5D05887413209A3B00D42F0A /* RouteViewController.h */,
-				5D99EF0A1340E99900E1412E /* ScenicTripViewController.h */,
-				5D99EF0B1340E99900E1412E /* ScenicTripViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -644,6 +644,8 @@
 		5DCB3F701343D8F8006CF30B /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				AA48498A1364D62200E23E03 /* CameraHelper.h */,
+				AA48498B1364D62200E23E03 /* CameraHelper.m */,
 				5DCB3F711343D920006CF30B /* CDHelper.h */,
 				5DCB3F721343D920006CF30B /* CDHelper.m */,
 			);
@@ -656,6 +658,17 @@
 				AACD9562132A8B0B00855892 /* images */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		AA4849881364D60500E23E03 /* Maps */ = {
+			isa = PBXGroup;
+			children = (
+				5D017AC71325A4EB00B8EA6A /* ScenicMapViewController.h */,
+				5D017AC81325A4EC00B8EA6A /* ScenicMapViewController.m */,
+				5D99EF0A1340E99900E1412E /* ScenicTripViewController.h */,
+				5D99EF0B1340E99900E1412E /* ScenicTripViewController.m */,
+			);
+			name = Maps;
 			sourceTree = "<group>";
 		};
 		AACD9562132A8B0B00855892 /* images */ = {
@@ -894,6 +907,7 @@
 				5D9E1FC6135CD34900740218 /* PanoramioRater.m in Sources */,
 				5DCA804513622E9A00B0A6F7 /* ServerGetter.m in Sources */,
 				5DCA80481362321A00B0A6F7 /* LastRouteGetter.m in Sources */,
+				AA48498C1364D62200E23E03 /* CameraHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
