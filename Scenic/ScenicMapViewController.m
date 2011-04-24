@@ -50,7 +50,6 @@
     UserPhotoContent* content = [UserPhotoContent contentWithPhoto:image andCoordinate:[GMapsCoordinate coordFromCLCoord:mMapView.model.locationManager.location.coordinate]];
     [mMapView addUserContent:content];
     //[[CDHelper sharedHelper] storePhoto: image];
-    NSLog(@"handling image!");
     
 }
 
