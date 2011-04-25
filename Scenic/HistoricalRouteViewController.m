@@ -46,8 +46,9 @@
 - (void)dealloc
 {
 
-    [super dealloc];
     [routes release];
+    [tableOfRoutes release];
+    [super dealloc];
     
 }
 
