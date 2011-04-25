@@ -20,15 +20,18 @@
         UIImagePickerController* tmp = [[UIImagePickerController alloc] init];
         tmp.delegate = self;
         tmp.allowsEditing = YES;
+        tmp.mediaTypes = [UIImagePickerController availableMediaTypesForSourceType: UIImagePickerControllerSourceTypeCamera];
         if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
             tmp.sourceType = UIImagePickerControllerSourceTypeCamera;
         } else {
             tmp.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
         }
+        
         self.imgPicker = tmp;        
         [tmp release];
         self.cDelegate = _cDelegate;
         self.vc = _vc;
+        
     }
     return self;
 }
@@ -38,9 +41,23 @@
 }
 
 -(void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-    [cDelegate handleImage: (UIImage*) [info objectForKey:UIImagePickerControllerOriginalImage]];
-    [[picker parentViewController] dismissModalViewControllerAnimated:YES];
     
+    if (picker.cameraCaptureMode == UIImagePickerControllerCameraCaptureModeVideo) {
+        NSURL * loc = [info objectForKey:UIImagePickerControllerMediaURL];
+        NSLog(@"a video: %@", [loc description]);
+        
+        CGSize sixzevid=CGSizeMake(picker.view.bounds.size.width,picker.view.bounds.size.height-100);
+        UIGraphicsBeginImageContext(sixzevid);
+        [picker.view.layer renderInContext:UIGraphicsGetCurrentContext()];
+        UIImage *viewImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        [cDelegate handleImage: viewImage];
+        
+    
+    } else {
+        [cDelegate handleImage: (UIImage*) [info objectForKey:UIImagePickerControllerOriginalImage]];
+    }    
+    [[picker parentViewController] dismissModalViewControllerAnimated:YES];
 }
 
 -(void) takePicture {
