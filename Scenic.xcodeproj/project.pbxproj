@@ -108,6 +108,7 @@
 		5DE4663D133BEFF10095385F /* remove.png in Resources */ = {isa = PBXBuildFile; fileRef = 5DE4663C133BEFF10095385F /* remove.png */; };
 		AA3A91401329E45300894C16 /* TableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3A913F1329E45300894C16 /* TableCell.m */; };
 		AA48498C1364D62200E23E03 /* CameraHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AA48498B1364D62200E23E03 /* CameraHelper.m */; };
+		AA48499F136516EA00E23E03 /* DataUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = AA48499E136516EA00E23E03 /* DataUploader.m */; };
 		AA7B7BDB134B7EAB007FE5A3 /* ScenicRouteEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7B7BD9134B7EAB007FE5A3 /* ScenicRouteEditViewController.m */; };
 		AA8F9670135AB70000E57A17 /* thumbsdown.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8F966E135AB70000E57A17 /* thumbsdown.png */; };
 		AA8F9671135AB70000E57A17 /* thumbsup.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8F966F135AB70000E57A17 /* thumbsup.png */; };
@@ -308,6 +309,8 @@
 		AA3A913F1329E45300894C16 /* TableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableCell.m; sourceTree = "<group>"; };
 		AA48498A1364D62200E23E03 /* CameraHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraHelper.h; sourceTree = "<group>"; };
 		AA48498B1364D62200E23E03 /* CameraHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraHelper.m; sourceTree = "<group>"; };
+		AA48499D136516EA00E23E03 /* DataUploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataUploader.h; sourceTree = "<group>"; };
+		AA48499E136516EA00E23E03 /* DataUploader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataUploader.m; sourceTree = "<group>"; };
 		AA7B7BD8134B7EAB007FE5A3 /* ScenicRouteEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScenicRouteEditViewController.h; sourceTree = "<group>"; };
 		AA7B7BD9134B7EAB007FE5A3 /* ScenicRouteEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScenicRouteEditViewController.m; sourceTree = "<group>"; };
 		AA7B7BDA134B7EAB007FE5A3 /* ScenicRouteEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScenicRouteEditViewController.xib; sourceTree = "<group>"; };
@@ -494,11 +497,11 @@
 			children = (
 				AA4849881364D60500E23E03 /* Maps */,
 				5D05886B13209A3B00D42F0A /* RouteRootViewController.h */,
+				5D05886D13209A3B00D42F0A /* RouteRootViewController.m */,
 				5DA395E2134B814000D15D25 /* PanoramioViewController.h */,
 				5DA395E3134B814000D15D25 /* PanoramioViewController.m */,
 				5D33448613464B5E0091C215 /* HistoricalRootViewController.h */,
 				5D33448713464B5E0091C215 /* HistoricalRootViewController.m */,
-				5D05886D13209A3B00D42F0A /* RouteRootViewController.m */,
 				5D05886E13209A3B00D42F0A /* ScenicAppDelegate.h */,
 				5D05886F13209A3B00D42F0A /* ScenicAppDelegate.m */,
 				5D05887113209A3B00D42F0A /* HistoricalRouteViewController.h */,
@@ -648,6 +651,8 @@
 				AA48498B1364D62200E23E03 /* CameraHelper.m */,
 				5DCB3F711343D920006CF30B /* CDHelper.h */,
 				5DCB3F721343D920006CF30B /* CDHelper.m */,
+				AA48499D136516EA00E23E03 /* DataUploader.h */,
+				AA48499E136516EA00E23E03 /* DataUploader.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -908,6 +913,7 @@
 				5DCA804513622E9A00B0A6F7 /* ServerGetter.m in Sources */,
 				5DCA80481362321A00B0A6F7 /* LastRouteGetter.m in Sources */,
 				AA48498C1364D62200E23E03 /* CameraHelper.m in Sources */,
+				AA48499F136516EA00E23E03 /* DataUploader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

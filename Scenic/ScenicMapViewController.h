@@ -20,7 +20,7 @@
 #import "ScenicMapView.h"
 #import "CameraHelper.h"
 
-@class ScenicRoute, ScenicContent, GMapsRoute;
+@class ScenicRoute, ScenicContent, GMapsRoute, DataUploader;
 @interface ScenicMapViewController : UIViewController <ScenicMapViewDelegate, CameraHelperDelegate> {
     IBOutlet ScenicMapView* mMapView;
 	IBOutlet UISegmentedControl *mapType;
@@ -28,6 +28,7 @@
     int routeNum;
     NSArray* _routes;
     CameraHelper * camera;
+    DataUploader * uploader;
 }
 
 
@@ -53,5 +54,6 @@
 @property (nonatomic, assign) int routeNum;
 
 @property (nonatomic, retain) CameraHelper* camera;
+@property (nonatomic, retain) DataUploader * uploader;
 
 @end

@@ -16,12 +16,13 @@
 #import "GMapsPolyline.h"
 #import "CDHelper.h"
 #import "UserPhotoContent.h"
+#import "DataUploader.h"
 
 #define COORD(x) [[mMapView.model primaryRoute].gRoute.polyline.points objectAtIndex:x]
 #define COORDS [mMapView.model primaryRoute].gRoute.polyline.points
 
 @implementation ScenicMapViewController
-@synthesize mMapView, mapType, mapTypeToolbar, routeNum, _routes, camera;
+@synthesize mMapView, mapType, mapTypeToolbar, routeNum, _routes, camera, uploader;
 
 
 -(id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil routes:(NSArray*) routes {
@@ -29,7 +30,7 @@
         self.hidesBottomBarWhenPushed = YES;
         self._routes = routes;
         camera = [[CameraHelper alloc] initWithViewController:self camDelegate:self];
-        
+        uploader = [[DataUploader alloc] init];
     }
     return self;
 }
@@ -45,10 +46,16 @@
     [self._routes release];
 }
 
+-(void) handleVideo: (NSURL * ) video withIcon:(UIImage *)icon {
+    [uploader uploadFile:video];
+} 
+
 -(void) handleImage: (UIImage*) image {
     
     UserPhotoContent* content = [UserPhotoContent contentWithPhoto:image andCoordinate:[GMapsCoordinate coordFromCLCoord:mMapView.model.locationManager.location.coordinate]];
     [mMapView addUserContent:content];
+    [uploader uploadImage:image];    
+    
     //[[CDHelper sharedHelper] storePhoto: image];
     
 }
@@ -138,32 +145,6 @@
 	}
 }
 
-
-
-//-(void) updateRoutePicker {
-//    int nRoutes = [self.mMapView.model.routes count];
-//    if (nRoutes < 2) {
-//        self.routePicker.hidden = YES;
-//        return;
-//    }
-//    self.routePicker.hidden = NO;
-//    int oldNRoutes = self.routePicker.numberOfSegments;
-//    int difference = oldNRoutes - nRoutes;
-//    if (difference == 0) return;
-//    if (difference > 0) {
-//        for (int i = 0; i < difference; i++) {
-//            [self.routePicker removeSegmentAtIndex:self.routePicker.numberOfSegments - 1 animated:YES];
-//        }
-//        return;
-//    }
-//    for (int i = 0; i > difference; i--) {
-//        [self.routePicker insertSegmentWithTitle:[NSString stringWithFormat:@"%i",self.routePicker.numberOfSegments+1] atIndex:self.routePicker.numberOfSegments animated:YES];
-//    }
-//    self.routePicker.selectedSegmentIndex = 0;
-//    return;
-//    
-//}
-
 -(void) updateTitle {
     self.title = [self.mMapView.model primaryRoute].gRoute.summary;
 }
@@ -182,6 +163,11 @@
 {
     [super dealloc];
     [mMapView release];
+    [camera release];
+    [uploader release];
+    [_routes release];
+    [mapType release];
+    [mapTypeToolbar release];
 }
 
 @end

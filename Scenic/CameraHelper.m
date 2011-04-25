@@ -10,6 +10,7 @@
 #import "UserPhotoContent.h"
 #import "ScenicMapView.h"
 #import <QuartzCore/QuartzCore.h>
+#import "DataUploader.h"
 
 @implementation CameraHelper
 @synthesize imgPicker, vc, cDelegate;
@@ -44,16 +45,15 @@
 -(void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     
     if (picker.cameraCaptureMode == UIImagePickerControllerCameraCaptureModeVideo) {
-        NSURL * loc = [info objectForKey:UIImagePickerControllerMediaURL];
-        NSLog(@"location of VIDEO: %@", [loc description]);
-        
-        CGSize sixzevid=CGSizeMake(picker.view.bounds.size.width,picker.view.bounds.size.height-100);
-        UIGraphicsBeginImageContext(sixzevid);
+
+        CGSize size=CGSizeMake(picker.view.bounds.size.width,picker.view.bounds.size.height-100);
+        UIGraphicsBeginImageContext(size);
         [picker.view.layer renderInContext:UIGraphicsGetCurrentContext()];
         UIImage *viewImage = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
-        [cDelegate handleImage: viewImage];
-        
+
+        NSURL * loc = [info objectForKey:UIImagePickerControllerMediaURL];
+        [cDelegate handleVideo:loc withIcon:viewImage];
     
     } else {
         [cDelegate handleImage: (UIImage*) [info objectForKey:UIImagePickerControllerOriginalImage]];

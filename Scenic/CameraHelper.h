@@ -33,4 +33,5 @@
 @protocol CameraHelperDelegate <NSObject>
 @required
 -(void) handleImage: (UIImage*) image; 
+-(void) handleVideo: (NSURL*) video withIcon: (UIImage*) icon;
 @end
