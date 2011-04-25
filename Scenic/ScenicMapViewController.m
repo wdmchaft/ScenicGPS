@@ -48,6 +48,9 @@
 
 -(void) handleVideo: (NSURL * ) video withIcon:(UIImage *)icon {
     [uploader uploadFile:video];
+    UserPhotoContent* content = [UserPhotoContent contentWithPhoto:icon andCoordinate:[GMapsCoordinate coordFromCLCoord:mMapView.model.locationManager.location.coordinate]];
+    [mMapView addUserContent:content];
+
 } 
 
 -(void) handleImage: (UIImage*) image {
