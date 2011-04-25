@@ -47,7 +47,7 @@
         NSURL * loc = [info objectForKey:UIImagePickerControllerMediaURL];
         NSLog(@"location of VIDEO: %@", [loc description]);
         
-        CGSize sixzevid=CGSizeMake(picker.view.bounds.size.width,picker.view.bounds.size.height);
+        CGSize sixzevid=CGSizeMake(picker.view.bounds.size.width,picker.view.bounds.size.height-100);
         UIGraphicsBeginImageContext(sixzevid);
         [picker.view.layer renderInContext:UIGraphicsGetCurrentContext()];
         UIImage *viewImage = UIGraphicsGetImageFromCurrentImageContext();
