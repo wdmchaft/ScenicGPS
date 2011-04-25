@@ -9,6 +9,7 @@
 #import "CameraHelper.h"
 #import "UserPhotoContent.h"
 #import "ScenicMapView.h"
+#import <QuartzCore/QuartzCore.h>
 
 @implementation CameraHelper
 @synthesize imgPicker, vc, cDelegate;
@@ -44,9 +45,9 @@
     
     if (picker.cameraCaptureMode == UIImagePickerControllerCameraCaptureModeVideo) {
         NSURL * loc = [info objectForKey:UIImagePickerControllerMediaURL];
-        NSLog(@"a video: %@", [loc description]);
+        NSLog(@"location of VIDEO: %@", [loc description]);
         
-        CGSize sixzevid=CGSizeMake(picker.view.bounds.size.width,picker.view.bounds.size.height-100);
+        CGSize sixzevid=CGSizeMake(picker.view.bounds.size.width,picker.view.bounds.size.height);
         UIGraphicsBeginImageContext(sixzevid);
         [picker.view.layer renderInContext:UIGraphicsGetCurrentContext()];
         UIImage *viewImage = UIGraphicsGetImageFromCurrentImageContext();
