@@ -66,8 +66,13 @@
 
 
 - (void)dealloc {
-    [super dealloc];
     [route release];
+    [primaryLabel release];
+    [secondaryLabel release];
+    [mEditButton release];
+    [myImageView release];
+    [super dealloc];
+    
 }
 
 
