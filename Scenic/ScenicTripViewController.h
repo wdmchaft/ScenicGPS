@@ -11,12 +11,14 @@
 #import "ScenicMapView.h"
 #import "RoutePutter.h"
 #import "CameraHelper.h"
+#import "DataUploader.h"
 
 @class ScenicTripModel, ScenicMapView;
 @interface ScenicTripViewController : UIViewController <ScenicMapViewDelegate, ServerPutterDelegate, CameraHelperDelegate> {
     ScenicMapView* mMapView;
     ScenicTripModel* trip;
     CameraHelper* camera;
+    DataUploader* uploader;
 }
 
 -(IBAction) takePicture: (id) sender;
@@ -31,5 +33,6 @@
 @property (nonatomic, retain) IBOutlet ScenicMapView* mMapView;
 @property (nonatomic, retain) ScenicTripModel* trip;
 @property (nonatomic, retain) CameraHelper* camera;
+@property (nonatomic, retain) DataUploader* uploader;
 
 @end
