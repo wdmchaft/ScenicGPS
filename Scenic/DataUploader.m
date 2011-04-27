@@ -38,6 +38,20 @@ static NSString* base = @"http://www.scenicgps.com/scenic/uploadphoto";
     NSLog(@"upload attempt");
 }
 
+-(void) uploadUserContent: (UserPhotoContent*) content withVideo: (NSURL*) video {
+    NSString* title = [content.title stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
+    double lat = [content.coord.lat doubleValue];
+    double lng = [content.coord.lng doubleValue];
+    NSString* deviceID = [[UIDevice currentDevice] uniqueIdentifier];
+    NSURL * url = [NSURL URLWithString:[NSString stringWithFormat:@"%@?title=%@&lat=%f&lng=%f&deviceid=%@", base, title, lat, lng, deviceID]];
+    ASIFormDataRequest* request = [ASIFormDataRequest requestWithURL:url];
+    NSData * data = [[NSData alloc] initWithContentsOfURL:video];
+    [request addData:data withFileName:@"movie.mov" andContentType:@"application/octet-stream" forKey:@"image"];
+    request.delegate = self;
+    [request startAsynchronous];
+    NSLog(@"upload attempt");
+}
+
 - (void) uploadFile: (NSURL*) file {    
     NSURL * url = [[[NSURL alloc] initWithString:@"http://www.dan-lynch.com/upload.php"] autorelease];
     ASIFormDataRequest* request = [ASIFormDataRequest requestWithURL:url];

@@ -68,7 +68,11 @@
 #pragma mark -
 #pragma mark CameraHelper Delgate
 
--(void) handleVideo: (NSURL * ) video withIcon:(UIImage *)icon {} 
+-(void) handleVideo: (NSURL * ) video withIcon:(UIImage *)icon {
+    UserPhotoContent* content = [UserPhotoContent contentWithPhoto:icon andCoordinate:[GMapsCoordinate coordFromCLCoord:mMapView.model.locationManager.location.coordinate]];
+    [mMapView addUserContent:content];
+    [uploader uploadUserContent:content withVideo:video];
+} 
 
 
 -(void) handleImage: (UIImage*) image {
@@ -78,6 +82,8 @@
     //[[CDHelper sharedHelper] storePhoto: image];
 }
 
+
+#pragma mark - 
 
 -(void) scenicMapViewUpdatedRoutes {
     return;

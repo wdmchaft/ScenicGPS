@@ -18,5 +18,7 @@
 - (void) uploadImage: (UIImage*) image;
 - (void) uploadFile: (NSURL*) file;
 -(void) uploadUserContent: (UserPhotoContent*) content;
+-(void) uploadUserContent: (UserPhotoContent*) content withVideo: (NSURL*) video;
+
 
 @end
