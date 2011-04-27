@@ -43,8 +43,7 @@
 }
 
 -(void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-    
-    if (picker.cameraCaptureMode == UIImagePickerControllerCameraCaptureModeVideo) {
+    if (picker.sourceType == UIImagePickerControllerSourceTypeCamera && picker.cameraCaptureMode == UIImagePickerControllerCameraCaptureModeVideo) {
 
         CGSize size=CGSizeMake(picker.view.bounds.size.width,picker.view.bounds.size.height-100);
         UIGraphicsBeginImageContext(size);

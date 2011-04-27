@@ -7,18 +7,32 @@
 //
 
 #import "DataUploader.h"
+#import "UserPhotoContent.h"
 
+static NSString* base = @"http://www.scenicgps.com/scenic/uploadphoto";
 
 @implementation DataUploader
 
 - (void) uploadImage: (UIImage*) image {
-    NSURL * url = [[[NSURL alloc] initWithString:@"http://www.dan-lynch.com/upload.php"] autorelease];
+    NSURL * url = [[[NSURL alloc] initWithString:@"http://www.scenicgps.com/scenic/uploadphoto?title=asdfasdfas&lat=32.3&lng=55.5&deviceid=23423432423"] autorelease];
     ASIFormDataRequest* request = [ASIFormDataRequest requestWithURL:url];
     NSData * imageData = UIImagePNGRepresentation(image);
-    [request addData:imageData withFileName:@"image.png" andContentType:@"image/png" forKey:@"uploadedfile"];
-    //[request addPostValue:@"122" forKey:@"lat"];
-    //[request addPostValue:@"122" forKey:@"lng"];
+    [request addData:imageData withFileName:@"a.png" andContentType:@"image/png" forKey:@"image"];
     
+    request.delegate = self;
+    [request startAsynchronous];
+    NSLog(@"upload attempt");
+}
+
+-(void) uploadUserContent: (UserPhotoContent*) content {
+    NSString* title = [content.title stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
+    double lat = [content.coord.lat doubleValue];
+    double lng = [content.coord.lng doubleValue];
+    NSString* deviceID = [[UIDevice currentDevice] uniqueIdentifier];
+    NSURL * url = [NSURL URLWithString:[NSString stringWithFormat:@"%@?title=%@&lat=%f&lng=%f&deviceid=%@", base, title, lat, lng, deviceID]];
+    ASIFormDataRequest* request = [ASIFormDataRequest requestWithURL:url];
+    NSData * imageData = UIImagePNGRepresentation(content.photo);
+    [request addData:imageData withFileName:@"a.png" andContentType:@"image/png" forKey:@"image"];
     request.delegate = self;
     [request startAsynchronous];
     NSLog(@"upload attempt");

@@ -10,11 +10,13 @@
 #import "ASIHTTPRequest.h"
 #import "ASIFormDataRequest.h"
 
+@class UserPhotoContent;
 @interface DataUploader : NSObject <ASIHTTPRequestDelegate> {
     
 }
 
 - (void) uploadImage: (UIImage*) image;
 - (void) uploadFile: (NSURL*) file;
+-(void) uploadUserContent: (UserPhotoContent*) content;
 
 @end
