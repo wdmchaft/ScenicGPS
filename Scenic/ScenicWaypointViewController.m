@@ -92,14 +92,8 @@
     
     UserContentMetadataViewController * vc = [[UserContentMetadataViewController alloc] initWithNibName:@"UserContentMetadataViewController" bundle:nil];
 
-//    [mainVC.navigationController pushViewController:vc animated:YES];
-//    [delegate addView
-
     [[self navigationController ] pushViewController:vc animated:YES];
-    
-    //[delegate.delegate // add new required fns
-    
-//    [delegate editContentView:vc];
+
 }
 
 - (void) voteUp {
