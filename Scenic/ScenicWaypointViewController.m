@@ -10,9 +10,12 @@
 #import "ScenicContentViewController.h"
 #import "PanoramioRater.h"
 #import "ScenicContent.h"
+#import "PanoramioContent.h"
+#import "UserPhotoContent.h"
+#import "UserContentMetadataViewController.h"
 
 @implementation ScenicWaypointViewController
-@synthesize mainVC, delegate, toolTitle;
+@synthesize mainVC, delegate, toolTitle, navigationController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -26,6 +29,7 @@
 - (void)dealloc
 {
     [super dealloc];
+    [navigationController release];
 }
 
 - (void)didReceiveMemoryWarning
@@ -63,14 +67,39 @@
     UIImage *buttonImage2 = [UIImage imageNamed:@"thumbsdown.png"];
     UIBarButtonItem * buttonDown = [[UIBarButtonItem alloc] initWithImage:buttonImage2 style:UIBarButtonSystemItemAction target:self action:@selector(voteDown)];    
 
- 
-    [toolbar setItems:[NSArray arrayWithObjects:buttonItem, buttonDown, buttonUp, nil]];
+    
+    if ([mainVC.content class] == [UserPhotoContent class]) {        
+        
+        UIBarButtonItem* editButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Edit" style:UIBarButtonSystemItemAction target:self action:@selector(editContent)];
+
+        [toolbar setItems:[NSArray arrayWithObjects:buttonItem, buttonDown, buttonUp, editButtonItem, nil]];
+        [editButtonItem release];
+        
+    } else [toolbar setItems:[NSArray arrayWithObjects:buttonItem, buttonDown, buttonUp, nil]];
+    
     [buttonUp release];
     [buttonDown release];
     [buttonItem release];
     
     [self.view addSubview:toolbar];
     [toolbar release];
+}
+
+#pragma mark - 
+#pragma mark Callbacks and Votes
+
+- (void) editContent {
+    
+    UserContentMetadataViewController * vc = [[UserContentMetadataViewController alloc] initWithNibName:@"UserContentMetadataViewController" bundle:nil];
+
+//    [mainVC.navigationController pushViewController:vc animated:YES];
+//    [delegate addView
+
+    [[self navigationController ] pushViewController:vc animated:YES];
+    
+    //[delegate.delegate // add new required fns
+    
+//    [delegate editContentView:vc];
 }
 
 - (void) voteUp {
@@ -86,8 +115,20 @@
 
 
 -(void) voteWithRating: (int) rating {
-    PanoramioRater* putter = [PanoramioRater putterWithContent:mainVC.content rating:rating andDelegate:self];
-    [putter fetch];
+    
+
+    if ([mainVC.content class] == [PanoramioContent class]) {
+        
+        PanoramioRater* putter = [PanoramioRater putterWithContent:mainVC.content rating:rating andDelegate:self];
+        [putter fetch];
+        
+    } else {
+        
+        NSLog(@"need to rate %@", [[mainVC.content class] description]);
+                                   
+                                   
+    }
+    
 }
 
 
@@ -97,6 +138,9 @@
         self.toolTitle = @"Add to Route";
     return self.toolTitle;
 }
+
+#pragma mark -
+#pragma View Stuff
 
 - (void)viewDidUnload
 {

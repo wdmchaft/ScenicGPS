@@ -232,9 +232,9 @@
 
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
-    
+        
     ScenicTextContent * content = (ScenicTextContent*) view.annotation;
-    //NSLog(@"we have %@", content);
+    //NSLog(@"we have %@", content.title);
     bool alreadyAdded = [[self.model primaryRoute].scenicContents containsObject:content];
     
     if( view.leftCalloutAccessoryView == control) {
@@ -247,12 +247,16 @@
         return;
     }
     
+    // right button!
+    
+    NSLog(@"%@", [self.model description]);
     ScenicWaypointViewController* waypointVC = [[ScenicWaypointViewController alloc] init];
     ScenicContentViewController* scVC = [[ScenicContentViewController alloc] initWithNibName:@"ScenicContentViewController" bundle:nil andContent:content];
     
     waypointVC.mainVC = scVC;
     [scVC release];
     waypointVC.delegate = self.model;
+    waypointVC.navigationController = self.navigationController;
     if (alreadyAdded)
         waypointVC.toolTitle = @"Remove from Route";
     [self.navigationController pushViewController:waypointVC animated:YES];

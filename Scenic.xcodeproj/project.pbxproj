@@ -109,6 +109,8 @@
 		AA3A91401329E45300894C16 /* TableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AA3A913F1329E45300894C16 /* TableCell.m */; };
 		AA48498C1364D62200E23E03 /* CameraHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = AA48498B1364D62200E23E03 /* CameraHelper.m */; };
 		AA48499F136516EA00E23E03 /* DataUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = AA48499E136516EA00E23E03 /* DataUploader.m */; };
+		AA6D965B136928FF00589694 /* UserContentMetadataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA6D9659136928FF00589694 /* UserContentMetadataViewController.m */; };
+		AA6D965C136928FF00589694 /* UserContentMetadataViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AA6D965A136928FF00589694 /* UserContentMetadataViewController.xib */; };
 		AA7B7BDB134B7EAB007FE5A3 /* ScenicRouteEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AA7B7BD9134B7EAB007FE5A3 /* ScenicRouteEditViewController.m */; };
 		AA8F9670135AB70000E57A17 /* thumbsdown.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8F966E135AB70000E57A17 /* thumbsdown.png */; };
 		AA8F9671135AB70000E57A17 /* thumbsup.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8F966F135AB70000E57A17 /* thumbsup.png */; };
@@ -311,6 +313,9 @@
 		AA48498B1364D62200E23E03 /* CameraHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraHelper.m; sourceTree = "<group>"; };
 		AA48499D136516EA00E23E03 /* DataUploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataUploader.h; sourceTree = "<group>"; };
 		AA48499E136516EA00E23E03 /* DataUploader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataUploader.m; sourceTree = "<group>"; };
+		AA6D9658136928FF00589694 /* UserContentMetadataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserContentMetadataViewController.h; sourceTree = "<group>"; };
+		AA6D9659136928FF00589694 /* UserContentMetadataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserContentMetadataViewController.m; sourceTree = "<group>"; };
+		AA6D965A136928FF00589694 /* UserContentMetadataViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserContentMetadataViewController.xib; sourceTree = "<group>"; };
 		AA7B7BD8134B7EAB007FE5A3 /* ScenicRouteEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScenicRouteEditViewController.h; sourceTree = "<group>"; };
 		AA7B7BD9134B7EAB007FE5A3 /* ScenicRouteEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScenicRouteEditViewController.m; sourceTree = "<group>"; };
 		AA7B7BDA134B7EAB007FE5A3 /* ScenicRouteEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScenicRouteEditViewController.xib; sourceTree = "<group>"; };
@@ -476,6 +481,7 @@
 		5D017AA51321A04E00B8EA6A /* Xibs */ = {
 			isa = PBXGroup;
 			children = (
+				AA6D965A136928FF00589694 /* UserContentMetadataViewController.xib */,
 				AA7B7BDA134B7EAB007FE5A3 /* ScenicRouteEditViewController.xib */,
 				5D99EF0C1340E99900E1412E /* ScenicTripViewController.xib */,
 				5D017ABF13257C9400B8EA6A /* ScenicContentDisplayViewController.xib */,
@@ -549,6 +555,8 @@
 				5D3BE3931343F79200534241 /* UserPhotoContent.m */,
 				AA7B7BD8134B7EAB007FE5A3 /* ScenicRouteEditViewController.h */,
 				AA7B7BD9134B7EAB007FE5A3 /* ScenicRouteEditViewController.m */,
+				AA6D9658136928FF00589694 /* UserContentMetadataViewController.h */,
+				AA6D9659136928FF00589694 /* UserContentMetadataViewController.m */,
 			);
 			name = "Scenic Content";
 			sourceTree = "<group>";
@@ -807,6 +815,7 @@
 				AA8F9676135AB72600E57A17 /* icon.png in Resources */,
 				AA8F9699135B715400E57A17 /* next.png in Resources */,
 				AA8F969A135B715400E57A17 /* prev.png in Resources */,
+				AA6D965C136928FF00589694 /* UserContentMetadataViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -914,6 +923,7 @@
 				5DCA80481362321A00B0A6F7 /* LastRouteGetter.m in Sources */,
 				AA48498C1364D62200E23E03 /* CameraHelper.m in Sources */,
 				AA48499F136516EA00E23E03 /* DataUploader.m in Sources */,
+				AA6D965B136928FF00589694 /* UserContentMetadataViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

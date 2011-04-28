@@ -16,17 +16,23 @@
     ScenicContentViewController* mainVC;
     id<ScenicContentDelegate> delegate;
     NSString* toolTitle;
+    
+    UINavigationController * navigationController;
+    
 }
 
 -(void) addWaypoint;
 -(NSString*) getBackTitle;
 -(void) voteWithRating: (int) rating;
+
+- (void) editContent;
 - (void) voteUp;
 - (void) voteDown;
 
 @property (nonatomic, retain) ScenicContentViewController* mainVC;
 @property (nonatomic, assign)     id<ScenicContentDelegate> delegate;
 @property (nonatomic, retain) NSString* toolTitle;
+@property (nonatomic, retain) UINavigationController * navigationController;
 
 @end
 
