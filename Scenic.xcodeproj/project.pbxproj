@@ -84,6 +84,7 @@
 		5D490DCE1329834B006905A9 /* PanoramioPicFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D490DCD1329834A006905A9 /* PanoramioPicFetcher.m */; };
 		5D490DD1132985E0006905A9 /* ScenicParkFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D490DD0132985DE006905A9 /* ScenicParkFetcher.m */; };
 		5D490DD413298693006905A9 /* YelpFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D490DD313298691006905A9 /* YelpFetcher.m */; };
+		5D58493F1368E29B00D3ECC6 /* UserPhotoContentGetter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D58493E1368E29B00D3ECC6 /* UserPhotoContentGetter.m */; };
 		5D718D8513398AD000E5DAEF /* ScenicMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D718D8413398AD000E5DAEF /* ScenicMapView.m */; };
 		5D718D89133993FA00E5DAEF /* WildcardGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D718D88133993FA00E5DAEF /* WildcardGestureRecognizer.m */; };
 		5D8AAD5B1343A62400007FD9 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D8AAD5A1343A62400007FD9 /* CoreData.framework */; };
@@ -270,6 +271,8 @@
 		5D490DD0132985DE006905A9 /* ScenicParkFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScenicParkFetcher.m; sourceTree = "<group>"; };
 		5D490DD213298691006905A9 /* YelpFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YelpFetcher.h; sourceTree = "<group>"; };
 		5D490DD313298691006905A9 /* YelpFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YelpFetcher.m; sourceTree = "<group>"; };
+		5D58493D1368E29B00D3ECC6 /* UserPhotoContentGetter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserPhotoContentGetter.h; sourceTree = "<group>"; };
+		5D58493E1368E29B00D3ECC6 /* UserPhotoContentGetter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserPhotoContentGetter.m; sourceTree = "<group>"; };
 		5D718D8313398AD000E5DAEF /* ScenicMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScenicMapView.h; sourceTree = "<group>"; };
 		5D718D8413398AD000E5DAEF /* ScenicMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScenicMapView.m; sourceTree = "<group>"; };
 		5D718D87133993FA00E5DAEF /* WildcardGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WildcardGestureRecognizer.h; sourceTree = "<group>"; };
@@ -469,6 +472,8 @@
 				5DCA804413622E9900B0A6F7 /* ServerGetter.m */,
 				5DCA80461362321900B0A6F7 /* LastRouteGetter.h */,
 				5DCA80471362321900B0A6F7 /* LastRouteGetter.m */,
+				5D58493D1368E29B00D3ECC6 /* UserPhotoContentGetter.h */,
+				5D58493E1368E29B00D3ECC6 /* UserPhotoContentGetter.m */,
 			);
 			name = Fetchers;
 			sourceTree = "<group>";
@@ -914,6 +919,7 @@
 				5DCA80481362321A00B0A6F7 /* LastRouteGetter.m in Sources */,
 				AA48498C1364D62200E23E03 /* CameraHelper.m in Sources */,
 				AA48499F136516EA00E23E03 /* DataUploader.m in Sources */,
+				5D58493F1368E29B00D3ECC6 /* UserPhotoContentGetter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
