@@ -8,9 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@class ScenicContent;
+@interface UserContentMetadataViewController : UIViewController <UIAlertViewDelegate, UITextFieldDelegate> {
 
-@interface UserContentMetadataViewController : UIViewController {
+    ScenicContent * content;
     
 }
+
+- (IBAction) editUserContent;
+- (IBAction) deleteUserContent;
+
 
 @end
