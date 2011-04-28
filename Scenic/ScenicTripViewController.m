@@ -12,7 +12,7 @@
 #import "CDHelper.h"
 
 @implementation ScenicTripViewController
-@synthesize mMapView, trip, camera;
+@synthesize mMapView, trip, camera, uploader;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil model: (ScenicMapSelectorModel*) model
 {
@@ -20,7 +20,7 @@
     if (self) {
         self.trip = [ScenicTripModel modelFromModel:model];
         camera = [[CameraHelper alloc] initWithViewController:self camDelegate:self];
-
+        uploader = [[DataUploader alloc] init];
     }
     return self;
 }
@@ -31,17 +31,18 @@
     if (self) {
         self.trip = [ScenicTripModel modelFromRoute:route];
         camera = [[CameraHelper alloc] initWithViewController:self camDelegate:self];
-
+        uploader = [[DataUploader alloc] init];
     }
     return self;
 }
 
 - (void)dealloc
 {
-    [super dealloc];
     [camera release];
     [trip release];
     [mMapView release];
+    [uploader release];
+    [super dealloc];
 }
 
 - (void)didReceiveMemoryWarning
@@ -64,15 +65,25 @@
     
 }
 
--(void) handleVideo: (NSURL * ) video withIcon:(UIImage *)icon {} 
+#pragma mark -
+#pragma mark CameraHelper Delgate
+
+-(void) handleVideo: (NSURL * ) video withIcon:(UIImage *)icon {
+    UserPhotoContent* content = [UserPhotoContent contentWithPhoto:icon andCoordinate:[GMapsCoordinate coordFromCLCoord:mMapView.model.locationManager.location.coordinate]];
+    [mMapView addUserContent:content];
+    [uploader uploadUserContent:content withVideo:video];
+} 
 
 
 -(void) handleImage: (UIImage*) image {
     UserPhotoContent* content = [UserPhotoContent contentWithPhoto:image andCoordinate:[GMapsCoordinate coordFromCLCoord:self.mMapView.model.locationManager.location.coordinate]];
     [self.mMapView addUserContent:content];
+    [uploader uploadUserContent:content];
     //[[CDHelper sharedHelper] storePhoto: image];
 }
 
+
+#pragma mark - 
 
 -(void) scenicMapViewUpdatedRoutes {
     return;
@@ -91,6 +102,9 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
+#pragma mark - 
+#pragma mark IBActions
+
 -(IBAction) takePicture: (id) sender {
     [camera takePicture];    
 }
@@ -107,6 +121,8 @@
     [putter fetch];
 }
 
+#pragma mark - 
+#pragma mark ServerPutter Delegate
 
 -(void) putterHasError:(ServerPutter *)putter {
     NSLog(@"%@",[putter description]);

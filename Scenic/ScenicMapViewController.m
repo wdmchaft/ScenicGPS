@@ -46,22 +46,8 @@
     [self._routes release];
 }
 
--(void) handleVideo: (NSURL * ) video withIcon:(UIImage *)icon {
-    [uploader uploadFile:video];
-    UserPhotoContent* content = [UserPhotoContent contentWithPhoto:icon andCoordinate:[GMapsCoordinate coordFromCLCoord:mMapView.model.locationManager.location.coordinate]];
-    [mMapView addUserContent:content];
-
-} 
-
--(void) handleImage: (UIImage*) image {
-    
-    UserPhotoContent* content = [UserPhotoContent contentWithPhoto:image andCoordinate:[GMapsCoordinate coordFromCLCoord:mMapView.model.locationManager.location.coordinate]];
-    [mMapView addUserContent:content];
-    [uploader uploadUserContent:content];
-    
-    //[[CDHelper sharedHelper] storePhoto: image];
-    
-}
+#pragma mark -
+#pragma mark Helpers and IBActions
 
 -(void) addTripButton {
     UIBarButtonItem* item = [[UIBarButtonItem alloc] initWithTitle:@"Start Trip" style:UIBarButtonItemStyleBordered target:self action:@selector(startTrip:)];
@@ -152,7 +138,6 @@
     self.title = [self.mMapView.model primaryRoute].gRoute.summary;
 }
 
-
 - (void)gotoLocation:(CLLocation *) location{
     MKCoordinateRegion newRegion;
     newRegion.center.latitude = location.coordinate.latitude;
@@ -161,6 +146,29 @@
     newRegion.span.longitudeDelta = 0.1;
     [self.mMapView setRegion:newRegion animated:YES];
 }
+
+
+#pragma mark -
+#pragma mark CameraDelegate
+
+-(void) handleVideo: (NSURL * ) video withIcon:(UIImage *)icon {
+    UserPhotoContent* content = [UserPhotoContent contentWithPhoto:icon andCoordinate:[GMapsCoordinate coordFromCLCoord:mMapView.model.locationManager.location.coordinate]];
+    [mMapView addUserContent:content];
+    [uploader uploadUserContent:content withVideo:video];    
+} 
+
+-(void) handleImage: (UIImage*) image {
+    
+    UserPhotoContent* content = [UserPhotoContent contentWithPhoto:image andCoordinate:[GMapsCoordinate coordFromCLCoord:mMapView.model.locationManager.location.coordinate]];
+    [mMapView addUserContent:content];
+    [uploader uploadUserContent:content];
+    
+    //[[CDHelper sharedHelper] storePhoto: image];
+    
+}
+
+#pragma mark - 
+#pragma mark Memory
 
 - (void)dealloc
 {
