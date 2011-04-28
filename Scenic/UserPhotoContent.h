@@ -18,4 +18,5 @@
 -(UIImage*) fetchImage;
 +(id) contentWithPhoto: (UIImage*) photo andCoordinate: (GMapsCoordinate*) coord;
 -(UIView*) provideView;
++(id) contentFromJSONDic: (NSDictionary*) dic;
 @end

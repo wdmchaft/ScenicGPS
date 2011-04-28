@@ -21,6 +21,9 @@ static NSString* ERROR_KEY = @"error";
 static NSString* RESPONSE_KEY = @"response";
 static NSString* LAST_ROUTE_COMMAND = @"lastroute";
 static NSString* LAST_ROUTE_LOC = @"lastroute";
+static NSString* USER_PHOTO_COMMAND = @"getuserphotos";
+static NSString* USER_PHOTO_LOC = @"getuserphotos";
+
 
 -(id) initWithCommand:(NSString *)_command andQueries:(NSDictionary *)_queries andDelegate:(id<DataFetcherDelegate>)_delegate {
     if ((self = [super initWithBase:[ServerGetter getBaseFromCommand:_command] andQueries:_queries andDelegate:_delegate])) {
@@ -32,7 +35,7 @@ static NSString* LAST_ROUTE_LOC = @"lastroute";
 
 +(NSDictionary*) commandLookup {
     if (!commandLookup)
-        commandLookup = [[NSDictionary dictionaryWithObjectsAndKeys:LAST_ROUTE_LOC, LAST_ROUTE_COMMAND, nil] retain];
+        commandLookup = [[NSDictionary dictionaryWithObjectsAndKeys:LAST_ROUTE_LOC, LAST_ROUTE_COMMAND, USER_PHOTO_COMMAND,USER_PHOTO_LOC, nil] retain];
     return commandLookup;
 }
 

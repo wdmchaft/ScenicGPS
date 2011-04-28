@@ -13,4 +13,8 @@
     
 }
 
++(UserPhotoContentGetter*) photoGetterWithDelegate: (id<DataFetcherDelegate>) delegate;
+-(id) getResponseFromResult:(id)result;
+-(id) initWithCommand:(NSString *)_command andQueries:(NSDictionary *)_queries andDelegate:(id<DataFetcherDelegate>)_delegate ;
+
 @end

@@ -14,6 +14,7 @@
 #import "PanoramioContent.h"
 #import "ScenicTextContent.h"
 #import "PanoramioFetcher.h"
+#import "UserPhotoContentGetter.h"
 
 
 @implementation ScenicMapSelectorModel
@@ -55,13 +56,11 @@
         self.primaryRouteIndex = 0;
         if (delegate != nil)
             [delegate mapSelectorModelFinishedGettingRoutes:self];
-    } else if ([fetcher isKindOfClass:[PanoramioFetcher class]]) {
-        NSArray* newPanContents = (NSArray*) response;
-        [self.scenicContents addObjectsFromArray:newPanContents];
+    } else if ([fetcher isKindOfClass:[PanoramioFetcher class]] ||[fetcher isKindOfClass:[UserPhotoContentGetter class]] ) {
+        NSArray* newContents = (NSArray*) response;
+        [self.scenicContents addObjectsFromArray:newContents];
         [self.delegate mapSelectorModelFinishedFetchingContent:self];
     }
-    [fetcher release];
-    
 }
 
 -(void) dealloc {
@@ -143,9 +142,13 @@
 }
 
 -(void) fetchNewContentWithBounds:(GMapsBounds*)bounds {
-    PanoramioFetcher* fetcher = [PanoramioFetcher fetcherForBounds:bounds  andDelegate:self];
+    //PanoramioFetcher* fetcher = [PanoramioFetcher fetcherForBounds:bounds  andDelegate:self];
+    //[fetcher fetch];
+    UserPhotoContentGetter* fetcher = [UserPhotoContentGetter photoGetterWithDelegate:self];
     [fetcher fetch];
 }
+
+
 
 -(void) fetchNewContentWithCoord:(GMapsCoordinate*)coord {
     PanoramioFetcher* fetcher = [PanoramioFetcher fetcherForCoord:coord andDelegate:self];

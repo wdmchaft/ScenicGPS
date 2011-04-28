@@ -8,6 +8,7 @@
 
 #import "UserPhotoContentGetter.h"
 #import "GMapsPolyline.h"
+#import "UserPhotoContent.h"
 static NSString* command = @"getuserphotos";
 static NSString* PHOTOS_KEY = @"photos";
 
@@ -26,9 +27,14 @@ static NSString* PHOTOS_KEY = @"photos";
     id firstResponse = [super getResponseFromResult:result];
     if (firstResponse) {
         firstResponse = (NSDictionary*) firstResponse;
-        return (NSString*) [firstResponse objectForKey:PHOTOS_KEY];
+        NSArray* photos = (NSArray*) [firstResponse objectForKey:PHOTOS_KEY];
+        NSMutableArray* contents = [NSMutableArray arrayWithCapacity:[photos count]];
+        for (NSDictionary* dic in photos) {
+            [contents addObject:[UserPhotoContent contentFromJSONDic: dic]];
+        }
+        return [NSArray arrayWithArray:contents];
     }
-    return firstResponse;
+    return nil;
 }
 
 +(UserPhotoContentGetter*) photoGetterWithDelegate: (id<DataFetcherDelegate>) delegate {

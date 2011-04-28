@@ -9,6 +9,11 @@
 #import "UserPhotoContent.h"
 #import "GMapsCoordinate.h"
 
+static NSString* JSON_PHOTO = @"image";
+static NSString* JSON_TITLE = @"title";
+static NSString* JSON_COORD = @"coord";
+
+
 
 @implementation UserPhotoContent
 @synthesize photo;
@@ -20,6 +25,16 @@
     content.title = [[NSDate date] descriptionWithLocale:[NSLocale currentLocale]];
     content.photo = photo;
     return content;
+}
+
++(id) contentFromJSONDic: (NSDictionary*) dic {
+    UIImage* photo = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:(NSString*) [dic objectForKey:JSON_PHOTO]]]];
+    NSString* title = (NSString*) [dic objectForKey:JSON_TITLE];
+    GMapsCoordinate* coord = [GMapsCoordinate   coordFromJSONDic:(NSDictionary*) [dic objectForKey:JSON_COORD]];
+    UserPhotoContent* content = [UserPhotoContent contentWithPhoto:photo andCoordinate:coord];
+    content.title = title;
+    return content;
+                    
 }
 
 
