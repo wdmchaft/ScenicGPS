@@ -21,10 +21,11 @@ static NSString* base = @"http://www.scenicgps.com/scenic/uploadphoto";
     NSURL * url = [NSURL URLWithString:[NSString stringWithFormat:@"%@?title=%@&lat=%f&lng=%f&deviceid=%@&trueheading=%f&magheading=%f", base, title, lat, lng, deviceID, content.heading.trueHeading, content.heading.magneticHeading]];
     ASIFormDataRequest* request = [ASIFormDataRequest requestWithURL:url];
     NSData * imageData = UIImagePNGRepresentation(content.photo);
-    [request addData:imageData withFileName:@"a.png" andContentType:@"image/png" forKey:@"image"];
+    [request addData:imageData withFileName:@"image.png" andContentType:@"image/png" forKey:@"image"];
     
     NSData * iconData = UIImagePNGRepresentation([content fetchIcon]);
     [request addData:iconData withFileName:@"icon.png" andContentType:@"image/png" forKey:@"icon"];
+    NSLog(@"%@", [request.url description]);
     
     request.delegate = self;
     [request startAsynchronous];
@@ -36,10 +37,13 @@ static NSString* base = @"http://www.scenicgps.com/scenic/uploadphoto";
     double lat = [content.coord.lat doubleValue];
     double lng = [content.coord.lng doubleValue];
     NSString* deviceID = [[UIDevice currentDevice] uniqueIdentifier];
-    NSURL * url = [NSURL URLWithString:[NSString stringWithFormat:@"%@?title=%@&lat=%f&lng=%f&deviceid=%@&trueheading=%f&magheading=%f&video=1", base, title, lat, lng, deviceID, content.heading.trueHeading, content.heading.magneticHeading]];
+    NSURL * url = [NSURL URLWithString:[NSString stringWithFormat:@"%@?title=%@&lat=%f&lng=%f&deviceid=%@&trueheading=%f&magheading=%f", base, title, lat, lng, deviceID, content.heading.trueHeading, content.heading.magneticHeading]];
     ASIFormDataRequest* request = [ASIFormDataRequest requestWithURL:url];
     NSData * data = [[NSData alloc] initWithContentsOfURL:video];
-    [request addData:data withFileName:@"movie.mov" andContentType:@"application/octet-stream" forKey:@"video"];
+    [request addData:data withFileName:@"movie.mov" andContentType:@"application/octet-stream" forKey:@"image"];
+    
+    NSData * iconData = UIImagePNGRepresentation([content fetchIcon]);
+    [request addData:iconData withFileName:@"icon.png" andContentType:@"image/png" forKey:@"icon"];
     
     request.delegate = self;
     [request startAsynchronous];
