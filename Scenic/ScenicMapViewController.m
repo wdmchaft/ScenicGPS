@@ -121,6 +121,13 @@
     
 }
 
+- (IBAction) updateHeading: (id) sender {
+    
+    mMapView.updateHeading = !mMapView.updateHeading;
+    if (!mMapView.updateHeading) 
+      mMapView.transform = CGAffineTransformIdentity;
+    
+}
 
 - (void)changeType {
 	if(mapType.selectedSegmentIndex==0){

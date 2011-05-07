@@ -20,6 +20,7 @@
 @implementation ScenicMapSelectorModel
 @synthesize routes, scenicContents, primaryRouteIndex, locationManager, delegate;
 @synthesize frozen;
+
 -(id) init {
     if ((self = [super init])) {
         [self initContents];
@@ -28,10 +29,13 @@
         [manager startUpdatingLocation];
         self.locationManager = manager;
         self.frozen = NO;
+        [self.locationManager startUpdatingHeading];
         [manager release];
     }
     return self;
 }
+
+#pragma mark - Waypoints
 
 -(void) addWaypointWithContent:(ScenicContent*)content {
     [self addContentToPrimaryRoute:content];
@@ -42,6 +46,8 @@
     [self removeContentFromPrimaryRoute:content];
     [self refetch];
 }
+
+#pragma mark - Fetcher
 
 -(void) refetch {
     GMapsRouter* router = [GMapsRouter routeWithScenicRoute:[self primaryRoute] andDelegate:self];
@@ -155,11 +161,22 @@
     [fetcher fetch];
 }
 
+#pragma mark - LocationManager Delegate
+
 -(void) locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
 }
 
 -(void) locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
     return;
+}
+
+-(void) locationManager:(CLLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading {
+//    NSLog(@"heading updated");
+//        
+//    NSLog(@"magnetic heading: %f", newHeading.magneticHeading);
+//    NSLog(@"true heading: %f", newHeading.trueHeading);
+//    
+    [delegate mapSelectorModelHeadingUpdate:newHeading];
 }
 
 -(id) copyWithZone:(NSZone *)zone {

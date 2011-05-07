@@ -42,7 +42,8 @@
 
 - (IBAction) queryRoutesAlongRoute: (id) sender;
 - (IBAction) queryRoutes: (id) sender;
--(IBAction) takePicture: (id) sender;
+- (IBAction) takePicture: (id) sender;
+- (IBAction) updateHeading: (id) sender;
 
 -(void) updateTitle;
 -(void) addTripButton;

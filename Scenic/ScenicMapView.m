@@ -21,18 +21,25 @@
 
 
 @implementation ScenicMapView
-@synthesize model, navigationController, scenicDelegate, primaryPL;
+@synthesize model, navigationController, scenicDelegate, primaryPL, updateHeading;
 
 
 -(id) initWithCoder:(NSCoder *)aDecoder {
     if ((self = [super initWithCoder:aDecoder])) {
         self.delegate = self;
+        updateHeading = FALSE;
+        self.frame = CGRectMake(-100, -100, self.frame.size.height*1.414, self.frame.size.height*1.414);
+
     }
     return self;
 }
+
 -(id) initWithFrame:(CGRect)frame {
     if ((self = [super initWithFrame:frame])) {
         self.delegate = self;
+        updateHeading = FALSE;
+        self.frame = CGRectMake(-100, -100, self.frame.size.height*1.414, self.frame.size.height*1.414);
+
     }
     return self;
 }
@@ -120,6 +127,8 @@
 }
 
 
+#pragma mark - ScenicMapSelectorModelDelegate
+
 -(void) mapSelectorModelFinishedGettingRoutes:(ScenicMapSelectorModel *)model {
     [self putNewRoutes:self.model.routes];
 }
@@ -128,9 +137,17 @@
     [self updateVisibleContents];
 }
 
+-(void) mapSelectorModelHeadingUpdate:(CLHeading *)heading {
+    if (!updateHeading) return;
+ 
+    self.transform = CGAffineTransformMakeRotation(-heading.trueHeading* M_PI / 180.0);
+}
+
 -(void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated{
     [self updateVisibleContents];
 }
+
+#pragma mark - visible contents
 
 -(void) updateVisibleContents {
     NSArray* routeContents = [self.model primaryRoute].scenicContents;
@@ -229,7 +246,6 @@
     [self.model addContent:content];
     [self updateVisibleContents];
 }
-
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
         

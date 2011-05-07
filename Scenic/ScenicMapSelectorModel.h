@@ -48,6 +48,7 @@
 @protocol ScenicMapSelectorModelDelegate
 
 -(void) mapSelectorModelFinishedGettingRoutes: (ScenicMapSelectorModel*) model;
--(void)mapSelectorModelFinishedFetchingContent: (ScenicMapSelectorModel*) model;
+-(void) mapSelectorModelFinishedFetchingContent: (ScenicMapSelectorModel*) model;
+-(void) mapSelectorModelHeadingUpdate:(CLHeading*)heading;
 
 @end

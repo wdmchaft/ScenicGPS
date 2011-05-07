@@ -17,6 +17,7 @@
     UINavigationController* navigationController;
     id<ScenicMapViewDelegate> scenicDelegate;
     MKPolyline* primaryPL;
+    BOOL updateHeading;
 }
 
 
@@ -31,10 +32,13 @@
 -(void) setInitialRoutes: (NSArray*) routes;
 -(void) addUserContent: (ScenicContent*) content;
 -(MKAnnotationView*) annotationViewForContent:(ScenicContent*) content;
+
 @property (nonatomic, retain) ScenicMapSelectorModel* model;
 @property (nonatomic, retain)     UINavigationController* navigationController;
 @property (nonatomic, assign) id<ScenicMapViewDelegate> scenicDelegate;
 @property (nonatomic, retain) MKPolyline* primaryPL;
+@property (nonatomic, assign) BOOL updateHeading;
+
 @end
 
 @protocol ScenicMapViewDelegate <NSObject>
