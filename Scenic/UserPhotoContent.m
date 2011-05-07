@@ -16,14 +16,17 @@ static NSString* JSON_COORD = @"coord";
 
 
 @implementation UserPhotoContent
-@synthesize photo;
+@synthesize photo, heading;
 
-+(id) contentWithPhoto: (UIImage*) photo andCoordinate: (GMapsCoordinate*) coord {
++(id) contentWithPhoto: (UIImage*) photo andCoordinate: (GMapsCoordinate*) coord andCLHeading:(CLHeading *)h
+
+{
     UserPhotoContent* content = [[[UserPhotoContent alloc] init] autorelease];
     content.coord = coord;
     content.contentProvider = content;
     content.title = [[NSDate date] descriptionWithLocale:[NSLocale currentLocale]];
     content.photo = photo;
+    content.heading = h;
     return content;
 }
 
@@ -31,7 +34,7 @@ static NSString* JSON_COORD = @"coord";
     UIImage* photo = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:(NSString*) [dic objectForKey:JSON_PHOTO]]]];
     NSString* title = (NSString*) [dic objectForKey:JSON_TITLE];
     GMapsCoordinate* coord = [GMapsCoordinate   coordFromJSONDic:(NSDictionary*) [dic objectForKey:JSON_COORD]];
-    UserPhotoContent* content = [UserPhotoContent contentWithPhoto:photo andCoordinate:coord];
+    UserPhotoContent* content = [UserPhotoContent contentWithPhoto:photo andCoordinate:coord andCLHeading:nil];
     content.title = title;
     return content;
                     

@@ -11,12 +11,17 @@
 
 @interface UserPhotoContent : ScenicContent <ScenicContentProvider> {
     UIImage* photo;
+    CLHeading * heading;
 }
 
-@property (nonatomic, retain) UIImage* photo;
 -(UIImage*)imageWithBorderFromImage:(UIImage*)source;
 -(UIImage*) fetchImage;
-+(id) contentWithPhoto: (UIImage*) photo andCoordinate: (GMapsCoordinate*) coord;
 -(UIView*) provideView;
+
++(id) contentWithPhoto: (UIImage*) photo andCoordinate: (GMapsCoordinate*) coord andCLHeading: (CLHeading*) h;
 +(id) contentFromJSONDic: (NSDictionary*) dic;
+
+@property (nonatomic, retain) UIImage* photo;
+@property (nonatomic, retain) CLHeading * heading;
+
 @end

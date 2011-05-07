@@ -13,26 +13,19 @@ static NSString* base = @"http://www.scenicgps.com/scenic/uploadphoto";
 
 @implementation DataUploader
 
-- (void) uploadImage: (UIImage*) image {
-    NSURL * url = [[[NSURL alloc] initWithString:@"http://www.scenicgps.com/scenic/uploadphoto?title=asdfasdfas&lat=32.3&lng=55.5&deviceid=23423432423"] autorelease];
-    ASIFormDataRequest* request = [ASIFormDataRequest requestWithURL:url];
-    NSData * imageData = UIImagePNGRepresentation(image);
-    [request addData:imageData withFileName:@"a.png" andContentType:@"image/png" forKey:@"image"];
-    
-    request.delegate = self;
-    [request startAsynchronous];
-    NSLog(@"upload attempt");
-}
-
 -(void) uploadUserContent: (UserPhotoContent*) content {
     NSString* title = [content.title stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
     double lat = [content.coord.lat doubleValue];
     double lng = [content.coord.lng doubleValue];
     NSString* deviceID = [[UIDevice currentDevice] uniqueIdentifier];
-    NSURL * url = [NSURL URLWithString:[NSString stringWithFormat:@"%@?title=%@&lat=%f&lng=%f&deviceid=%@", base, title, lat, lng, deviceID]];
+    NSURL * url = [NSURL URLWithString:[NSString stringWithFormat:@"%@?title=%@&lat=%f&lng=%f&deviceid=%@&trueheading=%f&magheading=%f", base, title, lat, lng, deviceID, content.heading.trueHeading, content.heading.magneticHeading]];
     ASIFormDataRequest* request = [ASIFormDataRequest requestWithURL:url];
     NSData * imageData = UIImagePNGRepresentation(content.photo);
     [request addData:imageData withFileName:@"a.png" andContentType:@"image/png" forKey:@"image"];
+    
+    NSData * iconData = UIImagePNGRepresentation([content fetchIcon]);
+    [request addData:iconData withFileName:@"icon.png" andContentType:@"image/png" forKey:@"icon"];
+    
     request.delegate = self;
     [request startAsynchronous];
     NSLog(@"upload attempt");
@@ -43,20 +36,11 @@ static NSString* base = @"http://www.scenicgps.com/scenic/uploadphoto";
     double lat = [content.coord.lat doubleValue];
     double lng = [content.coord.lng doubleValue];
     NSString* deviceID = [[UIDevice currentDevice] uniqueIdentifier];
-    NSURL * url = [NSURL URLWithString:[NSString stringWithFormat:@"%@?title=%@&lat=%f&lng=%f&deviceid=%@", base, title, lat, lng, deviceID]];
+    NSURL * url = [NSURL URLWithString:[NSString stringWithFormat:@"%@?title=%@&lat=%f&lng=%f&deviceid=%@&trueheading=%f&magheading=%f&video=1", base, title, lat, lng, deviceID, content.heading.trueHeading, content.heading.magneticHeading]];
     ASIFormDataRequest* request = [ASIFormDataRequest requestWithURL:url];
     NSData * data = [[NSData alloc] initWithContentsOfURL:video];
-    [request addData:data withFileName:@"movie.mov" andContentType:@"application/octet-stream" forKey:@"image"];
-    request.delegate = self;
-    [request startAsynchronous];
-    NSLog(@"upload attempt");
-}
-
-- (void) uploadFile: (NSURL*) file {    
-    NSURL * url = [[[NSURL alloc] initWithString:@"http://www.dan-lynch.com/upload.php"] autorelease];
-    ASIFormDataRequest* request = [ASIFormDataRequest requestWithURL:url];
-    NSData * data = [[NSData alloc] initWithContentsOfURL:file];
-    [request addData:data withFileName:@"test.mov" andContentType:@"application/octet-stream" forKey:@"uploadedfile"];  
+    [request addData:data withFileName:@"movie.mov" andContentType:@"application/octet-stream" forKey:@"video"];
+    
     request.delegate = self;
     [request startAsynchronous];
     NSLog(@"upload attempt");

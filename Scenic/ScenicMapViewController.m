@@ -159,14 +159,14 @@
 #pragma mark CameraDelegate
 
 -(void) handleVideo: (NSURL * ) video withIcon:(UIImage *)icon {
-    UserPhotoContent* content = [UserPhotoContent contentWithPhoto:icon andCoordinate:[GMapsCoordinate coordFromCLCoord:mMapView.model.locationManager.location.coordinate]];
+    UserPhotoContent* content = [UserPhotoContent contentWithPhoto:icon andCoordinate:[GMapsCoordinate coordFromCLCoord:mMapView.model.locationManager.location.coordinate] andCLHeading:mMapView.model.locationManager.heading];
     [mMapView addUserContent:content];
     [uploader uploadUserContent:content withVideo:video];    
 } 
 
 -(void) handleImage: (UIImage*) image {
     
-    UserPhotoContent* content = [UserPhotoContent contentWithPhoto:image andCoordinate:[GMapsCoordinate coordFromCLCoord:mMapView.model.locationManager.location.coordinate]];
+    UserPhotoContent* content = [UserPhotoContent contentWithPhoto:image andCoordinate:[GMapsCoordinate coordFromCLCoord:mMapView.model.locationManager.location.coordinate] andCLHeading:mMapView.model.locationManager.heading];
     [mMapView addUserContent:content];
     [uploader uploadUserContent:content];
     
