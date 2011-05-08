@@ -66,7 +66,7 @@
         NSArray* newContents = (NSArray*) response;
         [self.scenicContents addObjectsFromArray:newContents];
         [self.delegate mapSelectorModelFinishedFetchingContent:self];
-    }
+    } 
 }
 
 -(void) dealloc {
@@ -145,6 +145,8 @@
 -(void) fetchNewContent {
     PanoramioFetcher* fetcher = [PanoramioFetcher fetcherForBounds:[self primaryRoute].gRoute.bounds  andDelegate:self];
     [fetcher fetch];
+    UserPhotoContentGetter* getter = [UserPhotoContentGetter photoGetterWithDelegate:self];
+    [getter fetch];
 }
 
 -(void) fetchNewContentWithBounds:(GMapsBounds*)bounds {
