@@ -21,9 +21,8 @@ static NSString* base = @"http://www.scenicgps.com/scenic/uploadphoto";
     NSURL * url = [NSURL URLWithString:[NSString stringWithFormat:@"%@?title=%@&lat=%f&lng=%f&deviceid=%@&trueheading=%f&magheading=%f", base, title, lat, lng, deviceID, content.heading.trueHeading, content.heading.magneticHeading]];
     ASIFormDataRequest* request = [ASIFormDataRequest requestWithURL:url];
     NSData * imageData = UIImagePNGRepresentation(content.photo);
-    [request addData:imageData withFileName:@"image.png" andContentType:@"image/png" forKey:@"image"];
-    
     NSData * iconData = UIImagePNGRepresentation([content fetchIcon]);
+    [request addData:imageData withFileName:@"image.png" andContentType:@"image/png" forKey:@"image"];
     [request addData:iconData withFileName:@"icon.png" andContentType:@"image/png" forKey:@"icon"];
     NSLog(@"%@", [request.url description]);
     

@@ -28,7 +28,8 @@
         } else {
             tmp.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
         }
-        
+        //tmp.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+        //tmp.videoQuality = UIImagePickerControllerQualityTypeLow;
         self.imgPicker = tmp;        
         [tmp release];
         self.cDelegate = _cDelegate;
@@ -55,7 +56,8 @@
         [cDelegate handleVideo:loc withIcon:viewImage];
     
     } else {
-        [cDelegate handleImage: (UIImage*) [info objectForKey:UIImagePickerControllerOriginalImage]];
+        UIImage* image = (UIImage*) [info objectForKey:UIImagePickerControllerEditedImage];
+        [cDelegate handleImage:image];
     }    
     [[picker parentViewController] dismissModalViewControllerAnimated:YES];
 }
