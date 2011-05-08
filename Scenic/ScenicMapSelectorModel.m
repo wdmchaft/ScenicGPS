@@ -142,18 +142,11 @@
     return temp;
 }
 
--(void) fetchNewContent {
-    PanoramioFetcher* fetcher = [PanoramioFetcher fetcherForBounds:[self primaryRoute].gRoute.bounds  andDelegate:self];
-    [fetcher fetch];
-    UserPhotoContentGetter* getter = [UserPhotoContentGetter photoGetterWithDelegate:self];
-    [getter fetch];
-}
-
 -(void) fetchNewContentWithBounds:(GMapsBounds*)bounds {
-    //PanoramioFetcher* fetcher = [PanoramioFetcher fetcherForBounds:bounds  andDelegate:self];
-    //[fetcher fetch];
-    UserPhotoContentGetter* fetcher = [UserPhotoContentGetter photoGetterWithDelegate:self];
+    PanoramioFetcher* fetcher = [PanoramioFetcher fetcherForBounds:bounds  andDelegate:self];
     [fetcher fetch];
+    UserPhotoContentGetter* getter = [UserPhotoContentGetter photoGetterWithDelegate:self andCoordinate:[bounds midPoint]];
+    [getter fetch];
 }
 
 

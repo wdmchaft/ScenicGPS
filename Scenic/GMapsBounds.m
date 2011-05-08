@@ -38,6 +38,12 @@ static NSString* SW_KEY = @"southwest";
     return bounds;
 }
 
+-(GMapsCoordinate*) midPoint {
+    double lng = [self.ne.lng doubleValue]*.5 + [self.sw.lng doubleValue]*.5;
+    double lat = [self.ne.lat doubleValue]*.5 + [self.sw.lat doubleValue]*.5;
+    return [GMapsCoordinate coordFromCLCoord:CLLocationCoordinate2DMake(lat, lng)];
+}
+
 +(id) boundsFromJSONDic: (NSDictionary*) dic {
     GMapsBounds* bounds =  [[[GMapsBounds alloc] init] autorelease];
     bounds.ne = [GMapsCoordinate coordFromJSONDic:(NSDictionary*) [dic objectForKey:NE_KEY]];

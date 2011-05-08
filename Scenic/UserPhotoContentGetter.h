@@ -9,11 +9,12 @@
 #import <Foundation/Foundation.h>
 #import "ServerGetter.h"
 
+@class GMapsCoordinate;
 @interface UserPhotoContentGetter : ServerGetter {
     
 }
 
-+(UserPhotoContentGetter*) photoGetterWithDelegate: (id<DataFetcherDelegate>) delegate;
++(UserPhotoContentGetter*) photoGetterWithDelegate: (id<DataFetcherDelegate>) delegate andCoordinate: (GMapsCoordinate*) coord;
 -(id) getResponseFromResult:(id)result;
 -(id) initWithCommand:(NSString *)_command andQueries:(NSDictionary *)_queries andDelegate:(id<DataFetcherDelegate>)_delegate ;
 

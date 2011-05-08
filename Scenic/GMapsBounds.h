@@ -23,5 +23,7 @@
 
 +(id) boundsFromJSONDic: (NSDictionary*) dic;
 +(id) boundsFromMapView:(ScenicMapView*) mMapView;
+-(GMapsCoordinate*) midPoint;
+
 
 @end

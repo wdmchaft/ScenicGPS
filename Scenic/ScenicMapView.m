@@ -219,7 +219,7 @@
         [self createModel];
     }
     [self putNewRoutes:routes];
-    [self.model fetchNewContent];
+    [self.model fetchNewContentWithBounds:[GMapsBounds boundsFromMapView:self]];
 }
 
 -(void) createModel {

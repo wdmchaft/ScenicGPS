@@ -9,8 +9,14 @@
 #import "UserPhotoContentGetter.h"
 #import "GMapsPolyline.h"
 #import "UserPhotoContent.h"
+#import "GMapsCoordinate.h"
+#import "GeoHash.h"
+
 static NSString* command = @"getuserphotos";
 static NSString* PHOTOS_KEY = @"photos";
+static NSString* NPICS_VAL = @"10";
+static NSString* NPICS_KEY = @"npics";
+static NSString* HASH_KEY = @"geohash";
 
 
 
@@ -37,8 +43,8 @@ static NSString* PHOTOS_KEY = @"photos";
     return nil;
 }
 
-+(UserPhotoContentGetter*) photoGetterWithDelegate: (id<DataFetcherDelegate>) delegate {
-    UserPhotoContentGetter* getter = [[[UserPhotoContentGetter alloc] initWithCommand:command andQueries:[NSDictionary dictionary] andDelegate:delegate] autorelease];
++(UserPhotoContentGetter*) photoGetterWithDelegate: (id<DataFetcherDelegate>) delegate andCoordinate: (GMapsCoordinate*) coord {
+    UserPhotoContentGetter* getter = [[[UserPhotoContentGetter alloc] initWithCommand:command andQueries:[NSDictionary dictionaryWithObjectsAndKeys:NPICS_VAL,NPICS_KEY, [GeoHash hash:CLLocationCoordinate2DMake([coord.lat doubleValue], [coord.lng doubleValue])],HASH_KEY, nil] andDelegate:delegate] autorelease];
     return getter;
 }
 
