@@ -50,7 +50,6 @@
 }
 */
 
-
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad
 {
@@ -115,8 +114,8 @@
 
     if ([mainVC.content class] == [PanoramioContent class]) {
         
-        PanoramioRater* putter = [PanoramioRater putterWithContent:mainVC.content rating:rating andDelegate:self];
-        [putter fetch];
+//        PanoramioRater* putter = [PanoramioRater putterWithContent:mainVC.content rating:rating andDelegate:self];
+//        [putter fetch];
         
     } else {
         

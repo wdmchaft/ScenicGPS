@@ -56,8 +56,7 @@ static NSString* base = @"http://www.scenicgps.com/scenic/uploadphoto";
     NSData* data = [request responseData];
     CJSONDeserializer* deserializer = [CJSONDeserializer deserializer];
     NSDictionary* dic = [deserializer deserializeAsDictionary:data error:nil];
-    NSDictionary* success = (NSDictionary*) [dic objectForKey: @"status"];
-    int pk = [(NSNumber*) [success objectForKey:@"response"] intValue];
+    int pk = [(NSNumber*) [dic objectForKey:@"response"] intValue];
     self.content.pk = pk;
 }
 

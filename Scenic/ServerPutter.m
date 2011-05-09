@@ -20,7 +20,7 @@ static NSString* PLACE_LOC = @"rateplace";
 static NSString* PAN_COMMAND = @"panrate";
 static NSString* PAN_LOC = @"panrate";
 static NSString* CONTENT_COMMAND = @"content";
-static NSString* CONTENT_LOC = @"panrate";
+static NSString* CONTENT_LOC = @"photorate"; ///CHANGE BACK TO panrate later!
 static NSString* UCONTENT_COMMAND = @"photorate";
 static NSString* UCONTENT_LOC = @"photorate";
 
