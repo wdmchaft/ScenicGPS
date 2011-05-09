@@ -72,33 +72,33 @@
     
 
     
-//    Reachability * reach = [Reachability reachabilityForInternetConnection];
-//
-//    
-//    if ([reach isReachable]) {
-//        
-//        NSURL * url = [[[NSURL alloc] initWithString:@"http://www.scenicgps.com/scenic/"] autorelease];
-//        NSURLRequest * req = [[[NSURLRequest alloc] initWithURL:url] autorelease];
-//        NSError *theError = NULL;
-//        NSURLResponse *theResponse = NULL;
-//        NSData *theResponseData = [NSURLConnection sendSynchronousRequest:req returningResponse:&theResponse error:&theError];
-//        NSString *theResponseString = [[[NSString alloc] initWithData:theResponseData encoding:NSUTF8StringEncoding] autorelease];
-//    
-//
-//        if ('{' != [theResponseString characterAtIndex:0]) {
-//            
-//            UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Connection" message:@"You are not connected" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-//            [alert show];
-//            [alert release];
-//            
-//        }
-//        
-//    } else {
-//        
-//        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Connection" message:@"Network is not reachable" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-//        [alert show];
-//        [alert release];    
-//    }
+    Reachability * reach = [Reachability reachabilityForInternetConnection];
+
+    
+    if ([reach isReachable]) {
+        
+        NSURL * url = [[[NSURL alloc] initWithString:@"http://www.scenicgps.com/scenic/"] autorelease];
+        NSURLRequest * req = [[[NSURLRequest alloc] initWithURL:url] autorelease];
+        NSError *theError = NULL;
+        NSURLResponse *theResponse = NULL;
+        NSData *theResponseData = [NSURLConnection sendSynchronousRequest:req returningResponse:&theResponse error:&theError];
+        NSString *theResponseString = [[[NSString alloc] initWithData:theResponseData encoding:NSUTF8StringEncoding] autorelease];
+    
+
+        if ('{' != [theResponseString characterAtIndex:0]) {
+            
+            UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Connection" message:@"You are not connected" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+            [alert show];
+            [alert release];
+            
+        }
+        
+    } else {
+        
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Connection" message:@"Network is not reachable" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [alert show];
+        [alert release];    
+    }
     
     
 }
