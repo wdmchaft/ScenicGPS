@@ -19,23 +19,14 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        self.scenicContents = [[NSMutableArray alloc] init];
+        self.scenicContents = contents;
         
         self.containerView = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
         
         self.swipeView = [[SwipeView alloc] initWithFrame:[[UIScreen mainScreen] bounds] delegate:self];
-                
-        for(int i=0; i<[contents count]; i++) {
-            if ([[contents objectAtIndex:i] class] != [UserPhotoContent class]) continue;
-            [scenicContents addObject:[contents objectAtIndex:i]];
-        }
-
+     
         for(int i=0; i<[scenicContents count]; i++) {
-
             ScenicContent * c = (ScenicContent*) [scenicContents objectAtIndex:i];            
-            
-            
-            
             UIImageView * iv = [[[UIImageView alloc] initWithImage:[c fetchImage]] autorelease];
             iv.frame = [[UIScreen mainScreen] bounds];
             iv.contentMode= UIViewContentModeScaleToFill;
