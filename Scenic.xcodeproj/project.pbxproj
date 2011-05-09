@@ -166,7 +166,7 @@
 		5D017AC71325A4EB00B8EA6A /* ScenicMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScenicMapViewController.h; sourceTree = "<group>"; };
 		5D017AC81325A4EC00B8EA6A /* ScenicMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScenicMapViewController.m; sourceTree = "<group>"; };
 		5D017AC91325A4EE00B8EA6A /* ScenicMapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScenicMapViewController.xib; sourceTree = "<group>"; };
-		5D0587E8132098C500D42F0A /* Scenic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Scenic.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D0587E8132098C500D42F0A /* ScenicGPS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScenicGPS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D0587EC132098C500D42F0A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5D0587EE132098C500D42F0A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5D0587F0132098C500D42F0A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -604,7 +604,7 @@
 		5D0587E9132098C500D42F0A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5D0587E8132098C500D42F0A /* Scenic.app */,
+				5D0587E8132098C500D42F0A /* ScenicGPS.app */,
 				5D058812132098C500D42F0A /* ScenicTests.octest */,
 			);
 			name = Products;
@@ -779,7 +779,7 @@
 			);
 			name = Scenic;
 			productName = Scenic;
-			productReference = 5D0587E8132098C500D42F0A /* Scenic.app */;
+			productReference = 5D0587E8132098C500D42F0A /* ScenicGPS.app */;
 			productType = "com.apple.product-type.application";
 		};
 		5D058811132098C500D42F0A /* ScenicTests */ = {
@@ -1020,6 +1020,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				PRODUCT_NAME = ScenicGPS;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
@@ -1038,6 +1039,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PRODUCT_NAME = ScenicGPS;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
@@ -1054,7 +1056,7 @@
 				GCC_PREFIX_HEADER = "Scenic/Scenic-Prefix.pch";
 				INFOPLIST_FILE = "Scenic/Scenic-Info.plist";
 				INSTALL_PATH = "$(LOCAL_APPS_DIR)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ScenicGPS;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1068,7 +1070,7 @@
 				GCC_PREFIX_HEADER = "Scenic/Scenic-Prefix.pch";
 				INFOPLIST_FILE = "Scenic/Scenic-Info.plist";
 				INSTALL_PATH = "$(LOCAL_APPS_DIR)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ScenicGPS;
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
