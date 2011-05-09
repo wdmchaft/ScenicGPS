@@ -48,6 +48,9 @@
     // Do any additional setup after loading the view from its nib.
     
     name.text = content.title;
+    UIColor* color = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"frontpage.png"]];
+    self.view.backgroundColor = color;
+    [color release];
     
 }
 
