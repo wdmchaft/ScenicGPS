@@ -22,7 +22,7 @@
     self.window.rootViewController = tabVC;
     [self.window makeKeyAndVisible];
 
-    NSLog(@"launched");
+
     
     return YES;
     
@@ -58,10 +58,10 @@
      Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
      */
     
-    NSLog(@"did become active");
+
     
     Reachability * reach = [Reachability reachabilityForInternetConnection];
-    NSLog(@"reach %d", [reach isReachable]);
+
     
     if ([reach isReachable]) {
         
@@ -72,7 +72,7 @@
         NSData *theResponseData = [NSURLConnection sendSynchronousRequest:req returningResponse:&theResponse error:&theError];
         NSString *theResponseString = [[[NSString alloc] initWithData:theResponseData encoding:NSUTF8StringEncoding] autorelease];
     
-        NSLog(@"%@", theResponseString);
+
         if ('{' != [theResponseString characterAtIndex:0]) {
             
             UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Connection" message:@"You are not connected" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
