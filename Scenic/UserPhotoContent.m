@@ -12,7 +12,7 @@
 static NSString* JSON_PHOTO = @"image";
 static NSString* JSON_TITLE = @"title";
 static NSString* JSON_COORD = @"coord";
-
+static NSString* JSON_PK = @"pk";
 
 
 @implementation UserPhotoContent
@@ -33,9 +33,11 @@ static NSString* JSON_COORD = @"coord";
 +(id) contentFromJSONDic: (NSDictionary*) dic {
     UIImage* photo = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:(NSString*) [dic objectForKey:JSON_PHOTO]]]];
     NSString* title = (NSString*) [dic objectForKey:JSON_TITLE];
+    int pk = (int) [[dic objectForKey:JSON_PK] intValue];
     GMapsCoordinate* coord = [GMapsCoordinate   coordFromJSONDic:(NSDictionary*) [dic objectForKey:JSON_COORD]];
     UserPhotoContent* content = [UserPhotoContent contentWithPhoto:photo andCoordinate:coord andCLHeading:nil];
     content.title = title;
+    content.pk = pk;
     return content;
                     
 }
