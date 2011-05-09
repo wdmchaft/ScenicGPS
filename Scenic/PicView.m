@@ -33,7 +33,12 @@
         for(int i=0; i<[scenicContents count]; i++) {
 
             ScenicContent * c = (ScenicContent*) [scenicContents objectAtIndex:i];            
+            
+            
+            
             UIImageView * iv = [[[UIImageView alloc] initWithImage:[c fetchImage]] autorelease];
+            iv.frame = [[UIScreen mainScreen] bounds];
+            iv.contentMode= UIViewContentModeScaleToFill;
             [containerView addSubview: iv];
         }
         
