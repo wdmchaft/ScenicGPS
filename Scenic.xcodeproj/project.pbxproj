@@ -74,7 +74,6 @@
 		5D1DCCCB1326A3630013BD05 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D1DCCCA1326A3630013BD05 /* MapKit.framework */; };
 		5D1DCCCE1326A6A80013BD05 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D1DCCCD1326A6A70013BD05 /* CoreLocation.framework */; };
 		5D2FCF56132C0DC7005B08DD /* ScenicContentTextVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D2FCF54132C0DB5005B08DD /* ScenicContentTextVC.m */; };
-		5D2FCF5A132EA2F5005B08DD /* ScenicContentTextVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D2FCF59132EA2F5005B08DD /* ScenicContentTextVC.xib */; };
 		5D2FCF5D132EAA48005B08DD /* ScenicWaypointViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D2FCF5C132EAA41005B08DD /* ScenicWaypointViewController.m */; };
 		5D33448913464B5E0091C215 /* HistoricalRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D33448713464B5E0091C215 /* HistoricalRootViewController.m */; };
 		5D33448A13464B5E0091C215 /* HistoricalRootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5D33448813464B5E0091C215 /* HistoricalRootViewController.xib */; };
@@ -263,7 +262,6 @@
 		5D1DCCCD1326A6A70013BD05 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		5D2FCF53132C0DB3005B08DD /* ScenicContentTextVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScenicContentTextVC.h; sourceTree = "<group>"; };
 		5D2FCF54132C0DB5005B08DD /* ScenicContentTextVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScenicContentTextVC.m; sourceTree = "<group>"; };
-		5D2FCF59132EA2F5005B08DD /* ScenicContentTextVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScenicContentTextVC.xib; sourceTree = "<group>"; };
 		5D2FCF5B132EAA3B005B08DD /* ScenicWaypointViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScenicWaypointViewController.h; sourceTree = "<group>"; };
 		5D2FCF5C132EAA41005B08DD /* ScenicWaypointViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScenicWaypointViewController.m; sourceTree = "<group>"; };
 		5D33448613464B5E0091C215 /* HistoricalRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoricalRootViewController.h; sourceTree = "<group>"; };
@@ -521,7 +519,6 @@
 				5D05887313209A3B00D42F0A /* HistoricalRouteViewController.xib */,
 				5D05887613209A3B00D42F0A /* RouteViewController.xib */,
 				5D017AC91325A4EE00B8EA6A /* ScenicMapViewController.xib */,
-				5D2FCF59132EA2F5005B08DD /* ScenicContentTextVC.xib */,
 				5D33448813464B5E0091C215 /* HistoricalRootViewController.xib */,
 				5DA395E4134B814000D15D25 /* PanoramioViewController.xib */,
 			);
@@ -849,7 +846,6 @@
 				AACD9568132A8B0B00855892 /* 29-heart.png in Resources */,
 				AACD9569132A8B0B00855892 /* dest.png in Resources */,
 				AACD956A132A8B0B00855892 /* location.png in Resources */,
-				5D2FCF5A132EA2F5005B08DD /* ScenicContentTextVC.xib in Resources */,
 				5DBF2BB1132ED72F004C1F90 /* add-28.png in Resources */,
 				5DE4663D133BEFF10095385F /* remove.png in Resources */,
 				5D99EF0E1340E99900E1412E /* ScenicTripViewController.xib in Resources */,
