@@ -15,7 +15,7 @@
 
 @class ScenicTripModel, ScenicMapView;
 @interface ScenicTripViewController : UIViewController <ScenicMapViewDelegate, ServerPutterDelegate, CameraHelperDelegate> {
-    ScenicMapView* mMapView;
+    IBOutlet ScenicMapView* mMapView;
     ScenicTripModel* trip;
     CameraHelper* camera;
     DataUploader* uploader;
@@ -25,6 +25,7 @@
 
 -(IBAction) rateRouteDown: (id) sender;
 -(IBAction) rateRouteUp: (id) sender;
+- (IBAction) slideShow: (id) sender;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil model: (ScenicMapSelectorModel*) model;

@@ -10,6 +10,7 @@
 #import "ScenicTripModel.h"
 #import "UserPhotoContent.h"
 #import "CDHelper.h"
+#import "PicView.h"
 
 @implementation ScenicTripViewController
 @synthesize mMapView, trip, camera, uploader;
@@ -119,6 +120,15 @@
     int rating = -1;
     RoutePutter* putter = [RoutePutter putterWithPL:[self.mMapView.model primaryRoute].gRoute.polyline rating:rating andDelegate:self];
     [putter fetch];
+}
+
+- (IBAction) slideShow:(id)sender  {
+    
+    PicView * picviewer = [[[PicView alloc] initWithFrame:[[UIScreen mainScreen] bounds] withScenicContents: mMapView.model.scenicContents] autorelease];
+    UIViewController * vc = [[[UIViewController alloc] init] autorelease];
+    vc.view = picviewer;
+    [self.navigationController pushViewController: vc animated:YES];
+    
 }
 
 #pragma mark - 

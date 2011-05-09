@@ -17,6 +17,7 @@
     tripModel.routes = [NSArray arrayWithObject:[tripModel primaryRoute]];
     tripModel.primaryRouteIndex = 0;
     tripModel.frozen = YES;
+    [tripModel.locationManager startUpdatingHeading];
     return tripModel;
 }
 

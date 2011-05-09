@@ -28,8 +28,6 @@
     if ((self = [super initWithCoder:aDecoder])) {
         self.delegate = self;
         updateHeading = FALSE;
-        self.frame = CGRectMake(-100, -100, self.frame.size.height*1.414, self.frame.size.height*1.414);
-
     }
     return self;
 }
@@ -39,10 +37,15 @@
     if ((self = [super initWithFrame:frame])) {
         self.delegate = self;
         updateHeading = FALSE;
-        self.frame = CGRectMake(-100, -100, self.frame.size.height*1.414, self.frame.size.height*1.414);
-
     }
     return self;
+}
+
+- (void) compassFrame:(BOOL)b {
+    if (b) 
+        self.frame = CGRectMake(-100, -100, self.frame.size.height*1.414, self.frame.size.height*1.414);
+    else
+        self.frame = [[UIScreen mainScreen] bounds];
 }
 
 -(void) changeToRouteNumber: (int) n {
@@ -139,6 +142,8 @@
 }
 
 -(void) mapSelectorModelHeadingUpdate:(CLHeading *)heading {
+  //  NSLog(@"%d is heading", updateHeading);
+    
     if (!updateHeading) return;
  
     self.transform = CGAffineTransformMakeRotation(-heading.trueHeading* M_PI / 180.0);
