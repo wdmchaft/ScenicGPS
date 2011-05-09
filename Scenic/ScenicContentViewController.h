@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @class ScenicContent, ScenicContentDisplayViewController;
-@interface ScenicContentViewController : UIViewController {
+@interface ScenicContentViewController : UIViewController  {
     IBOutlet ScenicContentDisplayViewController* displayVC;
     IBOutlet UILabel* titleLabel;
     ScenicContent* content;

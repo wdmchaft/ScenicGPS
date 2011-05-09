@@ -8,6 +8,10 @@
 
 #import "UserContentMetadataViewController.h"
 #import "ScenicContent.h"
+#import "ContentUpdater.h"
+#import "UserPhotoContent.h"
+#import "ScenicContentViewController.h"
+
 
 @implementation UserContentMetadataViewController
 @synthesize name, desc, content;
@@ -74,8 +78,16 @@
 
 - (IBAction) editUserContent {
     
+    content.title = name.text;
     
+    ContentUpdater* updater = [ContentUpdater updaterWithContent:(UserPhotoContent*)content andDelegate:self];
+    [updater fetch];
+    
+    [[self navigationController] popViewControllerAnimated:YES];
 }
+
+
+
 
 #pragma mark - AlertView Delegate
 
@@ -90,6 +102,11 @@
     // pop this view off as well
     
     [[self navigationController] popViewControllerAnimated:YES];
+}
+
+-(BOOL) textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return NO;
 }
 
 

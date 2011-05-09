@@ -36,6 +36,9 @@
 
 -(void) viewDidLoad {
     [super viewDidLoad];
+    UIColor* color = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"frontpage.png"]];
+    self.view.backgroundColor = color;
+    [color release];
     UIBarButtonItem* backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStylePlain target:nil action:nil];
     self.navigationItem.backBarButtonItem = backButton;
     [backButton release];

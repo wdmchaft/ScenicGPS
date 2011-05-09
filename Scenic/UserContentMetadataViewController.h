@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ServerPutter.h"
 
 @class ScenicContent;
-@interface UserContentMetadataViewController : UIViewController <UIAlertViewDelegate, UITextFieldDelegate> {
+@interface UserContentMetadataViewController : UIViewController <UIAlertViewDelegate, UITextFieldDelegate, ServerPutterDelegate> {
 
     ScenicContent * content;
     IBOutlet UITextField * name;

@@ -8,9 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ScenicAppDelegate : NSObject <UIApplicationDelegate> {
+@interface ScenicAppDelegate : NSObject <UIApplicationDelegate, UINavigationControllerDelegate> {
     UITabBarController* tabVC;
-
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;

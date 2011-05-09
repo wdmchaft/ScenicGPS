@@ -85,6 +85,9 @@
 		5D490DD1132985E0006905A9 /* ScenicParkFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D490DD0132985DE006905A9 /* ScenicParkFetcher.m */; };
 		5D490DD413298693006905A9 /* YelpFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D490DD313298691006905A9 /* YelpFetcher.m */; };
 		5D58493F1368E29B00D3ECC6 /* UserPhotoContentGetter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D58493E1368E29B00D3ECC6 /* UserPhotoContentGetter.m */; };
+		5D6A540B1377A00C009E840E /* frontpage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5D6A540A1377A00C009E840E /* frontpage.jpg */; };
+		5D6A540D1377A0C4009E840E /* frontpage.png in Resources */ = {isa = PBXBuildFile; fileRef = 5D6A540C1377A0C4009E840E /* frontpage.png */; };
+		5D6A54101377B3B3009E840E /* ContentUpdater.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D6A540F1377B3B3009E840E /* ContentUpdater.m */; };
 		5D718D8513398AD000E5DAEF /* ScenicMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D718D8413398AD000E5DAEF /* ScenicMapView.m */; };
 		5D718D89133993FA00E5DAEF /* WildcardGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 5D718D88133993FA00E5DAEF /* WildcardGestureRecognizer.m */; };
 		5D8AAD5B1343A62400007FD9 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D8AAD5A1343A62400007FD9 /* CoreData.framework */; };
@@ -277,6 +280,10 @@
 		5D490DD313298691006905A9 /* YelpFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YelpFetcher.m; sourceTree = "<group>"; };
 		5D58493D1368E29B00D3ECC6 /* UserPhotoContentGetter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserPhotoContentGetter.h; sourceTree = "<group>"; };
 		5D58493E1368E29B00D3ECC6 /* UserPhotoContentGetter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserPhotoContentGetter.m; sourceTree = "<group>"; };
+		5D6A540A1377A00C009E840E /* frontpage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = frontpage.jpg; sourceTree = "<group>"; };
+		5D6A540C1377A0C4009E840E /* frontpage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = frontpage.png; sourceTree = "<group>"; };
+		5D6A540E1377B3B3009E840E /* ContentUpdater.h */ = {isa = PBXFileReference; fileEncoding = 4; path = ContentUpdater.h; sourceTree = "<group>"; };
+		5D6A540F1377B3B3009E840E /* ContentUpdater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentUpdater.m; sourceTree = "<group>"; };
 		5D718D8313398AD000E5DAEF /* ScenicMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScenicMapView.h; sourceTree = "<group>"; };
 		5D718D8413398AD000E5DAEF /* ScenicMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScenicMapView.m; sourceTree = "<group>"; };
 		5D718D87133993FA00E5DAEF /* WildcardGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WildcardGestureRecognizer.h; sourceTree = "<group>"; };
@@ -486,6 +493,8 @@
 				5D58493E1368E29B00D3ECC6 /* UserPhotoContentGetter.m */,
 				AAC6465E13776E9C00DC8DC9 /* UserContentRater.h */,
 				AAC6465F13776E9C00DC8DC9 /* UserContentRater.m */,
+				5D6A540E1377B3B3009E840E /* ContentUpdater.h */,
+				5D6A540F1377B3B3009E840E /* ContentUpdater.m */,
 			);
 			name = Fetchers;
 			sourceTree = "<group>";
@@ -699,6 +708,8 @@
 		AACD9562132A8B0B00855892 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				5D6A540C1377A0C4009E840E /* frontpage.png */,
+				5D6A540A1377A00C009E840E /* frontpage.jpg */,
 				AAD9FAE21374FA6D00888B85 /* 71-compass.png */,
 				AA8F9697135B715400E57A17 /* next.png */,
 				AA8F9698135B715400E57A17 /* prev.png */,
@@ -830,6 +841,8 @@
 				AA8F969A135B715400E57A17 /* prev.png in Resources */,
 				AA6D965C136928FF00589694 /* UserContentMetadataViewController.xib in Resources */,
 				AAD9FAE31374FA6D00888B85 /* 71-compass.png in Resources */,
+				5D6A540B1377A00C009E840E /* frontpage.jpg in Resources */,
+				5D6A540D1377A0C4009E840E /* frontpage.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -940,6 +953,7 @@
 				5D58493F1368E29B00D3ECC6 /* UserPhotoContentGetter.m in Sources */,
 				AA6D967413694AEE00589694 /* UserContentMetadataViewController.m in Sources */,
 				AAC6466013776E9C00DC8DC9 /* UserContentRater.m in Sources */,
+				5D6A54101377B3B3009E840E /* ContentUpdater.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

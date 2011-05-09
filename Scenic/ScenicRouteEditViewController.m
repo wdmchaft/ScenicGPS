@@ -46,6 +46,8 @@
     
     self.rTitle.text = route.title; //route.title;
     self.desc.text = route.desc;
+    self.rTitle.delegate = self;
+    self.desc.delegate = self;
 
 }
 
@@ -56,11 +58,7 @@
     // e.g. self.myOutlet = nil;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
+
 
 - (IBAction) deleteCDRoute {
     
@@ -91,13 +89,14 @@
     route.desc = desc.text;
     [helper saveContext];
     
+    
     [[self navigationController] popViewControllerAnimated:YES];
 
 }
 
--(BOOL)textFieldShouldReturn:(UITextField *)textField{
+-(BOOL) textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
-    return YES;
+    return NO;
 }
 
 @end

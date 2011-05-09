@@ -29,6 +29,18 @@
 
 }
 
+- (void)navigationController:(UINavigationController *)navigationController 
+      willShowViewController:(UIViewController *)viewController animated:(BOOL)animated 
+{
+    [viewController viewWillAppear:animated];
+}
+
+- (void)navigationController:(UINavigationController *)navigationController 
+       didShowViewController:(UIViewController *)viewController animated:(BOOL)animated 
+{
+    [viewController viewDidAppear:animated];
+}
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     /*

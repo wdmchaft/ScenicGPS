@@ -107,6 +107,10 @@
     int rating = -1;
     [self voteWithRating:rating];
 }
+-(void) viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.mainVC.titleLabel.text = self.mainVC.content.title;
+}
 
 
 -(void) voteWithRating: (int) rating {
