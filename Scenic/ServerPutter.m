@@ -22,6 +22,9 @@ static NSString* PAN_COMMAND = @"panrate";
 static NSString* PAN_LOC = @"panrate";
 static NSString* CONTENT_COMMAND = @"content";
 static NSString* CONTENT_LOC = @"panrate";
+static NSString* UCONTENT_COMMAND = @"photorate";
+static NSString* UCONTENT_LOC = @"photorate";
+
 
 
 static NSDictionary* commandLookup;
@@ -33,7 +36,7 @@ static NSDictionary* commandLookup;
 
 +(NSDictionary*) commandLookup {
     if (!commandLookup)
-        commandLookup = [[NSDictionary dictionaryWithObjectsAndKeys:ROUTE_LOC,ROUTE_COMMAND, PLACE_LOC, PLACE_COMMAND, PAN_LOC, PAN_COMMAND, CONTENT_LOC, CONTENT_COMMAND, nil] retain];
+        commandLookup = [[NSDictionary dictionaryWithObjectsAndKeys:ROUTE_LOC,ROUTE_COMMAND, PLACE_LOC, PLACE_COMMAND, PAN_LOC, PAN_COMMAND, CONTENT_LOC, CONTENT_COMMAND,UCONTENT_LOC, UCONTENT_COMMAND, nil] retain];
     return commandLookup;
 }
 

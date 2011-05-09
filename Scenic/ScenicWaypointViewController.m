@@ -13,6 +13,7 @@
 #import "PanoramioContent.h"
 #import "UserPhotoContent.h"
 #import "UserContentMetadataViewController.h"
+#import "UserContentRater.h"
 
 @implementation ScenicWaypointViewController
 @synthesize mainVC, delegate, toolTitle, navigationController;
@@ -119,8 +120,10 @@
         
     } else {
         
-        NSLog(@"need to rate %@", [[mainVC.content class] description]);
-                                   
+//        NSLog(@"need to rate %@", [[mainVC.content class] description]);
+                
+        UserContentRater* putter = [UserContentRater putterWithContent:mainVC.content rating:rating andDelegate:self];
+        [putter fetch];
                                    
     }
     
