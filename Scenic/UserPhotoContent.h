@@ -12,6 +12,7 @@
 @interface UserPhotoContent : ScenicContent <ScenicContentProvider> {
     UIImage* photo;
     CLHeading * heading;
+    int pk;
 }
 
 -(UIImage*)imageWithBorderFromImage:(UIImage*)source;
@@ -23,5 +24,6 @@
 
 @property (nonatomic, retain) UIImage* photo;
 @property (nonatomic, retain) CLHeading * heading;
+@property (nonatomic, assign) int pk;
 
 @end

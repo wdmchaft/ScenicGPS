@@ -91,6 +91,7 @@
 - (void) editContent {
     
     UserContentMetadataViewController * vc = [[UserContentMetadataViewController alloc] initWithNibName:@"UserContentMetadataViewController" bundle:nil];
+    vc.content = mainVC.content;
 
     [[self navigationController ] pushViewController:vc animated:YES];
 
@@ -100,7 +101,7 @@
     int rating = 1;
     [self voteWithRating:rating];
     
-}
+} 
 
 - (void) voteDown {
     int rating = -1;

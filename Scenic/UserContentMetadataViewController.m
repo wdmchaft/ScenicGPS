@@ -10,6 +10,7 @@
 #import "ScenicContent.h"
 
 @implementation UserContentMetadataViewController
+@synthesize name, desc, content;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -22,6 +23,9 @@
 
 - (void)dealloc
 {
+    [content release];
+    [name release];
+    [desc release];
     [super dealloc];
 }
 
@@ -39,6 +43,10 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    name.text = content.title;
+    desc.text = @"Enter description...";
+    
 }
 
 - (void)viewDidUnload
