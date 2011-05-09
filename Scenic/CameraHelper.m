@@ -29,7 +29,7 @@
             tmp.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
         }
         //tmp.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-        //tmp.videoQuality = UIImagePickerControllerQualityTypeLow;
+        tmp.videoQuality = UIImagePickerControllerQualityTypeMedium;
         self.imgPicker = tmp;        
         [tmp release];
         self.cDelegate = _cDelegate;
