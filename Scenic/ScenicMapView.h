@@ -33,6 +33,8 @@
 -(void) addUserContent: (ScenicContent*) content;
 -(MKAnnotationView*) annotationViewForContent:(ScenicContent*) content;
 
+- (void) compassFrame:(BOOL)b;
+
 @property (nonatomic, retain) ScenicMapSelectorModel* model;
 @property (nonatomic, retain)     UINavigationController* navigationController;
 @property (nonatomic, assign) id<ScenicMapViewDelegate> scenicDelegate;

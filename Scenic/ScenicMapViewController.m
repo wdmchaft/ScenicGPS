@@ -128,8 +128,12 @@
 - (IBAction) updateHeading: (id) sender {
     
     mMapView.updateHeading = !mMapView.updateHeading;
-    if (!mMapView.updateHeading) 
-      mMapView.transform = CGAffineTransformIdentity;
+    if (!mMapView.updateHeading) {
+        mMapView.transform = CGAffineTransformIdentity;
+        [mMapView compassFrame:NO];
+    } else {
+        [mMapView compassFrame:YES];
+    }
     
 }
 
