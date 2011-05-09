@@ -11,7 +11,6 @@
 
 static NSString* preBase = @"http://www.scenicgps.com/scenic";
 static NSString* debugBase = @"127.0.0.1:9880/scenic";
-
 static NSString* STATUS_KEY = @"status";
 static NSString* ERROR_KEY = @"error";
 static NSString* ROUTE_COMMAND = @"route";
@@ -64,6 +63,7 @@ static NSDictionary* commandLookup;
         server = preBase;
     return [NSString stringWithFormat:@"%@/%@",server,[[ServerPutter commandLookup] objectForKey:command]];
 }
+
 
 +(id) serverPutterWithCommand: (NSString*) _command queries: (NSDictionary*) _queries delegate: (id<ServerPutterDelegate>) _pDelegate {
     NSString* base = [ServerPutter getBaseFromCommand:_command];
