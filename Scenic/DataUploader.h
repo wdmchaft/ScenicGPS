@@ -12,11 +12,14 @@
 
 @class UserPhotoContent;
 @interface DataUploader : NSObject <ASIHTTPRequestDelegate> {
+    UserPhotoContent* content;
     
 }
 
--(void) uploadUserContent: (UserPhotoContent*) content;
--(void) uploadUserContent: (UserPhotoContent*) content withVideo: (NSURL*) video;
+@property (nonatomic, retain) UserPhotoContent* content;
+
+-(void) uploadUserContent: (UserPhotoContent*) _content;
+-(void) uploadUserContent: (UserPhotoContent*) _content withVideo: (NSURL*) video;
 
 
 @end

@@ -8,12 +8,15 @@
 
 #import "DataUploader.h"
 #import "UserPhotoContent.h"
+#import "CJSONDeserializer.h"
 
 static NSString* base = @"http://www.scenicgps.com/scenic/uploadphoto";
 
 @implementation DataUploader
+@synthesize content;
 
--(void) uploadUserContent: (UserPhotoContent*) content {
+-(void) uploadUserContent: (UserPhotoContent*) _content {
+    self.content = _content;
     NSString* title = [content.title stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
     double lat = [content.coord.lat doubleValue];
     double lng = [content.coord.lng doubleValue];
@@ -31,7 +34,8 @@ static NSString* base = @"http://www.scenicgps.com/scenic/uploadphoto";
     NSLog(@"upload attempt");
 }
 
--(void) uploadUserContent: (UserPhotoContent*) content withVideo: (NSURL*) video {
+-(void) uploadUserContent: (UserPhotoContent*) _content withVideo: (NSURL*) video {
+    self.content = _content;
     NSString* title = [content.title stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
     double lat = [content.coord.lat doubleValue];
     double lng = [content.coord.lng doubleValue];
@@ -43,14 +47,17 @@ static NSString* base = @"http://www.scenicgps.com/scenic/uploadphoto";
     
     NSData * iconData = UIImagePNGRepresentation([content fetchIcon]);
     [request addData:iconData withFileName:@"icon.png" andContentType:@"image/png" forKey:@"icon"];
-    
     request.delegate = self;
     [request startAsynchronous];
     NSLog(@"upload attempt");
 }
 
 - (void)requestFinished:(ASIHTTPRequest *)request {
-    NSLog(@"request finished!");
+    NSData* data = [request responseData];
+    CJSONDeserializer* deserializer = [CJSONDeserializer deserializer];
+    NSDictionary* dic = [deserializer deserializeAsDictionary:data error:nil];
+    int pk = [(NSNumber*) [dic objectForKey: @"pk"] intValue];
+    self.content.pk = pk;
 }
 
 - (void)requestStarted:(ASIHTTPRequest *)request {

@@ -16,7 +16,7 @@ static NSString* JSON_COORD = @"coord";
 
 
 @implementation UserPhotoContent
-@synthesize photo, heading;
+@synthesize photo, heading, pk;
 
 +(id) contentWithPhoto: (UIImage*) photo andCoordinate: (GMapsCoordinate*) coord andCLHeading:(CLHeading *)h
 
