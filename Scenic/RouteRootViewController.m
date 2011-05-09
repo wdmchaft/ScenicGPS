@@ -34,6 +34,7 @@
         [self handleRoutes: (NSArray*) response];
     }
     @catch (NSException *exception) {
+        [self.navigationController popViewControllerAnimated:NO];
         UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"No Routes!" message:@"Please search again with different locations" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
         [alert show];
         [alert release];
