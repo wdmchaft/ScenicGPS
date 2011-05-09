@@ -26,4 +26,5 @@
 @property (nonatomic, retain) CLHeading * heading;
 @property (nonatomic, assign) int pk;
 
+
 @end
