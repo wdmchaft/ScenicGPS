@@ -46,6 +46,9 @@
     [self.displayVC addContentView:[self.content.contentProvider provideView]];
     self.titleLabel.text = self.content.title;
     self.title = self.content.title;
+    UIColor* color = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"frontpage.png"]];
+    self.view.backgroundColor = color;
+    [color release];
 }
 
 - (void)viewDidUnload
