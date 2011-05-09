@@ -28,18 +28,26 @@ static NSString* WP_KEY = @"waypoints";
 @synthesize sRoute;
 
 -(id) getResponseFromResult:(id)result {
-    NSArray* routeArray = (NSArray*) [((NSDictionary*) result) objectForKey:ROUTES_KEY];
-    NSMutableArray* routesTemp = [[NSMutableArray alloc] initWithCapacity:[routeArray count]];
-    for (NSDictionary* routeDic in routeArray) {
-        [routesTemp addObject:[GMapsRoute routeFromJSONDictionary: routeDic]];
+    NSMutableArray* returned;
+    @try {
+        NSArray* routeArray = (NSArray*) [((NSDictionary*) result) objectForKey:ROUTES_KEY];
+        NSMutableArray* routesTemp = [[NSMutableArray alloc] initWithCapacity:[routeArray count]];
+        for (NSDictionary* routeDic in routeArray) {
+            [routesTemp addObject:[GMapsRoute routeFromJSONDictionary: routeDic]];
+        }
+        NSArray* response = [NSArray arrayWithArray:routesTemp];
+        [routesTemp release];
+        returned = [[[NSMutableArray alloc] initWithCapacity:[result count]] autorelease];
+        for (GMapsRoute* gRoute in response) {
+            [returned addObject:[ScenicRoute routeWithScenicRoute:self.sRoute andGMapsRoute:gRoute]];
+        }
     }
-    NSArray* response = [NSArray arrayWithArray:routesTemp];
-    [routesTemp release];
-    NSMutableArray* returned = [[[NSMutableArray alloc] initWithCapacity:[result count]] autorelease];
-    for (GMapsRoute* gRoute in response) {
-        [returned addObject:[ScenicRoute routeWithScenicRoute:self.sRoute andGMapsRoute:gRoute]];
+    @catch (NSException *exception) {
+        returned = [NSMutableArray array];
     }
-    return returned;
+    @finally {
+        return returned;
+    }
 }
 
 +(id) routeWithScenicRoute: (ScenicRoute*) route andDelegate: (id<DataFetcherDelegate>) _delegate {

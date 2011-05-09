@@ -30,8 +30,18 @@
 }
 
 -(void) dataFetcher: (DataFetcher*) fetcher hasResponse: (id) response {
-     
-    [self handleRoutes: (NSArray*) response];
+    @try {
+        [self handleRoutes: (NSArray*) response];
+    }
+    @catch (NSException *exception) {
+        UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"No Routes!" message:@"Please search again with different locations" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [alert show];
+        [alert release];
+    }
+    @finally {
+        return;
+    }
+
 }
 
 -(void) viewDidLoad {
