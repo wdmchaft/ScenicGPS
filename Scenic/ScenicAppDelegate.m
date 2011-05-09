@@ -8,6 +8,7 @@
 
 #import "ScenicAppDelegate.h"
 #import "CDHelper.h"
+#import "Reachability.h"
 
 @implementation ScenicAppDelegate
 @synthesize tabVC;
@@ -20,7 +21,12 @@
     // Override point for customization after application launch.
     self.window.rootViewController = tabVC;
     [self.window makeKeyAndVisible];
+
+    NSLog(@"launched");
+    
     return YES;
+    
+
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
@@ -51,6 +57,38 @@
     /*
      Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
      */
+    
+    NSLog(@"did become active");
+    
+    Reachability * reach = [Reachability reachabilityForInternetConnection];
+    NSLog(@"reach %d", [reach isReachable]);
+    
+    if ([reach isReachable]) {
+        
+        NSURL * url = [[[NSURL alloc] initWithString:@"http://www.scenicgps.com/scenic/"] autorelease];
+        NSURLRequest * req = [[[NSURLRequest alloc] initWithURL:url] autorelease];
+        NSError *theError = NULL;
+        NSURLResponse *theResponse = NULL;
+        NSData *theResponseData = [NSURLConnection sendSynchronousRequest:req returningResponse:&theResponse error:&theError];
+        NSString *theResponseString = [[[NSString alloc] initWithData:theResponseData encoding:NSUTF8StringEncoding] autorelease];
+    
+        NSLog(@"%@", theResponseString);
+        if ('{' != [theResponseString characterAtIndex:0]) {
+            
+            UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Connection" message:@"You are not connected" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+            [alert show];
+            [alert release];
+            
+        }
+        
+    } else {
+        
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:@"Connection" message:@"Network is not reachable" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [alert show];
+        [alert release];    
+    }
+    
+    
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
