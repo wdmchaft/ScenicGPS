@@ -17,6 +17,7 @@
 #import "CDHelper.h"
 #import "UserPhotoContent.h"
 #import "DataUploader.h"
+#import "PicView.h"
 
 #define COORD(x) [[mMapView.model primaryRoute].gRoute.polyline.points objectAtIndex:x]
 #define COORDS [mMapView.model primaryRoute].gRoute.polyline.points
@@ -108,16 +109,19 @@
 }
 
 - (IBAction) queryRoutesAlongRoute: (id) sender {
-         
-
     for (int i=0; i<[COORDS count]; i+=50) {
         GMapsCoordinate * coord = COORD(i);
         NSLog(@"query along route: (%@, %@)", coord.lat, coord.lng) ;
-                
         [mMapView.model fetchNewContentWithCoord:COORD(i)];        
-        
     }
+}
+
+- (IBAction) slideShow:(id)sender  {
     
+    PicView * picviewer = [[[PicView alloc] initWithFrame:[[UIScreen mainScreen] bounds] withScenicContents: mMapView.model.scenicContents] autorelease];
+    UIViewController * vc = [[[UIViewController alloc] init] autorelease];
+    vc.view = picviewer;
+    [self.navigationController pushViewController: vc animated:YES];
     
 }
 

@@ -44,6 +44,7 @@
 - (IBAction) queryRoutes: (id) sender;
 - (IBAction) takePicture: (id) sender;
 - (IBAction) updateHeading: (id) sender;
+- (IBAction) slideShow: (id) sender;
 
 -(void) updateTitle;
 -(void) addTripButton;

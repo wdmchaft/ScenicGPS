@@ -45,6 +45,9 @@ static NSString* ScenicAnnotationIdentifier = @"ScenicAnnotationIdentifier";
     return [UIImage imageNamed:@"location.png"];
 }
 
+-(UIImage*) fetchImage {
+    return [UIImage imageNamed:@"location.png"];
+}
 
 -(void) setCoord:(GMapsCoordinate *)newCoord {
     [newCoord retain];

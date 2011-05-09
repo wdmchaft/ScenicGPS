@@ -36,6 +36,8 @@
 -(UIImage*) iconImage;
 +(CGSize) defIconSize;
 -(NSString*) tag;
+-(UIImage*) fetchImage;
+
 - (void) computeHash;
 
 @end

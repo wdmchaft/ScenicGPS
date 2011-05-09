@@ -14,7 +14,6 @@
 
     ScenicContent * content;
     IBOutlet UITextField * name;
-    IBOutlet UITextField * desc;
     
 }
 
@@ -22,7 +21,6 @@
 - (IBAction) deleteUserContent;
 
 @property (nonatomic, retain) IBOutlet UITextField * name;
-@property (nonatomic, retain) IBOutlet UITextField * desc;
 @property (nonatomic, retain) ScenicContent * content;
 
 @end

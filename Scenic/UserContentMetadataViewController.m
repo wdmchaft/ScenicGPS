@@ -14,7 +14,7 @@
 
 
 @implementation UserContentMetadataViewController
-@synthesize name, desc, content;
+@synthesize name, content;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -29,7 +29,6 @@
 {
     [content release];
     [name release];
-    [desc release];
     [super dealloc];
 }
 
@@ -49,7 +48,6 @@
     // Do any additional setup after loading the view from its nib.
     
     name.text = content.title;
-    desc.text = @"Enter description...";
     
 }
 

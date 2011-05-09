@@ -123,6 +123,9 @@
 		AA8F969A135B715400E57A17 /* prev.png in Resources */ = {isa = PBXBuildFile; fileRef = AA8F9698135B715400E57A17 /* prev.png */; };
 		AA8F96AE135B85B700E57A17 /* ContentRater.m in Sources */ = {isa = PBXBuildFile; fileRef = AA8F96AD135B85B700E57A17 /* ContentRater.m */; };
 		AAC6466013776E9C00DC8DC9 /* UserContentRater.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC6465F13776E9C00DC8DC9 /* UserContentRater.m */; };
+		AACA39441377DF4000D72062 /* SwipeView.m in Sources */ = {isa = PBXBuildFile; fileRef = AACA39431377DF4000D72062 /* SwipeView.m */; };
+		AACA39471377DF5B00D72062 /* PicView.m in Sources */ = {isa = PBXBuildFile; fileRef = AACA39461377DF5B00D72062 /* PicView.m */; };
+		AACA39491377E2E900D72062 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACA39481377E2E900D72062 /* QuartzCore.framework */; };
 		AACD9567132A8B0B00855892 /* 103-map.png in Resources */ = {isa = PBXBuildFile; fileRef = AACD9563132A8B0B00855892 /* 103-map.png */; };
 		AACD9568132A8B0B00855892 /* 29-heart.png in Resources */ = {isa = PBXBuildFile; fileRef = AACD9564132A8B0B00855892 /* 29-heart.png */; };
 		AACD9569132A8B0B00855892 /* dest.png in Resources */ = {isa = PBXBuildFile; fileRef = AACD9565132A8B0B00855892 /* dest.png */; };
@@ -282,7 +285,7 @@
 		5D58493E1368E29B00D3ECC6 /* UserPhotoContentGetter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserPhotoContentGetter.m; sourceTree = "<group>"; };
 		5D6A540A1377A00C009E840E /* frontpage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = frontpage.jpg; sourceTree = "<group>"; };
 		5D6A540C1377A0C4009E840E /* frontpage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = frontpage.png; sourceTree = "<group>"; };
-		5D6A540E1377B3B3009E840E /* ContentUpdater.h */ = {isa = PBXFileReference; fileEncoding = 4; path = ContentUpdater.h; sourceTree = "<group>"; };
+		5D6A540E1377B3B3009E840E /* ContentUpdater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentUpdater.h; sourceTree = "<group>"; };
 		5D6A540F1377B3B3009E840E /* ContentUpdater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentUpdater.m; sourceTree = "<group>"; };
 		5D718D8313398AD000E5DAEF /* ScenicMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScenicMapView.h; sourceTree = "<group>"; };
 		5D718D8413398AD000E5DAEF /* ScenicMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScenicMapView.m; sourceTree = "<group>"; };
@@ -340,6 +343,11 @@
 		AA8F96AD135B85B700E57A17 /* ContentRater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentRater.m; sourceTree = "<group>"; };
 		AAC6465E13776E9C00DC8DC9 /* UserContentRater.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserContentRater.h; sourceTree = "<group>"; };
 		AAC6465F13776E9C00DC8DC9 /* UserContentRater.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserContentRater.m; sourceTree = "<group>"; };
+		AACA39421377DF4000D72062 /* SwipeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipeView.h; sourceTree = "<group>"; };
+		AACA39431377DF4000D72062 /* SwipeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwipeView.m; sourceTree = "<group>"; };
+		AACA39451377DF5B00D72062 /* PicView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PicView.h; sourceTree = "<group>"; };
+		AACA39461377DF5B00D72062 /* PicView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PicView.m; sourceTree = "<group>"; };
+		AACA39481377E2E900D72062 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		AACD9563132A8B0B00855892 /* 103-map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "103-map.png"; sourceTree = "<group>"; };
 		AACD9564132A8B0B00855892 /* 29-heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "29-heart.png"; sourceTree = "<group>"; };
 		AACD9565132A8B0B00855892 /* dest.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dest.png; sourceTree = "<group>"; };
@@ -354,6 +362,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AACA39491377E2E900D72062 /* QuartzCore.framework in Frameworks */,
 				5D8AAD5B1343A62400007FD9 /* CoreData.framework in Frameworks */,
 				5D1DCCCE1326A6A80013BD05 /* CoreLocation.framework in Frameworks */,
 				5D1DCCCB1326A3630013BD05 /* MapKit.framework in Frameworks */,
@@ -557,6 +566,7 @@
 		5D017AAB13255C1B00B8EA6A /* Scenic Content */ = {
 			isa = PBXGroup;
 			children = (
+				AACA39401377DF0300D72062 /* photoviewer */,
 				5D017AA813255B5D00B8EA6A /* ScenicContent.h */,
 				5D017AA913255B5E00B8EA6A /* ScenicContent.m */,
 				5D017AAE13255D3600B8EA6A /* ScenicContentViewController.h */,
@@ -585,6 +595,7 @@
 		5D0587DD132098C400D42F0A = {
 			isa = PBXGroup;
 			children = (
+				AACA39481377E2E900D72062 /* QuartzCore.framework */,
 				AA3A91311329DC5400894C16 /* Resources */,
 				5D0587F2132098C500D42F0A /* Scenic */,
 				5D058818132098C500D42F0A /* ScenicTests */,
@@ -703,6 +714,17 @@
 				5D99EF0B1340E99900E1412E /* ScenicTripViewController.m */,
 			);
 			name = Maps;
+			sourceTree = "<group>";
+		};
+		AACA39401377DF0300D72062 /* photoviewer */ = {
+			isa = PBXGroup;
+			children = (
+				AACA39421377DF4000D72062 /* SwipeView.h */,
+				AACA39431377DF4000D72062 /* SwipeView.m */,
+				AACA39451377DF5B00D72062 /* PicView.h */,
+				AACA39461377DF5B00D72062 /* PicView.m */,
+			);
+			name = photoviewer;
 			sourceTree = "<group>";
 		};
 		AACD9562132A8B0B00855892 /* images */ = {
@@ -954,6 +976,8 @@
 				AA6D967413694AEE00589694 /* UserContentMetadataViewController.m in Sources */,
 				AAC6466013776E9C00DC8DC9 /* UserContentRater.m in Sources */,
 				5D6A54101377B3B3009E840E /* ContentUpdater.m in Sources */,
+				AACA39441377DF4000D72062 /* SwipeView.m in Sources */,
+				AACA39471377DF5B00D72062 /* PicView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
