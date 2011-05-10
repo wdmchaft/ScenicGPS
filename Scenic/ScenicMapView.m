@@ -42,11 +42,19 @@
 }
 
 - (void) compassFrame:(BOOL)b {
-    if (b) 
-        self.frame = CGRectMake(-100, -100, self.frame.size.height*1.414, self.frame.size.height*1.414);
-    else
+    if (b) {
+        
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+        {
+            self.frame = CGRectMake(-200, -200, self.frame.size.height*1.414, self.frame.size.height*1.414);
+        }else{
+            self.frame = CGRectMake(-100, -100, self.frame.size.height*1.414, self.frame.size.height*1.414);
+        }
+        
+    } else
         self.frame = [[UIScreen mainScreen] bounds];
 }
+
 
 -(void) changeToRouteNumber: (int) n {
     self.model.primaryRouteIndex = n;
